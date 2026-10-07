@@ -1,0 +1,19 @@
+---
+import Icon from '../Icon.astro';
+
+const items = [
+  { icon: 'atom', label: 'Quantum Computing' },
+  { icon: 'shield', label: 'Post-Quantum Security' },
+  { icon: 'book', label: 'Quantum Education' },
+  { icon: 'flask', label: 'Research & Innovation' },
+  { icon: 'calendar', label: 'Events & Partnerships' },
+];
+---
+
+<section class="marquee-row" aria-label={`What Sthitha works on: ${items.map((i) => i.label).join(', ')}`}>
+  <div class="marquee">
+    <ul data-loop>
+      {[...items, ...items].map((item) => <li><Icon name={item.icon} />{item.label}</li>)}
+    </ul>
+  </div>
+</section>

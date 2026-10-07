@@ -1,0 +1,48 @@
+---
+import Base from './Base.astro';
+import Announce from '../components/Announce.astro';
+import More from '../components/More.astro';
+import { company } from '../data/site.js';
+
+interface Props {
+  title: string;
+  summary: string;
+  updated: string;
+}
+
+const { title, summary, updated } = Astro.props;
+---
+
+<Base title={`${title} | ${company.name}`} description={summary}>
+  <div class="frame">
+    <article>
+      <header class="page-hero">
+        <Announce pill="Legal" text={company.legalName} />
+        <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
+          <div>
+            <h1 data-reveal>{title}</h1>
+            <p class="page-hero-lede" data-fade style="--d:250ms">{summary}</p>
+          </div>
+        </div>
+      </header>
+      <div class="article">
+        <aside class="article-meta">
+          <More href="/" back>Home</More>
+          <dl>
+            <div><dt>Last updated</dt><dd>{updated}</dd></div>
+            <div><dt>Applies to</dt><dd>sthithaquantum.com</dd></div>
+            <div><dt>Questions</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd></div>
+          </dl>
+          <ul class="legal-nav">
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+            <li><a href="/cookie-policy">Cookie Policy</a></li>
+          </ul>
+        </aside>
+        <div class="article-body">
+          <slot />
+        </div>
+      </div>
+    </article>
+  </div>
+</Base>

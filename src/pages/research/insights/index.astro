@@ -1,0 +1,38 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Announce from '../../../components/Announce.astro';
+import Icon from '../../../components/Icon.astro';
+import { posts } from '../../../data/posts.js';
+---
+
+<Base
+  title="Insights | Research & Innovation | Sthitha Quantum Innovations"
+  description="Quantum computing explainers, post-quantum security articles and research notes from Sthitha Quantum Innovations."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Insights" text="Research & Innovation · Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <p class="crumbs" data-fade><a href="/research">Research &amp; Innovation</a><i>/</i>Insights</p>
+          <h1 data-reveal>Insights</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum computing explainers, post-quantum security articles and research notes from Sthitha.</p>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="migrate"></canvas></div>
+      </div>
+    </section>
+
+    <section class="posts" style="border-top:0">
+      {posts.map((post, i) => (
+        <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
+          <time datetime={post.date}>{post.dateShort}</time>
+          <div>
+            <h2>{post.title}</h2>
+            <p>{post.excerpt}</p>
+          </div>
+          <span class="more-dot" aria-hidden="true"><Icon name="chev-right" /></span>
+        </a>
+      ))}
+    </section>
+  </div>
+</Base>

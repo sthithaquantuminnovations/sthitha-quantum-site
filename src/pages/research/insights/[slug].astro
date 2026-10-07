@@ -1,0 +1,42 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Announce from '../../../components/Announce.astro';
+import More from '../../../components/More.astro';
+import { posts } from '../../../data/posts.js';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+---
+
+<Base title={`${post.title} | Sthitha Quantum Innovations`} description={post.excerpt}>
+  <div class="frame">
+    <article>
+      <header class="page-hero">
+        <Announce pill="Insights" text={post.category} />
+        <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
+          <div>
+            <h1 data-reveal style="max-width:900px">{post.title}</h1>
+            <p class="page-hero-lede" data-fade style="--d:250ms">{post.excerpt}</p>
+          </div>
+        </div>
+      </header>
+      <div class="article">
+        <aside class="article-meta">
+          <More href="/research/insights" back>All insights</More>
+          <dl>
+            <div><dt>Published</dt><dd><time datetime={post.date}>{post.dateLong}</time></dd></div>
+            <div><dt>Author</dt><dd>{post.author}</dd></div>
+            <div><dt>Category</dt><dd>{post.category}</dd></div>
+          </dl>
+        </aside>
+        <div class="article-body">
+          <Content />
+        </div>
+      </div>
+    </article>
+  </div>
+</Base>

@@ -1,0 +1,42 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { company } from '../data/site.js';
+---
+
+<Legal
+  title="Privacy Policy"
+  summary="What personal information this website collects, why, and what you can ask us to do with it."
+  updated="7 October 2026"
+>
+  <p>This policy explains how {company.legalName} ("Sthitha", "we", "us") handles personal information collected through this website. It covers the website only. Courses you take on third-party platforms such as Udemy are covered by that platform's own privacy policy.</p>
+
+  <h2>What we collect</h2>
+  <p><b>Information you give us.</b> When you use the contact form we collect your name, email address, organisation (if you provide it), the topic you select and your message. When you subscribe to updates we collect your email address.</p>
+  <p><b>Technical information.</b> Like most websites, our hosting provider's servers record basic request data such as IP address, browser type and the pages requested, in order to deliver the site and keep it secure.</p>
+  <p>We do not ask for, and you should not send us, sensitive personal information through the contact form.</p>
+
+  <h2>How we use it</h2>
+  <p>We use contact form details to reply to your enquiry and to follow up on the conversation you started. We use subscription email addresses to send the updates you asked for. We use technical information to operate, secure and troubleshoot the website.</p>
+  <p>We do not sell personal information, and we do not use it for advertising.</p>
+
+  <h2>Who we share it with</h2>
+  <p>We share personal information only with service providers that help us run the website and our communications, such as hosting and email providers, and only so far as they need it to provide that service. We may also disclose information where the law requires it.</p>
+
+  <h2>Third-party services</h2>
+  <p>This website loads its typefaces from Google Fonts. When your browser requests them, Google receives your IP address and browser details. The website also links to third-party sites such as Udemy; once you follow a link, that site's own policies apply.</p>
+
+  <h2>How long we keep it</h2>
+  <p>We keep enquiry details for as long as needed to deal with the enquiry and any related follow-up, and subscription details until you unsubscribe. We then delete them unless the law requires us to keep them longer.</p>
+
+  <h2>Your choices</h2>
+  <p>You can ask us to tell you what personal information we hold about you, to correct it, or to delete it, and you can withdraw your consent to receive updates at any time. To do any of these, email <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+
+  <h2>Security</h2>
+  <p>We take reasonable steps to protect personal information. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy as the website changes. The date at the top of this page shows when it was last revised.</p>
+
+  <h2>Contact</h2>
+  <p>{company.legalName}, {company.location}. Email: <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+</Legal>

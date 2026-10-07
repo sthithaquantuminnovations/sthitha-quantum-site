@@ -1,0 +1,28 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { company } from '../data/site.js';
+---
+
+<Legal
+  title="Cookie Policy"
+  summary="How this website uses cookies and similar technologies."
+  updated="7 October 2026"
+>
+  <p>Cookies are small files a website can store in your browser. This page explains how this website, operated by {company.legalName}, uses them.</p>
+
+  <h2>Cookies we set</h2>
+  <p>At present this website does not use analytics cookies or advertising cookies, and it does not track you across other websites.</p>
+  <p>Any cookies used are limited to those strictly necessary for the website and its forms to work and to stay secure.</p>
+
+  <h2>Third-party services</h2>
+  <p>The website loads its typefaces from Google Fonts, which means your browser makes a request to Google when a page loads. Links to third-party sites such as Udemy take you to websites that set their own cookies under their own policies.</p>
+
+  <h2>Managing cookies</h2>
+  <p>You can block or delete cookies through your browser settings. Because this website does not depend on non-essential cookies, blocking them should not affect how it works for you.</p>
+
+  <h2>Changes</h2>
+  <p>If we introduce analytics or other non-essential cookies in future, we will update this page first and, where required, ask for your consent.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy can be sent to <a href={`mailto:${company.email}`}>{company.email}</a>. See also our <a href="/privacy-policy">Privacy Policy</a>.</p>
+</Legal>

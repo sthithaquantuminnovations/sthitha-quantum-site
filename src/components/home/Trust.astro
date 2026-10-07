@@ -1,0 +1,35 @@
+---
+// What Sthitha actually consists of. No customer counts, logos or revenue figures.
+const groups = [
+  { title: 'Our Areas', items: ['Quantum Computing', 'Post-Quantum Security', 'Education', 'Research'] },
+  { title: 'Our Initiatives', items: ['AEGIS', 'Sthitha Academy', 'Research & Innovation'] },
+  { title: 'Our Community', items: ['Events', 'Academic connections', 'Technology community'] },
+  { title: 'Our Work', items: ['Courses', 'Research', 'Technology development'] },
+];
+---
+
+<section class="section stats" id="trust">
+  <h2 class="stats-title" data-reveal>One company. <b>Three areas of work.</b></h2>
+  <div class="stats-grid">
+    <div data-fade>
+      <div class="stat-ico"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"></circle><path class="spin accent" d="M32 10a22 22 0 0 1 22 22"></path></svg></div>
+      <h3 class="trust-title">{groups[0].title}</h3>
+      <ul class="trust-list">{groups[0].items.map((item) => <li>{item}</li>)}</ul>
+    </div>
+    <div data-fade style="--d:90ms">
+      <div class="stat-ico"><svg viewBox="0 0 64 64"><g class="bars"><line x1="22" y1="18" x2="22" y2="46"></line><line x1="32" y1="18" x2="32" y2="46"></line><line x1="42" y1="18" x2="42" y2="46"></line></g></svg></div>
+      <h3 class="trust-title">{groups[1].title}</h3>
+      <ul class="trust-list">{groups[1].items.map((item) => <li>{item}</li>)}</ul>
+    </div>
+    <div data-fade style="--d:180ms">
+      <div class="stat-ico"><svg viewBox="0 0 64 64"><g class="sweep"><line x1="16" y1="14" x2="48" y2="14"></line><line x1="16" y1="21" x2="48" y2="21"></line><line x1="16" y1="28" x2="48" y2="28"></line><line x1="16" y1="35" x2="48" y2="35"></line><line x1="16" y1="42" x2="48" y2="42"></line><line x1="16" y1="49" x2="48" y2="49"></line></g></svg></div>
+      <h3 class="trust-title">{groups[2].title}</h3>
+      <ul class="trust-list">{groups[2].items.map((item) => <li>{item}</li>)}</ul>
+    </div>
+    <div data-fade style="--d:270ms">
+      <div class="stat-ico"><svg viewBox="0 0 64 64"><path d="M10 46a22 22 0 0 1 44 0"></path><path class="needle accent" d="M32 46V26"></path></svg></div>
+      <h3 class="trust-title">{groups[3].title}</h3>
+      <ul class="trust-list">{groups[3].items.map((item) => <li>{item}</li>)}</ul>
+    </div>
+  </div>
+</section>

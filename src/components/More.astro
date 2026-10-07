@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  back?: boolean;
+  [attr: string]: unknown;
+}
+
+const { href, back = false, ...attrs } = Astro.props;
+---
+
+<a class="more" href={href} {...attrs}><slot /> <span class="more-dot"><Icon name={back ? 'chev-left' : 'chev-right'} /></span></a>

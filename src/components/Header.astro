@@ -1,0 +1,100 @@
+---
+import Icon from './Icon.astro';
+import { areas, courses } from '../data/site.js';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const within = (...prefixes: string[]) =>
+  prefixes.some((p) => path === p || path.startsWith(p + '/')) ? 'page' : undefined;
+
+// One piece of line art per area of work.
+const art: Record<string, string> = {
+  aegis: '<path d="M18 2 4 7.5V17c0 8 5.6 14 14 17 8.4-3 14-9 14-17V7.5L18 2Z"></path><path d="M18 2v32"></path>',
+  academy: '<path d="M3 9.5 18 3l15 6.5-15 6.5L3 9.5Z"></path><path d="M9 13v9c2.5 2.7 5.5 4 9 4s6.5-1.3 9-4v-9M33 9.5V20"></path>',
+  research: '<circle cx="18" cy="18" r="3"></circle><ellipse cx="18" cy="18" rx="16" ry="6.5"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(60 18 18)"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(120 18 18)"></ellipse>',
+};
+---
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="frame">
+    <a class="brand" href="/" aria-label="Sthitha Quantum Innovations – Home">
+      <img class="brand-mark" src="/assets/images/sthitha-logo-icon.png" alt="" width="24" height="25" />
+      <span class="brand-name">Sthitha</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/#work" aria-haspopup="true" aria-expanded="false" aria-current={path === '/aegis' || path === '/research' ? 'page' : undefined}>Our Work<Icon name="chev-down" /></a>
+        <div class="nav-panel">
+          <div class="nav-cards">
+            {areas.map((area) => (
+              <a class="nav-card" href={area.href}>
+                <div class="nav-card-art"><svg viewBox="0 0 36 36" set:html={art[area.key]} /></div>
+                <strong>{area.name}</strong><span>{area.title}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/academy" aria-haspopup="true" aria-expanded="false" aria-current={within('/academy')}>Academy<Icon name="chev-down" /></a>
+        <div class="nav-panel">
+          <div class="nav-split">
+            <div>
+              <span class="eyebrow">Sthitha Academy · Courses</span>
+              {courses.map((course) => (
+                <a class="nav-row" href={course.href}><Icon name="play" /><div><strong>{course.title}</strong><span>{course.subtitle} · {course.status}</span></div></a>
+              ))}
+            </div>
+            <div class="nav-list">
+              <span class="eyebrow">Academy</span>
+              <a href="/academy">Overview</a>
+              <a href="/academy#courses">Current courses</a>
+              <a href="/academy#path">Learning path</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false" aria-current={within('/about', '/events', '/partnerships', '/contact')}>Company<Icon name="chev-down" /></a>
+        <div class="nav-panel">
+          <div class="nav-split">
+            <div>
+              <span class="eyebrow">Sthitha Quantum Innovations</span>
+              <a class="nav-row" href="/about"><Icon name="users" /><div><strong>About Sthitha</strong><span>Who we are and what we work on.</span></div></a>
+              <a class="nav-row" href="/events"><Icon name="calendar" /><div><strong>Events</strong><span>AURORA '26 and community.</span></div></a>
+            </div>
+            <div class="nav-list">
+              <span class="eyebrow">Ecosystem</span>
+              <a href="/partnerships">Partnerships</a>
+              <a href="/research/insights">Insights</a>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="nav-link" href="/research/insights" aria-current={within('/research/insights')}>Insights</a></div>
+    </nav>
+
+    <a class="btn btn-light btn-sm header-cta" href="/contact">Talk to Sthitha</a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <span class="eyebrow">Our Work</span>
+  {areas.map((area) => <a href={area.href}>{area.name}<small>{area.title}</small></a>)}
+  <span class="eyebrow">Sthitha Academy · Courses</span>
+  {courses.map((course) => <a href={course.href}>{course.title}<small>{course.subtitle} · {course.status}</small></a>)}
+  <span class="eyebrow">Company</span>
+  <a href="/about">About Sthitha</a>
+  <a href="/events">Events</a>
+  <a href="/partnerships">Partnerships</a>
+  <a href="/research/insights">Insights</a>
+  <a href="/contact">Contact</a>
+  <a class="btn btn-light" href="/contact">Talk to Sthitha</a>
+</div>

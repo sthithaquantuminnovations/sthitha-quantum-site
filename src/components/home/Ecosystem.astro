@@ -1,0 +1,47 @@
+---
+import Icon from '../Icon.astro';
+import { aurora } from '../../data/site.js';
+---
+
+<section class="section" id="ecosystem">
+  <div class="section-head">
+    <span class="eyebrow">Ecosystem</span>
+    <h2 data-reveal>Beyond products and courses.</h2>
+    <p data-fade style="--d:200ms">Sthitha connects with the wider technology and academic community through events, partnerships and knowledge sharing.</p>
+  </div>
+</section>
+
+<section class="section proof" data-carousel aria-roledescription="carousel" aria-label="Events and partnerships" tabindex="0">
+  <div class="proof-main">
+    <div class="proof-slides">
+
+      <div class="proof-slide active">
+        <div class="proof-stat"><strong data-reveal>{aurora.name}</strong><span data-reveal style="--d:120ms">{aurora.kind} · {aurora.dates}</span></div>
+        <div class="proof-quote">
+          <blockquote data-reveal style="--d:200ms">Sthitha Quantum Innovations supported {aurora.name}, an IEEE technology event, as a sponsor.</blockquote>
+          <cite>Events</cite>
+          <small><a href="/events">See Events &amp; Community</a></small>
+        </div>
+      </div>
+
+      <div class="proof-slide">
+        <div class="proof-stat"><strong data-reveal>Partnerships</strong><span data-reveal style="--d:120ms">IEEE · Academia · Technology Community</span></div>
+        <div class="proof-quote">
+          <blockquote data-reveal style="--d:200ms">Sthitha works with organisations, academic communities and technology ecosystems, and shares what it learns along the way.</blockquote>
+          <cite>Building through collaboration</cite>
+          <small><a href="/partnerships">See Partnerships</a></small>
+        </div>
+      </div>
+
+    </div>
+    <div class="proof-nav">
+      <button type="button" data-prev aria-label="Previous"><Icon name="chev-left" /></button>
+      <button type="button" data-next aria-label="Next"><Icon name="chev-right" /></button>
+    </div>
+  </div>
+  <div class="proof-art" aria-hidden="true">
+    <img src="/assets/images/hero-atom-3d.png" alt="" width="900" height="900" loading="lazy" />
+    <img class="ghost" style="--h:-40deg" src="/assets/images/hero-atom-3d.png" alt="" loading="lazy" />
+    <img class="ghost" style="--h:170deg" src="/assets/images/hero-atom-3d.png" alt="" loading="lazy" />
+  </div>
+</section>

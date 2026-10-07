@@ -1,0 +1,20 @@
+---
+import CourseCard from '../CourseCard.astro';
+import AcademyDetails from '../AcademyDetails.astro';
+import More from '../More.astro';
+import { courses } from '../../data/site.js';
+---
+
+<section class="section" id="academy">
+  <div class="section-head">
+    <span class="eyebrow">Sthitha Academy</span>
+    <h2 data-reveal>Learn quantum computing. Start from the fundamentals.</h2>
+    <p data-fade style="--d:200ms">Sthitha Academy makes quantum computing easier to approach through structured courses designed for learners beginning their journey into quantum technology.</p>
+    <More href="/academy" data-fade style="--d:300ms">Explore Academy</More>
+  </div>
+
+  <div class="cells" style="--cols:2">
+    {courses.map((course, i) => <CourseCard course={course} delay={i * 110} />)}
+  </div>
+  <AcademyDetails />
+</section>

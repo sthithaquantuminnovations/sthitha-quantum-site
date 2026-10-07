@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import Announce from '../components/Announce.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+import More from '../components/More.astro';
+import { aurora } from '../data/site.js';
+---
+
+<Base
+  title="Partnerships | Sthitha Quantum Innovations"
+  description="Sthitha works with organisations, academic communities and technology ecosystems. Building through collaboration."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Partnerships" text="Ecosystem · Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Building through collaboration.</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha works with organisations, academic communities and technology ecosystems. We list a relationship here only once it is confirmed.</p>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="discover"></canvas></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Who we work with</span>
+        <h2 data-reveal>IEEE · Academia · Technology Community</h2>
+      </div>
+      <div class="cells">
+        <div class="cell" data-fade>
+          <Icon name="calendar" class="lead" />
+          <h3>IEEE</h3>
+          <p>Sthitha supported {aurora.name}, an IEEE technology event held on {aurora.dates}, as a sponsor.</p>
+          <More href="/events">See the event</More>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <Icon name="landmark" class="lead" />
+          <h3>Academia</h3>
+          <p>We engage with students and academic communities through our courses and through knowledge sharing. Formal academic collaborations will be listed here as they are confirmed.</p>
+        </div>
+        <div class="cell" data-fade style="--d:180ms">
+          <Icon name="globe" class="lead" />
+          <h3>Technology community</h3>
+          <p>We take part in the wider technology community through events and by publishing what we learn.</p>
+          <More href="/research/insights">Read Insights</More>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split top">
+      <div>
+        <span class="eyebrow">Working with Sthitha</span>
+        <h2 data-reveal>Ways to collaborate.</h2>
+      </div>
+      <div>
+        <ul class="ticks" style="margin-top:0" data-fade>
+          <li>Events and community programmes</li>
+          <li>Quantum education for students and professionals</li>
+          <li>Research and technical exploration</li>
+          <li>Post-quantum security readiness, through AEGIS</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Let's build something together."
+    text="If you represent an organisation, an institution or a community, we would be glad to talk."
+  >
+    <a class="btn btn-light" href="/contact?topic=Partnerships">Talk to Sthitha</a>
+    <a class="btn btn-dark" href="/about">About Sthitha</a>
+  </Cta>
+</Base>

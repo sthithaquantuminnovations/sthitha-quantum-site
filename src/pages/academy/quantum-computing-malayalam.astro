@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Announce from '../../components/Announce.astro';
+import Cta from '../../components/Cta.astro';
+import Icon from '../../components/Icon.astro';
+import { courses } from '../../data/site.js';
+
+const course = courses[1];
+const english = courses[0];
+
+const explore = [
+  'What is quantum computing?',
+  'Qubits',
+  'Superposition',
+  'Quantum states',
+  'Quantum gates',
+  'Quantum circuits',
+  'Quantum algorithms',
+];
+---
+
+<Base
+  title="Quantum Computing in Malayalam: For Beginners | Sthitha Academy"
+  description="A beginner-friendly introduction to quantum computing for Malayalam-speaking learners, from Sthitha Academy. Coming soon."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Sthitha Academy" text="Course · Coming soon" />
+      <div class="page-hero-body is-course">
+        <div>
+          <p class="crumbs" data-fade><a href="/academy">Sthitha Academy</a><i>/</i>Course</p>
+          <h1 data-reveal>Quantum Computing in Malayalam</h1>
+          <p class="course-kicker" data-fade style="--d:200ms">For Beginners</p>
+          <p class="page-hero-lede" data-fade style="--d:250ms">A beginner-friendly introduction to quantum computing for Malayalam-speaking learners.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            {course.udemy
+              ? <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View Course on Udemy <Icon name="arrow-ur" /></a>
+              : <span class="btn btn-dark is-disabled" aria-disabled="true">Coming Soon</span>}
+            <span class="badge is-amber">Coming Soon</span>
+          </div>
+        </div>
+        <figure class="course-hero-thumb" data-fade style="--d:200ms">
+          <Image src={course.image} alt={course.imageAlt} widths={[480, 750, 1100]} sizes="(max-width: 899px) 100vw, 560px" loading="eager" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="split top">
+      <div>
+        <span class="eyebrow">About the course</span>
+        <h2 data-reveal>Quantum computing, explained in Malayalam.</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Most introductory material on quantum computing is in English. This course is being prepared so that Malayalam-speaking learners can start from the fundamentals in their own language.</p>
+        <p class="body" data-fade style="--d:90ms">It is not yet available. This page will be updated with the full syllabus and a link to the course once it has been published.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">What you'll explore</span>
+        <h2 data-reveal>Starting from the first question.</h2>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade><ul class="ticks">{explore.slice(0, 4).map((item) => <li>{item}</li>)}</ul></div>
+        <div class="cell" data-fade style="--d:90ms"><ul class="ticks">{explore.slice(4).map((item) => <li>{item}</li>)}</ul></div>
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Coming soon."
+    text="Until the Malayalam course is published, the Quantum Computing Crash Course is available now in English."
+  >
+    <a class="btn btn-light" href={english.href}>View the Crash Course</a>
+    <a class="btn btn-dark" href="/contact?topic=Academy">Ask about this course</a>
+  </Cta>
+</Base>

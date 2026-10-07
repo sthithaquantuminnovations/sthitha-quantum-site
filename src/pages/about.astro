@@ -1,0 +1,137 @@
+---
+import Base from '../layouts/Base.astro';
+import Announce from '../components/Announce.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+import More from '../components/More.astro';
+import { areas, company } from '../data/site.js';
+
+const work = [
+  { icon: 'atom', title: 'Quantum technology', text: 'Understanding and building with the technologies behind quantum computing.' },
+  { icon: 'shield', title: 'Post-quantum security', text: 'Helping organisations prepare their cryptography for the quantum era.' },
+  { icon: 'book', title: 'Education', text: 'Making quantum computing easier to approach for people starting out.' },
+  { icon: 'flask', title: 'Research', text: 'Exploring emerging ideas through experimentation and applied learning.' },
+];
+
+const ecosystem = [
+  { icon: 'calendar', title: 'Events', href: '/events' },
+  { icon: 'users', title: 'Partnerships', href: '/partnerships' },
+  { icon: 'landmark', title: 'Academic connections', href: '/partnerships' },
+  { icon: 'globe', title: 'Technology community', href: '/events' },
+];
+---
+
+<Base
+  title="About Sthitha | Sthitha Quantum Innovations"
+  description="Sthitha Quantum Innovations brings together technology development, quantum education and research to explore practical opportunities in the quantum era."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="About" text="Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Building Technology for the Quantum Era</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha Quantum Innovations works across quantum computing, post-quantum security, education and research to build practical pathways into the quantum era.</p>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="atom"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2 data-reveal>Technology is changing. So should the way we prepare for it.</h2>
+        <p class="body" data-fade style="--d:200ms">{company.name} is a deep-tech company based in {company.location}. We bring together technology development, quantum education and research to explore practical opportunities in the quantum era.</p>
+        <p class="body" data-fade style="--d:280ms">Everything we do sits under one name. AEGIS, Sthitha Academy and Research &amp; Innovation are not separate companies: they are three parts of the same effort.</p>
+      </div>
+      <figure class="media" data-fade>
+        <img src="/assets/images/company-story-image.png" alt="" width="600" height="380" loading="lazy" />
+        <figcaption>
+          <span class="eyebrow">One company</span>
+          <strong>Three areas of work</strong>
+          <span>AEGIS · Sthitha Academy · Research &amp; Innovation</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- What we work on -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">What we work on</span>
+        <h2 data-reveal>Four connected areas.</h2>
+      </div>
+      <div class="cells" style="--cols:4">
+        {work.map((item, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Three pillars -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Our three pillars</span>
+        <h2 data-reveal>Three areas. One direction.</h2>
+        <p data-fade style="--d:200ms">Each pillar is an initiative of Sthitha Quantum Innovations.</p>
+      </div>
+      <div class="cells">
+        {areas.map((area, i) => (
+          <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
+            <div class="cell-num"><span>0{i + 1}</span><span>{area.name}</span></div>
+            <h3>{area.title}</h3>
+            <p>{area.summary}</p>
+            <More href={area.href}>{area.link}</More>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Vision and mission -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Vision &amp; mission</span>
+        <h2 data-reveal>Where we are heading, and how.</h2>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade>
+          <div class="cell-num"><span>Our vision</span></div>
+          <p class="cell-big" style="color:var(--text)">A quantum era that organisations and learners are ready for.</p>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <div class="cell-num"><span>Our mission</span></div>
+          <p class="cell-big" style="color:var(--text)">To build practical pathways into the quantum era through technology development, education and research.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ecosystem -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Our ecosystem</span>
+        <h2 data-reveal>Beyond products and courses.</h2>
+        <p data-fade style="--d:200ms">Sthitha connects with the wider technology and academic community through events, partnerships and knowledge sharing.</p>
+      </div>
+      <div class="cells" style="--cols:4">
+        {ecosystem.map((item, i) => (
+          <a class="cell" href={item.href} data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Building for the quantum era starts today."
+    text="Explore what Sthitha is building, learn with Sthitha Academy or connect with us about technology, research and partnerships."
+  >
+    <a class="btn btn-light" href="/#work">Explore Our Work</a>
+    <a class="btn btn-dark" href="/contact">Talk to Sthitha</a>
+  </Cta>
+</Base>

@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Announce from '../../components/Announce.astro';
+import Cta from '../../components/Cta.astro';
+import Icon from '../../components/Icon.astro';
+import More from '../../components/More.astro';
+import { posts } from '../../data/posts.js';
+
+const areas = [
+  { icon: 'atom', title: 'Quantum computing', text: 'The principles, technologies and applications behind quantum computing.' },
+  { icon: 'layers', title: 'Quantum machine learning', text: 'The intersection of quantum computing and machine learning, and where the two can usefully meet.' },
+  { icon: 'activity', title: 'Emerging quantum technologies', text: 'New directions in the field as they develop, and what they could make practical.' },
+  { icon: 'flask', title: 'Technical experimentation', text: 'Testing ideas hands-on, rather than only reading about them.' },
+  { icon: 'book', title: 'Applied learning', text: 'Turning what we study into material others can learn from, including through Sthitha Academy.' },
+];
+---
+
+<Base
+  title="Research & Innovation | Sthitha Quantum Innovations"
+  description="Sthitha explores emerging areas of quantum technology through technical research, experimentation and applied learning."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Research" text="Research & Innovation · Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Exploring What Comes Next</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha explores emerging areas of quantum technology through technical research, experimentation and applied learning, with ongoing work in quantum computing and quantum machine learning.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="#areas">Current areas</a>
+            <a class="btn btn-dark" href="/research/insights">Read Insights</a>
+          </div>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="discover"></canvas></div>
+      </div>
+    </section>
+
+    <section id="areas">
+      <div class="section-head">
+        <span class="eyebrow">Current areas of exploration</span>
+        <h2 data-reveal>What we are looking into.</h2>
+        <p data-fade style="--d:200ms">This is early, ongoing work. We describe the areas we are exploring rather than listing results we have not published.</p>
+      </div>
+      <div class="cells">
+        {areas.map((area, i) => (
+          <div class="cell" data-fade style={`--d:${(i % 3) * 80}ms`}>
+            <Icon name={area.icon} class="lead" />
+            <h3>{area.title}</h3>
+            <p>{area.text}</p>
+          </div>
+        ))}
+        <div class="cell" data-fade style="--d:160ms">
+          <div class="cell-num"><span>Insights</span></div>
+          <p class="cell-big" style="color:var(--text)">Notes and explainers from this work.</p>
+          <More href="/research/insights">Read Insights</More>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Latest from Insights</span>
+        <h2 data-reveal>Explainers and notes.</h2>
+      </div>
+      <div class="posts">
+        {posts.slice(0, 2).map((post, i) => (
+          <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
+            <time datetime={post.date}>{post.dateShort}</time>
+            <div><h2>{post.title}</h2><p>{post.excerpt}</p></div>
+            <span class="more-dot" aria-hidden="true"><Icon name="chev-right" /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Working on something related?"
+    text="We are glad to hear from researchers, students and organisations exploring quantum technology."
+  >
+    <a class="btn btn-light" href="/contact?topic=Research">Talk to Sthitha</a>
+    <a class="btn btn-dark" href="/partnerships">Partnerships</a>
+  </Cta>
+</Base>

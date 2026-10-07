@@ -1,0 +1,20 @@
+---
+import More from '../More.astro';
+import { areas } from '../../data/site.js';
+---
+
+<section class="section faq" id="about">
+  <div class="faq-intro">
+    <h2 data-reveal>Technology is changing. So should the way we prepare for it.</h2>
+    <p data-fade style="--d:200ms">Sthitha Quantum Innovations brings together technology development, quantum education and research to explore practical opportunities in the quantum era.</p>
+    <More href="/about" data-fade style="--d:300ms">About Sthitha</More>
+  </div>
+  <div class="faq-list">
+    {areas.map((area) => (
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false"><span>{area.name} <em class="faq-tag">{area.title}</em></span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+        <div class="faq-a"><div><p>{area.summary} <a href={area.href}>{area.link}</a></p></div></div>
+      </div>
+    ))}
+  </div>
+</section>

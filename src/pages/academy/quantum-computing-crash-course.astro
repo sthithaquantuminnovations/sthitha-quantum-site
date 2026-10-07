@@ -1,0 +1,162 @@
+---
+// Course facts on this page are taken from the course's Udemy listing.
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Announce from '../../components/Announce.astro';
+import Cta from '../../components/Cta.astro';
+import Icon from '../../components/Icon.astro';
+import { courses } from '../../data/site.js';
+
+const course = courses[0];
+
+const outcomes = [
+  'Explain what a qubit is and how superposition and entanglement really work',
+  'Understand quantum teleportation and superdense coding step by step',
+  "Describe how Shor's algorithm threatens RSA encryption",
+  "Explain Grover's algorithm and its quadratic speedup for search",
+  "Understand quantum error correction: bit-flip code, Shor's 9-qubit code, stabilizers",
+  "Use the Bloch sphere and Born's rule to describe single-qubit states",
+  'Compare real qubit technologies: superconducting, trapped ions, photonics, neutral atoms',
+];
+
+const parts = [
+  { n: 'Part 1', title: 'Quantum Foundations', text: 'Qubits, the Bloch sphere, entanglement, quantum gates, measurement and the no-cloning theorem.' },
+  { n: 'Part 2', title: 'Protocols & Algorithms', text: "Density operators, teleportation, superdense coding, the Quantum Fourier Transform and Grover's algorithm." },
+  { n: 'Part 3', title: 'Error Correction & Hardware', text: "The threshold theorem, Shor's 9-qubit code, stabilizers, Shor's algorithm, BQP and physical qubits." },
+  { n: 'Part 4', title: 'The Frontier', text: 'Fault tolerance, VQE, QAOA, quantum simulation, topological qubits and quantum machine learning.' },
+];
+
+const audience = [
+  'Complete beginners curious about quantum computing',
+  'Students who want a fast, clear overview before a university course',
+  'Developers and engineers who want to understand what quantum computers can and cannot do',
+  'Anyone tired of hype-filled explanations that never explain anything',
+];
+
+const format = [
+  { icon: 'clock', title: '1 hour 19 minutes', text: 'On-demand video across 5 lectures.' },
+  { icon: 'file', title: 'Slides and a quiz', text: 'Each part includes downloadable slides (PDF) and a quiz.' },
+  { icon: 'globe', title: 'English, with captions', text: 'English captions are provided for every lecture.' },
+  { icon: 'checks', title: 'Certificate', text: 'Udemy certificate of completion, with lifetime access.' },
+];
+---
+
+<Base
+  title="Quantum Computing Crash Course: Qubits to Shor & Grover | Sthitha Academy"
+  description="A beginner-friendly crash course from Sthitha Academy: qubits, teleportation, Shor's algorithm, Grover's algorithm and error correction."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Sthitha Academy" text="Course · Available now on Udemy" />
+      <div class="page-hero-body is-course">
+        <div>
+          <p class="crumbs" data-fade><a href="/academy">Sthitha Academy</a><i>/</i>Course</p>
+          <h1 data-reveal>Quantum Computing Crash Course</h1>
+          <p class="course-kicker" data-fade style="--d:200ms">Qubits to Shor &amp; Grover</p>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Understand real quantum computing: qubits, teleportation, Shor's algorithm, Grover's algorithm and error correction.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View on Udemy <Icon name="arrow-ur" /></a>
+            <span class="badge is-green">Available Now</span>
+          </div>
+        </div>
+        <figure class="course-hero-thumb" data-fade style="--d:200ms">
+          <Image src={course.image} alt={course.imageAlt} widths={[480, 750]} sizes="(max-width: 899px) 100vw, 560px" loading="eager" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="split top">
+      <div>
+        <span class="eyebrow">About the course</span>
+        <h2 data-reveal>From “what is a qubit?” to the algorithms that matter.</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Most explanations of quantum computing stop at “harness the power of superposition” without saying what that means. This crash course is built to fix that.</p>
+        <p class="body" data-fade style="--d:90ms">In about 80 focused minutes across four parts, it takes you from the basics of a qubit to Shor's factoring algorithm and Grover's search. Complex maths is explained in plain English, step by step, and the course follows the structure of Nielsen &amp; Chuang, the field's standard textbook.</p>
+        <p class="body" data-fade style="--d:180ms">By the end you should understand quantum computing well enough to follow research news, start a textbook, or begin building, with a clear map of what to learn next.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">What you'll learn</span>
+        <h2 data-reveal>Seven things you will be able to do.</h2>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade><ul class="ticks">{outcomes.slice(0, 4).map((o) => <li>{o}</li>)}</ul></div>
+        <div class="cell" data-fade style="--d:90ms"><ul class="ticks">{outcomes.slice(4).map((o) => <li>{o}</li>)}</ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">What's inside</span>
+        <h2 data-reveal>Four parts.</h2>
+      </div>
+      <div class="cells" style="--cols:4">
+        {parts.map((part, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <div class="cell-num"><span>{part.n}</span></div>
+            <h3>{part.title}</h3>
+            <p>{part.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section split top">
+      <div>
+        <span class="eyebrow">Who is this for?</span>
+        <h2 data-reveal>Beginners and learners starting their quantum computing journey.</h2>
+        <ul class="ticks" data-fade style="--d:200ms">{audience.map((a) => <li>{a}</li>)}</ul>
+      </div>
+      <div>
+        <span class="eyebrow">Requirements</span>
+        <ul class="ticks" data-fade style="margin-top:0">
+          <li>No physics or maths background needed; everything is explained from zero</li>
+          <li>Basic high-school algebra helps, but is not required</li>
+          <li>Curiosity about quantum computing</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Course format</span>
+        <h2 data-reveal>Short, self-paced and online.</h2>
+        <p data-fade style="--d:200ms">The course is delivered on Udemy. Every word is highlighted on screen as it is spoken, so you never lose your place.</p>
+      </div>
+      <div class="cells" style="--cols:4">
+        {format.map((item, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section split top">
+      <div>
+        <span class="eyebrow">Instructors</span>
+        <h2 data-reveal>Who teaches it.</h2>
+      </div>
+      <div>
+        <ul class="people" data-fade>
+          <li><strong>Rantish Valathe Rajan</strong><span>Course instructor</span></li>
+          <li><strong>Anil Erinchikkadavathu Achoora</strong><span>Course instructor</span></li>
+        </ul>
+        <p class="body" data-fade style="--d:90ms">As listed on the course's Udemy page. The course notes that it contains the use of artificial intelligence.</p>
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Start learning."
+    text="The Quantum Computing Crash Course is available now on Udemy."
+  >
+    <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View Course on Udemy</a>
+    <a class="btn btn-dark" href="/academy">Back to Sthitha Academy</a>
+  </Cta>
+</Base>

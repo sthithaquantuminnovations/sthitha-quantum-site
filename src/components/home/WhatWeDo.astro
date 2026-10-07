@@ -1,0 +1,34 @@
+---
+import More from '../More.astro';
+import { areas, courses } from '../../data/site.js';
+---
+
+<section id="work">
+  <div class="section-head">
+    <span class="eyebrow">What Sthitha does</span>
+    <h2 data-reveal>Three areas. One direction.</h2>
+    <p data-fade style="--d:200ms">Sthitha brings technology development, quantum education and research together to build practical pathways into the quantum era.</p>
+  </div>
+
+  <div class="cells">
+    {areas.map((area, i) => (
+      <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
+        <div class="cell-num"><span>0{i + 1}</span><span>{area.name}</span></div>
+        <h3>{area.title}</h3>
+        <p>{area.summary}</p>
+
+        {area.key === 'aegis' && <p class="area-line mono">Discover · Protect · Migrate</p>}
+
+        {area.key === 'academy' && (
+          <ul class="area-courses">
+            {courses.map((course) => (
+              <li><a href={course.href}><strong>{course.title}</strong><em>{course.subtitle}</em></a></li>
+            ))}
+          </ul>
+        )}
+
+        <More href={area.href}>{area.link}</More>
+      </article>
+    ))}
+  </div>
+</section>

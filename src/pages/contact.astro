@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import Announce from '../components/Announce.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/site.js';
+
+const topics = [
+  { name: 'AEGIS', text: 'Post-quantum security for your organisation.' },
+  { name: 'Academy', text: 'Courses, learners and teaching.' },
+  { name: 'Research', text: 'Research interests and collaboration.' },
+  { name: 'Partnerships', text: 'Events, academia and community.' },
+  { name: 'General Enquiries', text: 'Anything else.' },
+];
+const social = company.social.filter((s) => s.href);
+---
+
+<Base
+  title="Contact | Talk to Sthitha | Sthitha Quantum Innovations"
+  description="Whether you're interested in AEGIS, quantum education, research or partnerships, we'd be glad to hear from you."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Contact" text="Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Talk to Sthitha</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Whether you're interested in AEGIS, quantum education, research or partnerships, we'd be glad to hear from you.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="#contact-form">Send a message</a>
+            <a class="btn btn-dark" href={`mailto:${company.email}`}>Email us</a>
+          </div>
+        </div>
+        <div class="hero-stat" data-fade style="--d:200ms">
+          <div class="hero-stat-head"><span class="eyebrow">What would you like to talk about?</span></div>
+          <ul class="topic-list">
+            {topics.map((topic) => (
+              <li><a href={`?topic=${encodeURIComponent(topic.name)}#contact-form`} data-topic={topic.name}><strong>{topic.name}</strong><span>{topic.text}</span><Icon name="chev-right" /></a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" style="border-top:0">
+      <div id="contact-form">
+        <h2 data-reveal>Send a message</h2>
+        <form action="/contact-handler.php" method="post" data-ajax>
+          <label class="field"><span>Full Name</span><input type="text" name="fullName" placeholder="Your name" autocomplete="name" required /></label>
+          <label class="field"><span>Email Address</span><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required /></label>
+          <label class="field"><span>Organisation</span><input type="text" name="org" placeholder="Organisation or institution (optional)" autocomplete="organization" /></label>
+          <label class="field"><span>Topic</span>
+            <select name="topic" data-topic-select>
+              {topics.map((topic) => <option value={topic.name} selected={topic.name === 'General Enquiries'}>{topic.name}</option>)}
+            </select>
+          </label>
+          <label class="field"><span>Message</span><textarea name="message" placeholder="How can we help?" required></textarea></label>
+          <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          <button class="btn btn-light" type="submit">Send Message</button>
+        </form>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </div>
+      <div id="details">
+        <h2 data-reveal>Other ways to reach us</h2>
+        <ul class="contact-lines" data-fade>
+          <li><Icon name="mail" /><div><strong>Email</strong><a href={`mailto:${company.email}`}>{company.email}</a></div></li>
+          <li><Icon name="pin" /><div><strong>{company.legalName}</strong>{company.location}</div></li>
+          {social.map((link) => (
+            <li><Icon name="arrow-ur" /><div><strong>{link.label}</strong><a href={link.href} target="_blank" rel="noopener">{link.href.replace(/^https?:\/\//, '')}</a></div></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Pre-select the topic when arriving from a link such as /contact?topic=AEGIS.
+  const select = document.querySelector('[data-topic-select]');
+  const choose = (name) => {
+    if (!select || !name) return;
+    const match = [...select.options].find((o) => o.value.toLowerCase() === name.toLowerCase());
+    if (match) select.value = match.value;
+  };
+  choose(new URLSearchParams(location.search).get('topic'));
+  document.querySelectorAll('[data-topic]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      choose(link.getAttribute('data-topic'));
+      document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

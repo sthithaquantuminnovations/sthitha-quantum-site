@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Announce from '../components/Announce.astro';
+import Cta from '../components/Cta.astro';
+import More from '../components/More.astro';
+import auroraImage from '../assets/events/aurora-26.png';
+import { aurora, courses } from '../data/site.js';
+---
+
+<Base
+  title="Events & Community | Sthitha Quantum Innovations"
+  description="Sthitha connects with the technology and academic community through events, collaborations and knowledge sharing, including AURORA '26, an IEEE technology event."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Events" text="Ecosystem · Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Events &amp; Community</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha connects with the technology and academic community through events, collaborations and knowledge sharing.</p>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="migrate"></canvas></div>
+      </div>
+    </section>
+
+    <!-- AURORA '26 -->
+    <section class="split top" id="aurora-26">
+      <div>
+        <span class="eyebrow">Featured event</span>
+        <h2 data-reveal>{aurora.name}</h2>
+        <p class="body" data-fade style="--d:200ms">{aurora.name} is an IEEE technology event. Sthitha Quantum Innovations supported the event as a sponsor.</p>
+        <dl class="facts" data-fade style="--d:280ms">
+          <div><dt>Event</dt><dd>{aurora.kind}</dd></div>
+          <div><dt>Dates</dt><dd>{aurora.dates}</dd></div>
+          <div><dt>Sthitha's role</dt><dd>{aurora.role}</dd></div>
+        </dl>
+      </div>
+      <figure class="media is-colour" data-fade>
+        <Image src={auroraImage} alt="AURORA '26 artwork promoting the Sthitha Academy Quantum Computing Crash Course" widths={[640, 960, 1280]} sizes="(max-width: 899px) 100vw, 620px" />
+        <figcaption>
+          <span class="eyebrow">Sthitha Academy at {aurora.name}</span>
+          <strong>{courses[0].title}</strong>
+          <span>Sthitha shared its {courses[0].title} with the {aurora.name} community.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Why we take part</span>
+        <h2 data-reveal>Beyond products and courses.</h2>
+        <p data-fade style="--d:200ms">Events are where we meet students, researchers and engineers, share what we are working on and learn what others are building.</p>
+      </div>
+      <div class="cells">
+        <div class="cell" data-fade>
+          <div class="cell-num"><span>Learn</span></div>
+          <h3>Sthitha Academy</h3>
+          <p>The course we shared at {aurora.name} is open to everyone.</p>
+          <More href={courses[0].href}>View the course</More>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <div class="cell-num"><span>Collaborate</span></div>
+          <h3>Partnerships</h3>
+          <p>How Sthitha works with academic communities and technology ecosystems.</p>
+          <More href="/partnerships">See Partnerships</More>
+        </div>
+        <div class="cell" data-fade style="--d:180ms">
+          <div class="cell-num"><span>Invite us</span></div>
+          <h3>Planning an event?</h3>
+          <p>We are glad to hear from organisers of technology and academic events.</p>
+          <More href="/contact?topic=Partnerships">Talk to Sthitha</More>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Running a technology or academic event?"
+    text="Tell us about it. We are always interested in meeting the community."
+  >
+    <a class="btn btn-light" href="/contact?topic=Partnerships">Talk to Sthitha</a>
+    <a class="btn btn-dark" href="/partnerships">Partnerships</a>
+  </Cta>
+</Base>

@@ -1,0 +1,33 @@
+---
+// A course always leads with its real thumbnail, and always sits under Sthitha Academy.
+import { Image } from 'astro:assets';
+import More from './More.astro';
+
+interface Props {
+  course: {
+    href: string;
+    title: string;
+    subtitle: string;
+    status: string;
+    available: boolean;
+    image: ImageMetadata;
+    imageAlt: string;
+  };
+  delay?: number;
+}
+
+const { course, delay = 0 } = Astro.props;
+---
+
+<article class="cell course" data-fade style={`--d:${delay}ms`}>
+  <a class="course-thumb" href={course.href} tabindex="-1" aria-hidden="true">
+    <Image src={course.image} alt="" widths={[480, 750, 1100]} sizes="(max-width: 899px) 100vw, 620px" />
+  </a>
+  <div class="cell-num">
+    <span>Sthitha Academy</span>
+    <span class:list={['badge', course.available ? 'is-green' : 'is-amber']}>{course.status}</span>
+  </div>
+  <h3><a href={course.href}>{course.title}</a></h3>
+  <p class="course-sub">{course.subtitle}</p>
+  <More href={course.href}>{course.available ? 'View course' : 'Course details'}</More>
+</article>

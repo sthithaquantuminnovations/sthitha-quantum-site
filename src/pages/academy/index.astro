@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+import Announce from '../../components/Announce.astro';
+import Cta from '../../components/Cta.astro';
+import CourseCard from '../../components/CourseCard.astro';
+import AcademyDetails from '../../components/AcademyDetails.astro';
+import { courses } from '../../data/site.js';
+---
+
+<Base
+  title="Sthitha Academy | Quantum Education by Sthitha Quantum Innovations"
+  description="Sthitha Academy makes quantum computing easier to approach through structured courses designed for learners beginning their journey into quantum technology."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <Announce pill="Sthitha Academy" text="Quantum Education · By Sthitha Quantum Innovations" />
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Learn Quantum Computing. Start from the Fundamentals.</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha Academy makes quantum computing easier to approach through structured courses designed for learners beginning their journey into quantum technology.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="#courses">See the courses</a>
+            <a class="btn btn-dark" href="/contact?topic=Academy">Ask about the Academy</a>
+          </div>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="atom"></canvas></div>
+      </div>
+    </section>
+
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Why Sthitha Academy?</span>
+        <h2 data-reveal>One concept at a time.</h2>
+      </div>
+      <div>
+        <p class="split-lede" style="margin-top:0;max-width:560px" data-fade>Quantum computing can seem difficult when every concept is introduced at once. Sthitha Academy focuses on building understanding step by step.</p>
+      </div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-head">
+        <span class="eyebrow">Current courses</span>
+        <h2 data-reveal>Two courses, one starting point.</h2>
+        <p data-fade style="--d:200ms">Both courses begin with the fundamentals. One is available now in English; the other is being prepared for Malayalam-speaking learners.</p>
+      </div>
+      <div class="cells" style="--cols:2">
+        {courses.map((course, i) => <CourseCard course={course} delay={i * 110} />)}
+      </div>
+    </section>
+
+    <section class="section" id="path">
+      <div class="section-head">
+        <span class="eyebrow">Inside the Academy</span>
+        <h2 data-reveal>What you'll learn, and who it is for.</h2>
+      </div>
+      <AcademyDetails />
+    </section>
+  </div>
+
+  <Cta
+    title="Start with the fundamentals."
+    text="The Quantum Computing Crash Course is available now. It takes you from qubits to Shor's and Grover's algorithms."
+  >
+    <a class="btn btn-light" href={courses[0].href}>View the Crash Course</a>
+    <a class="btn btn-dark" href="/contact?topic=Academy">Talk to Sthitha</a>
+  </Cta>
+</Base>
