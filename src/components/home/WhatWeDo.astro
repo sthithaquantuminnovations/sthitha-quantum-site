@@ -1,6 +1,31 @@
 ---
+import Icon from '../Icon.astro';
 import More from '../More.astro';
-import { areas, courses } from '../../data/site.js';
+import { areas, courses, learningPath } from '../../data/site.js';
+
+// Per area: the short tab label, the outline the strands form, and three points taken from the area's own copy.
+const detail = {
+  aegis: {
+    tab: 'AEGIS', visual: 'protect',
+    points: [
+      { icon: 'scan', text: 'Discover cryptographic assets.' },
+      { icon: 'gauge', text: 'Assess quantum risk.' },
+      { icon: 'route', text: 'Prepare for post-quantum migration.' },
+    ],
+  },
+  academy: {
+    tab: 'Academy', visual: 'book',
+    points: ['book', 'atom', 'code'].map((icon, i) => ({ icon, text: `${learningPath[i]}.` })),
+  },
+  research: {
+    tab: 'Research', visual: 'flask',
+    points: [
+      { icon: 'flask', text: 'Technical research.' },
+      { icon: 'activity', text: 'Experimentation.' },
+      { icon: 'layers', text: 'Applied learning.' },
+    ],
+  },
+};
 ---
 
 <section id="work">
@@ -9,26 +34,69 @@ import { areas, courses } from '../../data/site.js';
     <h2 data-reveal>Three areas. One direction.</h2>
     <p data-fade style="--d:200ms">Sthitha brings technology development, quantum education and research together to build practical pathways into the quantum era.</p>
   </div>
+</section>
 
-  <div class="cells">
+<section class="features" aria-label={`Sthitha's three areas of work: ${areas.map((a) => a.name).join(', ')}`}>
+  <div class="features-sticky">
+    <canvas class="pillars-canvas" data-visual="areas" aria-hidden="true"></canvas>
+    <nav class="features-tabs" aria-label="Areas of work">
+      {areas.map((area, i) => <a href={`#area-${area.key}`} class={i === 0 ? 'active' : undefined}>{detail[area.key].tab}</a>)}
+    </nav>
+
     {areas.map((area, i) => (
-      <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
-        <div class="cell-num"><span>0{i + 1}</span><span>{area.name}</span></div>
-        <h3>{area.title}</h3>
-        <p>{area.summary}</p>
-
-        {area.key === 'aegis' && <p class="area-line mono">Discover · Protect · Migrate</p>}
-
-        {area.key === 'academy' && (
-          <ul class="area-courses">
-            {courses.map((course) => (
-              <li><a href={course.href}><strong>{course.title}</strong><em>{course.subtitle}</em></a></li>
-            ))}
+      <article class:list={['feature', { active: i === 0 }]} id={`area-${area.key}`}>
+        <div class="feature-text">
+          <div class="feature-head"><h3>{area.title}</h3><span class="badge">{area.name}</span></div>
+          <p class="feature-desc">{area.summary}</p>
+          <ul class="feature-points">
+            {detail[area.key].points.map((point) => <li><Icon name={point.icon} /><span>{point.text}</span></li>)}
           </ul>
+          <More href={area.href}>{area.link}</More>
+        </div>
+
+        {area.key === 'aegis' && (
+          <div class="feature-visual" aria-hidden="true">
+            <canvas data-visual={detail.aegis.visual}></canvas>
+            <div class="hybrid">
+              <div class="hybrid-box">
+                <span class="hybrid-label">Exposure</span>
+                <div class="hybrid-io">Classical cryptography in use</div>
+                <div class="hybrid-pair">
+                  <div><small>In use today</small><b>RSA / ECC</b></div>
+                  <div><small>Post-quantum</small><b>ML-KEM / ML-DSA</b></div>
+                </div>
+                <div class="hybrid-out"><span class="hybrid-flow"></span>Protection strategy</div>
+              </div>
+              <div class="hybrid-chips">
+                <span class="chip"><Icon name="scan" />Discover</span><span class="chip"><Icon name="shield" />Protect</span><span class="chip"><Icon name="route" />Migrate</span>
+              </div>
+            </div>
+          </div>
         )}
 
-        <More href={area.href}>{area.link}</More>
+        {area.key === 'academy' && (
+          <div class="feature-visual">
+            <canvas data-visual={detail.academy.visual} aria-hidden="true"></canvas>
+            <div class="stack-cards is-wide">
+              {courses.map((course) => (
+                <a class="s-card" href={course.href}><div><strong>{course.title}</strong><small>{course.subtitle}</small></div><span class:list={['status', { 'is-amber': !course.available }]}>{course.status}</span></a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {area.key === 'research' && (
+          <div class="feature-visual" aria-hidden="true">
+            <canvas data-visual={detail.research.visual}></canvas>
+            <div class="stack-cards is-wide">
+              <div class="s-card"><div><strong>Quantum Computing</strong><small>principles · applications</small></div><span class="status is-blue is-pulse">Ongoing</span></div>
+              <div class="s-card"><div><strong>Quantum Machine Learning</strong><small>quantum · machine learning</small></div><span class="status is-blue is-pulse">Ongoing</span></div>
+            </div>
+          </div>
+        )}
       </article>
     ))}
+
+    <div class="ruler" aria-hidden="true"><div class="ruler-tape"></div><span class="ruler-pin"></span></div>
   </div>
 </section>

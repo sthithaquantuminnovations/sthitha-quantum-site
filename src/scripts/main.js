@@ -151,7 +151,7 @@
     var activate = function (idx) {
       if (idx === current) return;
       current = idx;
-      window.dispatchEvent(new CustomEvent('pillars:change', { detail: idx }));
+      window.dispatchEvent(new CustomEvent('features:change', { detail: idx }));
       items.forEach(function (el, i) { el.classList.toggle('active', i === idx); });
       labels.forEach(function (el, i) { el.classList.toggle('active', i === idx); });
       tabs.forEach(function (el, i) { el.classList.toggle('active', i === idx); });

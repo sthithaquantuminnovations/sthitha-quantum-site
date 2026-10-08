@@ -1,6 +1,23 @@
 ---
-import Icon from '../Icon.astro';
 import More from '../More.astro';
+
+const approach = [
+  {
+    id: 'discover', title: 'Discover',
+    text: 'Find cryptographic assets across your systems and understand where they are being used.',
+    points: ['Cryptographic discovery', 'Asset inventory', 'Where each asset is used'],
+  },
+  {
+    id: 'protect', title: 'Protect',
+    text: 'Assess quantum exposure and prepare appropriate post-quantum protection strategies.',
+    points: ['Risk assessment', 'Quantum exposure', 'Protection strategies'],
+  },
+  {
+    id: 'migrate', title: 'Migrate',
+    text: 'Build a clear, phased roadmap for moving critical systems towards post-quantum cryptography.',
+    points: ['Migration planning', 'Phased roadmap', 'Reporting'],
+  },
+];
 ---
 
 <section class="section" id="aegis">
@@ -9,102 +26,16 @@ import More from '../More.astro';
     <h2 data-reveal>Preparing critical systems for the post-quantum era.</h2>
     <p data-fade style="--d:200ms">AEGIS helps organisations discover where cryptography is being used, understand their exposure and prepare a practical path towards post-quantum security.</p>
   </div>
-</section>
 
-<section class="features" id="capabilities" aria-label="The AEGIS approach: Discover, Protect, Migrate">
-  <div class="features-sticky">
-    <canvas class="pillars-canvas" data-visual="pillars" aria-hidden="true"></canvas>
-    <nav class="features-tabs" aria-label="AEGIS approach">
-      <a href="#feature-discover" class="active">Discover</a>
-      <a href="#feature-protect">Protect</a>
-      <a href="#feature-migrate">Migrate</a>
-    </nav>
-
-    <article class="feature active" id="feature-discover">
-      <div class="feature-text">
-        <div class="feature-head"><h3>Discover</h3><span class="badge">01</span></div>
-        <p class="feature-desc">Find cryptographic assets across your systems and understand where they are being used.</p>
-        <ul class="feature-points">
-          <li><Icon name="scan" /><span>Cryptographic discovery.</span></li>
-          <li><Icon name="file" /><span>Asset inventory.</span></li>
-          <li><Icon name="layers" /><span>Where each asset is used.</span></li>
-        </ul>
-        <More href="/aegis#discover">Explore AEGIS</More>
-      </div>
-      <div class="feature-visual" aria-hidden="true">
-        <canvas data-visual="discover"></canvas>
-        <div class="stack-cards">
-          <div class="s-card"><div><strong>Applications</strong><small>RSA · ECC</small></div><span class="status">Found</span></div>
-          <div class="s-card"><div><strong>Network</strong><small>TLS · VPN</small></div><span class="status">Found</span></div>
-          <div class="s-card"><div><strong>Databases</strong><small>data at rest</small></div><span class="status is-blue is-pulse">Scanning</span></div>
-          <div class="s-card"><div><strong>Identity systems</strong><small>certificates · PKI</small></div><span class="status is-amber">Queued</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="feature" id="feature-protect">
-      <div class="feature-text">
-        <div class="feature-head"><h3>Protect</h3><span class="badge">02</span></div>
-        <p class="feature-desc">Assess quantum exposure and prepare appropriate post-quantum protection strategies.</p>
-        <ul class="feature-points">
-          <li><Icon name="gauge" /><span>Risk assessment.</span></li>
-          <li><Icon name="activity" /><span>Quantum exposure.</span></li>
-          <li><Icon name="shield" /><span>Protection strategies.</span></li>
-        </ul>
-        <More href="/aegis#protect">Explore AEGIS</More>
-      </div>
-      <div class="feature-visual" aria-hidden="true">
-        <canvas data-visual="protect"></canvas>
-        <div class="hybrid">
-          <div class="hybrid-box">
-            <span class="hybrid-label">Exposure</span>
-            <div class="hybrid-io">Classical cryptography in use</div>
-            <div class="hybrid-pair">
-              <div><small>In use today</small><b>RSA / ECC</b></div>
-              <div><small>Post-quantum</small><b>ML-KEM / ML-DSA</b></div>
-            </div>
-            <div class="hybrid-out"><span class="hybrid-flow"></span>Protection strategy</div>
-          </div>
-          <div class="hybrid-chips">
-            <span class="chip">TLS</span><span class="chip">VPN</span><span class="chip">Key management</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="feature" id="feature-migrate">
-      <div class="feature-text">
-        <div class="feature-head"><h3>Migrate</h3><span class="badge">03</span></div>
-        <p class="feature-desc">Build a clear, phased roadmap for moving critical systems towards post-quantum cryptography.</p>
-        <ul class="feature-points">
-          <li><Icon name="route" /><span>Migration planning.</span></li>
-          <li><Icon name="checks" /><span>Phased roadmap.</span></li>
-          <li><Icon name="file" /><span>Reporting.</span></li>
-        </ul>
-        <More href="/aegis#migrate">Explore AEGIS</More>
-      </div>
-      <div class="feature-visual" aria-hidden="true">
-        <canvas data-visual="migrate"></canvas>
-        <div class="alert">
-          <div class="alert-top"><span class="badge is-amber">Roadmap</span><span>Phased</span></div>
-          <h4>Post-quantum migration</h4>
-          <p>A phased plan for moving critical systems towards post-quantum cryptography.</p>
-          <svg class="chart" viewBox="0 0 268 104" fill="none">
-            <path d="M0 8h268M0 40h268M0 72h268" stroke="#292524" stroke-dasharray="2 3"></path>
-            <path d="M8 84 L92 84 L92 52 L176 52 L176 20 L260 20" stroke="#57534e"></path>
-            <path d="M8 84 L92 84 L92 52 L176 52" stroke="#f9ab00"></path>
-            <circle cx="92" cy="84" r="3" fill="#f9ab00"></circle><circle cx="176" cy="52" r="3" fill="#f9ab00"></circle><circle cx="260" cy="20" r="3" fill="#57534e"></circle>
-            <g font-family="Geist, sans-serif" font-size="10" fill="#79716b">
-              <text x="8" y="100">Phase 1 · Inventory</text>
-              <text x="100" y="68">Phase 2 · Priority</text>
-              <text x="182" y="36">Phase 3 · Remaining</text>
-            </g>
-          </svg>
-          <div class="alert-foot"><span>Critical systems <b>first</b></span><span>3 phases</span></div>
-        </div>
-      </div>
-    </article>
-
-    <div class="ruler" aria-hidden="true"><div class="ruler-tape"></div><span class="ruler-pin"></span></div>
+  <div class="cells" id="capabilities">
+    {approach.map((step, i) => (
+      <article class="cell" data-fade style={`--d:${i * 90}ms`}>
+        <div class="cell-num"><span>0{i + 1}</span><span>AEGIS</span></div>
+        <h3>{step.title}</h3>
+        <p>{step.text}</p>
+        <ul class="ticks">{step.points.map((point) => <li>{point}</li>)}</ul>
+        <More href={`/aegis#${step.id}`}>Explore AEGIS</More>
+      </article>
+    ))}
   </div>
 </section>

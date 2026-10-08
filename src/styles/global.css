@@ -307,10 +307,9 @@ main { padding-top: var(--nav-h); }
 .hero-visual canvas { position: absolute; inset: -40px -20px; width: calc(100% + 40px); height: calc(100% + 80px); }
 
 .hero-steps {
-  display: grid; grid-template-columns: repeat(3, 253px);
-  padding: 0 var(--pad) 64px; position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(3, 253px); justify-content: center; gap: 26px 40px;
+  padding: 64px var(--pad); text-align: center;
 }
-.hero-steps li { padding-right: 40px; }
 .hero-steps h3 { font-size: 17px; font-weight: 600; letter-spacing: -.02em; }
 .hero-steps h3 span { color: var(--dim); font-weight: 500; margin-right: 2px; }
 .hero-steps p { margin-top: 6px; font-size: 15px; line-height: 20px; color: var(--muted); }
@@ -443,7 +442,8 @@ main { padding-top: var(--nav-h); }
 .feature.active .feature-text > :nth-child(4) { transition-delay: .18s; }
 .feature.active .feature-text > :nth-child(5) { transition-delay: .24s; }
 
-.feature-head { display: flex; align-items: center; gap: 12px; }
+.feature-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.feature-head .badge { flex: none; white-space: nowrap; }
 .feature h3, .split h2, .section-head h2 { font-size: clamp(28px, 2.8vw, 36px); line-height: 1.1; font-weight: 600; letter-spacing: -.035em; }
 .feature-desc, .split-lede { margin-top: 14px; max-width: 590px; font-size: 17px; line-height: 24px; color: var(--muted); letter-spacing: -.005em; }
 .feature-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 590px; margin-top: 38px; }
@@ -478,6 +478,7 @@ main { padding-top: var(--nav-h); }
 /* Feature cards */
 
 .stack-cards { width: 290px; display: grid; gap: 8px; }
+.stack-cards.is-wide { width: 400px; max-width: 100%; }
 .s-card {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding: 15px 15px 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px;
@@ -832,7 +833,7 @@ main { padding-top: var(--nav-h); }
   .hero-copy { padding-block: 16px 56px; }
   .hero-lede { margin-inline: auto; margin-top: 22px; }
   .hero-actions { justify-content: center; margin-top: 30px; }
-  .hero-steps { grid-template-columns: 1fr; gap: 26px; padding-bottom: 56px; border-top: 1px solid var(--line); padding-top: 40px; }
+  .hero-steps { grid-template-columns: 1fr; padding-block: 48px; }
 
   .marquee-row { height: 88px; }
   .marquee li { font-size: 19px; padding-inline: 22px; }
@@ -864,6 +865,7 @@ main { padding-top: var(--nav-h); }
   .feature .more { margin-top: 32px; }
   .ruler { display: none; }
   .hybrid { width: 340px; }
+  .stack-cards.is-wide { width: 100%; }
 
   .split { grid-template-columns: 1fr; padding-block: 72px 80px; gap: 48px; }
   .proof { grid-template-columns: 1fr; }

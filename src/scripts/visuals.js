@@ -306,6 +306,18 @@
 
   /* ---------- Outlines drawn as short flickering strands ---------- */
 
+  // Extend a path from its last point: a straight run, or a quadratic bend, in n short steps.
+  function run(p, x1, y1, n) {
+    var a = p[p.length - 1];
+    for (var i = 1; i <= n; i++) p.push([a[0] + (x1 - a[0]) * i / n, a[1] + (y1 - a[1]) * i / n]);
+    return p;
+  }
+  function bend(p, qx, qy, x1, y1, n) {
+    var a = p[p.length - 1];
+    for (var i = 1; i <= n; i++) { var t = i / n, u = 1 - t; p.push([u * u * a[0] + 2 * u * t * qx + t * t * x1, u * u * a[1] + 2 * u * t * qy + t * t * y1]); }
+    return p;
+  }
+
   var SHAPES = {
     // radar: outer ring with an offset inner arc
     discover: function () {
@@ -329,6 +341,21 @@
       var a = [], b = [], i;
       for (i = 0; i <= 180; i++) { var th = i / 180 * TAU; a.push([Math.cos(th) * 0.66 - 0.3, Math.sin(th) * 0.66]); b.push([Math.cos(th) * 0.66 + 0.3, Math.sin(th) * 0.66]); }
       return [a, b];
+    },
+    // open book: two pages bowing away from a centre spine
+    book: function () {
+      function page(s) { return bend(run(bend([[0, -0.54]], s * 0.4, -0.82, s * 0.92, -0.7, 50), s * 0.92, 0.56, 50), s * 0.4, 0.44, 0, 0.72, 50); }
+      return [page(-1).reverse(), page(1), run([[0, -0.54]], 0, 0.72, 40)];
+    },
+    // flask: a neck, sloping shoulders and a level line across the body
+    flask: function () {
+      var body = run([[0.2, -0.86]], 0.2, -0.3, 24);
+      bend(run(body, 0.8, 0.66, 44), 0.91, 0.84, 0.68, 0.84, 14);
+      bend(run(body, -0.68, 0.84, 50), -0.91, 0.84, -0.8, 0.66, 14);
+      run(run(body, -0.2, -0.3, 44), -0.2, -0.86, 24);
+      var level = [];
+      for (var i = 0; i <= 60; i++) { var t = i / 60; level.push([-0.66 + 1.32 * t, 0.5 + 0.03 * Math.sin(t * TAU * 1.5)]); }
+      return [body, run([[-0.34, -0.86]], 0.34, -0.86, 20), level];
     }
   };
 
@@ -458,7 +485,8 @@
 
   /* ---------- Mount ---------- */
 
-  var PILLARS = ['discover', 'protect', 'migrate'];
+  // AEGIS, Sthitha Academy, Research & Innovation
+  var AREAS = ['protect', 'book', 'flask'];
   var FACTORY = {
     atom: atom,
     waves: waves,
@@ -466,10 +494,12 @@
     discover: function () { return outline(['discover']); },
     protect: function () { return outline(['protect']); },
     migrate: function () { return outline(['migrate']); },
-    // one canvas shared by the three pillars; it morphs as the active pillar changes
-    pillars: function () {
-      var visual = outline(PILLARS);
-      window.addEventListener('pillars:change', function (e) { visual.show(e.detail); });
+    book: function () { return outline(['book']); },
+    flask: function () { return outline(['flask']); },
+    // one canvas shared by the three areas; it morphs as the active area changes
+    areas: function () {
+      var visual = outline(AREAS);
+      window.addEventListener('features:change', function (e) { visual.show(e.detail); });
       return visual;
     }
   };
