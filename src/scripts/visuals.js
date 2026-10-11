@@ -78,6 +78,7 @@
     for (var i = 0; i < N; i++) { delay[i] = rand() * cfg.maxDelay; r1[i] = rand(); r2[i] = rand(); r3[i] = rand(); tint[i] = Math.floor(rand() * PALETTE.length); }
     var clock = 0, seeded = false;
     var SPRING = 60, DAMPING = 6, LEVELS = 14, ALPHA_MAX = 0.7;
+    var BASE = cfg.rgb || [250, 250, 249], BASE_STR = BASE.join(',');
 
     function draw(ctx, w, h, t, dt, mouse, still) {
       var R = cfg.scale(w, h), cx = w * cfg.cx, cy = h * cfg.cy, i, j, k;
@@ -96,8 +97,8 @@
         var springStep = Math.min(SPRING * dt, 0.6), damp = Math.exp(-DAMPING * dt);
         var radius = cfg.radius, strength = cfg.strength, maxV = cfg.maxVelocity;
         for (i = 0; i < N; i++) {
-          var act = Math.min(1, Math.max(0, (clock - delay[i]) / 0.5));
-          op[i] += (act - op[i]) * Math.min(2 * dt, 1);
+          var act = Math.min(1, Math.max(0, (clock - delay[i]) / (cfg.fade || 0.5)));
+          op[i] += (act - op[i]) * Math.min((cfg.fade ? 8 : 2) * dt, 1);
           var free = clock >= hold[i];
           if (free && soft[i] < 1) soft[i] = Math.min(1, soft[i] + dt * 0.9);
           var pull = springStep * act * (free ? soft[i] : 0);
@@ -140,7 +141,7 @@
         var flick = cfg.flicker ? 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * (0.6 + r2[i] * 1.8) + r1[i] * TAU)) : 1;
         var sweep = cfg.sweep ? Math.pow(0.5 + 0.5 * Math.cos((aux[i] - t * 0.07) * TAU), 6) * cfg.sweep : 0;
         var a = (cfg.alpha * (0.3 + 0.7 * r1[i]) * flick + sweep) * dp * o;
-        var cr = 250, cg = 250, cb = 249;
+        var cr = BASE[0], cg = BASE[1], cb = BASE[2];
         if (g > 0.02) {
           var c = PALETTE[tint[i]], m = Math.min(1, g * 1.5);
           cr += (c[0] - cr) * m; cg += (c[1] - cg) * m; cb += (c[2] - cb) * m;
@@ -188,7 +189,7 @@
             ctx.fillStyle = 'rgba(255,80,80,' + (da * 0.65).toFixed(3) + ')'; ctx.fillRect(ex - e - sz / 2, ey - sz / 2, sz, sz);
             ctx.fillStyle = 'rgba(80,150,255,' + (da * 0.65).toFixed(3) + ')'; ctx.fillRect(ex + e - sz / 2, ey - sz / 2, sz, sz);
           }
-          ctx.fillStyle = (r2[i] < 0.1 ? 'rgba(249,201,122,' : r2[i] < 0.2 ? 'rgba(160,205,255,' : 'rgba(250,250,249,') + da.toFixed(3) + ')';
+          ctx.fillStyle = (r2[i] < 0.1 ? 'rgba(249,201,122,' : r2[i] < 0.2 ? 'rgba(160,205,255,' : 'rgba(' + BASE_STR + ',') + da.toFixed(3) + ')';
           ctx.fillRect(ex - sz / 2, ey - sz / 2, sz, sz);
         }
 
@@ -201,7 +202,7 @@
         }
       }
       for (b = 0; b < LEVELS; b++) {
-        ctx.strokeStyle = 'rgba(250,250,249,' + ((b + 0.5) / LEVELS * ALPHA_MAX).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + BASE_STR + ',' + ((b + 0.5) / LEVELS * ALPHA_MAX).toFixed(3) + ')';
         ctx.stroke(levels[b]);
       }
       if (cfg.after) cfg.after(ctx, cx, cy, R, t, dt, mouse, still);
@@ -226,79 +227,97 @@
     var rand = rng(11), per = null, TILT = 1.16;
     var A = [0, 0, 0];
 
-    // Nucleus: a small sphere of points at the centre of the orbits. An outer shell of evenly
-    // spaced points gives it a round edge; a looser cluster inside makes it read as solid.
-    var core = [], SHELL = 150, grown = 0, lit = 0, GOLDEN = Math.PI * (3 - Math.sqrt(5));
-    for (var c = 0; c < SHELL + 60; c++) {
-      var onShell = c < SHELL, r0 = onShell ? 1 : 0.25 + rand() * 0.6;
-      var py0 = onShell ? 1 - (c + 0.5) / SHELL * 2 : rand() * 2 - 1, ring = Math.sqrt(1 - py0 * py0), turn = onShell ? c * GOLDEN : rand() * TAU;
-      core.push({ x: Math.cos(turn) * ring * r0, y: py0 * r0, z: Math.sin(turn) * ring * r0, a: 0.45 + rand() * 0.55, ph: rand() * TAU, tint: rand() });
-    }
+    // Nucleus: a glossy blue sphere at the centre of the orbits, with a soft glow and a few
+    // slowly turning meridians so it reads as a rotating solid.
+    var grown = 0, lit = 0;
     function nucleus(ctx, cx, cy, R, t, dt, mouse, still) {
-      grown = still ? 1 : Math.min(1, grown + dt * 0.7); // swells into place as the orbits assemble
+      grown = still ? 1 : Math.min(1, grown + dt * 1.4); // swells into place as the orbits assemble
       var ease = grown * grown * (3 - 2 * grown);
       var want = mouse.on && !still ? 1 - smooth(0.04, 0.5, Math.hypot((mouse.x - cx) / R, (mouse.y - cy) / R)) : 0;
       lit += (want - lit) * Math.min((want > lit ? 8 : 1.6) * dt, 1);
-      var rad = R * 0.088 * (0.35 + 0.65 * ease) * (1 + 0.035 * Math.sin(t * 1.6) + lit * 0.16);
+      var rad = R * 0.15 * (0.35 + 0.65 * ease) * (1 + 0.025 * Math.sin(t * 1.6) + lit * 0.1);
+      ctx.globalCompositeOperation = 'source-over';
 
-      var halo = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad * 3.4);
-      var warm = 'rgba(' + (250 + 5 * lit | 0) + ',' + (250 - 46 * lit | 0) + ',' + (249 - 120 * lit | 0) + ',';
-      halo.addColorStop(0, warm + ((0.2 + 0.2 * lit) * ease).toFixed(3) + ')');
-      halo.addColorStop(0.3, warm + ((0.07 + 0.08 * lit) * ease).toFixed(3) + ')');
-      halo.addColorStop(1, warm + '0)');
-      ctx.fillStyle = halo;
-      ctx.fillRect(cx - rad * 3.4, cy - rad * 3.4, rad * 6.8, rad * 6.8);
+      var glow = ctx.createRadialGradient(cx, cy, rad * 0.6, cx, cy, rad * 3.6);
+      glow.addColorStop(0, 'rgba(40,110,230,' + ((0.26 + 0.14 * lit) * ease).toFixed(3) + ')');
+      glow.addColorStop(0.35, 'rgba(30,80,210,' + (0.08 * ease).toFixed(3) + ')');
+      glow.addColorStop(1, 'rgba(10,40,200,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(cx - rad * 3.6, cy - rad * 3.6, rad * 7.2, rad * 7.2);
 
-      var spin = t * 0.42, tip = 0.45 + Math.sin(t * 0.19) * 0.25;
-      var cs = Math.cos(spin), sn = Math.sin(spin), ct2 = Math.cos(tip), st2 = Math.sin(tip);
-      for (var i = 0; i < core.length; i++) {
-        var p = core[i];
-        var x1 = p.x * cs + p.z * sn, z1 = -p.x * sn + p.z * cs, y1 = p.y * ct2 - z1 * st2, z2 = p.y * st2 + z1 * ct2;
-        var persp = 1 / (1 - z2 * 0.3), sx = cx + x1 * rad * persp, sy = cy + y1 * rad * persp, front = (z2 + 1) / 2;
-        var a = Math.min(1, p.a * (0.18 + 0.82 * front) * (0.72 + 0.28 * Math.sin(t * 2.1 + p.ph)) * ease + lit * 0.25 * front);
-        var size = (0.9 + front * 1.4) * (1 + lit * 0.35);
-        if (lit > 0.15 && front > 0.5) {
-          var e = 0.8 + lit * 1.8;
-          ctx.fillStyle = 'rgba(255,80,80,' + (a * 0.6).toFixed(3) + ')'; ctx.fillRect(sx - e - size / 2, sy - size / 2, size, size);
-          ctx.fillStyle = 'rgba(80,150,255,' + (a * 0.6).toFixed(3) + ')'; ctx.fillRect(sx + e - size / 2, sy - size / 2, size, size);
-        }
-        ctx.fillStyle = (p.tint < 0.1 + lit * 0.45 ? 'rgba(249,201,122,' : p.tint > 0.9 ? 'rgba(160,205,255,' : 'rgba(250,250,249,') + a.toFixed(3) + ')';
-        ctx.fillRect(sx - size / 2, sy - size / 2, size, size);
+      var body = ctx.createRadialGradient(cx - rad * 0.38, cy - rad * 0.42, rad * 0.05, cx, cy, rad);
+      body.addColorStop(0, 'rgba(190,230,255,' + ease.toFixed(3) + ')');
+      body.addColorStop(0.3, 'rgba(80,150,235,' + ease.toFixed(3) + ')');
+      body.addColorStop(0.75, 'rgba(24,70,170,' + ease.toFixed(3) + ')');
+      body.addColorStop(1, 'rgba(6,28,120,' + ease.toFixed(3) + ')');
+      ctx.fillStyle = body;
+      ctx.beginPath(); ctx.arc(cx, cy, rad, 0, TAU); ctx.fill();
+
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, rad, 0, TAU); ctx.clip();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(200,230,255,' + (0.4 * ease).toFixed(3) + ')';
+      var spin = t * 0.5;
+      for (var m = 0; m < 3; m++) {
+        var ang = spin + m * Math.PI / 3;
+        ctx.beginPath(); ctx.ellipse(cx, cy, Math.max(0.5, Math.abs(Math.cos(ang)) * rad), rad, -0.35, 0, TAU); ctx.stroke();
       }
+      ctx.beginPath(); ctx.ellipse(cx, cy, rad, rad * 0.32, -0.35, 0, TAU); ctx.stroke();
+      ctx.restore();
+
+      var spec = ctx.createRadialGradient(cx - rad * 0.4, cy - rad * 0.45, 0, cx - rad * 0.4, cy - rad * 0.45, rad * 0.3);
+      spec.addColorStop(0, 'rgba(255,255,255,' + (0.9 * ease).toFixed(3) + ')');
+      spec.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = spec;
+      ctx.beginPath(); ctx.arc(cx - rad * 0.4, cy - rad * 0.45, rad * 0.3, 0, TAU); ctx.fill();
     }
 
+    // Three flat elliptical orbits, 60 degrees apart. Each is a tight stream of short light trails running
+    // along the orbit, with an electron circling it; the whole figure turns slowly about the nucleus.
+    var AX = 0.92, BX = 0.34, ELECTRONS = [0.55, -0.4, 0.3];
+    function orbitPoint(o, th, t, off) {
+      var cth = Math.cos(th), sth = Math.sin(th), az = o * Math.PI / 3 + t * 0.06, ca = Math.cos(az), sa = Math.sin(az);
+      var nx = BX * cth, ny = AX * sth, nl = Math.sqrt(nx * nx + ny * ny);
+      var x = AX * cth + nx / nl * off, y = BX * sth + ny / nl * off;
+      return [x * ca - y * sa, x * sa + y * ca];
+    }
+    function electrons(ctx, cx, cy, R, t, still) {
+      var show = still ? 1 : smooth(1.6, 2.4, t);
+      if (show <= 0) return;
+      ctx.globalCompositeOperation = 'lighter';
+      for (var o = 0; o < 3; o++) {
+        for (var tr = 0; tr < 8; tr++) {
+          var th = t * ELECTRONS[o] + o * 2.1 - tr * 0.07 * Math.sign(ELECTRONS[o]), q = orbitPoint(o, th, t, 0);
+          var a = (1 - tr / 8) * show, r = (tr === 0 ? 3.4 : 2.2 * a + 0.5);
+          var g = ctx.createRadialGradient(cx + q[0] * R, cy + q[1] * R, 0, cx + q[0] * R, cy + q[1] * R, r * 3);
+          g.addColorStop(0, 'rgba(220,245,255,' + (a * (tr === 0 ? 1 : 0.5)).toFixed(3) + ')');
+          g.addColorStop(0.35, 'rgba(90,200,255,' + (a * 0.45).toFixed(3) + ')');
+          g.addColorStop(1, 'rgba(60,160,255,0)');
+          ctx.fillStyle = g;
+          ctx.fillRect(cx + q[0] * R - r * 3, cy + q[1] * R - r * 3, r * 6, r * 6);
+        }
+      }
+    }
     return field({
-      after: nucleus,
-      seed: 3, count: 990, nodes: 6, maxDelay: 1.1, launch: 0.12, jitter: 0.5,
-      cx: 0.5, cy: 0.5, scale: function (w, h) { return Math.min(w, h) * 0.4; },
-      radius: 0.24, strength: 9, maxVelocity: 5, hiRadius: 0.5, hiAlpha: 0.85,
-      width: 0.8, alpha: 0.42, dots: 0.32, dotAlpha: 0.9, dotSize: 2.1, pulse: 0.3, pulseSpeed: 1.4,
+      after: function (ctx, cx, cy, R, t, dt, mouse, still) { electrons(ctx, cx, cy, R, t, still); nucleus(ctx, cx, cy, R, t, dt, mouse, still); },
+      seed: 3, count: 1000, nodes: 6, rgb: [120, 190, 225], maxDelay: 0.6, fade: 0.35, launch: 0.12, jitter: 0.5,
+      cx: 0.5, cy: 0.5, scale: function (w, h) { return Math.min(w, h) * 0.34; },
+      radius: 0.2, strength: 7, maxVelocity: 4, hiRadius: 0.4, hiAlpha: 0.85,
+      width: 0.8, alpha: 0.6, dots: 0.12, dotAlpha: 0.9, dotSize: 2, pulse: 0, pulseSpeed: 1.4,
       layout: function (t, tx, ty, depth, aux, N, K) {
         if (!per) {
           per = [];
           var each = Math.floor(N / 3);
-          for (var n = 0; n < N; n++) per.push({ o: n % 3, u: (Math.floor(n / 3) + rand() * 0.8) / each, len: 0.05 + rand() * 0.07 + Math.pow(rand(), 4) * 0.12, ph: rand() * TAU, sp: 0.5 + rand() });
-        }
-        var ry = Math.sin(t * 0.21) * 0.4, rx = Math.sin(t * 0.17 + 1) * 0.14, rz = t * 0.03;
-        var cyy = Math.cos(ry), syy = Math.sin(ry), cxx = Math.cos(rx), sxx = Math.sin(rx), ct = Math.cos(TILT), st = Math.sin(TILT);
-        function project(x, y, z) {
-          var x1 = x * cyy + z * syy, z1 = -x * syy + z * cyy, y1 = y * cxx - z1 * sxx, z2 = y * sxx + z1 * cxx, p = 1 / (1 - z2 * 0.25);
-          A[0] = x1 * p; A[1] = y1 * p; A[2] = z2;
+          for (var n = 0; n < N; n++) per.push({ o: n % 3, u: (Math.floor(n / 3) + rand() * 0.9) / each, off: (rand() + rand() - 1) * 0.045, len: 0.05 + rand() * 0.07 });
         }
         for (var i = 0; i < N; i++) {
-          var s = per[i], az = s.o * Math.PI / 3 + rz, ca = Math.cos(az), sa = Math.sin(az);
-          var th = s.u * TAU + t * 0.05 * (s.o === 1 ? -1 : 1), cth = Math.cos(th), sth = Math.sin(th);
-          // Hairs hang off the orbit along its plane normal, leaning with a slow wave.
-          var lean = 0.5 * Math.sin(th * 2 + t * 0.35 + s.o * 2.1);
-          var len = s.len * (0.75 + 0.45 * Math.sin(th * 3 - t * 0.5 + s.o * 1.3)) * (0.85 + 0.15 * Math.sin(t * s.sp + s.ph));
+          var s = per[i], dir = s.o === 1 ? -1 : 1;
+          var th = s.u * TAU + t * 0.035 * dir;
           for (var k = 0; k < K; k++) {
-            var f = k / (K - 1), curl = 0.022 * Math.sin(f * 4 + t * 0.9 + s.ph) * f;
-            var lx = cth - sth * (lean * len * f + curl), ly = sth + cth * (lean * len * f + curl), lz = len * f;
-            var y2 = ly * ct - lz * st, z2 = ly * st + lz * ct;
-            project(lx * ca - y2 * sa, lx * sa + y2 * ca, z2);
-            tx[i * K + k] = A[0]; ty[i * K + k] = A[1];
-            if (k === 0) depth[i] = (0.3 + 0.7 * (A[2] + 1) / 2) * (0.55 + 0.45 * Math.sin(th * 2 - t * 0.7 + s.o * 2));
+            var q = orbitPoint(s.o, th + dir * s.len * k / (K - 1), t, s.off);
+            tx[i * K + k] = q[0]; ty[i * K + k] = q[1];
           }
+          depth[i] = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(th * 2 + s.o * 2.1 - t * 0.5));
         }
       }
     });
@@ -341,6 +360,16 @@
       var a = [], b = [], i;
       for (i = 0; i <= 180; i++) { var th = i / 180 * TAU; a.push([Math.cos(th) * 0.66 - 0.3, Math.sin(th) * 0.66]); b.push([Math.cos(th) * 0.66 + 0.3, Math.sin(th) * 0.66]); }
       return [a, b];
+    },
+    // three overlapping rings: three areas of work, one company
+    trio: function () {
+      var rings = [], c, i;
+      for (c = 0; c < 3; c++) {
+        var ang = -Math.PI / 2 + c * TAU / 3, ox = Math.cos(ang) * 0.34, oy = Math.sin(ang) * 0.34 + 0.06, ring = [];
+        for (i = 0; i <= 180; i++) { var th = i / 180 * TAU; ring.push([ox + Math.cos(th) * 0.56, oy + Math.sin(th) * 0.56]); }
+        rings.push(ring);
+      }
+      return rings;
     },
     // open book: two pages bowing away from a centre spine
     book: function () {
@@ -496,6 +525,7 @@
     migrate: function () { return outline(['migrate']); },
     book: function () { return outline(['book']); },
     flask: function () { return outline(['flask']); },
+    trio: function () { return outline(['trio']); },
     // one canvas shared by the three areas; it morphs as the active area changes
     areas: function () {
       var visual = outline(AREAS);

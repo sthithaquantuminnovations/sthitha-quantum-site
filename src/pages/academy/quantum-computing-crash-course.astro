@@ -1,36 +1,47 @@
 ---
-// Course facts on this page are taken from the course's Udemy listing.
+// Course facts in the format and instructor sections are taken from the course's Udemy listing.
+// Keep the lesson topics in step with the published curriculum.
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
-import Announce from '../../components/Announce.astro';
 import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
+import More from '../../components/More.astro';
 import { courses } from '../../data/site.js';
 
 const course = courses[0];
 
-const outcomes = [
-  'Explain what a qubit is and how superposition and entanglement really work',
-  'Understand quantum teleportation and superdense coding step by step',
-  "Describe how Shor's algorithm threatens RSA encryption",
-  "Explain Grover's algorithm and its quadratic speedup for search",
-  "Understand quantum error correction: bit-flip code, Shor's 9-qubit code, stabilizers",
-  "Use the Bloch sphere and Born's rule to describe single-qubit states",
-  'Compare real qubit technologies: superconducting, trapped ions, photonics, neutral atoms',
-];
-
-const parts = [
-  { n: 'Part 1', title: 'Quantum Foundations', text: 'Qubits, the Bloch sphere, entanglement, quantum gates, measurement and the no-cloning theorem.' },
-  { n: 'Part 2', title: 'Protocols & Algorithms', text: "Density operators, teleportation, superdense coding, the Quantum Fourier Transform and Grover's algorithm." },
-  { n: 'Part 3', title: 'Error Correction & Hardware', text: "The threshold theorem, Shor's 9-qubit code, stabilizers, Shor's algorithm, BQP and physical qubits." },
-  { n: 'Part 4', title: 'The Frontier', text: 'Fault tolerance, VQE, QAOA, quantum simulation, topological qubits and quantum machine learning.' },
+const topics = [
+  { n: '01', title: 'Introduction to Quantum Computing', text: 'Explore what quantum computing is, how it differs from classical computing and why it is an important area of technological research.' },
+  { n: '02', title: 'Qubits and Superposition', text: 'Understand the basic idea of a qubit and how quantum states differ from the classical bits used in conventional computers.' },
+  { n: '03', title: 'Quantum Gates', text: 'Discover how quantum gates represent operations on quantum states and form the building blocks of quantum circuits.' },
+  { n: '04', title: 'Quantum Circuits', text: 'Learn how quantum operations can be arranged into circuits to represent quantum computations.' },
+  { n: '05', title: 'Quantum Algorithms', text: 'Explore how quantum algorithms use quantum principles to approach specific computational problems.' },
+  { n: '06', title: "Shor's Algorithm", text: "Understand the purpose of Shor's algorithm and its significance in factoring integers, including its implications for certain widely used public-key cryptographic systems." },
+  { n: '07', title: "Grover's Algorithm", text: "Explore Grover's algorithm and its approach to searching an unstructured collection of possible answers." },
 ];
 
 const audience = [
-  'Complete beginners curious about quantum computing',
-  'Students who want a fast, clear overview before a university course',
-  'Developers and engineers who want to understand what quantum computers can and cannot do',
-  'Anyone tired of hype-filled explanations that never explain anything',
+  'Students interested in emerging technologies',
+  'Beginners curious about quantum computing',
+  'Developers exploring new computing paradigms',
+  'Technology professionals expanding their technical knowledge',
+  'Learners planning to study quantum algorithms or quantum programming',
+];
+
+const gain = [
+  'The difference between classical and quantum computing',
+  'The basic role of qubits and superposition',
+  'How quantum gates and circuits work conceptually',
+  'The purpose of quantum algorithms',
+  "Why Shor's and Grover's algorithms are widely discussed",
+  'Where to continue learning about quantum computing',
+];
+
+const next = [
+  { icon: 'code', title: 'Quantum Programming', text: 'Learn how quantum circuits can be represented and executed using quantum programming tools.' },
+  { icon: 'layers', title: 'Quantum Algorithms', text: "Study how algorithms such as Shor's and Grover's approach particular computational problems." },
+  { icon: 'flask', title: 'Quantum Machine Learning', text: 'Explore research at the intersection of quantum computing and machine learning.' },
+  { icon: 'shield', title: 'Post-Quantum Security', text: 'Understand why developments in quantum computing matter for cryptography and the transition towards post-quantum cryptographic standards.', href: '/aegis' },
 ];
 
 const format = [
@@ -39,23 +50,32 @@ const format = [
   { icon: 'globe', title: 'English, with captions', text: 'English captions are provided for every lecture.' },
   { icon: 'checks', title: 'Certificate', text: 'Udemy certificate of completion, with lifetime access.' },
 ];
+
+const faqs = [
+  { q: 'Do I need prior quantum computing knowledge?', a: 'The course is intended as an introduction. Review the published course description for any specific prerequisites.' },
+  { q: 'Do I need to know programming?', a: 'Programming requirements depend on the lessons and practical activities included. Check the current course curriculum to confirm whether coding experience is required.' },
+  { q: 'What are qubits?', a: 'Qubits are the basic units of quantum information. Unlike classical bits, which are represented as 0 or 1, qubits can exist in quantum states that exhibit superposition.' },
+  { q: "What are Shor's and Grover's algorithms?", a: "Shor's algorithm is known for its approach to integer factorisation, while Grover's algorithm provides a quantum approach to searching an unstructured search space." },
+  { q: 'What should I learn after this course?', a: 'Depending on your interests, you can continue into quantum programming, quantum circuits, quantum algorithms, quantum information or quantum machine learning.' },
+];
 ---
 
 <Base
-  title="Quantum Computing Crash Course: Qubits to Shor & Grover | Sthitha Academy"
-  description="A beginner-friendly crash course from Sthitha Academy: qubits, teleportation, Shor's algorithm, Grover's algorithm and error correction."
+  title="Quantum Computing Course for Beginners | Sthitha Academy"
+  description="Explore quantum computing fundamentals, qubits, quantum gates, circuits and algorithms in Sthitha Academy's Quantum Computing Crash Course, from Qubits to Shor & Grover."
 >
   <div class="frame">
     <section class="page-hero">
-      <Announce pill="Sthitha Academy" text="Course · Available now on Udemy" />
       <div class="page-hero-body is-course">
         <div>
           <p class="crumbs" data-fade><a href="/academy">Sthitha Academy</a><i>/</i>Course</p>
-          <h1 data-reveal>Quantum Computing Crash Course</h1>
+          <h1 data-reveal>Quantum Computing Course for Beginners</h1>
           <p class="course-kicker" data-fade style="--d:200ms">Qubits to Shor &amp; Grover</p>
-          <p class="page-hero-lede" data-fade style="--d:250ms">Understand real quantum computing: qubits, teleportation, Shor's algorithm, Grover's algorithm and error correction.</p>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Understand the fundamentals of quantum computing, from qubits and quantum gates to circuits and important quantum algorithms.</p>
+          <p class="page-hero-lede" data-fade style="--d:300ms;margin-top:14px">The Quantum Computing Crash Course by Sthitha Academy introduces learners to the core concepts behind quantum computing and provides a starting point for exploring this emerging field.</p>
           <div class="hero-actions" data-fade style="--d:350ms">
-            <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View on Udemy <Icon name="arrow-ur" /></a>
+            <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">Enrol in the Course <Icon name="arrow-ur" /></a>
+            <a class="btn btn-dark" href="#topics">Explore Course Topics</a>
             <span class="badge is-green">Available Now</span>
           </div>
         </div>
@@ -65,66 +85,82 @@ const format = [
       </div>
     </section>
 
+    <!-- About the course -->
     <section class="split top">
       <div>
         <span class="eyebrow">About the course</span>
-        <h2 data-reveal>From “what is a qubit?” to the algorithms that matter.</h2>
+        <h2 data-reveal>Understand the Fundamentals of Quantum Computing</h2>
       </div>
       <div>
-        <p class="body" style="margin-top:0" data-fade>Most explanations of quantum computing stop at “harness the power of superposition” without saying what that means. This crash course is built to fix that.</p>
-        <p class="body" data-fade style="--d:90ms">In about 80 focused minutes across four parts, it takes you from the basics of a qubit to Shor's factoring algorithm and Grover's search. Complex maths is explained in plain English, step by step, and the course follows the structure of Nielsen &amp; Chuang, the field's standard textbook.</p>
-        <p class="body" data-fade style="--d:180ms">By the end you should understand quantum computing well enough to follow research news, start a textbook, or begin building, with a clear map of what to learn next.</p>
+        <p class="body" style="margin-top:0" data-fade>Quantum computing uses principles of quantum mechanics to represent and process information in ways that differ from classical computing.</p>
+        <p class="body" data-fade style="--d:80ms">For beginners, concepts such as superposition, quantum gates and quantum algorithms can initially seem unfamiliar. Understanding these foundations makes it easier to explore how quantum circuits work and why quantum computing has attracted interest across science and technology.</p>
+        <p class="body" data-fade style="--d:160ms">This course introduces essential quantum computing concepts and familiarises learners with key ideas and algorithms in the field. A clear foundation also helps distinguish established principles from current hardware limitations and future possibilities.</p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- What it covers -->
+    <section class="section" id="topics">
       <div class="section-head">
-        <span class="eyebrow">What you'll learn</span>
-        <h2 data-reveal>Seven things you will be able to do.</h2>
-      </div>
-      <div class="cells" style="--cols:2">
-        <div class="cell" data-fade><ul class="ticks">{outcomes.slice(0, 4).map((o) => <li>{o}</li>)}</ul></div>
-        <div class="cell" data-fade style="--d:90ms"><ul class="ticks">{outcomes.slice(4).map((o) => <li>{o}</li>)}</ul></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <span class="eyebrow">What's inside</span>
-        <h2 data-reveal>Four parts.</h2>
+        <span class="eyebrow">What does this course cover?</span>
+        <h2 data-reveal>From Qubits to Quantum Algorithms</h2>
       </div>
       <div class="cells" style="--cols:4">
-        {parts.map((part, i) => (
+        {topics.map((t, i) => (
+          <div class="cell" data-fade style={`--d:${(i % 4) * 80}ms`}>
+            <div class="cell-num"><span>{t.n}</span></div>
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+          </div>
+        ))}
+        <div class="cell cell-fill" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Who is it for, and what you gain -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Who is this course for?</span>
+        <h2 data-reveal>A Starting Point for Quantum Computing Learners</h2>
+        <p data-fade style="--d:200ms">If you are new to the subject, start with the foundational concepts and build your understanding gradually. The course is an introduction to the field, not a guarantee of professional qualification or job readiness.</p>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade>
+          <div class="cell-num"><span>This course may suit</span></div>
+          <ul class="ticks">{audience.map((a) => <li>{a}</li>)}</ul>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <div class="cell-num"><span>What you will gain</span></div>
+          <ul class="ticks">{gain.map((g) => <li>{g}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continue learning -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Continue your learning journey</span>
+        <h2 data-reveal>Explore More of Quantum Technology</h2>
+        <p data-fade style="--d:200ms">After building a foundation in quantum computing, you may wish to explore related areas such as:</p>
+      </div>
+      <div class="cells" style="--cols:4">
+        {next.map((item, i) => (
           <div class="cell" data-fade style={`--d:${i * 80}ms`}>
-            <div class="cell-num"><span>{part.n}</span></div>
-            <h3>{part.title}</h3>
-            <p>{part.text}</p>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            {item.href && <More href={item.href}>Explore AEGIS</More>}
           </div>
         ))}
       </div>
+      <div class="section-head" style="padding-block:0 72px"><More href="/academy">Explore Sthitha Academy</More></div>
     </section>
 
-    <section class="section split top">
-      <div>
-        <span class="eyebrow">Who is this for?</span>
-        <h2 data-reveal>Beginners and learners starting their quantum computing journey.</h2>
-        <ul class="ticks" data-fade style="--d:200ms">{audience.map((a) => <li>{a}</li>)}</ul>
-      </div>
-      <div>
-        <span class="eyebrow">Requirements</span>
-        <ul class="ticks" data-fade style="margin-top:0">
-          <li>No physics or maths background needed; everything is explained from zero</li>
-          <li>Basic high-school algebra helps, but is not required</li>
-          <li>Curiosity about quantum computing</li>
-        </ul>
-      </div>
-    </section>
-
+    <!-- Course format (from the Udemy listing) -->
     <section class="section">
       <div class="section-head">
         <span class="eyebrow">Course format</span>
         <h2 data-reveal>Short, self-paced and online.</h2>
-        <p data-fade style="--d:200ms">The course is delivered on Udemy. Every word is highlighted on screen as it is spoken, so you never lose your place.</p>
+        <p data-fade style="--d:200ms">Delivered on Udemy and taught by Rantish Valathe Rajan and Anil Erinchikkadavathu Achoora, as listed on the course page. The course notes that it contains the use of artificial intelligence.</p>
       </div>
       <div class="cells" style="--cols:4">
         {format.map((item, i) => (
@@ -137,26 +173,30 @@ const format = [
       </div>
     </section>
 
-    <section class="section split top">
-      <div>
-        <span class="eyebrow">Instructors</span>
-        <h2 data-reveal>Who teaches it.</h2>
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="faq-intro">
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2 data-reveal>Quantum computing course, answered.</h2>
+        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact?topic=Academy">get in touch</a>. Prefer to learn in Malayalam? See <a href="/academy/quantum-computing-malayalam">Quantum Computing in Malayalam</a>.</p>
+        <More href="/research">Research &amp; Innovation</More>
       </div>
-      <div>
-        <ul class="people" data-fade>
-          <li><strong>Rantish Valathe Rajan</strong><span>Course instructor</span></li>
-          <li><strong>Anil Erinchikkadavathu Achoora</strong><span>Course instructor</span></li>
-        </ul>
-        <p class="body" data-fade style="--d:90ms">As listed on the course's Udemy page. The course notes that it contains the use of artificial intelligence.</p>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false"><span>{f.q}</span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+            <div class="faq-a"><div><p>{f.a}</p></div></div>
+          </div>
+        ))}
       </div>
     </section>
   </div>
 
   <Cta
-    title="Start learning."
-    text="The Quantum Computing Crash Course is available now on Udemy."
+    title="Begin Your Quantum Computing Journey"
+    text="Start with the fundamentals, understand the concepts behind quantum circuits and algorithms, and build a foundation for further exploration of quantum technology."
   >
-    <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View Course on Udemy</a>
-    <a class="btn btn-dark" href="/academy">Back to Sthitha Academy</a>
+    <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">Enrol in the Quantum Computing Crash Course</a>
+    <a class="btn btn-dark" href="/academy">Explore All Courses</a>
   </Cta>
 </Base>

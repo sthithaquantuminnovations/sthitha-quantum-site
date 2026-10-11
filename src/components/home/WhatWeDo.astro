@@ -7,6 +7,7 @@ import { areas, courses, learningPath } from '../../data/site.js';
 const detail = {
   aegis: {
     tab: 'AEGIS', visual: 'protect',
+    photo: 'feature-aegis-photo.jpg', tags: ['NIST FIPS 203', 'NIST FIPS 204'],
     points: [
       { icon: 'scan', text: 'Discover cryptographic assets.' },
       { icon: 'gauge', text: 'Assess quantum risk.' },
@@ -15,10 +16,12 @@ const detail = {
   },
   academy: {
     tab: 'Academy', visual: 'book',
+    photo: 'feature-academy-photo.jpg', logos: [{ name: 'Python', file: 'python' }, { name: 'Qiskit', file: 'qiskit' }],
     points: ['book', 'atom', 'code'].map((icon, i) => ({ icon, text: `${learningPath[i]}.` })),
   },
   research: {
     tab: 'Research', visual: 'flask',
+    photo: 'feature-research-photo.jpg', tags: ['Open to collaboration'],
     points: [
       { icon: 'flask', text: 'Technical research.' },
       { icon: 'activity', text: 'Experimentation.' },
@@ -30,8 +33,8 @@ const detail = {
 
 <section id="work">
   <div class="section-head">
-    <span class="eyebrow">What Sthitha does</span>
-    <h2 data-reveal>Three areas. One direction.</h2>
+    <span class="eyebrow is-brand">Three ways we build</span>
+    <h2 data-reveal>Three areas. <span class="hl">One direction.</span></h2>
     <p data-fade style="--d:200ms">Sthitha brings technology development, quantum education and research together to build practical pathways into the quantum era.</p>
   </div>
 </section>

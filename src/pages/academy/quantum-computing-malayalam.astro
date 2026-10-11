@@ -1,43 +1,64 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
-import Announce from '../../components/Announce.astro';
 import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
+import More from '../../components/More.astro';
 import { courses } from '../../data/site.js';
 
 const course = courses[1];
-const english = courses[0];
 
+// Keep these topics in step with the published Malayalam course curriculum.
 const explore = [
-  'What is quantum computing?',
-  'Qubits',
-  'Superposition',
-  'Quantum states',
-  'Quantum gates',
-  'Quantum circuits',
-  'Quantum algorithms',
+  { icon: 'atom', title: 'Introduction to Quantum Computing', text: 'Understand what quantum computing is and how it differs from classical computing.' },
+  { icon: 'book', title: 'Basic Quantum Concepts', text: 'Become familiar with the foundational ideas and terminology used to explain quantum systems.' },
+  { icon: 'layers', title: 'Qubits and Quantum States', text: 'Discover what qubits are and why they are central to quantum information processing.' },
+  { icon: 'globe', title: 'Understanding Quantum Technology', text: 'Explore the broader field of quantum computing and why it matters to science and technology.' },
+];
+
+const audience = [
+  'Students curious about quantum computing',
+  'Beginners exploring emerging technologies',
+  'Malayalam-speaking learners who prefer studying technical topics in their language',
+  'Technology enthusiasts interested in quantum concepts',
+  'Learners who want an introduction before pursuing more advanced study',
+];
+
+const next = [
+  { icon: 'code', title: 'Quantum Algorithms', text: 'Understand how quantum algorithms approach particular computational problems.' },
+  { icon: 'layers', title: 'Quantum Programming', text: 'Explore how quantum circuits and algorithms can be represented using programming tools.' },
+  { icon: 'flask', title: 'Quantum Machine Learning', text: 'Discover the research area that brings quantum computing and machine learning together.' },
+  { icon: 'shield', title: 'Post-Quantum Security', text: 'Learn why quantum computing developments matter for current cryptographic systems and the preparation for post-quantum cryptography.' },
+];
+
+const faqs = [
+  { q: 'Can I learn quantum computing in Malayalam?', a: 'Yes. Sthitha Academy offers a course titled Quantum Computing in Malayalam: For Beginners, designed to introduce learners to the subject through Malayalam-language instruction.' },
+  { q: 'Is this course suitable for beginners?', a: 'The course is presented as a beginner-focused learning experience. Review the published course description to confirm its prerequisites and scope.' },
+  { q: 'Do I need a physics background?', a: 'A specialist physics background is not necessarily required to begin learning introductory concepts. However, mathematics and physics become useful as you progress into more advanced topics.' },
+  { q: 'Is quantum computing different from classical computing?', a: 'Yes. Quantum computing uses qubits and quantum-mechanical principles, while classical computers use bits. Quantum computers may offer advantages for certain problems but are not better for every task.' },
+  { q: 'What can I learn after an introductory course?', a: 'You can explore quantum programming, quantum algorithms, quantum circuits, quantum information and quantum machine learning, depending on your interests and preparation.' },
+  { q: 'Is the course completely in Malayalam?', a: 'Please refer to the published course details to confirm the language of instruction and the availability of Malayalam explanations or subtitles.' },
 ];
 ---
 
 <Base
-  title="Quantum Computing in Malayalam: For Beginners | Sthitha Academy"
-  description="A beginner-friendly introduction to quantum computing for Malayalam-speaking learners, from Sthitha Academy. Coming soon."
+  title="Quantum Computing in Malayalam | Sthitha Academy"
+  description="Learn quantum computing in Malayalam with Sthitha Academy. Explore introductory quantum computing concepts through a beginner-focused Malayalam learning experience."
 >
   <div class="frame">
     <section class="page-hero">
-      <Announce pill="Sthitha Academy" text="Course · Coming soon" />
       <div class="page-hero-body is-course">
         <div>
           <p class="crumbs" data-fade><a href="/academy">Sthitha Academy</a><i>/</i>Course</p>
-          <h1 data-reveal>Quantum Computing in Malayalam</h1>
+          <h1 data-reveal>Learn Quantum Computing in Malayalam</h1>
           <p class="course-kicker" data-fade style="--d:200ms">For Beginners</p>
-          <p class="page-hero-lede" data-fade style="--d:250ms">A beginner-friendly introduction to quantum computing for Malayalam-speaking learners.</p>
-          <div class="hero-actions" data-fade style="--d:350ms">
-            {course.udemy
-              ? <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View Course on Udemy <Icon name="arrow-ur" /></a>
-              : <span class="btn btn-dark is-disabled" aria-disabled="true">Coming Soon</span>}
-            <span class="badge is-amber">Coming Soon</span>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum computing is changing how researchers approach certain computational problems. But understanding it starts with learning the fundamentals.</p>
+          <p class="page-hero-lede" data-fade style="--d:300ms;margin-top:14px">Sthitha Academy introduces quantum computing in Malayalam through a beginner-focused learning experience designed to help learners explore the basic concepts behind this emerging technology.</p>
+          <p class="page-hero-lede" data-fade style="--d:340ms;margin-top:14px">Start with the fundamentals, understand the terminology and discover the ideas shaping quantum computing.</p>
+          <div class="hero-actions" data-fade style="--d:380ms">
+            <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">Enrol in the Course <Icon name="arrow-ur" /></a>
+            <a class="btn btn-dark" href="#explore">Explore the Course</a>
+            <span class="badge is-green">Available Now</span>
           </div>
         </div>
         <figure class="course-hero-thumb" data-fade style="--d:200ms">
@@ -46,34 +67,120 @@ const explore = [
       </div>
     </section>
 
+    <!-- About the course -->
     <section class="split top">
       <div>
         <span class="eyebrow">About the course</span>
-        <h2 data-reveal>Quantum computing, explained in Malayalam.</h2>
+        <h2 data-reveal>Quantum Computing, Explained in Your Language</h2>
       </div>
       <div>
-        <p class="body" style="margin-top:0" data-fade>Most introductory material on quantum computing is in English. This course is being prepared so that Malayalam-speaking learners can start from the fundamentals in their own language.</p>
-        <p class="body" data-fade style="--d:90ms">It is not yet available. This page will be updated with the full syllabus and a link to the course once it has been published.</p>
+        <p class="body" style="margin-top:0" data-fade>Quantum computing combines concepts from physics, mathematics and computer science. For beginners, technical terminology can make the subject difficult to approach.</p>
+        <p class="body" data-fade style="--d:80ms">Learning in a familiar language can help make new concepts easier to follow. This course offers Malayalam-speaking learners an entry point into quantum computing, introducing the subject through a Malayalam-language learning experience.</p>
+        <p class="body" data-fade style="--d:160ms">Whether you are a student, a technology enthusiast or someone exploring quantum computing for the first time, the course can help you begin building your understanding.</p>
       </div>
     </section>
 
+    <!-- What is quantum computing -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">What is quantum computing?</span>
+        <h2 data-reveal>Understand the Basics Before Going Further</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Classical computers process information using bits represented as 0s and 1s. Quantum computers use quantum bits, called qubits, which follow the principles of quantum mechanics.</p>
+        <p class="body" data-fade style="--d:80ms">Concepts such as superposition, quantum gates and quantum circuits help explain how quantum computers operate differently from classical systems.</p>
+        <p class="body" data-fade style="--d:160ms">Understanding these ideas provides a foundation for exploring quantum algorithms and the potential applications of quantum technology.</p>
+      </div>
+    </section>
+
+    <!-- What you will explore -->
+    <section class="section" id="explore">
+      <div class="section-head">
+        <span class="eyebrow">What will you explore?</span>
+        <h2 data-reveal>Start With the Fundamentals</h2>
+      </div>
+      <div class="cells" style="--cols:4">
+        {explore.map((item, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Who is it for -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Who is this course for?</span>
+        <h2 data-reveal>A Starting Point for Malayalam-Speaking Learners</h2>
+        <p class="body" data-fade style="--d:200ms">Check the published course details for any specific prerequisites.</p>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>This course may be suitable for:</p>
+        <ul class="ticks" data-fade style="--d:80ms">
+          {audience.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Why Malayalam -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Why learn quantum computing in Malayalam?</span>
+        <h2 data-reveal>Begin With Concepts You Can Understand</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Learning a new technical subject can be challenging when both the concepts and the language are unfamiliar.</p>
+        <p class="body" data-fade style="--d:80ms">A Malayalam-language introduction can help learners engage with the subject in a familiar linguistic context while becoming comfortable with the technical terms used throughout quantum computing.</p>
+        <p class="body" data-fade style="--d:160ms">The goal is to establish a foundation that learners can build upon through further study, practical exploration and additional technical resources.</p>
+      </div>
+    </section>
+
+    <!-- Where it can take you -->
     <section class="section">
       <div class="section-head">
-        <span class="eyebrow">What you'll explore</span>
-        <h2 data-reveal>Starting from the first question.</h2>
+        <span class="eyebrow">Where can quantum computing take you?</span>
+        <h2 data-reveal>Explore the Wider Quantum Technology Landscape</h2>
+        <p data-fade style="--d:200ms">Quantum computing connects to several areas of scientific and technical exploration. These are possible directions for further learning, not guaranteed outcomes of completing this introductory course.</p>
       </div>
-      <div class="cells" style="--cols:2">
-        <div class="cell" data-fade><ul class="ticks">{explore.slice(0, 4).map((item) => <li>{item}</li>)}</ul></div>
-        <div class="cell" data-fade style="--d:90ms"><ul class="ticks">{explore.slice(4).map((item) => <li>{item}</li>)}</ul></div>
+      <div class="cells" style="--cols:4">
+        {next.map((item, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="section-head" style="padding-block:0 72px"><More href="/research">Explore Research &amp; Innovation</More></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="faq-intro">
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2 data-reveal>Quantum computing in Malayalam, answered.</h2>
+        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact?topic=Academy">get in touch</a>.</p>
+        <More href="/academy">Explore Sthitha Academy</More>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false"><span>{f.q}</span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+            <div class="faq-a"><div><p>{f.a}</p></div></div>
+          </div>
+        ))}
       </div>
     </section>
   </div>
 
   <Cta
-    title="Coming soon."
-    text="Until the Malayalam course is published, the Quantum Computing Crash Course is available now in English."
+    title="Begin Your Quantum Computing Journey in Malayalam"
+    text="Explore the fundamentals of quantum computing through a learning experience designed for Malayalam-speaking beginners. Start with the basics and discover where your interest in quantum technology can take you next."
   >
-    <a class="btn btn-light" href={english.href}>View the Crash Course</a>
-    <a class="btn btn-dark" href="/contact?topic=Academy">Ask about this course</a>
+    <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View the Course</a>
+    <a class="btn btn-dark" href="/academy">Explore Sthitha Academy</a>
   </Cta>
 </Base>

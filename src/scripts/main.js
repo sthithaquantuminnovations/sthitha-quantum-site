@@ -164,7 +164,7 @@
       var rect = features.getBoundingClientRect();
       if (desktop.matches) {
         var range = features.offsetHeight - window.innerHeight;
-        var p = Math.min(1, Math.max(0, (68 - rect.top) / (range || 1)));
+        var p = Math.min(1, Math.max(0, (0 - rect.top) / (range || 1)));
         activate(Math.min(items.length - 1, Math.floor(p * items.length)));
         if (tape) tape.style.transform = 'translateY(' + (-p * STEP * (items.length - 1)).toFixed(1) + 'px)';
       } else {

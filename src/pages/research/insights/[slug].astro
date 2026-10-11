@@ -1,6 +1,5 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import Announce from '../../../components/Announce.astro';
 import More from '../../../components/More.astro';
 import { posts } from '../../../data/posts.js';
 
@@ -16,7 +15,6 @@ const { Content } = post;
   <div class="frame">
     <article>
       <header class="page-hero">
-        <Announce pill="Insights" text={post.category} />
         <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
           <div>
             <h1 data-reveal style="max-width:900px">{post.title}</h1>

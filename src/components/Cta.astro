@@ -2,15 +2,18 @@
 interface Props {
   title: string;
   text: string;
+  eyebrow?: string;
+  highlight?: string;
 }
 
-const { title, text } = Astro.props;
+const { title, text, eyebrow, highlight } = Astro.props;
 ---
 
 <section class="cta">
   <canvas data-visual="burst" aria-hidden="true"></canvas>
   <div class="cta-inner">
-    <h2 data-reveal>{title}</h2>
+    {eyebrow && <span class="eyebrow is-brand" data-fade>{eyebrow}</span>}
+    <h2 data-reveal>{title}{highlight && <> <span class="hl">{highlight}</span></>}</h2>
     <p data-fade style="--d:350ms">{text}</p>
     <div class="cta-actions" data-fade style="--d:450ms">
       <slot />

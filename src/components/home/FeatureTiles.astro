@@ -1,0 +1,13 @@
+---
+import Icon from '../Icon.astro';
+const { items } = Astro.props;
+---
+<div class="feature-tiles" aria-hidden="true">
+  {items.map((t) => (
+    <span class="f-tile">
+      {t.img && <img src={`/assets/images/${t.img}`} alt="" width="64" height="64" loading="lazy" decoding="async" />}
+      {t.logo && <i class="logo-mark" style={`--logo:url(/assets/logos/${t.logo}.svg)`}></i>}
+      {t.icon && <Icon name={t.icon} />}
+    </span>
+  ))}
+</div>

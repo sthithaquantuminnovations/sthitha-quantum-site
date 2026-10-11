@@ -1,75 +1,164 @@
 ---
 import Base from '../layouts/Base.astro';
-import Announce from '../components/Announce.astro';
 import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
 import More from '../components/More.astro';
-import { aurora } from '../data/site.js';
+import { company } from '../data/site.js';
+
+const areas = [
+  { icon: 'book', title: 'Quantum Education', href: '/academy', link: 'Quantum computing courses', text: 'Explore opportunities to support quantum learning through educational initiatives, knowledge sharing, learning resources and community activities.' },
+  { icon: 'flask', title: 'Research & Innovation', href: '/research', link: 'Our research interests', text: 'Connect around quantum computing, quantum algorithms and quantum machine learning. Potential discussions may include technical exploration, knowledge exchange and research interests.' },
+  { icon: 'shield', title: 'Post-Quantum Security', href: '/aegis', link: 'Post-quantum security', text: 'Discuss the challenges of preparing digital infrastructure for the post-quantum era, including cryptographic visibility, post-quantum cryptography and migration planning.' },
+  { icon: 'calendar', title: 'Events & Community', href: '/events', link: 'Events & Community', text: 'Explore opportunities to participate in educational events, technical discussions and community initiatives that help more people engage with quantum technology.' },
+];
+
+const who = [
+  { icon: 'landmark', title: 'Educational Institutions', text: 'Institutions interested in quantum education, learning initiatives and knowledge sharing.' },
+  { icon: 'atom', title: 'Researchers and Academics', text: 'Individuals exploring quantum computing, quantum algorithms and related fields.' },
+  { icon: 'globe', title: 'Technology Companies', text: 'Businesses interested in quantum technology, post-quantum security and emerging technical challenges.' },
+  { icon: 'users', title: 'Students and Technical Communities', text: 'People looking to exchange knowledge, develop their understanding and explore ideas in quantum technology.' },
+  { icon: 'calendar', title: 'Event Organisers and Industry Groups', text: 'Organisations interested in quantum-focused discussions, educational activities and community initiatives.' },
+];
+
+const steps = [
+  { n: '01', title: 'Share Your Idea', text: 'Tell us about your organisation, area of interest and the kind of collaboration you have in mind.' },
+  { n: '02', title: 'Explore Common Ground', text: "We can discuss how your goals connect with Sthitha's work in quantum education, research and post-quantum security." },
+  { n: '03', title: 'Discuss the Next Steps', text: 'If there is a suitable fit, we can explore possible next steps based on shared interests, available expertise and agreed objectives.' },
+];
+
+const pillars = [
+  { title: 'AEGIS', href: '/aegis', text: 'Exploring post-quantum security and preparation for quantum-safe migration.' },
+  { title: 'Sthitha Academy', href: '/academy', text: 'Making quantum computing concepts more accessible through educational initiatives and learning resources.' },
+  { title: 'Research & Innovation', href: '/research', text: 'Exploring quantum computing, quantum algorithms and quantum machine learning.' },
+];
+
+const faqs = [
+  { q: 'What types of partnerships does Sthitha consider?', a: 'We welcome enquiries related to quantum education, research, post-quantum security, technical knowledge sharing and community initiatives.' },
+  { q: 'Can educational institutions contact Sthitha?', a: 'Yes. Educational institutions can get in touch to discuss ideas related to quantum learning, educational activities and knowledge sharing.' },
+  { q: 'Can researchers or technology companies approach Sthitha?', a: 'Yes. Researchers and technology companies are welcome to introduce their interests and explore whether there is scope for collaboration.' },
+  { q: 'Does contacting Sthitha guarantee a partnership?', a: 'No. Each proposal is considered individually to understand its goals, suitability and feasibility.' },
+  { q: 'How can I propose a collaboration?', a: `Email us at ${company.email} with a short introduction, your area of interest and the idea you would like to discuss.` },
+];
 ---
 
 <Base
-  title="Partnerships | Sthitha Quantum Innovations"
-  description="Sthitha works with organisations, academic communities and technology ecosystems. Building through collaboration."
+  title="Partnerships | Quantum Technology Collaboration | Sthitha"
+  description="Explore quantum technology collaboration with Sthitha Quantum Innovations across quantum education, research, post-quantum security and technical initiatives."
 >
   <div class="frame">
     <section class="page-hero">
-      <Announce pill="Partnerships" text="Ecosystem · Sthitha Quantum Innovations" />
       <div class="page-hero-body">
         <div>
-          <h1 data-reveal>Building through collaboration.</h1>
-          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha works with organisations, academic communities and technology ecosystems. We list a relationship here only once it is confirmed.</p>
+          <span class="eyebrow" data-fade style="display:block;margin-bottom:18px">Partnerships &amp; collaboration</span>
+          <h1 data-reveal>Building Connections for the Quantum Era</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum technology is a growing field that brings together research, education, engineering and security. Progress depends on people and organisations sharing knowledge and exploring ideas together.</p>
+          <p class="page-hero-lede" data-fade style="--d:300ms">Sthitha Quantum Innovations welcomes conversations with institutions, researchers, technology companies and educators interested in working towards practical applications of quantum technology.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="/contact?topic=Partnerships">Discuss a Collaboration</a>
+            <a class="btn btn-dark" href="#work">Explore Our Work</a>
+          </div>
         </div>
         <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="discover"></canvas></div>
       </div>
     </section>
 
-    <section>
+    <!-- Areas for collaboration -->
+    <section class="section">
       <div class="section-head">
-        <span class="eyebrow">Who we work with</span>
-        <h2 data-reveal>IEEE · Academia · Technology Community</h2>
+        <span class="eyebrow">Areas for collaboration</span>
+        <h2 data-reveal>Different Expertise. Shared Possibilities.</h2>
+        <p data-fade style="--d:200ms">We are interested in connecting with people and organisations working across the quantum technology ecosystem. Collaboration can take different forms, depending on the goals, expertise and interests of those involved.</p>
       </div>
-      <div class="cells">
-        <div class="cell" data-fade>
-          <Icon name="calendar" class="lead" />
-          <h3>IEEE</h3>
-          <p>Sthitha supported {aurora.name}, an IEEE technology event held on {aurora.dates}, as a sponsor.</p>
-          <More href="/events">See the event</More>
-        </div>
-        <div class="cell" data-fade style="--d:90ms">
-          <Icon name="landmark" class="lead" />
-          <h3>Academia</h3>
-          <p>We engage with students and academic communities through our courses and through knowledge sharing. Formal academic collaborations will be listed here as they are confirmed.</p>
-        </div>
-        <div class="cell" data-fade style="--d:180ms">
-          <Icon name="globe" class="lead" />
-          <h3>Technology community</h3>
-          <p>We take part in the wider technology community through events and by publishing what we learn.</p>
-          <More href="/research/insights">Read Insights</More>
-        </div>
+      <div class="cells" style="--cols:4">
+        {areas.map((a, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={a.icon} class="lead" />
+            <h3>{a.title}</h3>
+            <p>{a.text}</p>
+            <More href={a.href}>{a.link}</More>
+          </div>
+        ))}
       </div>
     </section>
 
-    <section class="section split top">
-      <div>
-        <span class="eyebrow">Working with Sthitha</span>
-        <h2 data-reveal>Ways to collaborate.</h2>
+    <!-- Who can collaborate -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Who can collaborate with us?</span>
+        <h2 data-reveal>Who We Would Like to Connect With</h2>
+        <p data-fade style="--d:200ms">Sthitha welcomes conversations with individuals and organisations that share an interest in quantum technology and its future. We are open to hearing about ideas that align with our areas of interest.</p>
       </div>
-      <div>
-        <ul class="ticks" style="margin-top:0" data-fade>
-          <li>Events and community programmes</li>
-          <li>Quantum education for students and professionals</li>
-          <li>Research and technical exploration</li>
-          <li>Post-quantum security readiness, through AEGIS</li>
-        </ul>
+      <div class="cells" style="--cols:3">
+        {who.map((w, i) => (
+          <div class="cell" data-fade style={`--d:${(i % 3) * 80}ms`}>
+            <Icon name={w.icon} class="lead" />
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How it begins -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">How collaboration can begin</span>
+        <h2 data-reveal>Start With a Conversation</h2>
+        <p data-fade style="--d:200ms">Every collaboration begins with understanding what each side wants to achieve.</p>
+      </div>
+      <div class="cells">
+        {steps.map((s, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <div class="cell-num"><span>{s.n}</span></div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why Sthitha -->
+    <section class="section" id="work">
+      <div class="section-head">
+        <span class="eyebrow">Why Sthitha?</span>
+        <h2 data-reveal>Connecting Education, Research and Security</h2>
+        <p data-fade style="--d:200ms">Sthitha Quantum Innovations brings together three areas of interest within the quantum technology landscape. These areas provide a starting point for conversations with organisations and individuals interested in the future of quantum technology.</p>
+      </div>
+      <div class="cells">
+        {pillars.map((p, i) => (
+          <a class="cell" href={p.href} data-fade style={`--d:${i * 80}ms`}>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </a>
+        ))}
+      </div>
+      <div class="section-head" style="padding-block:32px 72px"><More href="/about">Explore Our Initiatives</More></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="faq-intro">
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2 data-reveal>Partnership questions, answered.</h2>
+        <p data-fade style="--d:200ms">To propose a collaboration, write to <a href={`mailto:${company.email}`}>{company.email}</a> or use the <a href="/contact?topic=Partnerships">contact form</a>.</p>
+        <More href="/events">Events &amp; Community</More>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false"><span>{f.q}</span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+            <div class="faq-a"><div><p>{f.a}</p></div></div>
+          </div>
+        ))}
       </div>
     </section>
   </div>
 
   <Cta
-    title="Let's build something together."
-    text="If you represent an organisation, an institution or a community, we would be glad to talk."
+    title="Have an Idea Worth Exploring?"
+    text="If your work connects with quantum education, research or post-quantum security, we would like to hear from you. Start a conversation with Sthitha Quantum Innovations and tell us what you have in mind."
   >
-    <a class="btn btn-light" href="/contact?topic=Partnerships">Talk to Sthitha</a>
-    <a class="btn btn-dark" href="/about">About Sthitha</a>
+    <a class="btn btn-light" href="/contact?topic=Partnerships">Discuss a Collaboration</a>
+    <a class="btn btn-dark" href={`mailto:${company.email}`}>{company.email}</a>
   </Cta>
 </Base>

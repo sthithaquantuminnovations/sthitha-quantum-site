@@ -1,38 +1,161 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import Announce from '../../../components/Announce.astro';
+import Cta from '../../../components/Cta.astro';
 import Icon from '../../../components/Icon.astro';
+import More from '../../../components/More.astro';
 import { posts } from '../../../data/posts.js';
+
+const topics = [
+  { icon: 'atom', title: 'Quantum Computing', text: 'Explore qubits, superposition, entanglement, quantum gates, circuits and the principles behind quantum computing.' },
+  { icon: 'code', title: 'Quantum Algorithms', text: "Understand how quantum algorithms work, the problems they address and the ideas behind algorithms such as Shor's and Grover's." },
+  { icon: 'layers', title: 'Quantum Machine Learning', text: 'Explore the relationship between quantum computing and machine learning, including current research questions and potential applications.' },
+  { icon: 'shield', title: 'Post-Quantum Security', text: 'Learn about post-quantum cryptography, quantum-related security risks and the importance of preparing cryptographic systems for future developments.' },
+  { icon: 'book', title: 'Quantum Education', text: 'Find learning resources and introductory explanations designed to make quantum computing concepts easier to understand.' },
+  { icon: 'activity', title: 'Quantum Technology Developments', text: 'Explore relevant developments, research announcements and emerging discussions across the quantum technology ecosystem.' },
+];
+
+const work = [
+  { tag: 'AEGIS', title: 'Post-Quantum Security', text: 'Explore our interest in cryptographic security and preparation for the post-quantum era.', href: '/aegis', link: 'Explore AEGIS' },
+  { tag: 'Sthitha Academy', title: 'Quantum Education', text: 'Explore our quantum computing courses, including introductory learning resources and Malayalam-language education.', href: '/academy', link: 'Explore Courses' },
+  { tag: 'Research & Innovation', title: 'Quantum Research', text: 'Discover our areas of interest in quantum computing, quantum algorithms and quantum machine learning.', href: '/research', link: 'Explore Research' },
+];
+
+const faqs = [
+  { q: 'What topics does the Sthitha Insights section cover?', a: 'The section focuses on quantum computing, quantum algorithms, quantum machine learning, post-quantum security and quantum education.' },
+  { q: 'Is the content suitable for beginners?', a: 'Introductory articles can help beginners build foundational knowledge. Each article should clearly indicate its intended audience and any prerequisites.' },
+  { q: 'Can I learn quantum computing through Sthitha?', a: 'Yes. Visit Sthitha Academy to explore the available quantum computing courses.', href: '/academy', link: 'Explore Sthitha Academy' },
+  { q: 'Does this page publish the latest quantum technology news?', a: 'No. Insights is an educational and explanatory resource, not a live news service.' },
+  { q: 'Can researchers or writers contribute?', a: 'Interested contributors can contact Sthitha to discuss potential educational or technical content contributions. Publication is subject to review and agreement.', href: '/contact', link: 'Contact Sthitha' },
+];
 ---
 
 <Base
-  title="Insights | Research & Innovation | Sthitha Quantum Innovations"
-  description="Quantum computing explainers, post-quantum security articles and research notes from Sthitha Quantum Innovations."
+  title="Quantum Technology Insights & Articles | Sthitha"
+  description="Explore insights on quantum technology, quantum computing, quantum education, quantum algorithms and post-quantum security from Sthitha Quantum Innovations."
 >
   <div class="frame">
     <section class="page-hero">
-      <Announce pill="Insights" text="Research & Innovation · Sthitha Quantum Innovations" />
       <div class="page-hero-body">
         <div>
-          <p class="crumbs" data-fade><a href="/research">Research &amp; Innovation</a><i>/</i>Insights</p>
-          <h1 data-reveal>Insights</h1>
-          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum computing explainers, post-quantum security articles and research notes from Sthitha.</p>
+          <p class="crumbs" data-fade><a href="/research">Research &amp; Innovation</a><i>/</i>Insights &amp; knowledge</p>
+          <h1 data-reveal>Exploring the Ideas Behind Quantum Technology</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum technology is changing how researchers and engineers think about computing, communication and digital security.</p>
+          <p class="page-hero-lede" data-fade style="--d:300ms">At Sthitha Quantum Innovations, we explore these developments through educational content, technical discussions and insights into the evolving quantum landscape. Discover the concepts, questions and developments shaping this field.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="#articles">Explore Articles</a>
+            <a class="btn btn-dark" href="/about">Explore Our Initiatives</a>
+          </div>
         </div>
         <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="migrate"></canvas></div>
       </div>
     </section>
 
-    <section class="posts" style="border-top:0">
-      {posts.map((post, i) => (
-        <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
-          <time datetime={post.date}>{post.dateShort}</time>
-          <div>
-            <h2>{post.title}</h2>
-            <p>{post.excerpt}</p>
+    <!-- Introduction -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Introduction</span>
+        <h2 data-reveal>Making Complex Ideas Easier to Explore</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Quantum technology covers a wide range of ideas, from the fundamentals of qubits and quantum circuits to quantum algorithms, machine learning and post-quantum cryptography.</p>
+        <p class="body" data-fade style="--d:80ms">Our insights section is intended to help readers explore these topics, build foundational knowledge and follow developments across the field. Whether you are a student, technology enthusiast or professional, you can use these resources as a starting point for further learning.</p>
+      </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Explore topics</span>
+        <h2 data-reveal>Topics We Cover</h2>
+      </div>
+      <div class="cells">
+        {topics.map((t, i) => (
+          <div class="cell" data-fade style={`--d:${(i % 3) * 80}ms`}>
+            <Icon name={t.icon} class="lead" />
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
           </div>
-          <span class="more-dot" aria-hidden="true"><Icon name="chev-right" /></span>
-        </a>
-      ))}
+        ))}
+      </div>
+    </section>
+
+    <!-- Articles: only published posts are listed -->
+    <section class="section" id="articles">
+      <div class="section-head">
+        <span class="eyebrow">Featured content</span>
+        <h2 data-reveal>Start Exploring</h2>
+        <p data-fade style="--d:200ms">Selected articles and explainers from Sthitha. New pieces are added as they are published.</p>
+      </div>
+      <div class="posts" style="border-top:1px solid var(--line)">
+        {posts.map((post, i) => (
+          <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
+            <time datetime={post.date}>{post.dateShort}</time>
+            <div>
+              <h2>{post.title}</h2>
+              <p>{post.excerpt}</p>
+            </div>
+            <span class="more-dot" aria-hidden="true"><Icon name="chev-right" /></span>
+          </a>
+        ))}
+      </div>
+      <div class="section-head" style="padding-block:32px 72px"><More href="/academy">Explore Quantum Computing Courses</More></div>
+    </section>
+
+    <!-- Why follow -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Why follow our insights?</span>
+        <h2 data-reveal>Learn. Question. Explore.</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Quantum technology is a developing field, and understanding it requires more than following headlines.</p>
+        <p class="body" data-fade style="--d:80ms">Our goal is to encourage readers to explore the underlying concepts, ask better questions and build a stronger foundation for understanding quantum technologies.</p>
+        <p class="body" data-fade style="--d:160ms">Through our educational initiatives and areas of technical interest, we aim to make these subjects more accessible to people who want to learn more.</p>
+      </div>
+    </section>
+
+    <!-- Connect to our work -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Connect our content to our work</span>
+        <h2 data-reveal>Explore What We Do</h2>
+      </div>
+      <div class="cells">
+        {work.map((w, i) => (
+          <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
+            <div class="cell-num"><span>0{i + 1}</span><span>{w.tag}</span></div>
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+            <More href={w.href}>{w.link}</More>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="faq-intro">
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2 data-reveal>Insights, answered.</h2>
+        <p data-fade style="--d:200ms">Start with the <a href="/academy/quantum-computing-crash-course">Quantum Computing Crash Course</a>, or learn in Malayalam with <a href="/academy/quantum-computing-malayalam">Quantum Computing in Malayalam</a>.</p>
+        <More href="/events">Events &amp; Community</More>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false"><span>{f.q}</span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+            <div class="faq-a"><div><p>{f.a}{f.href && <> <a href={f.href}>{f.link}</a></>}</p></div></div>
+          </div>
+        ))}
+      </div>
     </section>
   </div>
+
+  <Cta
+    title="Keep Exploring Quantum Technology"
+    text="Build your understanding of quantum computing, discover new concepts and explore the questions shaping the future of technology. Start with an introductory course or explore our areas of research and innovation."
+  >
+    <a class="btn btn-light" href="/academy">Explore Sthitha Academy</a>
+    <a class="btn btn-dark" href="/contact">Contact Us</a>
+  </Cta>
 </Base>

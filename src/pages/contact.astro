@@ -1,66 +1,71 @@
 ---
 import Base from '../layouts/Base.astro';
-import Announce from '../components/Announce.astro';
 import Icon from '../components/Icon.astro';
+import More from '../components/More.astro';
 import { company } from '../data/site.js';
 
-const topics = [
-  { name: 'AEGIS', text: 'Post-quantum security for your organisation.' },
-  { name: 'Academy', text: 'Courses, learners and teaching.' },
-  { name: 'Research', text: 'Research interests and collaboration.' },
-  { name: 'Partnerships', text: 'Events, academia and community.' },
-  { name: 'General Enquiries', text: 'Anything else.' },
+const enquiryTypes = [
+  'General Enquiry',
+  'Quantum Education',
+  'Research & Innovation',
+  'Post-Quantum Security',
+  'Partnerships & Collaboration',
+  'Events & Community',
+  'Other',
 ];
+
+const work = [
+  { tag: 'AEGIS', title: 'Post-Quantum Security', text: 'Learn about our focus on post-quantum security and quantum-safe migration.', href: '/aegis', link: 'Explore AEGIS' },
+  { tag: 'Sthitha Academy', title: 'Quantum Education', text: 'Explore our quantum computing courses and learning resources.', href: '/academy', link: 'Explore Courses' },
+  { tag: 'Research & Innovation', title: 'Quantum Research', text: 'Discover our areas of interest in quantum computing, quantum algorithms and quantum machine learning.', href: '/research', link: 'Explore Research' },
+];
+
 const social = company.social.filter((s) => s.href);
 ---
 
 <Base
-  title="Contact | Talk to Sthitha | Sthitha Quantum Innovations"
-  description="Whether you're interested in AEGIS, quantum education, research or partnerships, we'd be glad to hear from you."
+  title="Contact Sthitha Quantum Innovations | Quantum Technology"
+  description="Get in touch with Sthitha Quantum Innovations for enquiries about quantum computing courses, research, post-quantum security and collaboration."
 >
   <div class="frame">
     <section class="page-hero">
-      <Announce pill="Contact" text="Sthitha Quantum Innovations" />
       <div class="page-hero-body">
         <div>
-          <h1 data-reveal>Talk to Sthitha</h1>
-          <p class="page-hero-lede" data-fade style="--d:250ms">Whether you're interested in AEGIS, quantum education, research or partnerships, we'd be glad to hear from you.</p>
+          <span class="eyebrow" data-fade style="display:block;margin-bottom:18px">Contact us</span>
+          <h1 data-reveal>Have Something in Mind?</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Whether you have a question about our courses, want to learn more about our work or have an idea to discuss, we'd be glad to hear from you.</p>
           <div class="hero-actions" data-fade style="--d:350ms">
-            <a class="btn btn-light" href="#contact-form">Send a message</a>
-            <a class="btn btn-dark" href={`mailto:${company.email}`}>Email us</a>
+            <a class="btn btn-light" href="#contact-form">Send an Enquiry</a>
           </div>
         </div>
-        <div class="hero-stat" data-fade style="--d:200ms">
-          <div class="hero-stat-head"><span class="eyebrow">What would you like to talk about?</span></div>
-          <ul class="topic-list">
-            {topics.map((topic) => (
-              <li><a href={`?topic=${encodeURIComponent(topic.name)}#contact-form`} data-topic={topic.name}><strong>{topic.name}</strong><span>{topic.text}</span><Icon name="chev-right" /></a></li>
-            ))}
-          </ul>
-        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="trio"></canvas></div>
       </div>
     </section>
 
     <section class="contact" style="border-top:0">
       <div id="contact-form">
-        <h2 data-reveal>Send a message</h2>
+        <h2 data-reveal>Tell Us a Little About It</h2>
+        <p class="body" style="margin:0 0 28px;max-width:520px;color:var(--muted);font-size:16px;line-height:24px">Use the form below to share your question or proposal. Choose the relevant topic so we can better understand your enquiry.</p>
         <form action="/contact-handler.php" method="post" data-ajax>
-          <label class="field"><span>Full Name</span><input type="text" name="fullName" placeholder="Your name" autocomplete="name" required /></label>
-          <label class="field"><span>Email Address</span><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required /></label>
-          <label class="field"><span>Organisation</span><input type="text" name="org" placeholder="Organisation or institution (optional)" autocomplete="organization" /></label>
-          <label class="field"><span>Topic</span>
-            <select name="topic" data-topic-select>
-              {topics.map((topic) => <option value={topic.name} selected={topic.name === 'General Enquiries'}>{topic.name}</option>)}
+          <label class="field"><span>Full Name *</span><input type="text" name="fullName" placeholder="Your name" autocomplete="name" required /></label>
+          <label class="field"><span>Email Address *</span><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required /></label>
+          <label class="field"><span>Organisation (Optional)</span><input type="text" name="org" placeholder="Organisation or institution" autocomplete="organization" /></label>
+          <label class="field"><span>Enquiry Type *</span>
+            <select name="topic" data-topic-select required>
+              {enquiryTypes.map((type) => <option value={type} selected={type === 'General Enquiry'}>{type}</option>)}
             </select>
           </label>
-          <label class="field"><span>Message</span><textarea name="message" placeholder="How can we help?" required></textarea></label>
+          <label class="field"><span>Subject (Optional)</span><input type="text" name="subject" placeholder="What is this about?" /></label>
+          <label class="field"><span>Message *</span><textarea name="message" placeholder="How can we help?" required></textarea></label>
           <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
           <button class="btn btn-light" type="submit">Send Message</button>
         </form>
+        <p class="form-note" style="margin-top:14px;font-size:13px;line-height:19px;color:var(--dim);max-width:520px">Your details will be used to respond to your enquiry. Please do not include passwords or confidential technical information.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </div>
       <div id="details">
-        <h2 data-reveal>Other ways to reach us</h2>
+        <h2 data-reveal>Prefer Email?</h2>
+        <p class="body" style="margin:0 0 24px;color:var(--muted);font-size:16px;line-height:24px" data-fade>For general questions, course enquiries or collaboration proposals, reach us directly.</p>
         <ul class="contact-lines" data-fade>
           <li><Icon name="mail" /><div><strong>Email</strong><a href={`mailto:${company.email}`}>{company.email}</a></div></li>
           <li><Icon name="pin" /><div><strong>{company.legalName}</strong>{company.location}</div></li>
@@ -68,25 +73,46 @@ const social = company.social.filter((s) => s.href);
             <li><Icon name="arrow-ur" /><div><strong>{link.label}</strong><a href={link.href} target="_blank" rel="noopener">{link.href.replace(/^https?:\/\//, '')}</a></div></li>
           ))}
         </ul>
+        <a class="btn btn-dark" style="margin-top:24px" href={`mailto:${company.email}`} data-fade>Email Sthitha</a>
+      </div>
+    </section>
+
+    <!-- Explore our work -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Explore our work</span>
+        <h2 data-reveal>Not Sure Where to Start?</h2>
+      </div>
+      <div class="cells">
+        {work.map((w, i) => (
+          <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
+            <div class="cell-num"><span>0{i + 1}</span><span>{w.tag}</span></div>
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+            <More href={w.href}>{w.link}</More>
+          </article>
+        ))}
       </div>
     </section>
   </div>
 </Base>
 
 <script>
-  // Pre-select the topic when arriving from a link such as /contact?topic=AEGIS.
+  // Pre-select the enquiry type when arriving from a link such as /contact?topic=AEGIS.
+  // Older short names map onto the current enquiry types.
   const select = document.querySelector('[data-topic-select]');
+  const alias = {
+    aegis: 'Post-Quantum Security',
+    academy: 'Quantum Education',
+    research: 'Research & Innovation',
+    partnerships: 'Partnerships & Collaboration',
+    'general enquiries': 'General Enquiry',
+  };
   const choose = (name) => {
     if (!select || !name) return;
-    const match = [...select.options].find((o) => o.value.toLowerCase() === name.toLowerCase());
+    const wanted = (alias[name.toLowerCase()] || name).toLowerCase();
+    const match = [...select.options].find((o) => o.value.toLowerCase() === wanted);
     if (match) select.value = match.value;
   };
   choose(new URLSearchParams(location.search).get('topic'));
-  document.querySelectorAll('[data-topic]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      choose(link.getAttribute('data-topic'));
-      document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
-    });
-  });
 </script>
