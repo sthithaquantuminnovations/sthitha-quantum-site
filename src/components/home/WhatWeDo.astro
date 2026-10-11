@@ -47,7 +47,7 @@ const detail = {
     </nav>
 
     {areas.map((area, i) => (
-      <article class:list={['feature', { active: i === 0 }]} id={`area-${area.key}`}>
+      <article class:list={['feature', { active: i === 0 }]} id={`area-${area.key}`} data-tab={detail[area.key].tab} style={`--i:${i}`}>
         <div class="feature-text">
           <div class="feature-head"><h3>{area.title}</h3><span class="badge">{area.name}</span></div>
           <p class="feature-desc">{area.summary}</p>

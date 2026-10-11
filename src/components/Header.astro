@@ -84,15 +84,28 @@ const art: Record<string, string> = {
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <span class="eyebrow">Our Work</span>
-  {areas.map((area) => <a href={area.href}>{area.name}<small>{area.title}</small></a>)}
-  <span class="eyebrow">Sthitha Academy · Courses</span>
-  {courses.map((course) => <a href={course.href}>{course.title}<small>{course.subtitle} · {course.status}</small></a>)}
-  <span class="eyebrow">Company</span>
-  <a href="/about">About Sthitha</a>
-  <a href="/events">Events</a>
-  <a href="/partnerships">Partnerships</a>
-  <a href="/research/insights">Insights</a>
-  <a href="/contact">Contact</a>
+  <details class="mm-group">
+    <summary>Our Work<Icon name="chev-down" /></summary>
+    <div class="mm-list">
+      {areas.map((area) => <a href={area.href}>{area.name}<small>{area.title}</small></a>)}
+    </div>
+  </details>
+  <details class="mm-group">
+    <summary>Academy<Icon name="chev-down" /></summary>
+    <div class="mm-list">
+      <a href="/academy">All courses</a>
+      {courses.map((course) => <a href={course.href}>{course.title}<small>{course.subtitle}</small></a>)}
+    </div>
+  </details>
+  <details class="mm-group">
+    <summary>Company<Icon name="chev-down" /></summary>
+    <div class="mm-list">
+      <a href="/about">About Sthitha</a>
+      <a href="/events">Events</a>
+      <a href="/partnerships">Partnerships</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </details>
+  <a class="mm-link" href="/research/insights">Insights</a>
   <a class="btn btn-light" href="/contact">Talk to Sthitha</a>
 </div>
