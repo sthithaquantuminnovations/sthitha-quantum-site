@@ -1212,7 +1212,7 @@ a.cell { display: block; }
 .hero h1 { font-size: clamp(40px, 4.45vw, 64px); line-height: .94; }
 .hero-copy { padding-right: 24px; }
 
-/* Headings match strand.framer.website: Cabinet Grotesk display, Geist body, Geist Mono labels */
+/* Headings: Cabinet Grotesk display, Geist body, Geist Mono labels */
 h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
   font-family: var(--display); font-weight: 700;
   font-feature-settings: "cv03" on, "cv04" on, "cv09" on, "cv11" on;

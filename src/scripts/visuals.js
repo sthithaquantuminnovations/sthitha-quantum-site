@@ -1,6 +1,6 @@
 /* Canvas visuals.
-   Every strand visual runs on one small physics engine: each point of a strand is pushed away
-   by the cursor, pulled back to its home by a spring, and damped. Strands near the cursor light
+   Every thread visual runs on one small physics engine: each point of a thread is pushed away
+   by the cursor, pulled back to its home by a spring, and damped. Threads near the cursor light
    up in warm, dispersed colour and fade back slowly. */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,7 +47,7 @@
     function resize() {
       var r = canvas.getBoundingClientRect();
       w = r.width; h = r.height;
-      // large canvases render at a lower density; the strands are soft enough not to show it
+      // large canvases render at a lower density; the threads are soft enough not to show it
       var dpr = Math.min(window.devicePixelRatio || 1, w * h > 500000 ? 1.5 : 2);
       canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -60,13 +60,13 @@
     }, { rootMargin: '120px' }).observe(canvas);
   }
 
-  /* ---------- Strand engine ---------- */
+  /* ---------- Thread engine ---------- */
 
-  // Colours a strand takes on near the cursor: mostly warm gold, with a few dispersed hues.
+  // Colours a thread takes on near the cursor: mostly warm gold, with a few dispersed hues.
   var PALETTE = [[255, 196, 110], [255, 196, 110], [255, 170, 100], [255, 214, 150], [255, 150, 96], [126, 222, 208], [140, 178, 255], [255, 146, 190]];
 
-  /* cfg.layout(t, tx, ty, depth, aux, N, K) writes each strand's home positions in unit space.
-     Node 0 is the bright end of a strand. */
+  /* cfg.layout(t, tx, ty, depth, aux, N, K) writes each thread's home positions in unit space.
+     Node 0 is the bright end of a thread. */
   function field(cfg) {
     var N = Math.max(60, Math.round(cfg.count * (LITE ? 0.6 : 1))), K = cfg.nodes, M = N * K;
     var rand = rng(cfg.seed);
@@ -149,7 +149,7 @@
         }
         var qx, qy, mx2, my2;
         if (g > 0.02) {
-          // Lit strands are few, so each gets its own colour gradient.
+          // Lit threads are few, so each gets its own colour gradient.
           var col = 'rgba(' + (cr | 0) + ',' + (cg | 0) + ',' + (cb | 0) + ',';
           var grad = ctx.createLinearGradient(x0, y0, x1, y1);
           if (rev) { grad.addColorStop(0, col + '0)'); grad.addColorStop(0.6, col + a.toFixed(3) + ')'); grad.addColorStop(1, col + (a * 0.5).toFixed(3) + ')'); }
@@ -163,7 +163,7 @@
           ctx.lineTo(x1, y1); ctx.stroke();
         } else {
           // Everything else is sorted into a few brightness levels and stroked in one go per level;
-          // each strand fades along its length by stepping its pieces down through the levels.
+          // each thread fades along its length by stepping its pieces down through the levels.
           var sx = x0, sy = y0;
           for (k = 1; k < K; k++) {
             var frac = (k - 0.5) / (K - 1);
@@ -194,7 +194,7 @@
         }
 
         if (r2[i] < cfg.pulse) {
-          // a point of light travelling along the strand
+          // a point of light travelling along the thread
           var u = (r1[i] * 9 + t * (0.1 + r3[i] * 0.12) * cfg.pulseSpeed) % 1, f = u * (K - 1), k0 = Math.min(K - 2, f | 0), fr = f - k0;
           var pxx = cx + (px[a0 + k0] + (px[a0 + k0 + 1] - px[a0 + k0]) * fr) * R, pyy = cy + (py[a0 + k0] + (py[a0 + k0 + 1] - py[a0 + k0]) * fr) * R;
           ctx.fillStyle = 'rgba(255,225,190,' + (Math.sin(u * Math.PI) * 0.9 * o * dp).toFixed(3) + ')';
@@ -209,7 +209,7 @@
       ctx.globalCompositeOperation = 'source-over';
     }
 
-    // Throw every strand outward and let it spring back to (possibly new) homes, softly and staggered.
+    // Throw every thread outward and let it spring back to (possibly new) homes, softly and staggered.
     draw.kick = function (speed) {
       for (var i = 0; i < N; i++) {
         hold[i] = clock + r2[i] * 0.28; soft[i] = 0.05;
@@ -221,7 +221,7 @@
     return draw;
   }
 
-  /* ---------- Hero: an atom whose orbits are bands of strands ---------- */
+  /* ---------- Hero: an atom whose orbits are bands of threads ---------- */
 
   function atom() {
     var rand = rng(11), per = null, TILT = 1.16;
@@ -323,7 +323,7 @@
     });
   }
 
-  /* ---------- Outlines drawn as short flickering strands ---------- */
+  /* ---------- Outlines drawn as short flickering threads ---------- */
 
   // Extend a path from its last point: a straight run, or a quadratic bend, in n short steps.
   function run(p, x1, y1, n) {
@@ -429,7 +429,7 @@
         }
       }
     });
-    // Morph: every strand is dealt a new home on the next shape, so the outline scatters and re-forms.
+    // Morph: every thread is dealt a new home on the next shape, so the outline scatters and re-forms.
     visual.show = function (index) {
       if (index === current || !sets || !names[index]) { current = names[index] ? index : current; return; }
       current = index;
