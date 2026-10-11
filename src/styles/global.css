@@ -1312,3 +1312,27 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
 .mobile-menu .mm-list { padding: 0 0 12px 14px; }
 .mobile-menu .mm-list a:not(.btn) { padding: 10px 0; border-bottom: 0; font-size: 16px; color: var(--muted); }
 .mobile-menu .mm-list a:not(.btn):hover { color: var(--text); }
+
+/* Mobile: drop decorative rules so the page reads as clean blocks rather than a grid of lines */
+@media (max-width: 899px) {
+  .frame { border-inline: 0; }
+  .hero, .page-hero, .section, .marquee-row, .cta, .contact, .posts, .section-note,
+  .proof-stat, .proof-quote, .faq-list, .cells, .legal-nav, .panel-foot, .panel-head,
+  .hero-steps, .statement, .stats, .data-row { border-top: 0; border-bottom: 0; }
+  main > .frame:last-child { border-bottom: 0; }
+  main > .frame:last-child::after { display: none; }
+  .data-row { border-block: 0; }
+  .data-row li, .data-row li + li { border: 0 !important; }
+  .cell { border: 0 !important; padding: 28px var(--pad) 12px; margin-bottom: 0; }
+  .cell:hover { background: none; }
+  .cells { gap: 0; }
+  .contact > div + div { border-top: 0; }
+  .article-meta { border-bottom: 0; }
+  .ticks li, .trust-list li, .path li, .people li, .people li:last-child, .facts div, .facts div:last-child { border: 0; }
+  .ticks li { padding: 8px 0; }
+  .area-courses, .area-courses a { border: 0; }
+  .demo-row + .demo-row { border-top: 0; }
+  .feature:last-of-type { border-bottom: 0; }
+  .section-head { padding-bottom: 28px; }
+  .post-row { border-bottom: 0; padding-block: 22px; }
+}
