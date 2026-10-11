@@ -1336,3 +1336,22 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
   .section-head { padding-bottom: 28px; }
   .post-row { border-bottom: 0; padding-block: 22px; }
 }
+
+/* Mobile: bring back the separators that mark where one section ends and the next begins */
+@media (max-width: 899px) {
+  .hero, .page-hero { border-bottom: 1px solid var(--line); }
+  .marquee-row { border-bottom: 1px solid var(--line); }
+  .frame > section + section, .frame > .section, .frame > .contact { border-top: 1px solid var(--line); }
+  .cta { border-top: 1px solid var(--line); }
+  .cells { border-top: 1px solid var(--line); }
+  .cell { border-bottom: 1px solid var(--line) !important; padding-bottom: 28px; }
+  .cells > .cell:last-child { border-bottom: 0 !important; }
+  .faq-list { border-top: 1px solid var(--line); }
+  .proof-stat, .proof-quote { border-top: 1px solid var(--line); }
+  .posts { border-top: 1px solid var(--line); }
+  .post-row { border-bottom: 1px solid var(--line); padding-block: 26px; }
+  .post-row:last-child { border-bottom: 0; }
+  .contact > div + div { border-top: 1px solid var(--line); }
+  main > .frame:last-child { border-bottom: 1px solid var(--line); }
+  .feature:last-of-type { border-bottom: 0; }
+}
