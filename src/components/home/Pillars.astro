@@ -1,0 +1,41 @@
+---
+import More from '../More.astro';
+
+const approach = [
+  {
+    id: 'discover', title: 'Discover',
+    text: 'Understand where cryptography is used.',
+    points: ['Cryptographic discovery', 'Asset inventory', 'Usage visibility'],
+  },
+  {
+    id: 'protect', title: 'Protect',
+    text: 'Assess potential exposure and security priorities.',
+    points: ['Risk assessment', 'Quantum exposure', 'Protection planning'],
+  },
+  {
+    id: 'migrate', title: 'Migrate',
+    text: 'Explore a phased approach to post-quantum readiness.',
+    points: ['Migration planning', 'Phased roadmap', 'Readiness reporting'],
+  },
+];
+---
+
+<section class="section" id="aegis">
+  <div class="section-head">
+    <span class="eyebrow is-brand">AEGIS · Cryptography, mapped</span>
+    <h2 data-reveal>Preparing for the <span class="hl">post-quantum era.</span></h2>
+    <p data-fade style="--d:200ms">Cryptography protects information across applications, networks and digital infrastructure. AEGIS focuses on helping organisations understand their cryptographic landscape and prepare for future changes.</p>
+  </div>
+
+  <div class="cells" id="capabilities">
+    {approach.map((step, i) => (
+      <article class="cell" data-fade style={`--d:${i * 90}ms`}>
+        <div class="cell-num"><span>0{i + 1}</span><span>AEGIS</span></div>
+        <h3>{step.title}</h3>
+        <p>{step.text}</p>
+        <ul class="ticks">{step.points.map((point) => <li>{point}</li>)}</ul>
+        <More href={`/aegis#${step.id}`}>Explore AEGIS</More>
+      </article>
+    ))}
+  </div>
+</section>

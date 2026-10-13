@@ -1,0 +1,20 @@
+---
+// What the Academy teaches, who it is for, and the path through it. Shared by the home page and /academy.
+import { learn, learners, learningPath } from '../data/site.js';
+---
+
+<div class="cells">
+  <div class="cell" data-fade>
+    <div class="cell-num"><span>What you'll learn</span></div>
+    <ul class="ticks">{learn.map((item) => <li>{item}</li>)}</ul>
+  </div>
+  <div class="cell" data-fade style="--d:90ms">
+    <div class="cell-num"><span>Who is it for?</span></div>
+    <ul class="ticks">{learners.map((item) => <li>{item}</li>)}</ul>
+  </div>
+  <div class="cell" data-fade style="--d:180ms">
+    <div class="cell-num"><span>Learning path</span></div>
+    <ol class="path">{learningPath.map((step, i) => <li><span class="mono">0{i + 1}</span>{step}</li>)}</ol>
+    <p class="cell-note"><span class="badge is-amber">Coming Soon</span> More courses are on the way. They will be listed here as they are published.</p>
+  </div>
+</div>

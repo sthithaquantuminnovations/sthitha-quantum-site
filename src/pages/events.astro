@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+import More from '../components/More.astro';
+import auroraImage from '../assets/events/aurora-26.png';
+import { aurora, courses } from '../data/site.js';
+
+const topics = [
+  { icon: 'atom', title: 'Quantum Computing', text: 'Explore the concepts and developments shaping quantum computing, from foundational principles to emerging applications.', href: '/research' },
+  { icon: 'book', title: 'Quantum Education', text: 'Encourage awareness and learning opportunities for people who want to understand quantum technologies and build their technical knowledge.', href: '/academy' },
+  { icon: 'shield', title: 'Post-Quantum Security', text: 'Promote understanding of the security challenges associated with future quantum computing capabilities and the importance of preparing for post-quantum cryptography.', href: '/aegis' },
+  { icon: 'flask', title: 'Research and Innovation', text: 'Engage with ideas across quantum computing, quantum machine learning and related areas of technical exploration.', href: '/research' },
+];
+
+const discuss = [
+  'Quantum computing education and awareness',
+  'Technology events and community initiatives',
+  'Academic and technical knowledge sharing',
+  'Research-related discussions',
+  'Technology sponsorship and collaboration opportunities',
+];
+
+const faqs = [
+  { q: 'What kind of quantum technology events does Sthitha engage with?', a: 'Sthitha is interested in technology, education and community initiatives related to quantum computing, emerging technologies and post-quantum security. Specific participation details should be confirmed through official announcements.' },
+  { q: `Did Sthitha Quantum Innovations sponsor ${aurora.name}?`, a: `Sthitha Quantum Innovations sponsored ${aurora.name}, an IEEE technology event held on ${aurora.dates}.` },
+  { q: 'Does Sthitha organise its own quantum computing events?', a: "Check Sthitha's official website and communication channels for confirmed announcements about events organised by the company. Sponsorship or participation does not mean an event was organised by Sthitha." },
+  { q: 'How can an organisation collaborate with Sthitha?', a: 'Organisations, educational institutions and event organisers can contact Sthitha to discuss relevant opportunities involving quantum education, technology and research interests.' },
+  { q: 'Where can I learn about quantum computing?', a: 'Sthitha Academy offers introductory learning opportunities, including the Quantum Computing Crash Course and Quantum Computing in Malayalam for beginners.' },
+];
+---
+
+<Base
+  title="Quantum Technology Events & Community | Sthitha Quantum Innovations"
+  description="Discover Sthitha Quantum Innovations' engagement with technology events, quantum education and collaboration, including its sponsorship of AURORA ’26."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Connecting People Through Quantum Technology</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum technology is developing through research, education and collaboration across disciplines. Events create opportunities to exchange ideas, explore emerging technologies and connect with people interested in what comes next.</p>
+          <p class="page-hero-lede" data-fade style="--d:300ms">Sthitha Quantum Innovations engages with the wider technology and academic community through events, educational initiatives and opportunities for collaboration.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="#aurora-26">Explore Our Activities</a>
+            <a class="btn btn-dark" href="/contact?topic=Partnerships">Contact Sthitha</a>
+          </div>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="migrate"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Community and participation -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">About our community</span>
+        <h2 data-reveal>Building Connections Around Emerging Technology</h2>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade>
+          <div class="cell-num"><span>Our community</span></div>
+          <p>Understanding quantum computing and other emerging technologies takes more than individual study. Discussions, events and shared learning can help people discover new perspectives and understand how different fields connect.</p>
+          <p>Sthitha aims to engage with students, educators, researchers and technology professionals who are interested in quantum computing, post-quantum security and related fields, and to encourage awareness, learning and meaningful conversations around emerging technology.</p>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <div class="cell-num"><span>Events and participation</span></div>
+          <p>Technology events bring together people with different backgrounds and interests. They can provide opportunities to exchange knowledge, introduce new ideas and connect with others working across science, engineering and technology.</p>
+          <p>Sthitha supports engagement with the broader technology community and welcomes opportunities to take part in relevant educational and technical initiatives. Involvement may include event participation, sponsorship and conversations around technology education and collaboration, depending on the opportunity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AURORA '26 -->
+    <section class="split top" id="aurora-26">
+      <div>
+        <span class="eyebrow">Featured event</span>
+        <h2 data-reveal>{aurora.name}: Supporting Technology and Innovation</h2>
+        <p class="body" data-fade style="--d:200ms">Sthitha Quantum Innovations sponsored {aurora.name}, supporting an event focused on technology and innovation. Our involvement reflects our interest in engaging with the wider technology community and supporting opportunities that bring people together around emerging ideas.</p>
+        <dl class="facts" data-fade style="--d:280ms">
+          <div><dt>Event</dt><dd>{aurora.name}</dd></div>
+          <div><dt>Dates</dt><dd>{aurora.dates}</dd></div>
+          <div><dt>Association</dt><dd>{aurora.kind}</dd></div>
+          <div><dt>Status</dt><dd>Concluded</dd></div>
+        </dl>
+      </div>
+      <figure class="media is-colour" data-fade>
+        <Image src={auroraImage} alt="AURORA ’26 artwork promoting the Sthitha Academy Quantum Computing Crash Course" widths={[640, 960, 1280]} sizes="(max-width: 899px) 100vw, 620px" />
+        <figcaption>
+          <span class="eyebrow">Sthitha Academy at {aurora.name}</span>
+          <strong>{courses[0].title}</strong>
+          <span>Sthitha shared its {courses[0].title} with the {aurora.name} community.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Areas we care about -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Areas we care about</span>
+        <h2 data-reveal>Connecting Events With Emerging Technologies</h2>
+      </div>
+      <div class="cells" style="--cols:4">
+        {topics.map((t, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={t.icon} class="lead" />
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+            <More href={t.href}>Learn more</More>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Collaboration -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Opportunities for collaboration</span>
+        <h2 data-reveal>Let's Build Meaningful Connections</h2>
+        <p class="body" data-fade style="--d:200ms">Sthitha welcomes conversations with organisations, educational institutions, event organisers and individuals interested in quantum technology and emerging computing fields.</p>
+        <p class="body" data-fade style="--d:260ms">Each opportunity is considered according to its relevance and scope. Contact us to discuss a potential initiative.</p>
+        <More href="/contact?topic=Partnerships">Discuss a Collaboration</More>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Potential areas of discussion include:</p>
+        <ul class="ticks" data-fade style="--d:80ms">
+          {discuss.map((d) => <li>{d}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="faq-intro">
+        <span class="eyebrow">Stay connected</span>
+        <h2 data-reveal>Follow our work.</h2>
+        <p data-fade style="--d:200ms">Stay connected to learn about our educational initiatives, technology interests, community involvement and future activities. Explore <a href="/research">our work in quantum computing</a>, learn through <a href="/academy">Sthitha Academy</a> or discover our focus on post-quantum security through <a href="/aegis">AEGIS</a>.</p>
+        <More href="/about">About Sthitha Quantum Innovations</More>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false"><span>{f.q}</span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+            <div class="faq-a"><div><p>{f.a}</p></div></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Be Part of the Conversation"
+    text="Whether you are exploring quantum computing, planning a technology event or interested in educational and technical collaboration, connect with Sthitha Quantum Innovations."
+  >
+    <a class="btn btn-light" href="/contact?topic=Partnerships">Contact Sthitha</a>
+    <a class="btn btn-dark" href="/academy">Explore Sthitha Academy</a>
+  </Cta>
+</Base>

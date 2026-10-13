@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import Hero from '../components/home/Hero.astro';
+import AreasMarquee from '../components/home/AreasMarquee.astro';
+import WhatWeDo from '../components/home/WhatWeDo.astro';
+import Vulnerability from '../components/home/Vulnerability.astro';
+import Pillars from '../components/home/Pillars.astro';
+import Demo from '../components/home/Demo.astro';
+import Stack from '../components/home/Stack.astro';
+import Academy from '../components/home/Academy.astro';
+import Research from '../components/home/Research.astro';
+import Ecosystem from '../components/home/Ecosystem.astro';
+import Trust from '../components/home/Trust.astro';
+import AboutIntro from '../components/home/AboutIntro.astro';
+import AreaSteps from '../components/home/AreaSteps.astro';
+---
+
+<Base
+  title="Sthitha Quantum Innovations | Building Technology for the Quantum Era"
+  description="Sthitha Quantum Innovations works across quantum computing, post-quantum security, education and research to build practical pathways into the quantum era."
+>
+  <div class="frame">
+    <Hero />
+    <AreasMarquee />
+    <Demo />
+    <WhatWeDo />
+    <Vulnerability />
+    <Pillars />
+    <Stack />
+    <Academy />
+    <Research />
+    <Ecosystem />
+    <Trust />
+    <AboutIntro />
+    <AreaSteps />
+  </div>
+
+  <Cta
+    eyebrow="Let’s talk quantum"
+    title="Be part of the"
+    highlight="quantum journey."
+    text="Learn quantum computing, explore post-quantum security or connect with Sthitha about research and collaboration."
+  >
+    <a class="btn btn-light" href="/#work">Explore Our Work</a>
+    <a class="btn btn-dark" href="/contact">Talk to Sthitha</a>
+  </Cta>
+</Base>

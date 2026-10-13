@@ -1,0 +1,17 @@
+---
+interface Props {
+  pill: string;
+  text: string;
+}
+
+const { pill, text } = Astro.props;
+---
+
+<div class="announce">
+  <span class="pill">{pill}</span>
+  <span class="announce-dots" aria-hidden="true"></span>
+  <div class="announce-track">
+    <span>{text}</span>
+    <span aria-hidden="true">{text}</span>
+  </div>
+</div>

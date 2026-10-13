@@ -1,0 +1,9 @@
+---
+import { ICONS } from '../data/icons.js';
+
+const symbols = Object.entries(ICONS)
+  .map(([name, body]) => `<symbol id="i-${name}" viewBox="0 0 24 24">${body}</symbol>`)
+  .join('');
+---
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs set:html={symbols} /></svg>

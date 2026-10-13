@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+
+const approach = [
+  {
+    id: 'discover', n: '01', title: 'Discover', image: '/assets/images/module-1-inventory-audit-image.webp', alt: 'Illustration of a cryptographic inventory',
+    lead: 'Find cryptographic assets across your systems and understand where they are being used.',
+    text: 'Most organisations do not have a complete picture of the cryptography they depend on. Discover is about building that picture: which algorithms, keys and certificates are in use, and which applications, networks and systems rely on them.',
+  },
+  {
+    id: 'protect', n: '02', title: 'Protect', image: '/assets/images/module-2-crypto-agility-image.webp', alt: 'Illustration of layered cryptographic protection',
+    lead: 'Assess quantum exposure and prepare appropriate post-quantum protection strategies.',
+    text: 'Not every asset carries the same risk. Protect looks at how exposed each one is to future quantum attacks and how long the data it guards needs to stay confidential, so that protection can be planned where it matters most.',
+  },
+  {
+    id: 'migrate', n: '03', title: 'Migrate', image: '/assets/images/module-3-migration-image.webp', alt: 'Illustration of a migration network',
+    lead: 'Build a clear, phased roadmap for moving critical systems towards post-quantum cryptography.',
+    text: 'Moving to post-quantum cryptography is a programme of work, not a single change. Migrate turns the inventory and the risk picture into an ordered plan, so the most critical systems move first and progress can be reported.',
+  },
+];
+
+const capabilities = [
+  { icon: 'scan', title: 'Cryptographic discovery', text: 'Locate the cryptography in use across applications, networks and infrastructure.' },
+  { icon: 'gauge', title: 'Risk assessment', text: 'Understand which assets are most exposed to future quantum attacks.' },
+  { icon: 'file', title: 'Asset inventory', text: 'Keep a structured record of cryptographic assets and where each one is used.' },
+  { icon: 'shield', title: 'PQC readiness', text: 'See how prepared each system is for post-quantum cryptography.' },
+  { icon: 'route', title: 'Migration planning', text: 'Set out a phased path for moving critical systems, in order of priority.' },
+  { icon: 'checks', title: 'Reporting', text: 'Share a clear view of exposure, readiness and progress with the people who need it.' },
+];
+
+const sectors = [
+  { icon: 'shield', title: 'Defence' },
+  { icon: 'landmark', title: 'Banking' },
+  { icon: 'tower', title: 'Telecommunications' },
+  { icon: 'zap', title: 'Critical infrastructure' },
+];
+---
+
+<Base
+  title="AEGIS | Post-Quantum Security by Sthitha Quantum Innovations"
+  description="AEGIS helps organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum migration. An initiative of Sthitha Quantum Innovations."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Preparing critical systems for the post-quantum era.</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">AEGIS helps organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum migration.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="/contact?topic=AEGIS">Talk to Sthitha about AEGIS</a>
+            <a class="btn btn-dark" href="#approach">The AEGIS approach</a>
+          </div>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="protect"></canvas></div>
+      </div>
+    </section>
+
+    <!-- The problem -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">The problem</span>
+        <h2 data-reveal>Today's systems rely on cryptography that quantum computing may change.</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Current systems rely heavily on established cryptographic technologies such as RSA, ECC and SHA-based algorithms. They protect communications, transactions and records across almost every organisation.</p>
+        <p class="body" data-fade style="--d:90ms">As quantum computing develops, organisations need visibility into where those technologies are used and what needs to change. That work takes time, which is why it is worth starting before the threat arrives.</p>
+        <ul class="ticks" data-fade style="--d:180ms">
+          <li>Cryptography is spread across applications, networks, devices and third-party systems</li>
+          <li>Few organisations have a complete inventory of where it is used</li>
+          <li>Some information needs to stay confidential for many years</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="section" id="approach">
+      <div class="section-head">
+        <span class="eyebrow">The AEGIS approach</span>
+        <h2 data-reveal>Discover. Protect. Migrate.</h2>
+        <p data-fade style="--d:200ms">Three stages that take an organisation from not knowing where its cryptography is, to having a plan for moving it.</p>
+      </div>
+      <div class="cells">
+        {approach.map((step, i) => (
+          <article class="cell" id={step.id} data-fade style={`--d:${i * 90}ms`}>
+            <div class="cell-img"><img src={step.image} alt={step.alt} width="411" height="180" loading="lazy" /></div>
+            <div class="cell-num"><span>{step.n}</span><span>AEGIS</span></div>
+            <h3>{step.title}</h3>
+            <p class="cell-lead">{step.lead}</p>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">What AEGIS covers</span>
+        <h2 data-reveal>From visibility to a plan.</h2>
+        <p data-fade style="--d:200ms">The areas AEGIS is designed to bring together in one place.</p>
+      </div>
+      <div class="cells">
+        {capabilities.map((item, i) => (
+          <div class="cell" data-fade style={`--d:${(i % 3) * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Who it is for -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Who is AEGIS for?</span>
+        <h2 data-reveal>Organisations that cannot afford to find out late.</h2>
+        <p data-fade style="--d:200ms">AEGIS is intended for sectors that run critical systems, and for any organisation holding information that must stay protected for a long time.</p>
+      </div>
+      <div class="cells" style="--cols:4">
+        {sectors.map((sector, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={sector.icon} class="lead" />
+            <h3>{sector.title}</h3>
+          </div>
+        ))}
+      </div>
+      <p class="section-note" data-fade>Also relevant to other organisations holding long-term sensitive information.</p>
+    </section>
+  </div>
+
+  <Cta
+    title="Talk to Sthitha about AEGIS"
+    text="Tell us about the systems you are responsible for and we will take the conversation from there."
+  >
+    <a class="btn btn-light" href="/contact?topic=AEGIS">Talk to Sthitha about AEGIS</a>
+    <a class="btn btn-dark" href="/research/insights/understanding-post-quantum-security">Understand Post-Quantum Security</a>
+  </Cta>
+</Base>

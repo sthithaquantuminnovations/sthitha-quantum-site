@@ -1,0 +1,201 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Icon from '../../components/Icon.astro';
+import More from '../../components/More.astro';
+import { posts } from '../../data/posts.js';
+
+// These are research interests, not completed projects or validated results.
+const areas = [
+  {
+    num: '01', tag: 'Research area', title: 'Quantum Computing',
+    paras: [
+      'Quantum computing studies how quantum systems can represent and process information. It introduces concepts such as qubits, superposition, entanglement and quantum measurement.',
+      'Our interest in quantum computing includes understanding its foundational principles, circuit models and potential applications.',
+    ],
+    items: ['Quantum computing fundamentals', 'Quantum circuits and operations', 'Quantum information concepts', 'Potential applications and current limitations'],
+  },
+  {
+    num: '02', tag: 'Research area', title: 'Quantum Algorithms',
+    paras: [
+      'Quantum algorithms describe procedures designed to run on quantum computing systems. Some offer theoretical advantages for particular problems, while others help researchers understand the capabilities and limitations of quantum computation.',
+      'Our interests include understanding established algorithms and exploring how they approach specific computational tasks.',
+    ],
+    items: ['Quantum algorithm fundamentals', "Shor's algorithm", "Grover's algorithm", 'Quantum circuit design and analysis'],
+  },
+  {
+    num: '03', tag: 'Research area', title: 'Quantum Machine Learning',
+    paras: [
+      'Quantum machine learning explores the intersection of quantum computing and machine learning. It investigates whether quantum methods can contribute to selected learning tasks and computational workflows.',
+      'This remains an active research area, and practical advantages depend on the algorithms, hardware, datasets and problems involved.',
+    ],
+    items: ['Fundamentals of quantum machine learning', 'Quantum approaches to learning problems', 'Hybrid quantum-classical methods', 'Potential applications and technical limitations'],
+  },
+];
+
+const audience = [
+  'Students exploring quantum computing',
+  'Developers interested in quantum programming',
+  'Researchers studying quantum algorithms',
+  'Learners exploring quantum machine learning',
+  'Educators and institutions interested in quantum technology',
+  'Organisations interested in technical discussions and potential collaboration',
+];
+
+const faqs = [
+  { q: 'What is quantum computing research?', a: 'Quantum computing research explores the principles, algorithms, hardware and applications of quantum computers, including their capabilities and limitations.' },
+  { q: 'What is quantum machine learning?', a: 'Quantum machine learning is a research area that explores how quantum computing methods may be used in machine learning tasks and how quantum and classical techniques can work together.' },
+  { q: 'Are quantum computers better than classical computers?', a: 'Not for every task. Quantum computers may offer advantages for certain problems, but their performance depends on the problem, algorithm, hardware and implementation.' },
+  { q: 'What are quantum algorithms?', a: "Quantum algorithms are procedures designed to run on quantum computing systems. Examples include Shor's algorithm for integer factorisation and Grover's algorithm for searching an unstructured search space." },
+  { q: 'Can beginners explore quantum computing research?', a: 'Yes. Beginners can start by learning the fundamentals of qubits, quantum gates and circuits before progressing to algorithms, programming and specialised research topics.' },
+  { q: 'Does Sthitha publish research papers?', a: "Refer to Sthitha's official publications or research announcements for verified information about published work. Publication activity should not be inferred from the presence of this page." },
+];
+---
+
+<Base
+  title="Quantum Computing Research | Sthitha Quantum Innovations"
+  description="Explore Sthitha Quantum Innovations' interests in quantum computing research, quantum algorithms and quantum machine learning through technical study and experimentation."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Exploring the Science Behind Quantum Technologies</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Quantum computing is opening new areas of exploration across computation, algorithms and machine learning. Sthitha Quantum Innovations explores these developments through technical study, experimentation and an interest in emerging computational approaches.</p>
+          <p class="page-hero-lede" data-fade style="--d:300ms">Our Research &amp; Innovation initiative focuses on understanding quantum computing concepts, examining quantum algorithms and exploring the relationship between quantum computing and machine learning.</p>
+          <div class="hero-actions" data-fade style="--d:350ms">
+            <a class="btn btn-light" href="#areas">Explore Our Research Areas</a>
+            <a class="btn btn-dark" href="/contact?topic=Research">Contact Sthitha</a>
+          </div>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="flask"></canvas></div>
+      </div>
+    </section>
+
+    <!-- About our research -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">About our research</span>
+        <h2 data-reveal>Understanding What Comes Next</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Quantum computing uses principles of quantum mechanics to process information differently from classical computers. Understanding its capabilities requires continued research into algorithms, hardware, computational methods and practical limitations.</p>
+        <p class="body" data-fade style="--d:80ms">At Sthitha Quantum Innovations, our research interests include quantum computing, quantum machine learning and emerging computational approaches.</p>
+        <p class="body" data-fade style="--d:160ms">We aim to develop our understanding of these fields through technical exploration and continued learning, while examining where quantum technologies may offer useful approaches to specific problems.</p>
+      </div>
+    </section>
+
+    <!-- Research areas -->
+    <section class="section" id="areas">
+      <div class="section-head">
+        <span class="eyebrow">Our research areas</span>
+        <h2 data-reveal>Exploring the Foundations of Quantum Technology</h2>
+        <p data-fade style="--d:200ms">These are areas of interest and ongoing learning, not completed projects or validated results.</p>
+      </div>
+      <div class="cells">
+        {areas.map((a, i) => (
+          <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
+            <div class="cell-num"><span>{a.num}</span><span>{a.tag}</span></div>
+            <h3>{a.title}</h3>
+            {a.paras.map((t) => <p>{t}</p>)}
+            <p class="cell-lead cell-note">Focus areas</p>
+            <ul class="ticks">{a.items.map((it) => <li>{it}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why it matters / experimentation -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Why quantum computing research matters</span>
+        <h2 data-reveal>Beyond Conventional Computational Approaches</h2>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade>
+          <div class="cell-num"><span>Why it matters</span></div>
+          <p>Classical computing remains essential across modern technology. Quantum computing explores a different computational model that may offer advantages for specific tasks, including certain problems in quantum-system simulation and other specialised areas.</p>
+          <p>Research helps determine where these approaches are useful, what limitations remain and what technical developments are still needed. Understanding both the potential and the constraints is important for making informed decisions about future applications.</p>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <div class="cell-num"><span>From concepts to experimentation</span></div>
+          <p>Exploring quantum technologies involves more than understanding theory. Quantum circuits, algorithms and computational models can also be studied through programming tools and simulation environments.</p>
+          <p>A structured learning and experimentation process can help build familiarity with quantum operations, evaluate algorithmic behaviour and understand the practical differences between theoretical models and real quantum hardware.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quantum computing and AI -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Quantum computing and AI</span>
+        <h2 data-reveal>Exploring Quantum Machine Learning</h2>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Artificial intelligence and quantum computing are distinct fields, but research into their intersection has led to quantum machine learning.</p>
+        <p class="body" data-fade style="--d:80ms">This area explores methods that combine quantum computation with machine learning techniques. Researchers investigate possible applications, computational advantages and the challenges of implementing these methods on current hardware.</p>
+        <p class="body" data-fade style="--d:160ms">Quantum machine learning is still developing. Its practical value needs to be assessed for specific tasks rather than assumed to outperform conventional machine learning.</p>
+      </div>
+    </section>
+
+    <!-- Who can connect + collaboration -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Collaboration &amp; research enquiries</span>
+        <h2 data-reveal>Let's Explore New Questions</h2>
+        <p class="body" data-fade style="--d:200ms">Progress in quantum technology depends on continued learning, technical investigation and the exchange of ideas across disciplines.</p>
+        <p class="body" data-fade style="--d:260ms">Sthitha Quantum Innovations welcomes enquiries about quantum computing, quantum machine learning, technical education and potential research collaboration.</p>
+        <More href="/contact?topic=Research">Discuss a Collaboration</More>
+      </div>
+      <div>
+        <p class="body" style="margin-top:0" data-fade>Our research interests may be relevant to:</p>
+        <ul class="ticks" data-fade style="--d:80ms">
+          {audience.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Insights -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Latest from Insights</span>
+        <h2 data-reveal>Explainers and notes.</h2>
+      </div>
+      <div class="posts">
+        {posts.slice(0, 2).map((post, i) => (
+          <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
+            <time datetime={post.date}>{post.dateShort}</time>
+            <div><h2>{post.title}</h2><p>{post.excerpt}</p></div>
+            <span class="more-dot" aria-hidden="true"><Icon name="chev-right" /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="faq-intro">
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2 data-reveal>Quantum computing research, answered.</h2>
+        <p data-fade style="--d:200ms">Learn more <a href="/about">about Sthitha Quantum Innovations</a>, or see how we approach <a href="/aegis">post-quantum security with AEGIS</a>.</p>
+        <More href="/academy/quantum-computing-crash-course">Quantum Computing Crash Course</More>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" aria-expanded="false"><span>{f.q}</span><span class="faq-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></h3>
+            <div class="faq-a"><div><p>{f.a}</p></div></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Explore the Next Questions in Quantum Technology"
+    text="From quantum algorithms to quantum machine learning, emerging computational methods offer important questions to study and understand. Explore Sthitha's initiatives, develop your knowledge through Sthitha Academy or contact us to discuss research interests and potential collaboration."
+  >
+    <a class="btn btn-light" href="/academy">Explore Sthitha Academy</a>
+    <a class="btn btn-dark" href="/contact?topic=Research">Contact Sthitha</a>
+  </Cta>
+</Base>

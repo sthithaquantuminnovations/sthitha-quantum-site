@@ -1,0 +1,221 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+import More from '../components/More.astro';
+
+const pillars = [
+  {
+    num: '01', tag: 'AEGIS', title: 'Post-Quantum Security', href: '/aegis', link: 'Explore AEGIS',
+    paras: [
+      'Quantum computing may eventually affect some cryptographic systems used to protect digital information. Preparing for this possibility starts with understanding where cryptography is used and how future changes could affect security.',
+      'AEGIS focuses on cryptographic discovery, quantum risk awareness and preparation for post-quantum cryptography migration. It explores how organisations can better understand their cryptographic assets and plan for a transition towards quantum-resistant security.',
+    ],
+    label: 'Focus areas',
+    items: [
+      { text: 'Cryptographic asset discovery' },
+      { text: 'Post-quantum security awareness' },
+      { text: 'Cryptographic inventory and visibility' },
+      { text: 'Post-quantum cryptography migration planning' },
+    ],
+  },
+  {
+    num: '02', tag: 'Sthitha Academy', title: 'Quantum Education', href: '/academy', link: 'Explore Sthitha Academy',
+    paras: [
+      'Quantum computing introduces concepts that can be challenging to approach without a clear foundation. Sthitha Academy provides learning resources designed to help learners understand the fundamentals and explore important quantum computing concepts.',
+      'Our current course offerings include an introductory quantum computing crash course and a beginner-focused course in Malayalam.',
+    ],
+    label: 'Courses',
+    items: [
+      { text: 'Quantum Computing Crash Course: Qubits to Shor & Grover', href: '/academy/quantum-computing-crash-course' },
+      { text: 'Quantum Computing in Malayalam: For Beginners', href: '/academy/quantum-computing-malayalam' },
+    ],
+  },
+  {
+    num: '03', tag: 'Research & Innovation', title: 'Exploring Quantum Technologies', href: '/research', link: 'Explore Research & Innovation',
+    paras: [
+      'Research and technical exploration are important to understanding how quantum technologies work and where they may be useful.',
+      'Sthitha explores areas including quantum computing, quantum algorithms and quantum machine learning. This area of work focuses on technical learning, experimentation and examining emerging approaches to computation.',
+    ],
+    label: 'Areas of interest',
+    items: [
+      { text: 'Quantum computing' },
+      { text: 'Quantum algorithms and circuits' },
+      { text: 'Quantum machine learning' },
+      { text: 'Emerging quantum technologies' },
+    ],
+  },
+];
+
+const approach = [
+  { icon: 'book', title: 'Learn', text: 'Build a foundation in quantum computing through accessible educational content and introductory courses.' },
+  { icon: 'atom', title: 'Explore', text: 'Study quantum computing concepts, algorithms and quantum machine learning to understand the technology and its possible applications.' },
+  { icon: 'shield', title: 'Prepare', text: 'Understand emerging security challenges and explore how organisations can prepare for the transition to post-quantum cryptography.' },
+];
+
+const audience = [
+  'Students and beginners exploring quantum computing',
+  'Developers and technology professionals expanding their technical knowledge',
+  'Researchers and educators interested in quantum technology',
+  'Organisations exploring post-quantum security and cryptographic readiness',
+  'Institutions interested in education, research and technology collaboration',
+];
+---
+
+<Base
+  title="About Sthitha Quantum Innovations | Quantum Technology Company in India"
+  description="Discover Sthitha Quantum Innovations, a quantum technology company in India focused on quantum computing, post-quantum security, education and research."
+>
+  <div class="frame">
+    <section class="page-hero">
+      <div class="page-hero-body">
+        <div>
+          <h1 data-reveal>Exploring Technology Beyond the Classical Era</h1>
+          <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha Quantum Innovations is a quantum technology company in India focused on quantum computing, post-quantum security, education and research. We explore emerging technologies, make complex concepts more accessible, and develop initiatives that connect technical knowledge with practical challenges.</p>
+          <div class="hero-actions" data-fade style="--d:350ms"><a class="btn btn-light" href="#work">Explore Our Work</a></div>
+        </div>
+        <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="trio"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2 data-reveal>A Company Focused on the Quantum Era</h2>
+        <p class="body" data-fade style="--d:200ms">Quantum technologies are opening new areas of exploration in computing, cybersecurity and scientific research. Understanding these developments requires technical knowledge, continued learning and preparation for the changes they may bring.</p>
+        <p class="body" data-fade style="--d:280ms">Sthitha Quantum Innovations brings together three areas of work: <a href="/aegis"><b>AEGIS</b></a> for post-quantum security, <a href="/academy"><b>Sthitha Academy</b></a> for quantum education, and <a href="/research"><b>Research &amp; Innovation</b></a> for exploring quantum computing and related technologies.</p>
+        <p class="body" data-fade style="--d:360ms">Our focus is on learning, technical exploration and building a stronger understanding of the opportunities and challenges associated with the quantum era.</p>
+      </div>
+      <figure class="media" data-fade>
+        <img src="/assets/images/company-story-image.webp" alt="Sthitha Quantum Innovations initiatives in quantum computing, post-quantum security and quantum education." width="600" height="380" loading="lazy" />
+        <figcaption>
+          <span class="eyebrow">One company</span>
+          <strong>Three areas of work</strong>
+          <span>AEGIS · Sthitha Academy · Research &amp; Innovation</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Mission and vision -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Mission &amp; vision</span>
+        <h2 data-reveal>Where we are heading, and how.</h2>
+      </div>
+      <div class="cells" style="--cols:2">
+        <div class="cell" data-fade>
+          <div class="cell-num"><span>Our mission</span></div>
+          <p class="cell-big" style="color:var(--text)">Making Quantum Technology More Accessible and Practical</p>
+          <p>Our mission is to contribute to the understanding and development of emerging quantum technologies through education, security-focused initiatives and research exploration.</p>
+          <p>We aim to make quantum computing easier to approach for learners, help organisations understand the importance of post-quantum security, and explore technical ideas that may contribute to future applications.</p>
+        </div>
+        <div class="cell" data-fade style="--d:90ms">
+          <div class="cell-num"><span>Our vision</span></div>
+          <p class="cell-big" style="color:var(--text)">Preparing for a Quantum-Enabled Future</p>
+          <p>We envision a future where knowledge of quantum computing and quantum security is more accessible to learners, engineers, researchers and organisations.</p>
+          <p>Through education, research exploration and security awareness, Sthitha aims to contribute to a more informed and prepared technology community.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What we do -->
+    <section class="section" id="work">
+      <div class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2 data-reveal>Three Areas of Work. One Direction.</h2>
+      </div>
+      <div class="cells">
+        {pillars.map((p, i) => (
+          <article class="cell area" data-fade style={`--d:${i * 90}ms`}>
+            <div class="cell-num"><span>{p.num}</span><span>{p.tag}</span></div>
+            <h3>{p.title}</h3>
+            {p.paras.map((t) => <p>{t}</p>)}
+            <p class="cell-lead cell-note">{p.label}</p>
+            <ul class="ticks">
+              {p.items.map((it) => <li>{it.href ? <a href={it.href}>{it.text}</a> : it.text}</li>)}
+            </ul>
+            <More href={p.href}>{p.link}</More>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why quantum matters -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Why quantum technology matters</span>
+        <h2 data-reveal>Understanding the Opportunities and Challenges Ahead</h2>
+      </div>
+      <div>
+        <p class="body" data-fade>Quantum computing takes a different approach to computation by using quantum-mechanical principles. It may offer advantages for certain problems, while also introducing technical limitations and new security considerations.</p>
+        <p class="body" data-fade style="--d:80ms">Quantum technologies are not a replacement for every classical computing system. Their potential depends on the problem, the hardware, the algorithms and the stage of technological development.</p>
+        <p class="body" data-fade style="--d:160ms">At Sthitha, we explore this changing landscape through quantum education, research interests and post-quantum security initiatives. We believe that informed learning and preparation are important as the field develops.</p>
+      </div>
+    </section>
+
+    <!-- Our approach -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Our approach</span>
+        <h2 data-reveal>Learn. Explore. Prepare.</h2>
+        <p data-fade style="--d:200ms">These three principles connect our work across education, research and security.</p>
+      </div>
+      <div class="cells">
+        {approach.map((item, i) => (
+          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+            <Icon name={item.icon} class="lead" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Who we engage with -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Who we aim to engage with</span>
+        <h2 data-reveal>Connecting Knowledge with Opportunity</h2>
+        <p class="body" data-fade style="--d:200ms">Sthitha welcomes engagement from people and organisations interested in quantum technologies. Our initiatives provide different starting points depending on each person's interests and goals.</p>
+      </div>
+      <ul class="ticks" data-fade>
+        {audience.map((a) => <li>{a}</li>)}
+      </ul>
+    </section>
+
+    <!-- Collaboration and community -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Collaboration &amp; community</span>
+        <h2 data-reveal>Moving Forward Through Shared Knowledge</h2>
+      </div>
+      <div>
+        <p class="body" data-fade>Quantum technology spans computing, mathematics, physics, cybersecurity and engineering. Progress in these fields benefits from the exchange of knowledge and ideas.</p>
+        <p class="body" data-fade style="--d:80ms">Sthitha welcomes conversations about quantum education, technical research, post-quantum security and potential collaboration with relevant individuals and organisations.</p>
+        <More href="/contact">Discuss a Collaboration</More>
+      </div>
+    </section>
+
+    <!-- Looking ahead -->
+    <section class="split top">
+      <div>
+        <span class="eyebrow">Looking ahead</span>
+        <h2 data-reveal>Building Understanding for the Quantum Era</h2>
+      </div>
+      <div>
+        <p class="body" data-fade>The quantum era will develop through continued research, engineering, education and security preparation. Understanding the technology today can help people and organisations make more informed decisions as the field progresses.</p>
+        <p class="body" data-fade style="--d:80ms">Sthitha Quantum Innovations will continue exploring these areas through its initiatives in quantum security, education and research.</p>
+        <More href="#work">Discover Our Initiatives</More>
+      </div>
+    </section>
+  </div>
+
+  <Cta
+    title="Find Your Starting Point in Quantum Technology"
+    text="Whether you want to learn quantum computing, understand post-quantum security or discuss a research and technology collaboration, explore how Sthitha's initiatives connect with your interests."
+  >
+    <a class="btn btn-light" href="#work">Explore Our Work</a>
+    <a class="btn btn-dark" href="/contact">Contact Sthitha</a>
+  </Cta>
+</Base>

@@ -1,0 +1,47 @@
+---
+import Icon from '../Icon.astro';
+import { courses } from '../../data/site.js';
+---
+
+<section class="section" id="ecosystem">
+  <div class="section-head">
+    <span class="eyebrow is-brand">Better together</span>
+    <h2 data-reveal>Connecting through <span class="hl">technology and learning.</span></h2>
+    <p data-fade style="--d:200ms">Sthitha engages with the wider technology and academic community through events, knowledge sharing and opportunities for collaboration.</p>
+  </div>
+</section>
+
+<section class="section proof" data-carousel aria-roledescription="carousel" aria-label="Events and partnerships" tabindex="0">
+  <div class="proof-main">
+    <div class="proof-slides">
+
+      <div class="proof-slide active">
+        <div class="proof-stat"><strong class="hl" data-reveal>Sthitha Academy</strong><span data-reveal style="--d:120ms">{courses.length} courses · Quantum education</span></div>
+        <div class="proof-quote">
+          <blockquote data-reveal style="--d:200ms">Sthitha Academy offers an introductory quantum computing crash course and a <span class="hl">beginner course in Malayalam</span>, designed to make the fundamentals easier to approach.</blockquote>
+          <cite>Quantum Education</cite>
+          <small><a href="/academy">Explore Sthitha Academy</a></small>
+        </div>
+      </div>
+
+      <div class="proof-slide">
+        <div class="proof-stat"><strong class="hl" data-reveal>Partnerships</strong><span data-reveal style="--d:120ms">Progress through collaboration</span></div>
+        <div class="proof-quote">
+          <blockquote data-reveal style="--d:200ms">Quantum technology develops through contributions from researchers, educators, engineers and organisations. Sthitha welcomes conversations around <span class="hl">academic, research and technology collaboration.</span></blockquote>
+          <cite>Collaboration</cite>
+          <small><a href="/partnerships">Explore Partnerships</a></small>
+        </div>
+      </div>
+
+    </div>
+    <div class="proof-nav">
+      <button type="button" data-prev aria-label="Previous"><Icon name="chev-left" /></button>
+      <button type="button" data-next aria-label="Next"><Icon name="chev-right" /></button>
+    </div>
+  </div>
+  <div class="proof-art" aria-hidden="true">
+    <img src="/assets/images/hero-atom-3d.webp" alt="" width="900" height="900" loading="lazy" />
+    <img class="ghost" style="--h:-40deg" src="/assets/images/hero-atom-3d.webp" alt="" loading="lazy" />
+    <img class="ghost" style="--h:170deg" src="/assets/images/hero-atom-3d.webp" alt="" loading="lazy" />
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import { areas, courses, company } from '../data/site.js';
+
+const columns = [
+  { title: 'Our Work', links: areas.map((a) => ({ label: a.name, href: a.href })) },
+  { title: 'Sthitha Academy', links: courses.map((c) => ({ label: c.title, href: c.href })) },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Sthitha', href: '/about' },
+      { label: 'Events', href: '/events' },
+      { label: 'Partnerships', href: '/partnerships' },
+      { label: 'Insights', href: '/research/insights' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
+const social = company.social.filter((s) => s.href);
+---
+
+<footer class="site-footer">
+  <div class="frame">
+    <div class="footer-cols">
+      {columns.map((col) => (
+        <div>
+          <h3>{col.title}</h3>
+          <ul>{col.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}</ul>
+        </div>
+      ))}
+      <div>
+        <h3>Connect</h3>
+        <ul>
+          <li><a href={`mailto:${company.email}`}>Email<Icon name="arrow-ur" /></a></li>
+          {social.map((link) => <li><a href={link.href} rel="noopener" target="_blank">{link.label}<Icon name="arrow-ur" /></a></li>)}
+          <li><a href="/contact">Contact form</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-status"><span class="status">{company.location}</span><span class="mono">Quantum · Security · Education · Research</span></div>
+    </div>
+
+    <div class="footer-mark" aria-hidden="true"><img src="/assets/images/sthitha-logo-watermark.webp" alt="" width="720" height="291" loading="lazy" decoding="async" /></div>
+
+    <div class="footer-legal">
+      <span>© 2026 {company.legalName}. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a><i>/</i><a href="/terms-and-conditions">Terms &amp; Conditions</a><i>/</i><a href="/cookie-policy">Cookie Policy</a></span>
+    </div>
+    <p class="footer-addr">AEGIS, Sthitha Academy and Research &amp; Innovation are initiatives of {company.legalName}, {company.location}.</p>
+  </div>
+</footer>

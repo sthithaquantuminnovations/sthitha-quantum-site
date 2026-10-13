@@ -1,0 +1,29 @@
+---
+import Icon from '../Icon.astro';
+import More from '../More.astro';
+
+const areas = [
+  { icon: 'atom', title: 'Quantum Computing', text: 'Exploring quantum principles, circuits and algorithms.' },
+  { icon: 'layers', title: 'Quantum Machine Learning', text: 'Exploring the relationship between quantum computing and machine learning.' },
+  { icon: 'flask', title: 'Experiment & Explore', text: 'Investigating emerging ideas through technical experimentation and applied learning.' },
+];
+---
+
+<section class="section" id="research">
+  <div class="section-head">
+    <span class="eyebrow is-brand">Ideas worth testing</span>
+    <h2 data-reveal>Exploring <span class="hl">what comes next.</span></h2>
+    <p data-fade style="--d:200ms">Sthitha explores quantum computing and quantum machine learning through technical research, experimentation and applied learning.</p>
+    <More href="/research" data-fade style="--d:300ms">Explore Research</More>
+  </div>
+
+  <div class="cells">
+    {areas.map((area, i) => (
+      <div class="cell" data-fade style={`--d:${i * 90}ms`}>
+        <Icon name={area.icon} class="lead" />
+        <h3>{area.title}</h3>
+        <p>{area.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

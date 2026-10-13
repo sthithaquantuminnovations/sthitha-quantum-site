@@ -1,0 +1,42 @@
+---
+import Icon from '../Icon.astro';
+import More from '../More.astro';
+
+// Where cryptographic assets live. Categories only: no vendors, no customers.
+const sources = [
+  { icon: 'code', name: 'Applications', tag: 'code', note: 'libraries, binaries' },
+  { icon: 'database', name: 'Databases', tag: 'data', note: 'encryption at rest' },
+  { icon: 'plug', name: 'APIs', tag: 'transit', note: 'encryption in transit' },
+  { icon: 'cloud', name: 'Cloud systems', tag: 'cloud', note: 'keys, managed services' },
+  { icon: 'tower', name: 'Network infrastructure', tag: 'network', note: 'TLS, VPN' },
+  { icon: 'id', name: 'Identity systems', tag: 'identity', note: 'certificates, PKI' },
+  { icon: 'shield', name: 'Security infrastructure', tag: 'security', note: 'key management' },
+];
+const tiles = ['RSA', 'ECC', 'SHA', 'ML-KEM', 'ML-DSA', 'TLS', 'VPN', 'PKI', 'KEYS', 'CERTS', 'API', 'PQC'];
+---
+
+<section class="section split">
+  <div>
+    <span class="eyebrow is-brand">See the whole picture</span>
+    <h2 data-reveal>Understand where <span class="hl">cryptography lives.</span></h2>
+    <p class="split-lede" data-fade style="--d:200ms">Cryptographic assets can exist across applications, databases, APIs, cloud environments, networks and identity systems. Understanding these dependencies can help organisations plan their post-quantum migration.</p>
+    <More href="/aegis" data-fade style="--d:300ms">Explore AEGIS</More>
+  </div>
+
+  <div class="panel" data-fade aria-hidden="true">
+    <div class="panel-head">Where cryptographic assets exist</div>
+    <div class="panel-body">
+      <div class="panel-list">
+        <ul data-loop>
+          {sources.map((s) => (
+            <li><span class="panel-ico"><Icon name={s.icon} /></span><div><strong>{s.name}</strong><small><b>{s.tag}</b><i>•</i>{s.note}</small></div></li>
+          ))}
+        </ul>
+      </div>
+      <div class="panel-tiles">
+        {tiles.map((t) => <span class="tile">{t}</span>)}
+      </div>
+    </div>
+    <div class="panel-foot"><span><b>ML-KEM</b> FIPS 203</span><span><b>ML-DSA</b> FIPS 204</span><span class="panel-add">Post-quantum readiness <Icon name="plus" /></span></div>
+  </div>
+</section>
