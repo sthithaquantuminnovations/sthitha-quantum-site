@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^5.0.3",
     "astro": "^7.3.6"
   }
 }

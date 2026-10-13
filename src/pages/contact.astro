@@ -46,7 +46,7 @@ const social = company.social.filter((s) => s.href);
       <div id="contact-form">
         <h2 data-reveal>Tell Us a Little About It</h2>
         <p class="body" style="margin:0 0 28px;max-width:520px;color:var(--muted);font-size:16px;line-height:24px">Use the form below to share your question or proposal. Choose the relevant topic so we can better understand your enquiry.</p>
-        <form action="/contact-handler.php" method="post" data-ajax>
+        <form id="contact-enquiry-form" data-emailjs-form>
           <label class="field"><span>Full Name *</span><input type="text" name="fullName" placeholder="Your name" autocomplete="name" required /></label>
           <label class="field"><span>Email Address *</span><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required /></label>
           <label class="field"><span>Organisation (Optional)</span><input type="text" name="org" placeholder="Organisation or institution" autocomplete="organization" /></label>
@@ -98,6 +98,7 @@ const social = company.social.filter((s) => s.href);
 </Base>
 
 <script>
+  import '../scripts/contact-form.js';
   // Pre-select the enquiry type when arriving from a link such as /contact?topic=AEGIS.
   // Older short names map onto the current enquiry types.
   const select = document.querySelector('[data-topic-select]');
