@@ -5,6 +5,7 @@ const CONFIG = {
   serviceId: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
   templateId: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
   publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
+  
 };
 
 const SELECTORS = {
@@ -20,6 +21,9 @@ const MESSAGES = {
     'We could not send your enquiry. Please try again or email us directly.',
   spam: 'Your enquiry could not be submitted.',
   sending: 'Sending your enquiry...',
+  captchaRequired: 'Please complete the reCAPTCHA verification.',
+  captchaUnavailable:
+    'Security verification could not load. Please refresh the page and try again.',
 };
 
 function isConfigured() {
@@ -39,10 +43,30 @@ function setStatus(element, message, type = '') {
   }
 }
 
+function getCaptchaResponse() {
+  if (
+    typeof window.grecaptcha === 'undefined' ||
+    typeof window.grecaptcha.getResponse !== 'function'
+  ) {
+    return null;
+  }
+
+  return window.grecaptcha.getResponse();
+}
+
+function resetCaptcha() {
+  if (
+    typeof window.grecaptcha !== 'undefined' &&
+    typeof window.grecaptcha.reset === 'function'
+  ) {
+    window.grecaptcha.reset();
+  }
+}
+
 function initialiseContactForm() {
   const form = document.querySelector(SELECTORS.form);
 
-  // This module should do nothing on pages without the contact form.
+  // Do nothing on pages without the contact form.
   if (!form) return;
 
   const status = form
@@ -74,12 +98,26 @@ function initialiseContactForm() {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    // Prevent accidental duplicate submissions.
+    // Prevent duplicate submissions.
     if (isSubmitting) return;
 
-    // Keep the existing hidden honeypot field for basic bot filtering.
+    // Preserve honeypot spam filtering.
     if (honeypot?.value.trim()) {
       setStatus(status, MESSAGES.spam, 'err');
+      return;
+    }
+
+    // Verify that Google reCAPTCHA has loaded.
+    const captchaResponse = getCaptchaResponse();
+
+    if (captchaResponse === null) {
+      setStatus(status, MESSAGES.captchaUnavailable, 'err');
+      return;
+    }
+
+    // Require a completed CAPTCHA before submitting.
+    if (!captchaResponse) {
+      setStatus(status, MESSAGES.captchaRequired, 'err');
       return;
     }
 
@@ -104,12 +142,18 @@ function initialiseContactForm() {
       );
 
       setStatus(status, MESSAGES.success, 'ok');
+
+      // Clear submitted fields and reset the CAPTCHA.
       form.reset();
+      resetCaptcha();
     } catch (error) {
-      // Keep detailed diagnostics in the browser console, not in the UI.
+      // Log diagnostic details without exposing them to visitors.
       console.error('EmailJS contact submission failed:', error);
 
       setStatus(status, MESSAGES.failure, 'err');
+
+      // Require a fresh CAPTCHA for another attempt.
+      resetCaptcha();
     } finally {
       isSubmitting = false;
       submitButton.disabled = false;

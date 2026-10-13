@@ -58,6 +58,14 @@ const social = company.social.filter((s) => s.href);
           <label class="field"><span>Subject (Optional)</span><input type="text" name="subject" placeholder="What is this about?" /></label>
           <label class="field"><span>Message *</span><textarea name="message" placeholder="How can we help?" required></textarea></label>
           <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          <!-- Google reCAPTCHA v2 checkbox -->
+          <div class="recaptcha-container">
+            <div
+              class="g-recaptcha"
+              data-sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+            ></div>
+          </div>
+
           <button class="btn btn-light" type="submit">Send Message</button>
         </form>
         <p class="form-note" style="margin-top:14px;font-size:13px;line-height:19px;color:var(--dim);max-width:520px">Your details will be used to respond to your enquiry. Please do not include passwords or confidential technical information.</p>
@@ -117,3 +125,9 @@ const social = company.social.filter((s) => s.href);
   };
   choose(new URLSearchParams(location.search).get('topic'));
 </script>
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js"
+  async
+  defer
+></script>
