@@ -1,0 +1,10 @@
+---
+import { posts } from '../../data/posts.js';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+return Astro.redirect(`/research/insights/${slug}`, 301);
+---

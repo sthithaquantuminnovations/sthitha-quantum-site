@@ -1,14 +1,35 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import More from '../../../components/More.astro';
+import Icon from '../../../components/Icon.astro';
 import { posts } from '../../../data/posts.js';
 
 export function getStaticPaths() {
-  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+  return posts.map((post, index) => {
+    const nextPost = index > 0 ? posts[index - 1] : null; // newer post
+    const prevPost = index < posts.length - 1 ? posts[index + 1] : null; // older post
+    const relatedPosts = posts
+      .filter((p) => p.slug !== post.slug)
+      .slice(0, 3);
+
+    return {
+      params: { slug: post.slug },
+      props: { post, prevPost, nextPost, relatedPosts },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content } = post;
+const headings = typeof post.getHeadings === 'function' ? post.getHeadings() : [];
+const tocHeadings = headings.filter((h: any) => h.depth === 2);
+const articleUrl = `https://sthithaquantum.com/research/insights/${post.slug}`;
+const shareText = encodeURIComponent(`${post.title} via @SthithaQuantum`);
+const shareUrl = encodeURIComponent(articleUrl);
+
+// Contextual CTA mapping
+const isSecurity = post.category === 'Post-Quantum Security';
+const isAcademy = post.category === 'Quantum Computing' || post.category === 'Quantum Algorithms';
 ---
 
 <Base title={`${post.title} | Sthitha Quantum Innovations`} description={post.excerpt}>
@@ -17,24 +38,213 @@ const { Content } = post;
       <header class="page-hero">
         <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
           <div>
-            <h1 data-reveal style="max-width:900px">{post.title}</h1>
+            <p class="crumbs" data-fade>
+              <a href="/">Home</a><i>/</i>
+              <a href="/research/insights">Insights</a><i>/</i>
+              <span>{post.category}</span>
+            </p>
+
+            <div class="article-badges" data-fade style="--d:100ms">
+              <span class="article-badge is-category">{post.category}</span>
+              <span class="article-badge is-time">
+                <Icon name="clock" /> {post.readingTime}
+              </span>
+            </div>
+
+            <h1 data-reveal style="max-width:960px">{post.title}</h1>
             <p class="page-hero-lede" data-fade style="--d:250ms">{post.excerpt}</p>
           </div>
         </div>
       </header>
+
       <div class="article">
         <aside class="article-meta">
           <More href="/research/insights" back>All insights</More>
+
           <dl>
             <div><dt>Published</dt><dd><time datetime={post.date}>{post.dateLong}</time></dd></div>
+            <div><dt>Estimated Read</dt><dd>{post.readingTime}</dd></div>
             <div><dt>Author</dt><dd>{post.author}</dd></div>
-            <div><dt>Category</dt><dd>{post.category}</dd></div>
+            <div><dt>Discipline</dt><dd>{post.category}</dd></div>
           </dl>
+
+          {tocHeadings.length > 0 && (
+            <div class="article-toc">
+              <details class="article-toc-details">
+                <summary class="article-toc-summary">
+                  <span class="article-toc-title">Table of contents ({tocHeadings.length} sections)</span>
+                  <span class="toc-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
+                </summary>
+                <ul class="article-toc-list">
+                  {tocHeadings.map((h: any) => (
+                    <li>
+                      <a href={`#${h.slug}`}>{h.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
+          )}
+
+          <div class="article-share">
+            <span class="article-share-title">Share this insight</span>
+            <div class="share-buttons">
+              <button class="share-btn js-copy-link" type="button" data-url={articleUrl}>
+                <Icon name="copy" /> Copy link
+              </button>
+              <a
+                class="share-btn"
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                class="share-btn"
+                href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X (Twitter)
+              </a>
+            </div>
+            <span class="copy-feedback js-copy-feedback">Link copied to clipboard!</span>
+          </div>
         </aside>
+
         <div class="article-body">
+          <div class="key-takeaways">
+            <div class="key-takeaways-head">
+              <Icon name="check" /> Key Takeaway
+            </div>
+            <p>{post.excerpt}</p>
+          </div>
+
           <Content />
+
+          {isSecurity && (
+            <div class="article-cta-box">
+              <div>
+                <h3>Prepare Your Cryptographic Architecture for Post-Quantum Resilience</h3>
+                <p>AEGIS provides automated cryptographic discovery, quantum risk analysis, and migration planning for enterprise networks.</p>
+              </div>
+              <a class="btn btn-light" href="/aegis">Explore AEGIS</a>
+            </div>
+          )}
+
+          {isAcademy && (
+            <div class="article-cta-box">
+              <div>
+                <h3>Master Quantum Computing with Sthitha Academy</h3>
+                <p>Learn qubits, circuits, and quantum algorithms through structured courses and interactive circuit simulations.</p>
+              </div>
+              <a class="btn btn-light" href="/academy">Explore Courses</a>
+            </div>
+          )}
+
+          {!isSecurity && !isAcademy && (
+            <div class="article-cta-box">
+              <div>
+                <h3>Collaborate on Quantum Research &amp; Innovation</h3>
+                <p>Explore our ongoing technical studies in quantum machine learning, algorithms, and computational modeling.</p>
+              </div>
+              <a class="btn btn-light" href="/research">Explore Research</a>
+            </div>
+          )}
+
+          <div class="article-author-card">
+            <div class="author-avatar" aria-hidden="true">
+              <Icon name="atom" />
+            </div>
+            <div class="author-info">
+              <strong>{post.author}</strong>
+              <span>Research, Engineering &amp; Quantum Security Division · Bengaluru, India</span>
+            </div>
+          </div>
+
+          <nav class="article-pager" aria-label="Adjacent Articles">
+            {prevPost ? (
+              <a class="pager-item prev" href={`/research/insights/${prevPost.slug}`}>
+                <span class="pager-label">← Previous Insight</span>
+                <span class="pager-title">{prevPost.title}</span>
+              </a>
+            ) : <div />}
+
+            {nextPost ? (
+              <a class="pager-item next" href={`/research/insights/${nextPost.slug}`}>
+                <span class="pager-label">Next Insight →</span>
+                <span class="pager-title">{nextPost.title}</span>
+              </a>
+            ) : <div />}
+          </nav>
         </div>
       </div>
     </article>
+
+    {relatedPosts.length > 0 && (
+      <section class="related-section">
+        <div class="section-head">
+          <span class="eyebrow">Continue reading</span>
+          <h2>Related Insights &amp; Explainers</h2>
+          <p>Explore more technical analyses from Sthitha Quantum Innovations.</p>
+        </div>
+        <div class="related-grid">
+          {relatedPosts.map((rel) => (
+            <a class="related-card" href={`/research/insights/${rel.slug}`}>
+              <div class="related-card-top">
+                <time datetime={rel.date}>{rel.dateLong}</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">{rel.category}</span>
+                <h3>{rel.title}</h3>
+                <p>{rel.excerpt}</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <Icon name="arrow-ur" />
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
   </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sync TOC open state with desktop width
+      function syncArticleToc() {
+        const d = document.querySelector('.article-toc-details');
+        if (d && window.innerWidth >= 900) {
+          d.setAttribute('open', '');
+        }
+      }
+      syncArticleToc();
+      window.addEventListener('resize', syncArticleToc);
+
+      // Auto-close on mobile when clicking TOC jump links
+      document.querySelectorAll('.article-toc-list a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (window.innerWidth < 900) {
+            const d = a.closest('.article-toc-details');
+            if (d) d.removeAttribute('open');
+          }
+        });
+      });
+
+      const copyBtn = document.querySelector('.js-copy-link');
+      const feedback = document.querySelector('.js-copy-feedback');
+      if (copyBtn && feedback) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            feedback.style.display = 'block';
+            setTimeout(() => {
+              feedback.style.display = 'none';
+            }, 3000);
+          } catch (e) {
+            console.error('Failed to copy', e);
+          }
+        });
+      }
+    });
+  </script>
 </Base>

@@ -91,6 +91,10 @@ const faqs = [
           <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
             <time datetime={post.date}>{post.dateShort}</time>
             <div>
+              <div class="article-badges" style="margin-bottom:8px">
+                <span class="article-badge is-category">{post.category}</span>
+                <span class="article-badge is-time">{post.readingTime}</span>
+              </div>
               <h2>{post.title}</h2>
               <p>{post.excerpt}</p>
             </div>
