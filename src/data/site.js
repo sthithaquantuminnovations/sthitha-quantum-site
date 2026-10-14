@@ -7,11 +7,19 @@ export const company = {
   name: 'Sthitha Quantum Innovations',
   legalName: 'Sthitha Quantum Innovations Pvt Ltd',
   location: 'Bengaluru, India',
+  offices: [
+    {
+      label: 'Head Office',
+      address: 'Landmark Towers, MG Road, Bangalore, Karnataka – 560001, India',
+      mapQuery: 'Landmark Towers, MG Road, Bangalore, Karnataka 560001, India',
+    },
+  ],
   email: 'sthithaquantuminnovations@gmail.com',
   // Add the official profile URLs here; a link only appears once its URL is set.
   social: [
-    { label: 'LinkedIn', href: '' },
-    { label: 'YouTube', href: '' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd' },
+    { label: 'Instagram', href: 'https://www.instagram.com/sthithaquantuminnovations/' },
+    { label: 'YouTube', href: 'https://www.youtube.com/channel/UCHVDDfnEUWhN9CKBxt1ICRw' },
   ],
 };
 

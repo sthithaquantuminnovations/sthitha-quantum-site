@@ -5,58 +5,70 @@ import Base from '../layouts/Base.astro';
 const teamMembers = [
   {
     name: 'Anil Achoora',
-    photo: '/assets/team/Anil Achoora.png',
-    role: 'Director ',
+    photo: '/assets/team/anil-achoora.webp',
+    role: 'Director',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'A',
-    linkedIn: '',
+    linkedIn: 'https://www.linkedin.com/in/anil-achoora-550a8a35',
   },
   {
-    name: 'Dr.Bhowmik Kaustav',
-    photo: '/assets/team/Dr Bhowmik Kaustav.png',
-    role: 'Director ',
+    name: 'Dr. Bhowmik Kaustav',
+    photo: '/assets/team/dr-bhowmik-kaustav.webp',
+    role: 'Director',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'B',
     linkedIn: '',
   },
   {
     name: 'Asif Shah',
-    photo: '/assets/team/Asif Shah.png',
+    photo: '/assets/team/asif-shah.webp',
     photoPosition: 'center top',
     role: 'Research Head',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'A',
-    linkedIn: '',
+    linkedIn: 'https://www.linkedin.com/in/asif-shah-a9ab90183/',
+    scholar: 'https://scholar.google.com/citations?user=ZlI6XToAAAAJ&hl=en&oi=ao',
+    highlights: [
+      "Awarded the Prime Minister's Research Fellowship (PMRF) during Ph.D.",
+      'Research internship at imec, Belgium',
+    ],
+    // Add a `title` to each paper once confirmed; until then the publisher name is shown.
+    publications: [
+      { publisher: 'Nature Portfolio', href: 'https://www.nature.com/articles/s41699-024-00518-0' },
+      { publisher: 'ACS Applied Materials & Interfaces', href: 'https://pubs.acs.org/aamick/article-abstract/18/14/20763/5142477/Revealing-the-Origins-of-Thermally-Induced-Anomaly?redirectedFrom=fulltext' },
+      { publisher: 'IEEE Xplore', href: 'https://ieeexplore.ieee.org/abstract/document/10299616' },
+      { publisher: 'Springer', href: 'https://link.springer.com/article/10.1007/s11554-020-01008-4' },
+    ],
   },
   {
     name: 'Rantish',
-    role: 'CTO ',
+    role: 'CTO',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'R',
     linkedIn: '',
   },
   {
     name: 'Farhan',
-    photo: '/assets/team/Farhan.png',
-    role: 'CFO ',
+    photo: '/assets/team/farhan.webp',
+    role: 'CFO',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'F',
-    linkedIn: '',
+    linkedIn: 'https://www.linkedin.com/in/k-muhammed-farhaan-169956234',
   },
   {
     name: 'Punya Jayarajan',
-    role: 'Creative Design Head ',
+    role: 'Creative Design Head',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'P',
-    linkedIn: '',
+    linkedIn: 'https://www.linkedin.com/in/punya-jayarajan',
   },
   {
     name: 'Harigovind M',
-    photo: '/assets/team/Harigovind M.png',
-    role: 'Marketing Head ',
+    photo: '/assets/team/harigovind-m.webp',
+    role: 'Marketing Head',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'H',
-    linkedIn: '',
+    linkedIn: 'https://www.linkedin.com/in/harigovind-m',
   },
 ];
 ---
@@ -113,7 +125,7 @@ const teamMembers = [
           >
             <div class="member-portrait">
               {member.photo ? (
-                <img src={encodeURI(member.photo)} alt={member.name} loading="lazy" style={member.photoPosition ? `object-position: ${member.photoPosition}` : undefined} />
+                <img src={member.photo} alt={member.name} width="800" loading="lazy" decoding="async" style={member.photoPosition ? `object-position: ${member.photoPosition}` : undefined} />
               ) : (
                 <svg class="portrait-silhouette" viewBox="0 0 120 120" aria-hidden="true">
                   <circle cx="60" cy="44" r="19" />
@@ -129,33 +141,50 @@ const teamMembers = [
                   <p class="member-role">{member.role}</p>
                 </div>
 
-                {member.linkedIn && (
-                  <a
-                    class="member-social"
-                    href={member.linkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View ${member.name} on LinkedIn`}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 17.5V9.2H5.58v8.3h2.76ZM6.96 8.07a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM18.42 17.5v-4.55c0-2.44-1.3-3.58-3.03-3.58a2.62 2.62 0 0 0-2.36 1.3V9.2h-2.76v8.3h2.76v-4.1c0-1.08.2-2.12 1.54-2.12s1.36 1.23 1.36 2.19v4.03h2.49Z"/>
-                    </svg>
-                  </a>
-                )}
               </div>
 
-              
+              {(member.linkedIn || member.scholar) && (
+                <div class="member-links">
+                  {member.linkedIn && (
+                    <a class="member-link" href={member.linkedIn} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on LinkedIn (opens in a new tab)`} title="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 17.5V9.2H5.58v8.3h2.76ZM6.96 8.07a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM18.42 17.5v-4.55c0-2.44-1.3-3.58-3.03-3.58a2.62 2.62 0 0 0-2.36 1.3V9.2h-2.76v8.3h2.76v-4.1c0-1.08.2-2.12 1.54-2.12s1.36 1.23 1.36 2.19v4.03h2.49Z"/></svg>
+                    </a>
+                  )}
+                  {member.scholar && (
+                    <a class="member-link" href={member.scholar} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on Google Scholar (opens in a new tab)`} title="Google Scholar">
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm-6 9.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3Z"/></svg>
+                    </a>
+                  )}
+                </div>
+              )}
+
+              {member.highlights && (
+                <details class="member-more">
+                  <summary>Highlights &amp; publications</summary>
+                  <div class="member-more-panel">
+                  <ul class="more-highlights">
+                    {member.highlights.map((item) => <li>{item}</li>)}
+                  </ul>
+                  {member.publications && (
+                    <ol class="more-papers">
+                      {member.publications.map((pub) => (
+                        <li>
+                          <a href={pub.href} target="_blank" rel="noopener noreferrer">
+                            <span class="paper-title">{pub.title || 'Read the paper'}</span>
+                            <span class="paper-venue">{pub.publisher}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                  </div>
+                </details>
+              )}
             </div>
           </article>
         ))}
       </div>
     </section>
-
-    
   </div>
 </Base>
 
@@ -621,5 +650,272 @@ const teamMembers = [
 
   .team-hero {
     background: none;
+  }
+
+  /* Labelled profile links, highlights and publications */
+  .member-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .member-link {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line-2);
+    border-radius: 50%;
+    color: var(--text);
+    line-height: 1;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  .member-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .member-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Profile icons sit in the top-right corner of the card */
+  .team-card {
+    position: relative;
+    align-self: flex-start;
+  }
+
+  .member-links {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .member-link {
+    width: 34px;
+    height: 34px;
+    background: rgb(17 15 13 / 72%);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Name and role sit close together */
+  .member-heading h3 {
+    line-height: 1.2;
+  }
+
+  .member-role {
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+
+  /* Highlights and publications at the bottom of the card */
+  .member-more {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .member-more summary {
+    cursor: pointer;
+    color: var(--accent);
+    text-align: center;
+  }
+
+  .more-highlights {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .more-highlights li {
+    position: relative;
+    padding-left: 14px;
+  }
+
+  .more-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .more-papers {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .more-papers li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .more-papers a {
+    display: block;
+    padding: 10px 0;
+    color: var(--text);
+    transition: color 180ms ease;
+  }
+
+  .more-papers a:hover {
+    color: var(--accent);
+  }
+
+  .paper-title {
+    display: block;
+    line-height: 1.4;
+  }
+
+  .paper-venue {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* Dropdown opens upward over the card photo instead of pushing content down */
+  .member-more {
+    position: relative;
+  }
+
+  .member-more summary {
+    color: #fff;
+    list-style: none;
+  }
+
+  .member-more summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .member-more summary::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 8px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 180ms ease;
+  }
+
+  .member-more[open] summary::after {
+    transform: translateY(1px) rotate(-135deg);
+  }
+
+  .member-more-panel {
+    display: none;
+  }
+
+  .member-more[open] .member-more-panel {
+    display: block;
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    bottom: calc(100% + 15px);
+    max-height: min(340px, 60vh);
+    overflow-y: auto;
+    padding: 16px 20px;
+    border-top: 1px solid var(--line-2);
+    background: rgb(17 15 13 / 96%);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -12px 32px rgb(0 0 0 / 45%);
+    z-index: 3;
+  }
+
+  .member-more[open] .more-highlights {
+    margin-top: 0;
+  }
+
+  /* Let the dropdown overflow the card; round the photo corners instead of clipping the card */
+  .team-card {
+    overflow: visible;
+  }
+
+  .member-portrait {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .team-card:has(.member-more[open]) {
+    z-index: 10;
+  }
+
+  .member-more[open] .member-more-panel {
+    left: -8px;
+    right: -8px;
+    bottom: calc(100% + 18px);
+    max-height: none;
+    overflow: visible;
+    padding: 18px 20px 8px;
+    border: 1px solid var(--line-2);
+    border-radius: 12px;
+    background: #17140f;
+    box-shadow: 0 18px 48px rgb(0 0 0 / 60%);
+    animation: more-in 160ms ease-out;
+  }
+
+  .member-more-panel .more-highlights {
+    margin: 0 0 14px;
+    gap: 10px;
+    font-size: 13.5px;
+  }
+
+  .member-more-panel .more-papers {
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .member-more-panel .more-papers li:last-child {
+    border-bottom: 0;
+  }
+
+  @keyframes more-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .member-more[open] .member-more-panel { animation: none; }
+  }
+
+  /* Dropdown opens inside the card, below the toggle */
+  .member-more[open] .member-more-panel {
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    padding: 16px 0 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .team-card:has(.member-more[open]) {
+    z-index: auto;
+  }
+
+  .member-more-panel .more-papers a {
+    padding: 12px 0;
   }
 </style>

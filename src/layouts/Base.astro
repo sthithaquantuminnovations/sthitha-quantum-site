@@ -3,15 +3,49 @@ import '../styles/global.css';
 import IconSprite from '../components/IconSprite.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { company } from '../data/site.js';
 
 interface Props {
   title: string;
   description: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  imageAlt?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, type = 'website', publishedTime, imageAlt = 'Sthitha Quantum Innovations logo', jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
 const ogImage = new URL('/assets/images/sthitha-logo.png', Astro.site);
+
+const organization: Record<string, unknown> = {
+  '@type': 'Organization',
+  '@id': new URL('/#organization', Astro.site).href,
+  name: company.name,
+  legalName: company.legalName,
+  url: Astro.site?.href,
+  logo: new URL('/assets/images/sthitha-logo-icon.png', Astro.site).href,
+  email: company.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Landmark Towers, MG Road',
+    addressLocality: 'Bengaluru',
+    addressRegion: 'Karnataka',
+    postalCode: '560001',
+    addressCountry: 'IN',
+  },
+};
+const profiles = company.social.filter((s) => s.href).map((s) => s.href);
+if (profiles.length) organization.sameAs = profiles;
+const website = {
+  '@type': 'WebSite',
+  '@id': new URL('/#website', Astro.site).href,
+  url: Astro.site?.href,
+  name: company.name,
+  publisher: { '@id': organization['@id'] },
+};
+const graph = [organization, website, ...(jsonLd ? [jsonLd].flat() : [])];
+const structuredData = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 ---
 
 <!doctype html>
@@ -24,13 +58,24 @@ const ogImage = new URL('/assets/images/sthitha-logo.png', Astro.site);
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:locale" content="en_IN" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     <meta property="og:site_name" content="Sthitha Quantum Innovations" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script type="application/ld+json" set:html={structuredData} is:inline />
     <meta name="theme-color" content="#110f0d" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

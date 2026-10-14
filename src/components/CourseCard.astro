@@ -24,7 +24,7 @@ const { course, delay = 0, summary = [], topics = [], number } = Astro.props;
 
 <article class="course-card" data-fade style={`--d:${delay}ms`}>
   <a class="course-media" href={course.href} tabindex="-1" aria-hidden="true">
-    <Image src={course.image} alt="" widths={[480, 750, 1100]} sizes="(max-width: 899px) 100vw, 620px" />
+    <Image src={course.image} alt={course.imageAlt} widths={[480, 750, 1100]} sizes="(max-width: 899px) 100vw, 620px" />
     <span class:list={['course-status', { 'is-soon': !course.available }]}>{course.status}</span>
   </a>
   <div class="course-body">

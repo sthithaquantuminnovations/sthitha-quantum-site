@@ -39,11 +39,19 @@ const faqs = [
   { q: 'What can I learn after an introductory course?', a: 'You can explore quantum programming, quantum algorithms, quantum circuits, quantum information and quantum machine learning, depending on your interests and preparation.' },
   { q: 'Is the course completely in Malayalam?', a: 'Please refer to the published course details to confirm the language of instruction and the availability of Malayalam explanations or subtitles.' },
 ];
+const courseLd = {
+  '@type': 'Course',
+  name: courses[1].title + ': ' + courses[1].subtitle,
+  description: "Learn quantum computing in Malayalam with Sthitha Academy. Explore introductory quantum computing concepts through a beginner-focused Malayalam learning experience.",
+  url: new URL(courses[1].href, Astro.site).href,
+  provider: { '@id': new URL('/#organization', Astro.site).href },
+};
 ---
 
 <Base
   title="Quantum Computing in Malayalam | Sthitha Academy"
   description="Learn quantum computing in Malayalam with Sthitha Academy. Explore introductory quantum computing concepts through a beginner-focused Malayalam learning experience."
+  jsonLd={courseLd}
 >
   <div class="frame">
     <section class="page-hero">

@@ -32,7 +32,6 @@ const social = company.social.filter((s) => s.href);
         <h3>Connect</h3>
         <ul>
           <li><a href={`mailto:${company.email}`}>Email<Icon name="arrow-ur" /></a></li>
-          {social.map((link) => <li><a href={link.href} rel="noopener" target="_blank">{link.label}<Icon name="arrow-ur" /></a></li>)}
           <li><a href="/contact">Contact form</a></li>
         </ul>
       </div>
@@ -40,6 +39,11 @@ const social = company.social.filter((s) => s.href);
 
     <div class="footer-bar">
       <div class="footer-status"><span class="status">{company.location}</span><span class="mono">Quantum · Security · Education · Research</span></div>
+      <ul class="footer-social" aria-label="Social media">
+        {social.map((link) => (
+          <li><a href={link.href} rel="noopener" target="_blank" aria-label={link.label} title={link.label}><Icon name={link.label.toLowerCase()} /></a></li>
+        ))}
+      </ul>
     </div>
 
     <div class="footer-mark" aria-hidden="true"><img src="/assets/images/sthitha-logo-icon.png" alt="" /><span>Sthitha</span></div>

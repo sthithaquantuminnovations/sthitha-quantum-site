@@ -24,15 +24,33 @@ const { Content } = post;
 const headings = typeof post.getHeadings === 'function' ? post.getHeadings() : [];
 const tocHeadings = headings.filter((h: any) => h.depth === 2);
 const articleUrl = `https://sthithaquantum.com/research/insights/${post.slug}`;
-const shareText = encodeURIComponent(`${post.title} via @SthithaQuantum`);
+const shareText = encodeURIComponent(post.title);
 const shareUrl = encodeURIComponent(articleUrl);
+
+const articleLd = {
+  '@type': 'Article',
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  author: { '@type': 'Organization', name: post.author },
+  publisher: { '@id': new URL('/#organization', Astro.site).href },
+  mainEntityOfPage: articleUrl,
+  articleSection: post.category,
+  wordCount: post.wordCount,
+};
 
 // Contextual CTA mapping
 const isSecurity = post.category === 'Post-Quantum Security';
 const isAcademy = post.category === 'Quantum Computing' || post.category === 'Quantum Algorithms';
 ---
 
-<Base title={`${post.title} | Sthitha Quantum Innovations`} description={post.excerpt}>
+<Base
+  title={`${post.title} | Sthitha Quantum Innovations`}
+  description={post.excerpt}
+  type="article"
+  publishedTime={post.date}
+  jsonLd={articleLd}
+>
   <div class="frame">
     <article>
       <header class="page-hero">

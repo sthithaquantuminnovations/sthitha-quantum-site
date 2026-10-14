@@ -76,12 +76,23 @@ const social = company.social.filter((s) => s.href);
         <p class="body" style="margin:0 0 24px;color:var(--muted);font-size:16px;line-height:24px" data-fade>For general questions, course enquiries or collaboration proposals, reach us directly.</p>
         <ul class="contact-lines" data-fade>
           <li><Icon name="mail" /><div><strong>Email</strong><a href={`mailto:${company.email}`}>{company.email}</a></div></li>
-          <li><Icon name="pin" /><div><strong>{company.legalName}</strong>{company.location}</div></li>
+          {company.offices.map((office) => (
+            <li><Icon name="pin" /><div><strong>{office.label}</strong>{company.legalName}<br />{office.address}</div></li>
+          ))}
           {social.map((link) => (
             <li><Icon name="arrow-ur" /><div><strong>{link.label}</strong><a href={link.href} target="_blank" rel="noopener">{link.href.replace(/^https?:\/\//, '')}</a></div></li>
           ))}
         </ul>
         <a class="btn btn-dark" style="margin-top:24px" href={`mailto:${company.email}`} data-fade>Email Sthitha</a>
+        <div class="contact-map" data-fade>
+          <iframe
+            title={`Map showing ${company.offices[0].label}`}
+            src={`https://maps.google.com/maps?q=${encodeURIComponent(company.offices[0].mapQuery)}&z=15&output=embed`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </section>
 

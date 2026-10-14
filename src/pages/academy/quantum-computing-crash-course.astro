@@ -58,11 +58,19 @@ const faqs = [
   { q: "What are Shor's and Grover's algorithms?", a: "Shor's algorithm is known for its approach to integer factorisation, while Grover's algorithm provides a quantum approach to searching an unstructured search space." },
   { q: 'What should I learn after this course?', a: 'Depending on your interests, you can continue into quantum programming, quantum circuits, quantum algorithms, quantum information or quantum machine learning.' },
 ];
+const courseLd = {
+  '@type': 'Course',
+  name: courses[0].title + ': ' + courses[0].subtitle,
+  description: "Explore quantum computing fundamentals, qubits, quantum gates, circuits and algorithms in Sthitha Academy's Quantum Computing Crash Course, from Qubits to Shor & Grover.",
+  url: new URL(courses[0].href, Astro.site).href,
+  provider: { '@id': new URL('/#organization', Astro.site).href },
+};
 ---
 
 <Base
   title="Quantum Computing Course for Beginners | Sthitha Academy"
   description="Explore quantum computing fundamentals, qubits, quantum gates, circuits and algorithms in Sthitha Academy's Quantum Computing Crash Course, from Qubits to Shor & Grover."
+  jsonLd={courseLd}
 >
   <div class="frame">
     <section class="page-hero">
