@@ -1,42 +1,194 @@
 ---
 import Legal from '../layouts/Legal.astro';
 import { company } from '../data/site.js';
+
+const sections = [
+  { id: 'overview', title: 'Overview & Scope' },
+  { id: 'information-collected', title: 'Information We Collect' },
+  { id: 'not-collected', title: 'Data We Do Not Collect' },
+  { id: 'legal-basis', title: 'Legal Basis for Processing' },
+  { id: 'how-we-use', title: 'How We Use Your Information' },
+  { id: 'enterprise-confidentiality', title: 'AEGIS Enterprise Confidentiality' },
+  { id: 'third-party-services', title: 'Third-Party Services & Sub-processors' },
+  { id: 'cookies-tracking', title: 'Cookies & Analytics' },
+  { id: 'data-retention', title: 'Data Retention & Disposal' },
+  { id: 'data-security', title: 'Data Security & Post-Quantum Posture' },
+  { id: 'your-rights', title: 'Your Rights as a Data Principal' },
+  { id: 'cross-border', title: 'Cross-Border Data Transfers' },
+  { id: 'minors', title: 'Minors & Children’s Privacy' },
+  { id: 'updates', title: 'Policy Updates' },
+  { id: 'grievance-contact', title: 'Grievance Redressal & Contact' },
+];
 ---
 
 <Legal
   title="Privacy Policy"
-  summary="What personal information this website collects, why, and what you can ask us to do with it."
-  updated="7 October 2026"
+  summary="How Sthitha Quantum Innovations collects, safeguards, and processes personal information across our website, enterprise inquiries, and educational initiatives."
+  updated="13 October 2026"
+  sections={sections}
 >
-  <p>This policy explains how {company.legalName} ("Sthitha", "we", "us") handles personal information collected through this website. It covers the website only. Courses you take on third-party platforms such as Udemy are covered by that platform's own privacy policy.</p>
+  <div class="legal-callout">
+    <p><strong>Commitment to Transparency:</strong> {company.legalName} ("Sthitha", "we", "us", "our") is dedicated to protecting your privacy. We do not sell personal information, monetize user telemetry, or utilize personal data for cross-context behavioral advertising.</p>
+  </div>
 
-  <h2>What we collect</h2>
-  <p><b>Information you give us.</b> When you use the contact form we collect your name, email address, organisation (if you provide it), the topic you select and your message.</p>
-  <p><b>Technical information.</b> Like most websites, our hosting provider's servers record basic request data such as IP address, browser type and the pages requested, in order to deliver the site and keep it secure.</p>
-  <p>We do not ask for, and you should not send us, sensitive personal information through the contact form.</p>
+  <section id="overview" class="legal-section">
+    <h2>1. Overview &amp; Scope</h2>
+    <p>This Privacy Policy governs the processing of personal data collected through <strong>sthithaquantum.com</strong> and associated subdomains, web forms, enterprise discovery requests, and direct electronic correspondence with {company.legalName}, located in {company.location}.</p>
+    <p>This policy applies to visitors, enterprise researchers, prospective industry partners, academic collaborators, and students interacting with our initiatives, including:</p>
+    <ul>
+      <li><strong>AEGIS:</strong> Our initiative focused on cryptographic asset discovery, quantum vulnerability assessment, and post-quantum cryptography migration.</li>
+      <li><strong>Sthitha Academy:</strong> Our educational curriculum and courses covering foundational quantum computing and algorithms.</li>
+      <li><strong>Research &amp; Innovation:</strong> Our exploratory publications, algorithmic research papers, and technical insights.</li>
+    </ul>
+    <p><em>Third-Party Platform Notice:</em> Courses delivered via third-party learning platforms (such as Udemy) operate under the respective platform's independent privacy and security policies for account credentials, video telemetry, and payment transactions.</p>
+  </section>
 
-  <h2>How we use it</h2>
-  <p>We use contact form details to reply to your enquiry and to follow up on the conversation you started. We use technical information to operate, secure and troubleshoot the website.</p>
-  <p>We do not sell personal information, and we do not use it for advertising.</p>
+  <section id="information-collected" class="legal-section">
+    <h2>2. Information We Collect</h2>
+    <p>We collect only the minimum personal information necessary to deliver our services, respond to technical inquiries, and ensure website integrity:</p>
+    <ul>
+      <li><strong>Direct Contact &amp; Inquiries:</strong> When you complete our contact form, request a briefing, or email us, we collect your full name, business or academic email address, organization/institution name, role or title (if provided), chosen topic, and the text of your communication.</li>
+      <li><strong>Enterprise &amp; Partnership Requests:</strong> Organizations engaging with our AEGIS team may provide operational context, technical requirements, or organizational size to assist in structuring evaluation discussions.</li>
+      <li><strong>Event &amp; Workshop Registrations:</strong> When registering for symposiums, seminars (e.g., IEEE AURORA '26 sponsorship events), or webinars, we collect participant contact details and institutional affiliations.</li>
+      <li><strong>Server Logs &amp; Technical Telemetry:</strong> To ensure network security and prevent denial-of-service attempts, our hosting infrastructure automatically logs standard HTTP request attributes: IP address, operating system, browser user-agent, referring URL, and page timestamps.</li>
+    </ul>
+  </section>
 
-  <h2>Who we share it with</h2>
-  <p>We share personal information only with service providers that help us run the website and our communications, such as hosting and email providers, and only so far as they need it to provide that service. We may also disclose information where the law requires it.</p>
+  <section id="not-collected" class="legal-section">
+    <h2>3. Data We Do Not Collect &amp; Critical Security Notice</h2>
+    <div class="legal-warning">
+      <p><strong>Important Security Instruction:</strong> Do not transmit production cryptographic private keys, internal certificates, confidential source code repositories, passwords, or classified infrastructure maps through public web contact forms.</p>
+    </div>
+    <p>We do not collect:</p>
+    <ul>
+      <li>Sensitive personal data (including biometric identifiers, passwords, religious affiliations, or health data).</li>
+      <li>Financial payment card numbers or bank account credentials (all course enrolments are processed directly by platform operators like Udemy).</li>
+      <li>Cryptographic private keys or live enterprise secrets under any circumstances.</li>
+    </ul>
+  </section>
 
-  <h2>Third-party services</h2>
-  <p>This website loads its typefaces from Google Fonts. When your browser requests them, Google receives your IP address and browser details. The website also links to third-party sites such as Udemy; once you follow a link, that site's own policies apply.</p>
+  <section id="legal-basis" class="legal-section">
+    <h2>4. Legal Basis for Processing</h2>
+    <p>We process personal data in compliance with applicable data protection laws, including the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act, India)</strong>, the <strong>Information Technology Act, 2000</strong> and its Reasonable Security Practices Rules (SPDI Rules), as well as internationally recognized principles such as the General Data Protection Regulation (GDPR) for global visitors:</p>
+    <ul>
+      <li><strong>Consent:</strong> When you voluntarily submit forms, sign up for notifications, or initiate contact with us.</li>
+      <li><strong>Legitimate Interests &amp; Pre-Contractual Steps:</strong> To respond to enterprise inquiries, explore joint research collaborations, schedule demonstrations, and protect our cyber infrastructure against abuse.</li>
+      <li><strong>Legal &amp; Regulatory Compliance:</strong> To comply with mandatory statutory directives, accounting rules, or lawful government orders in India.</li>
+    </ul>
+  </section>
 
-  <h2>How long we keep it</h2>
-  <p>We keep enquiry details for as long as needed to deal with the enquiry and any related follow-up. We then delete them unless the law requires us to keep them longer.</p>
+  <section id="how-we-use" class="legal-section">
+    <h2>5. How We Use Your Information</h2>
+    <p>Personal data provided to Sthitha is utilized exclusively for legitimate business and technical purposes:</p>
+    <ul>
+      <li>Answering questions, responding to partnership proposals, and scheduling technical consultations.</li>
+      <li>Communicating updates regarding Sthitha Academy course additions, curriculum announcements, and public research whitepapers.</li>
+      <li>Fulfilling organizational commitments for academic symposiums, hackathons, and technology conferences.</li>
+      <li>Diagnosing server performance bottlenecks, detecting malicious bot activities, and enhancing overall user experience.</li>
+    </ul>
+    <p>We do not sell, rent, trade, or monetize your contact information to data brokers, ad networks, or marketing affiliates.</p>
+  </section>
 
-  <h2>Your choices</h2>
-  <p>You can ask us to tell you what personal information we hold about you, to correct it, or to delete it. To do any of these, email <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+  <section id="enterprise-confidentiality" class="legal-section">
+    <h2>6. AEGIS Enterprise Confidentiality</h2>
+    <p>Organizations evaluating AEGIS for post-quantum cryptographic discovery and migration planning frequently share architectural parameters under Non-Disclosure Agreements (NDAs). We treat all technical disclosures—including inventory parameters, cryptographic algorithm discussions, and migration roadmaps—as strictly confidential enterprise property.</p>
+    <p>Enterprise inquiry details are restricted to designated quantum security researchers and solutions engineers bound by statutory and contractual confidentiality obligations.</p>
+  </section>
 
-  <h2>Security</h2>
-  <p>We take reasonable steps to protect personal information. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
+  <section id="third-party-services" class="legal-section">
+    <h2>7. Third-Party Services &amp; Sub-processors</h2>
+    <p>We engage selected external service providers solely to maintain our technical infrastructure, with strict data-processing safeguards in place:</p>
+    <ul>
+      <li><strong>Cloud Hosting &amp; Content Delivery:</strong> Modern serverless and edge hosting infrastructure providers that cache static assets and maintain edge web application firewalls.</li>
+      <li><strong>Typography:</strong> Google Fonts to serve web typefaces. Font requests transmit IP address and user-agent metadata necessary to deliver required font files.</li>
+      <li><strong>Course Platforms:</strong> Sthitha Academy courses link to third-party learning marketplaces (such as Udemy). When you navigate to Udemy, you interact with their platform directly under Udemy's Terms of Use and Privacy Policy.</li>
+      <li><strong>Email Delivery Infrastructure:</strong> Enterprise email service providers used to route correspondence and support tickets securely over encrypted channels.</li>
+    </ul>
+  </section>
 
-  <h2>Changes to this policy</h2>
-  <p>We may update this policy as the website changes. The date at the top of this page shows when it was last revised.</p>
+  <section id="cookies-tracking" class="legal-section">
+    <h2>8. Cookies &amp; Analytics</h2>
+    <p>Our website is designed with privacy-first engineering principles:</p>
+    <ul>
+      <li>We do not deploy invasive third-party cross-site advertising trackers or behavioural tracking cookies.</li>
+      <li>Any local browser storage utilized is strictly functional—such as remembering layout preferences or active UI toggles.</li>
+      <li>For comprehensive details on browser storage and cache management, please review our <a href="/cookie-policy">Cookie Policy</a>.</li>
+    </ul>
+  </section>
 
-  <h2>Contact</h2>
-  <p>{company.legalName}, {company.location}. Email: <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+  <section id="data-retention" class="legal-section">
+    <h2>9. Data Retention &amp; Disposal</h2>
+    <p>We adhere to strict data minimization. Personal data is maintained only for the duration required to achieve the purpose for which it was gathered:</p>
+    <ul>
+      <li><strong>General Inquiries:</strong> Contact form entries and email records are retained for up to 24 months from the last active correspondence, after which they are securely purged or anonymized.</li>
+      <li><strong>Enterprise Contracts &amp; Research Agreements:</strong> Records related to executed research collaborations or enterprise pilots are retained in accordance with statutory accounting and contractual retention mandates in India.</li>
+      <li><strong>Server Logs:</strong> Automated web server request logs are rotated and deleted within 90 days, unless required for ongoing cybersecurity incident investigation.</li>
+    </ul>
+  </section>
+
+  <section id="data-security" class="legal-section">
+    <h2>10. Data Security &amp; Post-Quantum Posture</h2>
+    <p>As an organization dedicated to post-quantum cryptography and cryptographic agility, Sthitha implements rigorous administrative, physical, and technical safeguards:</p>
+    <ul>
+      <li>All data transmissions to and from <code>sthithaquantum.com</code> are encrypted using modern Transport Layer Security (TLS 1.3 / TLS 1.2).</li>
+      <li>Internal access to inquiry databases is restricted strictly on a role-based, least-privilege basis.</li>
+      <li>We actively audit our infrastructure to align with emerging NIST post-quantum security guidelines (such as FIPS 203 ML-KEM and FIPS 204 ML-DSA) as hybrid cryptographic implementations mature.</li>
+    </ul>
+    <p>While we apply state-of-the-art protections, no internet transmission or electronic storage method can guarantee absolute immunity against all threat vectors.</p>
+  </section>
+
+  <section id="your-rights" class="legal-section">
+    <h2>11. Your Rights as a Data Principal</h2>
+    <p>Under the DPDP Act 2023, Indian law, and global data protection regulations, you hold the following statutory rights regarding your personal information:</p>
+    <ul>
+      <li><strong>Right to Access:</strong> You may request a summary of the personal data we hold about you and the processing activities undertaken.</li>
+      <li><strong>Right to Correction &amp; Completion:</strong> You may request corrections to inaccurate or incomplete personal information.</li>
+      <li><strong>Right to Erasure:</strong> You may request the deletion of your personal information, subject to statutory retention obligations.</li>
+      <li><strong>Right to Withdraw Consent:</strong> You may revoke consent previously granted for communications at any time.</li>
+      <li><strong>Right to Nominate:</strong> You have the right to nominate an individual to exercise your data principal rights in the event of incapacity or death (as recognized under the DPDP Act).</li>
+      <li><strong>Right to Grievance Redressal:</strong> You may lodge complaints regarding data processing directly with our Grievance Officer.</li>
+    </ul>
+    <p>To exercise any of these rights, please email us at <a href={`mailto:${company.email}`}>{company.email}</a> with the subject header <em>"Data Principal Rights Request"</em>. We verify identity and respond within statutory timeframes (30 days).</p>
+  </section>
+
+  <section id="cross-border" class="legal-section">
+    <h2>12. Cross-Border Data Transfers</h2>
+    <p>{company.legalName} is headquartered in Bengaluru, India. Data collected through our digital interfaces may be hosted or routed through secure cloud edge locations worldwide. When cross-border processing occurs, we ensure compliance with Indian regulatory cross-border guidelines and standard contractual clauses that safeguard your privacy to equivalent standards.</p>
+  </section>
+
+  <section id="minors" class="legal-section">
+    <h2>13. Minors &amp; Children’s Privacy</h2>
+    <p>Our website, research insights, and enterprise tools are intended for university students, software engineers, cryptographic researchers, and corporate decision-makers. We do not knowingly collect personal information from individuals under 18 years of age without verified consent from a legal guardian. If we learn of unintended collection of data from a minor, we will take immediate steps to delete the record.</p>
+  </section>
+
+  <section id="updates" class="legal-section">
+    <h2>14. Policy Updates</h2>
+    <p>We may amend this Privacy Policy periodically to reflect technological advancements, new platform features, or evolving statutory standards. Material changes will be highlighted by updating the "Last updated" date at the top of this page. Continued interaction with our website following an update signifies your acknowledgment of the amended policy.</p>
+  </section>
+
+  <section id="grievance-contact" class="legal-section">
+    <h2>15. Grievance Redressal &amp; Contact Officer</h2>
+    <p>In compliance with the Information Technology Act 2000 and the Digital Personal Data Protection Act 2023, inquiries, feedback, or grievances regarding our privacy practices should be directed to our designated officer:</p>
+
+    <div class="legal-officer-card">
+      <div class="officer-head">
+        <strong>Data Protection &amp; Grievance Officer</strong>
+        <span>{company.legalName}</span>
+      </div>
+      <dl class="officer-details">
+        <div>
+          <dt>Registered Location</dt>
+          <dd>{company.location}</dd>
+        </div>
+        <div>
+          <dt>Official Email</dt>
+          <dd><a href={`mailto:${company.email}`}>{company.email}</a></dd>
+        </div>
+        <div>
+          <dt>Response Window</dt>
+          <dd>Within 30 business days from receipt of verified grievance</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
 </Legal>

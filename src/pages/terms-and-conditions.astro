@@ -1,43 +1,191 @@
 ---
 import Legal from '../layouts/Legal.astro';
 import { company } from '../data/site.js';
+
+const sections = [
+  { id: 'agreement', title: 'Acceptance of Terms' },
+  { id: 'about-sthitha', title: 'About Sthitha & Scope of Services' },
+  { id: 'advisory-disclaimer', title: 'Technical & Educational Disclaimer' },
+  { id: 'academy-courses', title: 'Sthitha Academy & Course Delivery' },
+  { id: 'intellectual-property', title: 'Intellectual Property Rights' },
+  { id: 'user-conduct', title: 'Acceptable Use & Security Restrictions' },
+  { id: 'confidentiality', title: 'Inquiries & Enterprise Information' },
+  { id: 'disclaimer-warranties', title: 'Disclaimer of Warranties' },
+  { id: 'limitation-liability', title: 'Limitation of Liability' },
+  { id: 'indemnification', title: 'Indemnification' },
+  { id: 'third-party-links', title: 'Third-Party Links & Resources' },
+  { id: 'termination', title: 'Termination & Access Suspension' },
+  { id: 'governing-law', title: 'Governing Law & Jurisdiction' },
+  { id: 'dispute-resolution', title: 'Dispute Resolution & Arbitration' },
+  { id: 'severability', title: 'Severability & Entire Agreement' },
+  { id: 'contact-notices', title: 'Legal Notices & Contact Information' },
+];
 ---
 
 <Legal
   title="Terms & Conditions"
-  summary="The terms on which you may use this website."
-  updated="7 October 2026"
+  summary="The terms and governing provisions regulating access to and use of Sthitha Quantum Innovations websites, research publications, and educational offerings."
+  updated="13 October 2026"
+  sections={sections}
 >
-  <p>These terms apply to your use of this website, operated by {company.legalName} ("Sthitha", "we", "us"). By using the website you agree to them. If you do not agree, please do not use the website.</p>
+  <div class="legal-callout">
+    <p><strong>Please Read Carefully:</strong> By accessing, browsing, or interacting with <strong>sthithaquantum.com</strong>, you acknowledge that you have read, understood, and agree to be legally bound by these Terms &amp; Conditions and our <a href="/privacy-policy">Privacy Policy</a>.</p>
+  </div>
 
-  <h2>About this website</h2>
-  <p>The website describes the work of {company.name}, including AEGIS, Sthitha Academy and Research &amp; Innovation. It is provided for general information. Nothing on it is an offer or a binding commitment unless we confirm it in a written agreement.</p>
+  <section id="agreement" class="legal-section">
+    <h2>1. Acceptance of Terms</h2>
+    <p>These Terms &amp; Conditions constitute a legally binding agreement between you ("User", "you", or "your") and <strong>{company.legalName}</strong> ("Sthitha", "we", "us", or "our"), incorporated and existing under the laws of India, with our registered location in {company.location}.</p>
+    <p>If you do not agree to these terms, you must immediately discontinue using this website and any materials derived from it.</p>
+  </section>
 
-  <h2>Information on the website</h2>
-  <p>We try to keep the content accurate and current, but we do not promise that it is complete or free of errors. Articles and explainers are educational. They are not professional, security or legal advice, and you should not rely on them as such.</p>
-  <p>Interface illustrations on the website show the kind of capability an initiative aims to provide. They are not representations of a live product.</p>
+  <section id="about-sthitha" class="legal-section">
+    <h2>2. About Sthitha &amp; Scope of Services</h2>
+    <p>The website provides informational, educational, and introductory technical resources regarding our three core operational pillars:</p>
+    <ul>
+      <li><strong>AEGIS:</strong> Our initiative exploring post-quantum cryptographic discovery, quantum risk awareness, inventory analysis, and migration planning for enterprise systems.</li>
+      <li><strong>Sthitha Academy:</strong> Structured quantum computing courses, educational modules, and bilingual learning resources (including Malayalam-language education) designed for beginners, developers, and researchers.</li>
+      <li><strong>Research &amp; Innovation:</strong> Technical publications, explainers, algorithmic studies, and quantum machine learning explorations.</li>
+    </ul>
+    <p>Nothing on this website constitutes a formal offer, binding commercial proposal, or cryptographic service level agreement (SLA) unless expressly executed in a separate, written enterprise Master Services Agreement (MSA) signed by authorized signatories of {company.legalName}.</p>
+  </section>
 
-  <h2>Courses</h2>
-  <p>Sthitha Academy courses are delivered through third-party platforms such as Udemy. Enrolment, payment, refunds, certificates and access are handled by that platform under its own terms, not by this website.</p>
+  <section id="advisory-disclaimer" class="legal-section">
+    <h2>3. Technical &amp; Educational Disclaimer</h2>
+    <div class="legal-warning">
+      <p><strong>Not Legal or Cryptographic Audit Advice:</strong> Articles, blog insights, benchmark illustrations, and architectural demonstrations published on this website are provided strictly for educational and conceptual information.</p>
+    </div>
+    <p>In particular:</p>
+    <ul>
+      <li>Content concerning post-quantum cryptography, NIST standards (such as FIPS 203, FIPS 204, and FIPS 205), and algorithmic complexity reflects current research developments and should not be construed as legal counsel, certified cybersecurity audit verification, or an absolute guarantee of cryptographic invulnerability.</li>
+      <li>All interactive demonstrations, particle visuals, and user interface mockups are artistic and technical illustrations demonstrating conceptual capabilities; they do not represent live client telemetry or operational enterprise instances.</li>
+      <li>You are solely responsible for verifying the suitability of any architectural concept or algorithm before implementing it in production environments.</li>
+    </ul>
+  </section>
 
-  <h2>Intellectual property</h2>
-  <p>The content of this website, including text, graphics, logos and course artwork, belongs to {company.legalName} or its licensors. You may view and share it for personal, non-commercial purposes with attribution. You may not otherwise copy, modify or reuse it without our written permission. Names such as IEEE and Udemy belong to their respective owners.</p>
+  <section id="academy-courses" class="legal-section">
+    <h2>4. Sthitha Academy &amp; Course Delivery</h2>
+    <p>Courses published under the Sthitha Academy banner (including the <em>Quantum Computing Crash Course</em> and <em>Quantum Computing in Malayalam</em>) are hosted and distributed through authorized third-party platforms such as Udemy:</p>
+    <ul>
+      <li><strong>Enrolment, Payments &amp; Refunds:</strong> Student registration, fee payments, local taxation, billing processing, and refund requests are governed exclusively by the relevant platform's Terms of Service and refund policies. Sthitha does not collect or process credit card credentials through this website.</li>
+      <li><strong>License to Course Materials:</strong> Enrolment in a Sthitha Academy course grants a personal, revocable, non-exclusive, non-transferable license to access the educational video streams and accompanying exercises for personal learning. Unauthorized reproduction, public broadcasting, screen recording, torrenting, or commercial redistribution of course materials is strictly prohibited.</li>
+      <li><strong>Course Completion Certificates:</strong> Digital completion certificates issued by host platforms certify course completion and do not confer accredited university degrees or statutory professional certifications.</li>
+    </ul>
+  </section>
 
-  <h2>Acceptable use</h2>
-  <p>You agree not to misuse the website: for example by attempting to gain unauthorised access, disrupting its operation, submitting false or unlawful content through its forms, or using automated means to send messages through them.</p>
+  <section id="intellectual-property" class="legal-section">
+    <h2>5. Intellectual Property Rights</h2>
+    <p>All intellectual property rights in and to this website and its contents—including but not limited to text, graphics, logos, brand emblems, interactive code scripts, vector illustrations, course outlines, and research articles—are the exclusive property of {company.legalName} or its licensors and are protected under Indian and international copyright, trademark, and trade secret laws.</p>
+    <ul>
+      <li><strong>Permitted Use:</strong> You may view, download, and share excerpts of public research articles for non-commercial, personal educational purposes, provided that full attribution to {company.name} and a direct link to the original URL are maintained.</li>
+      <li><strong>Prohibited Use:</strong> You may not copy, reproduce, mirror, republish, disassemble, decompile, sell, or create derivative works from our proprietary content or codebase without our prior express written authorization.</li>
+      <li><strong>Third-Party Trademarks:</strong> Names such as IEEE, Udemy, Python, Qiskit, and NIST referenced on this site belong to their respective registered owners and are utilized solely for factual, nominative descriptive purposes.</li>
+    </ul>
+  </section>
 
-  <h2>Links to other websites</h2>
-  <p>The website contains links to sites we do not control. We are not responsible for their content or their practices.</p>
+  <section id="user-conduct" class="legal-section">
+    <h2>6. Acceptable Use &amp; Security Restrictions</h2>
+    <p>You agree to use this website in a lawful, ethical manner. When accessing our digital infrastructure, you expressly agree NOT to:</p>
+    <ul>
+      <li>Attempt unauthorized penetration testing, vulnerability scanning, or security probing against our hosting servers without prior written authorization.</li>
+      <li>Inject malicious software, viruses, Trojan horses, worm code, or payloads designed to compromise website integrity or user sessions.</li>
+      <li>Utilize automated spiders, scrapers, data-mining bots, or extraction scripts to harvest data from our pages without permission.</li>
+      <li>Submit fraudulent, deceptive, defamatory, or unlawful material through our contact or partnership forms.</li>
+      <li>Impersonate any person, employee, researcher, or entity affiliated with {company.legalName}.</li>
+      <li>Interfere with or overburden the infrastructure, networks, or servers hosting the site.</li>
+    </ul>
+  </section>
 
-  <h2>Liability</h2>
-  <p>The website is provided "as is". To the extent the law allows, we are not liable for any loss arising from your use of the website or reliance on its content. Nothing in these terms limits any liability that cannot be limited by law.</p>
+  <section id="confidentiality" class="legal-section">
+    <h2>7. Inquiries &amp; Enterprise Information</h2>
+    <p>Information submitted through our public web contact forms is treated with commercial care in accordance with our <a href="/privacy-policy">Privacy Policy</a>. However, transmission over the public internet does not automatically establish an attorney-client or proprietary confidentiality obligation until an official Non-Disclosure Agreement (NDA) is executed between both parties.</p>
+    <p>Enterprise clients seeking AEGIS cryptographic discovery pilots or sensitive consultations are encouraged to request an NDA prior to disclosing proprietary infrastructure specifications or cryptographic architectures.</p>
+  </section>
 
-  <h2>Changes</h2>
-  <p>We may change the website and these terms at any time. The date at the top of this page shows when the terms were last revised.</p>
+  <section id="disclaimer-warranties" class="legal-section">
+    <h2>8. Disclaimer of Warranties</h2>
+    <p>This website, its educational resources, and its content are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express, statutory, or implied.</p>
+    <p>To the fullest extent permissible pursuant to applicable law, {company.legalName} disclaims all warranties, including but not limited to:</p>
+    <ul>
+      <li>Implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</li>
+      <li>Warranties that the website will be uninterrupted, error-free, completely bug-free, or free from server outages.</li>
+      <li>Warranties regarding the complete accuracy, timeliness, completeness, or reliability of any technical insight, algorithm explainer, or external link.</li>
+    </ul>
+  </section>
 
-  <h2>Governing law</h2>
-  <p>These terms are governed by the laws of India.</p>
+  <section id="limitation-liability" class="legal-section">
+    <h2>9. Limitation of Liability</h2>
+    <p>To the maximum extent permitted under applicable law, in no event shall {company.legalName}, its directors, officers, employees, researchers, or agents be liable to you or any third party for any:</p>
+    <ul>
+      <li>Indirect, incidental, special, consequential, punitive, or exemplary damages;</li>
+      <li>Loss of business profits, revenue, data, goodwill, or commercial opportunities;</li>
+      <li>Loss resulting from reliance on articles, algorithmic explainers, or educational materials published on this website;</li>
+      <li>Interruption of service, system failure, or hardware degradation.</li>
+    </ul>
+    <p>In all circumstances, our aggregate liability arising out of or related to your use of this website shall not exceed ₹1,000 INR (Indian Rupees One Thousand) or the statutory minimum required by applicable law.</p>
+  </section>
 
-  <h2>Contact</h2>
-  <p>{company.legalName}, {company.location}. Email: <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+  <section id="indemnification" class="legal-section">
+    <h2>10. Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold harmless {company.legalName}, its founders, researchers, and affiliates from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in any way connected with:</p>
+    <ul>
+      <li>Your violation of these Terms &amp; Conditions;</li>
+      <li>Your misuse of this website or its intellectual property;</li>
+      <li>Your violation of any third-party rights, including intellectual property or privacy rights; or</li>
+      <li>Any unlawful, malicious, or unauthorized conduct committed through your network access.</li>
+    </ul>
+  </section>
+
+  <section id="third-party-links" class="legal-section">
+    <h2>11. Third-Party Links &amp; Resources</h2>
+    <p>Our website contains links to external websites, scientific repositories (e.g., arXiv, IEEE), code repositories, and educational marketplaces (e.g., Udemy). We do not control or endorse the content, policies, or technical stability of third-party platforms. Following any outbound link is done entirely at your own discretion and risk.</p>
+  </section>
+
+  <section id="termination" class="legal-section">
+    <h2>12. Termination &amp; Access Suspension</h2>
+    <p>We reserve the right, in our sole discretion and without prior notice, to terminate or restrict your access to the website or our electronic contact interfaces if we determine that you have violated these Terms, engaged in security abuse, or violated applicable law.</p>
+  </section>
+
+  <section id="governing-law" class="legal-section">
+    <h2>13. Governing Law &amp; Jurisdiction</h2>
+    <p>These Terms &amp; Conditions and any dispute or claim arising out of or in connection with them shall be governed by and construed in accordance with the <strong>laws of the Republic of India</strong>, without giving effect to any principles of conflicts of law.</p>
+    <p>Subject to the arbitration clause below, you agree to submit to the exclusive jurisdiction of the competent courts situated in <strong>Bengaluru, Karnataka, India</strong>.</p>
+  </section>
+
+  <section id="dispute-resolution" class="legal-section">
+    <h2>14. Dispute Resolution &amp; Arbitration</h2>
+    <p>In the event of any dispute, difference, or controversy arising out of these Terms, the parties shall first endeavor to settle the dispute amicably through good-faith mutual discussions for thirty (30) days from written notice.</p>
+    <p>If unresolved, the dispute shall be referred to and finally resolved by binding arbitration in accordance with the <strong>Arbitration and Conciliation Act, 1996</strong> (India). The arbitration shall be conducted by a sole arbitrator mutually appointed by the parties. The seat and venue of arbitration shall be Bengaluru, India, and proceedings shall be conducted in the English language.</p>
+  </section>
+
+  <section id="severability" class="legal-section">
+    <h2>15. Severability &amp; Entire Agreement</h2>
+    <p>If any provision of these Terms is found to be unlawful, void, or for any reason unenforceable by a court of competent jurisdiction, that provision shall be deemed severable from these Terms and shall not affect the validity and enforceability of any remaining provisions.</p>
+    <p>These Terms, together with our Privacy Policy and Cookie Policy, constitute the entire agreement between you and {company.legalName} regarding the use of this website.</p>
+  </section>
+
+  <section id="contact-notices" class="legal-section">
+    <h2>16. Legal Notices &amp; Contact Information</h2>
+    <p>Official legal notices, corporate communications, or questions concerning these Terms should be addressed in writing to:</p>
+
+    <div class="legal-officer-card">
+      <div class="officer-head">
+        <strong>Corporate &amp; Legal Affairs</strong>
+        <span>{company.legalName}</span>
+      </div>
+      <dl class="officer-details">
+        <div>
+          <dt>Registered Jurisdiction</dt>
+          <dd>{company.location}</dd>
+        </div>
+        <div>
+          <dt>Legal Contact Email</dt>
+          <dd><a href={`mailto:${company.email}`}>{company.email}</a></dd>
+        </div>
+        <div>
+          <dt>Attention</dt>
+          <dd>Director / Legal Compliance Department</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
 </Legal>

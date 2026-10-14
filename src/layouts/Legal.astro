@@ -3,13 +3,20 @@ import Base from './Base.astro';
 import More from '../components/More.astro';
 import { company } from '../data/site.js';
 
+interface Section {
+  id: string;
+  title: string;
+}
+
 interface Props {
   title: string;
   summary: string;
   updated: string;
+  sections?: Section[];
 }
 
-const { title, summary, updated } = Astro.props;
+const { title, summary, updated, sections = [] } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <Base title={`${title} | ${company.name}`} description={summary}>
@@ -18,6 +25,7 @@ const { title, summary, updated } = Astro.props;
       <header class="page-hero">
         <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
           <div>
+            <p class="crumbs" data-fade><a href="/">Home</a><i>/</i>Legal &amp; Compliance</p>
             <h1 data-reveal>{title}</h1>
             <p class="page-hero-lede" data-fade style="--d:250ms">{summary}</p>
           </div>
@@ -28,19 +36,68 @@ const { title, summary, updated } = Astro.props;
           <More href="/" back>Home</More>
           <dl>
             <div><dt>Last updated</dt><dd>{updated}</dd></div>
-            <div><dt>Applies to</dt><dd>sthithaquantum.com</dd></div>
-            <div><dt>Questions</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd></div>
+            <div><dt>Entity</dt><dd>{company.legalName}</dd></div>
+            <div><dt>Jurisdiction</dt><dd>{company.location}</dd></div>
+            <div><dt>Inquiries</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd></div>
           </dl>
-          <ul class="legal-nav">
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
-            <li><a href="/cookie-policy">Cookie Policy</a></li>
-          </ul>
+
+          <div class="legal-menu">
+            <span class="legal-menu-title">Legal Documents</span>
+            <ul class="legal-nav">
+              <li><a href="/privacy-policy" class={currentPath === '/privacy-policy' ? 'is-active' : undefined}>Privacy Policy</a></li>
+              <li><a href="/terms-and-conditions" class={currentPath === '/terms-and-conditions' ? 'is-active' : undefined}>Terms &amp; Conditions</a></li>
+              <li><a href="/cookie-policy" class={currentPath === '/cookie-policy' ? 'is-active' : undefined}>Cookie Policy</a></li>
+            </ul>
+          </div>
+
+          {sections.length > 0 && (
+            <div class="legal-toc">
+              <details class="legal-toc-details">
+                <summary class="legal-toc-summary">
+                  <span class="legal-menu-title">On this page ({sections.length} sections)</span>
+                  <span class="toc-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
+                </summary>
+                <ol class="legal-toc-list">
+                  {sections.map((s, i) => (
+                    <li>
+                      <a href={`#${s.id}`}>
+                        <span class="toc-num">{String(i + 1).padStart(2, '0')}</span>
+                        <span>{s.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </details>
+            </div>
+          )}
         </aside>
-        <div class="article-body">
+        <div class="article-body legal-body">
           <slot />
         </div>
       </div>
     </article>
   </div>
+
+  <script is:inline>
+    // Keep TOC open on desktop screens
+    function syncTocState() {
+      const details = document.querySelectorAll('.legal-toc-details');
+      if (window.innerWidth >= 900) {
+        details.forEach(d => d.setAttribute('open', ''));
+      }
+    }
+    syncTocState();
+    window.addEventListener('resize', syncTocState);
+
+    // Auto-close details on mobile when clicking a jump link
+    document.querySelectorAll('.legal-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 900) {
+          const d = a.closest('.legal-toc-details');
+          if (d) d.removeAttribute('open');
+        }
+      });
+    });
+  </script>
 </Base>
+

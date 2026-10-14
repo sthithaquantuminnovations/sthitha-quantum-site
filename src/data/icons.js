@@ -39,5 +39,7 @@ export const ICONS = {
   cloud: '<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 10.5a3.8 3.8 0 0 1-.5 7.5H7Z"/>',
   id: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M15 10h3M15 14h3"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-  hash: '<path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/>'
+  hash: '<path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/>',
+  copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>'
 };
