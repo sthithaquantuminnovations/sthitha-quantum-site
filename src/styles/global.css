@@ -1274,10 +1274,6 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
 @media (max-width: 1199px) { .page-hero-body.is-course { gap: 32px; } }
 @media (max-width: 899px) { .page-hero-body.is-course { grid-template-columns: minmax(0, 1fr); padding-block: 40px 48px; } }
 
-/* Footer watermark uses the full logo */
-.footer-mark { display: block; }
-.footer-mark img { width: min(100%, 720px); height: auto; margin-inline: auto; filter: none; opacity: 1; }
-.footer-mark:hover img { opacity: 1; rotate: 0deg; }
 
 /* Mobile: each area is a card whose tab pins under the previous one as you scroll, so the cards stack */
 @media (max-width: 899px) {
