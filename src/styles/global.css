@@ -1285,6 +1285,7 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
 /* Mobile: each area is a card whose tab pins under the previous one as you scroll, so the cards stack */
 @media (max-width: 899px) {
   .features-tabs { display: none; }
+  .feature-head h3 { flex-basis: 100%; }
   .feature {
     position: -webkit-sticky; position: sticky;
     top: calc(var(--nav-h) + var(--i) * 48px);
