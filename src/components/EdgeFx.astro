@@ -1,0 +1,30 @@
+---
+// Fixed strip along the bottom of the viewport. Content scrolling under it gets a progressive
+// blur with an RGB split. Pure CSS/SVG, no JavaScript. Chromium only; other browsers ignore it.
+const layers = [1, 4, 9, 16, 25].map((k, i) => {
+  const s = 0.00024 * k;
+  return { id: `edgefx-${i}`, s, shift: s * (2 / 3), start: i * 20 };
+});
+---
+
+<div class="edge-fx" aria-hidden="true">
+  <svg width="0" height="0" focusable="false">
+    <defs>
+      {layers.map((l) => (
+        <filter id={l.id} x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation={l.s} result="blurred" />
+          <feOffset in="blurred" dx={-l.shift} dy="0" result="shifted" />
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r" />
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g" />
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b" />
+          <feOffset in="r" dx={-l.s} dy="0" result="rOff" />
+          <feOffset in="g" dx="0" dy="0" result="gOff" />
+          <feOffset in="b" dx={l.s} dy="0" result="bOff" />
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg" />
+          <feBlend in="rg" in2="bOff" mode="screen" />
+        </filter>
+      ))}
+    </defs>
+  </svg>
+  {layers.map((l) => <div style={`--f:url(#${l.id});--a:${l.start}%`}></div>)}
+</div>

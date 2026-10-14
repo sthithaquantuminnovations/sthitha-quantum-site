@@ -3,6 +3,7 @@ import '../styles/global.css';
 import IconSprite from '../components/IconSprite.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import EdgeFx from '../components/EdgeFx.astro';
 import { company } from '../data/site.js';
 
 interface Props {
@@ -12,9 +13,10 @@ interface Props {
   publishedTime?: string;
   imageAlt?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 }
 
-const { title, description, type = 'website', publishedTime, imageAlt = 'Sthitha Quantum Innovations logo', jsonLd } = Astro.props;
+const { title, description, type = 'website', publishedTime, imageAlt = 'Sthitha Quantum Innovations logo', jsonLd, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
 const ogImage = new URL('/assets/images/sthitha-logo.png', Astro.site);
 
@@ -55,6 +57,7 @@ const structuredData = JSON.stringify({ '@context': 'https://schema.org', '@grap
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -90,6 +93,7 @@ const structuredData = JSON.stringify({ '@context': 'https://schema.org', '@grap
       <slot />
     </main>
     <Footer />
+    <EdgeFx />
     <script>
       import '../scripts/visuals.js';
       import '../scripts/main.js';
