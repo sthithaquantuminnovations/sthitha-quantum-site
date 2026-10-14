@@ -110,12 +110,6 @@ const teamMembers = [
                 {String(index + 1).padStart(2, '0')}
               </span>
 
-              <div
-                class="member-placeholder"
-                aria-label={`Photo placeholder for ${member.name}`}
-              >
-                <span>{member.initials}</span>
-              </div>
 
               <span class="portrait-caption">
                 STHITHA · CORE TEAM
@@ -159,11 +153,14 @@ const teamMembers = [
   </div>
 </Base>
 
+
 <style>
+  /* Main page */
   .team-page {
     overflow: clip;
   }
 
+  /* Hero section */
   .team-hero {
     min-height: 370px;
     padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 64px) 44px;
@@ -218,6 +215,7 @@ const teamMembers = [
     box-shadow: 0 0 12px rgb(25 200 234 / 25%);
   }
 
+  /* Team section */
   .team-section {
     padding: clamp(56px, 8vw, 100px) clamp(24px, 5vw, 64px);
   }
@@ -227,7 +225,7 @@ const teamMembers = [
     align-items: end;
     justify-content: space-between;
     gap: 32px;
-    margin-bottom: 36px;
+    margin-bottom: 44px;
   }
 
   .section-heading h2,
@@ -246,17 +244,26 @@ const teamMembers = [
     line-height: 1.7;
   }
 
+  /* Three cards per row on desktop */
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 40px;
+    align-items: stretch;
   }
 
+  /* Individual card */
   .team-card {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     border: 1px solid var(--line);
     background: var(--bg-2);
-    transition: border-color 180ms ease, transform 180ms ease;
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
   }
 
   .team-card:hover {
@@ -264,13 +271,17 @@ const teamMembers = [
     transform: translateY(-3px);
   }
 
+  /* Portrait area
+     Future profile images will fill this rectangular area */
   .member-portrait {
     position: relative;
-    min-height: 220px;
-    aspect-ratio: 1.8 / 1;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
     overflow: hidden;
     display: grid;
     place-items: center;
+    flex-shrink: 0;
     background:
       radial-gradient(
         ellipse at 50% 100%,
@@ -292,19 +303,21 @@ const teamMembers = [
   }
 
   .portrait-index {
-    top: 16px;
-    left: 16px;
+    top: 14px;
+    left: 14px;
   }
 
   .portrait-caption {
-    right: 16px;
-    bottom: 16px;
+    right: 14px;
+    bottom: 14px;
     font-size: 9px;
   }
 
+  /* Temporary initials placeholder
+     Replace this element with an image when photos are available */
   .member-placeholder {
-    width: 104px;
-    height: 104px;
+    width: 88px;
+    height: 88px;
     display: grid;
     place-items: center;
     border: 1px solid var(--line-2);
@@ -319,8 +332,10 @@ const teamMembers = [
     letter-spacing: -0.06em;
   }
 
+  /* Member information */
   .member-info {
-    padding: 24px;
+    flex: 1;
+    padding: 22px;
   }
 
   .member-heading {
@@ -330,19 +345,23 @@ const teamMembers = [
     gap: 12px;
   }
 
+  .member-heading > div {
+    min-width: 0;
+  }
+
   .member-heading h3 {
-    font-size: 21px;
-    line-height: 1.3;
+    font-size: 19px;
+    line-height: 1.4;
     font-weight: 600;
     letter-spacing: -0.035em;
     overflow-wrap: anywhere;
   }
 
   .member-role {
-    margin-top: 5px;
+    margin-top: 6px;
     color: var(--accent);
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .member-bio {
@@ -352,6 +371,7 @@ const teamMembers = [
     line-height: 1.75;
   }
 
+  /* LinkedIn link */
   .member-social {
     width: 34px;
     height: 34px;
@@ -361,7 +381,9 @@ const teamMembers = [
     border: 1px solid var(--line);
     border-radius: 50%;
     color: var(--muted);
-    transition: color 180ms ease, border-color 180ms ease;
+    transition:
+      color 180ms ease,
+      border-color 180ms ease;
   }
 
   .member-social:hover {
@@ -374,6 +396,7 @@ const teamMembers = [
     height: 15px;
   }
 
+  /* Optional closing section */
   .team-closing {
     margin: 0 clamp(24px, 5vw, 64px) clamp(56px, 8vw, 96px);
     padding: clamp(32px, 6vw, 64px);
@@ -403,6 +426,20 @@ const teamMembers = [
     margin-top: 28px;
   }
 
+  /* Tablet: two cards per row */
+  @media (min-width: 641px) and (max-width: 1000px) {
+    .team-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 24px;
+      row-gap: 32px;
+    }
+
+    .member-info {
+      padding: 20px;
+    }
+  }
+
+  /* Mobile: one card per row */
   @media (max-width: 640px) {
     .team-hero {
       min-height: 330px;
@@ -426,19 +463,30 @@ const teamMembers = [
       align-items: start;
       flex-direction: column;
       gap: 14px;
+      margin-bottom: 32px;
     }
 
     .team-grid {
       grid-template-columns: minmax(0, 1fr);
-      gap: 16px;
+      column-gap: 0;
+      row-gap: 28px;
     }
 
     .member-portrait {
-      min-height: 210px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .member-placeholder {
+      width: 96px;
+      height: 96px;
     }
 
     .member-info {
       padding: 20px;
+    }
+
+    .member-heading h3 {
+      font-size: 20px;
     }
 
     .team-closing {
@@ -447,9 +495,14 @@ const teamMembers = [
     }
   }
 
+  /* Accessibility */
   @media (prefers-reduced-motion: reduce) {
     .team-card {
       transition: none;
+    }
+
+    .team-card:hover {
+      transform: none;
     }
   }
 </style>
