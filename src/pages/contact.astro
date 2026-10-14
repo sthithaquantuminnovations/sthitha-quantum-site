@@ -46,7 +46,7 @@ const social = company.social.filter((s) => s.href);
       <div id="contact-form">
         <h2 data-reveal>Tell Us a Little About It</h2>
         <p class="body" style="margin:0 0 28px;max-width:520px;color:var(--muted);font-size:16px;line-height:24px">Use the form below to share your question or proposal. Choose the relevant topic so we can better understand your enquiry.</p>
-        <form action="/contact-handler.php" method="post" data-ajax>
+        <form id="contact-enquiry-form" data-emailjs-form>
           <label class="field"><span>Full Name *</span><input type="text" name="fullName" placeholder="Your name" autocomplete="name" required /></label>
           <label class="field"><span>Email Address *</span><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required /></label>
           <label class="field"><span>Organisation (Optional)</span><input type="text" name="org" placeholder="Organisation or institution" autocomplete="organization" /></label>
@@ -58,6 +58,14 @@ const social = company.social.filter((s) => s.href);
           <label class="field"><span>Subject (Optional)</span><input type="text" name="subject" placeholder="What is this about?" /></label>
           <label class="field"><span>Message *</span><textarea name="message" placeholder="How can we help?" required></textarea></label>
           <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          <!-- Google reCAPTCHA v2 checkbox -->
+          <div class="recaptcha-container">
+            <div
+              class="g-recaptcha"
+              data-sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+            ></div>
+          </div>
+
           <button class="btn btn-light" type="submit">Send Message</button>
         </form>
         <p class="form-note" style="margin-top:14px;font-size:13px;line-height:19px;color:var(--dim);max-width:520px">Your details will be used to respond to your enquiry. Please do not include passwords or confidential technical information.</p>
@@ -98,6 +106,7 @@ const social = company.social.filter((s) => s.href);
 </Base>
 
 <script>
+  import '../scripts/contact-form.js';
   // Pre-select the enquiry type when arriving from a link such as /contact?topic=exodia.
   // Older short names map onto the current enquiry types.
   const select = document.querySelector('[data-topic-select]');
@@ -116,3 +125,9 @@ const social = company.social.filter((s) => s.href);
   };
   choose(new URLSearchParams(location.search).get('topic'));
 </script>
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js"
+  async
+  defer
+></script>

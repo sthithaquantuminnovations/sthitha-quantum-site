@@ -1,0 +1,508 @@
+
+---
+import Base from '../layouts/Base.astro';
+
+const teamMembers = [
+  {
+    name: 'Anil Achoora',
+    role: 'Director ',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'A',
+    linkedIn: '',
+  },
+  {
+    name: 'Dr.Bhowmik Kaustav',
+    role: 'Director ',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'B',
+    linkedIn: '',
+  },
+  {
+    name: 'Asif Shah',
+    role: 'Research Head',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'A',
+    linkedIn: '',
+  },
+  {
+    name: 'Rantish',
+    role: 'CTO ',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'R',
+    linkedIn: '',
+  },
+  {
+    name: 'Farhan',
+    role: 'CFO ',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'F',
+    linkedIn: '',
+  },
+  {
+    name: 'Punya Jayarajan',
+    role: 'Creative Design Head ',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'P',
+    linkedIn: '',
+  },
+  {
+    name: 'Harigovind M',
+    role: 'Marketing Head ',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'H',
+    linkedIn: '',
+  },
+];
+---
+
+<Base
+  title="Our Team | Sthitha Quantum Innovations"
+  description="Meet the core team behind Sthitha Quantum Innovations and learn about the people working across quantum computing, education, research and post-quantum security."
+>
+  <div class="frame team-page">
+    <section class="team-hero">
+      <div class="team-hero-content">
+        <span class="eyebrow">
+          Sthitha Quantum Innovations
+        </span>
+
+        <h1 data-reveal>
+          The people behind<br />
+          <span>the possibilities.</span>
+        </h1>
+
+        <p class="team-intro" data-fade style="--d: 180ms">
+          Meet the core team working across quantum computing,
+          post-quantum security, education and research.
+        </p>
+      </div>
+
+      <div class="team-hero-note" data-fade style="--d: 260ms">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Our team · Our work · Our direction</span>
+      </div>
+    </section>
+
+    <section class="team-section" aria-labelledby="team-heading">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">The people</span>
+          <h2 id="team-heading" data-reveal>
+            Meet our core team
+          </h2>
+        </div>
+
+        <p class="section-description">
+          The people contributing to Sthitha's work and vision
+          in emerging quantum technologies.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        {teamMembers.map((member, index) => (
+          <article
+            class="team-card"
+            data-fade
+            style={`--d: ${index * 90}ms`}
+          >
+            <div class="member-portrait">
+              <span class="portrait-index">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+
+              <span class="portrait-caption">
+                STHITHA · CORE TEAM
+              </span>
+            </div>
+
+            <div class="member-info">
+              <div class="member-heading">
+                <div>
+                  <h3>{member.name}</h3>
+                  <p class="member-role">{member.role}</p>
+                </div>
+
+                {member.linkedIn && (
+                  <a
+                    class="member-social"
+                    href={member.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${member.name} on LinkedIn`}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 17.5V9.2H5.58v8.3h2.76ZM6.96 8.07a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM18.42 17.5v-4.55c0-2.44-1.3-3.58-3.03-3.58a2.62 2.62 0 0 0-2.36 1.3V9.2h-2.76v8.3h2.76v-4.1c0-1.08.2-2.12 1.54-2.12s1.36 1.23 1.36 2.19v4.03h2.49Z"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+
+              
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    
+  </div>
+</Base>
+
+
+<style>
+  /* Main page */
+  .team-page {
+    overflow: clip;
+  }
+
+  /* Hero section */
+  .team-hero {
+    min-height: 370px;
+    padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 64px) 44px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .team-hero-content {
+    max-width: 780px;
+  }
+
+  .team-hero h1 {
+    margin-top: 22px;
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 0.99;
+    letter-spacing: -0.065em;
+    font-weight: 600;
+  }
+
+  .team-hero h1 span {
+    color: var(--muted);
+  }
+
+  .team-intro {
+    max-width: 540px;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .team-hero-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgb(25 200 234 / 25%);
+  }
+
+  /* Team section */
+  .team-section {
+    padding: clamp(56px, 8vw, 100px) clamp(24px, 5vw, 64px);
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 44px;
+  }
+
+  .section-heading h2,
+  .team-closing h2 {
+    margin-top: 12px;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+    font-weight: 600;
+  }
+
+  .section-description {
+    max-width: 340px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Three cards per row on desktop */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 40px;
+    align-items: stretch;
+  }
+
+  /* Individual card */
+  .team-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .team-card:hover {
+    border-color: var(--line-2);
+    transform: translateY(-3px);
+  }
+
+  /* Portrait area
+     Future profile images will fill this rectangular area */
+  .member-portrait {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background:
+      radial-gradient(
+        ellipse at 50% 100%,
+        rgb(25 200 234 / 10%),
+        transparent 58%
+      ),
+      var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .portrait-index,
+  .portrait-caption {
+    position: absolute;
+    z-index: 1;
+    color: var(--muted);
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .portrait-index {
+    top: 14px;
+    left: 14px;
+  }
+
+  .portrait-caption {
+    right: 14px;
+    bottom: 14px;
+    font-size: 9px;
+  }
+
+  /* Temporary initials placeholder
+     Replace this element with an image when photos are available */
+  .member-placeholder {
+    width: 88px;
+    height: 88px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-2);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--accent);
+  }
+
+  .member-placeholder span {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.06em;
+  }
+
+  /* Member information */
+  .member-info {
+    flex: 1;
+    padding: 22px;
+  }
+
+  .member-heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .member-heading > div {
+    min-width: 0;
+  }
+
+  .member-heading h3 {
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+  }
+
+  .member-role {
+    margin-top: 6px;
+    color: var(--accent);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .member-bio {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  /* LinkedIn link */
+  .member-social {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--muted);
+    transition:
+      color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .member-social:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .member-social svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Optional closing section */
+  .team-closing {
+    margin: 0 clamp(24px, 5vw, 64px) clamp(56px, 8vw, 96px);
+    padding: clamp(32px, 6vw, 64px);
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(
+        ellipse at 100% 0%,
+        rgb(25 200 234 / 7%),
+        transparent 50%
+      ),
+      var(--bg-2);
+  }
+
+  .team-closing h2 {
+    max-width: 620px;
+  }
+
+  .team-closing > p {
+    max-width: 500px;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .team-closing .btn {
+    margin-top: 28px;
+  }
+
+  /* Tablet: two cards per row */
+  @media (min-width: 641px) and (max-width: 1000px) {
+    .team-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 24px;
+      row-gap: 32px;
+    }
+
+    .member-info {
+      padding: 20px;
+    }
+  }
+
+  /* Mobile: one card per row */
+  @media (max-width: 640px) {
+    .team-hero {
+      min-height: 330px;
+      padding: 64px 22px 32px;
+      gap: 36px;
+    }
+
+    .team-hero h1 {
+      font-size: clamp(42px, 12vw, 62px);
+    }
+
+    .team-intro {
+      font-size: 15px;
+    }
+
+    .team-section {
+      padding: 56px 22px;
+    }
+
+    .section-heading {
+      align-items: start;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .team-grid {
+      grid-template-columns: minmax(0, 1fr);
+      column-gap: 0;
+      row-gap: 28px;
+    }
+
+    .member-portrait {
+      aspect-ratio: 4 / 3;
+    }
+
+    .member-placeholder {
+      width: 96px;
+      height: 96px;
+    }
+
+    .member-info {
+      padding: 20px;
+    }
+
+    .member-heading h3 {
+      font-size: 20px;
+    }
+
+    .team-closing {
+      margin: 0 22px 56px;
+      padding: 28px 22px;
+    }
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .team-card {
+      transition: none;
+    }
+
+    .team-card:hover {
+      transform: none;
+    }
+  }
+</style>
