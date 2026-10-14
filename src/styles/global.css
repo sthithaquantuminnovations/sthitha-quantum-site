@@ -2072,8 +2072,14 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
     margin-bottom: 14px;
   }
   .page-hero h1 {
-    font-size: clamp(28px, 6vw, 42px);
+    font-size: clamp(36px, 10vw, 52px);
   }
+}
+
+/* Larger H1s on phones and tablets (home hero, page heroes, course pages) */
+@media (max-width: 899px) {
+  .hero h1 { font-size: clamp(42px, 11.5vw, 60px); }
+  .page-hero-body.is-course h1 { font-size: clamp(36px, 10vw, 48px); }
 }
 
 @media (max-width: 540px) {
