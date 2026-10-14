@@ -87,7 +87,7 @@ Begin by identifying every cryptographic touchpoint:
 - Scan source repositories for hard-coded cryptographic algorithms and key lengths.
 - Inspect ingress controllers, API gateways, load balancers, and VPN terminators.
 - Map which cipher suites are currently active and enforced across external clients and internal service meshes.
-- Generate a machine-readable **Cryptographic Bill of Materials (CBOM)** using [AEGIS](/aegis).
+- Generate a machine-readable **Cryptographic Bill of Materials (CBOM)** using [Sthitha Exodia](/exodia).
 
 ### Step 2: Ingress Layer Hybrid Deployment
 Enable hybrid post-quantum key exchange at your perimeter:
@@ -109,8 +109,8 @@ An enterprise's security perimeter is only as resilient as its software supply c
 
 Migrating to post-quantum standards is an engineering program that requires careful cross-functional coordination across infrastructure, DevOps, and compliance teams:
 
-- **AEGIS Discovery Engine:** Automatically scans and catalogues your organization’s cryptographic footprint, highlighting legacy RSA/ECC bottlenecks and estimating exposure to Harvest Now, Decrypt Later threats.
+- **Sthitha Exodia Discovery Engine:** Automatically scans and catalogues your organization’s cryptographic footprint, highlighting legacy RSA/ECC bottlenecks and estimating exposure to Harvest Now, Decrypt Later threats.
 - **Hybrid Architecture Advisory:** We help design and test dual-mode TLS configurations, ensuring that migration to ML-KEM and ML-DSA proceeds without breaking legacy client backwards compatibility.
 - **Educational Enablement:** Through [Sthitha Academy](/academy), our technical courses provide engineering teams with the foundational quantum mechanics and algorithmic principles needed to architect quantum-safe systems.
 
-*Ready to evaluate your enterprise's quantum readiness? [Contact the Sthitha team](/contact) to discuss an AEGIS assessment or explore our [Research & Innovation](/research) initiatives.*
+*Ready to evaluate your enterprise's quantum readiness? [Contact the Sthitha team](/contact) to discuss a Sthitha Exodia assessment or explore our [Research & Innovation](/research) initiatives.*

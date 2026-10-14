@@ -4,7 +4,7 @@ Website for Sthitha Quantum Innovations, a quantum technology company in Bengalu
 
 The site covers three areas of work:
 
-- **AEGIS**: post-quantum security
+- **Sthitha Exodia**: post-quantum security
 - **Sthitha Academy**: quantum education and courses
 - **Research & Innovation**: quantum computing, algorithms and quantum machine learning
 
@@ -26,7 +26,7 @@ npm run preview  # preview the production build
 
 ```
 src/
-  pages/        one file per route (about, academy, aegis, research, events, ...)
+  pages/        one file per route (about, academy, exodia, research, events, ...)
   components/   shared and home-page components
   data/         site facts, courses and posts
   scripts/      interactions and canvas visuals

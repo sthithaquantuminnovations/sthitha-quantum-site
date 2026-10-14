@@ -147,10 +147,10 @@ Begin incorporating post-quantum algorithms without removing classical defenses:
 
 At Sthitha Quantum Innovations, our mission is to make advanced quantum technologies understandable and practically actionable:
 
-- **AEGIS:** Our dedicated post-quantum security initiative delivers automated cryptographic discovery, risk posture analysis, and hybrid migration frameworks tailored for enterprise IT and critical infrastructure.
+- **Sthitha Exodia:** Our dedicated post-quantum security initiative delivers automated cryptographic discovery, risk posture analysis, and hybrid migration frameworks tailored for enterprise IT and critical infrastructure.
 - **Sthitha Academy:** Structured educational courses providing software engineers, architects, and students with fundamental grounding in quantum computing principles and algorithms.
 - **Research & Innovation:** Ongoing investigations into applied quantum algorithms, quantum machine learning, and emerging security architectures.
 
 The transition to post-quantum security is the largest cryptographic migration in the history of computing. Organizations that act deliberately today will navigate the shift smoothly; those that wait until quantum supremacy is realized will face an urgent, disruptive crisis.
 
-*Learn more about how to protect your systems against emerging quantum risks with [AEGIS](/aegis), or start building foundational quantum literacy with [Sthitha Academy](/academy).*
+*Learn more about how to protect your systems against emerging quantum risks with [Sthitha Exodia](/exodia), or start building foundational quantum literacy with [Sthitha Academy](/academy).*

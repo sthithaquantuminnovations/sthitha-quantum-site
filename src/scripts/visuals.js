@@ -514,7 +514,7 @@
 
   /* ---------- Mount ---------- */
 
-  // AEGIS, Sthitha Academy, Research & Innovation
+  // Sthitha Exodia, Sthitha Academy, Research & Innovation
   var AREAS = ['protect', 'book', 'flask'];
   var FACTORY = {
     atom: atom,

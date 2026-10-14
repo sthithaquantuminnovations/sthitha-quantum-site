@@ -20,21 +20,21 @@ const approach = [
 ];
 ---
 
-<section class="section" id="aegis">
+<section class="section" id="exodia">
   <div class="section-head">
-    <span class="eyebrow is-brand">AEGIS · Cryptography, mapped</span>
+    <span class="eyebrow is-brand">Sthitha Exodia · Cryptography, mapped</span>
     <h2 data-reveal>Preparing for the <span class="hl">post-quantum era.</span></h2>
-    <p data-fade style="--d:200ms">Cryptography protects information across applications, networks and digital infrastructure. AEGIS focuses on helping organisations understand their cryptographic landscape and prepare for future changes.</p>
+    <p data-fade style="--d:200ms">Cryptography protects information across applications, networks and digital infrastructure. Sthitha Exodia focuses on helping organisations understand their cryptographic landscape and prepare for future changes.</p>
   </div>
 
   <div class="cells" id="capabilities">
     {approach.map((step, i) => (
       <article class="cell" data-fade style={`--d:${i * 90}ms`}>
-        <div class="cell-num"><span>0{i + 1}</span><span>AEGIS</span></div>
+        <div class="cell-num"><span>0{i + 1}</span><span>Sthitha Exodia</span></div>
         <h3>{step.title}</h3>
         <p>{step.text}</p>
         <ul class="ticks">{step.points.map((point) => <li>{point}</li>)}</ul>
-        <More href={`/aegis#${step.id}`}>Explore AEGIS</More>
+        <More href={`/exodia#${step.id}`}>Explore Sthitha Exodia</More>
       </article>
     ))}
   </div>

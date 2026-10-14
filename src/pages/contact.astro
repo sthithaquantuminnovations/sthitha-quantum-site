@@ -15,7 +15,7 @@ const enquiryTypes = [
 ];
 
 const work = [
-  { tag: 'AEGIS', title: 'Post-Quantum Security', text: 'Learn about our focus on post-quantum security and quantum-safe migration.', href: '/aegis', link: 'Explore AEGIS' },
+  { tag: 'Sthitha Exodia', title: 'Post-Quantum Security', text: 'Learn about our focus on post-quantum security and quantum-safe migration.', href: '/exodia', link: 'Explore Sthitha Exodia' },
   { tag: 'Sthitha Academy', title: 'Quantum Education', text: 'Explore our quantum computing courses and learning resources.', href: '/academy', link: 'Explore Courses' },
   { tag: 'Research & Innovation', title: 'Quantum Research', text: 'Discover our areas of interest in quantum computing, quantum algorithms and quantum machine learning.', href: '/research', link: 'Explore Research' },
 ];
@@ -98,11 +98,11 @@ const social = company.social.filter((s) => s.href);
 </Base>
 
 <script>
-  // Pre-select the enquiry type when arriving from a link such as /contact?topic=AEGIS.
+  // Pre-select the enquiry type when arriving from a link such as /contact?topic=exodia.
   // Older short names map onto the current enquiry types.
   const select = document.querySelector('[data-topic-select]');
   const alias = {
-    aegis: 'Post-Quantum Security',
+    exodia: 'Post-Quantum Security',
     academy: 'Quantum Education',
     research: 'Research & Innovation',
     partnerships: 'Partnerships & Collaboration',

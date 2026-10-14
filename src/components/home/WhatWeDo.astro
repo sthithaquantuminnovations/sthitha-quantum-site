@@ -5,9 +5,9 @@ import { areas, courses, learningPath } from '../../data/site.js';
 
 // Per area: the short tab label, the outline the threads form, and three points taken from the area's own copy.
 const detail = {
-  aegis: {
-    tab: 'AEGIS', visual: 'protect',
-    photo: 'feature-aegis-photo.jpg', tags: ['NIST FIPS 203', 'NIST FIPS 204'],
+  exodia: {
+    tab: 'Sthitha Exodia', visual: 'protect',
+    photo: 'feature-exodia-photo.jpg', tags: ['NIST FIPS 203', 'NIST FIPS 204'],
     points: [
       { icon: 'scan', text: 'Discover cryptographic assets.' },
       { icon: 'gauge', text: 'Assess quantum risk.' },
@@ -57,9 +57,9 @@ const detail = {
           <More href={area.href}>{area.link}</More>
         </div>
 
-        {area.key === 'aegis' && (
+        {area.key === 'exodia' && (
           <div class="feature-visual" aria-hidden="true">
-            <canvas data-visual={detail.aegis.visual}></canvas>
+            <canvas data-visual={detail.exodia.visual}></canvas>
             <div class="hybrid">
               <div class="hybrid-box">
                 <span class="hybrid-label">Exposure</span>

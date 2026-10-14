@@ -8,7 +8,7 @@ const within = (...prefixes: string[]) =>
 
 // One piece of line art per area of work.
 const art: Record<string, string> = {
-  aegis: '<path d="M18 2 4 7.5V17c0 8 5.6 14 14 17 8.4-3 14-9 14-17V7.5L18 2Z"></path><path d="M18 2v32"></path>',
+  exodia: '<path d="M18 2 4 7.5V17c0 8 5.6 14 14 17 8.4-3 14-9 14-17V7.5L18 2Z"></path><path d="M18 2v32"></path>',
   academy: '<path d="M3 9.5 18 3l15 6.5-15 6.5L3 9.5Z"></path><path d="M9 13v9c2.5 2.7 5.5 4 9 4s6.5-1.3 9-4v-9M33 9.5V20"></path>',
   research: '<circle cx="18" cy="18" r="3"></circle><ellipse cx="18" cy="18" rx="16" ry="6.5"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(60 18 18)"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(120 18 18)"></ellipse>',
 };
@@ -24,7 +24,7 @@ const art: Record<string, string> = {
 
     <nav class="nav" aria-label="Primary">
       <div class="nav-item has-panel">
-        <a class="nav-link" href="/#work" aria-haspopup="true" aria-expanded="false" aria-current={path === '/aegis' || path === '/research' ? 'page' : undefined}>Our Work<Icon name="chev-down" /></a>
+        <a class="nav-link" href="/#work" aria-haspopup="true" aria-expanded="false" aria-current={path === '/exodia' || path === '/research' ? 'page' : undefined}>Our Work<Icon name="chev-down" /></a>
         <div class="nav-panel">
           <div class="nav-cards">
             {areas.map((area) => (

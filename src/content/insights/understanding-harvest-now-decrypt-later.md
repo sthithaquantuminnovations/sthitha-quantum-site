@@ -103,8 +103,8 @@ Rather than waiting for full deprecation of classical algorithms, leading standa
 ### 3. Implementing Cryptographic Agility
 Hard-coded cryptographic algorithms in firmware, microcontrollers, and application libraries represent massive technical debt. Cryptographic agility means abstracting cryptographic libraries so that algorithms, key sizes, and signature schemes can be rotated via configuration rather than extensive refactoring.
 
-### 4. Engaging with AEGIS
-This operational imperative is precisely why **AEGIS** was built at Sthitha Quantum Innovations:
+### 4. Engaging with Sthitha Exodia
+This operational imperative is precisely why **Sthitha Exodia** was built at Sthitha Quantum Innovations:
 - **Automated Discovery:** Uncovering hidden cryptographic dependencies throughout codebases, network services, and containerized clusters.
 - **Risk Prioritization:** Quantifying data shelf-life against quantum arrival estimates.
 - **Migration Architecture:** Engineering dual-mode and post-quantum hybrid architectures without interrupting live traffic.
@@ -113,4 +113,4 @@ This operational imperative is precisely why **AEGIS** was built at Sthitha Quan
 
 The Harvest Now, Decrypt Later doctrine proves that quantum computing is not a future risk—it is an **active adversary strategy happening today**. Every day an organization delays cryptographic inventory and post-quantum key exchange deployment is another day of archived data surrendered to future decryption.
 
-*To explore how Sthitha assists organizations in discovering cryptographic assets and engineering quantum-resilient pipelines, explore [AEGIS](/aegis) or read our primer on [Understanding Post-Quantum Security](/research/insights/understanding-post-quantum-security).*
+*To explore how Sthitha assists organizations in discovering cryptographic assets and engineering quantum-resilient pipelines, explore [Sthitha Exodia](/exodia) or read our primer on [Understanding Post-Quantum Security](/research/insights/understanding-post-quantum-security).*

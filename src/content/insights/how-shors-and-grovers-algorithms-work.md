@@ -142,6 +142,6 @@ times rotates the state vector directly toward the target $|w\rangle$. Measuring
 Mastering Shor’s and Grover’s algorithms is an essential milestone for anyone pursuing quantum computing, quantum engineering, or post-quantum cybersecurity.
 
 - **Learn Circuit Implementation:** In our [Quantum Computing Crash Course](/academy/quantum-computing-crash-course), learners construct quantum circuits, explore phase kickback, build the Quantum Fourier Transform, and simulate Grover search routines step-by-step.
-- **Enterprise Preparedness:** Explore how Sthitha’s [AEGIS](/aegis) platform helps enterprises discover cryptographic assets exposed to Shor's algorithm and prepare for seamless post-quantum migration.
+- **Enterprise Preparedness:** Explore how the [Sthitha Exodia](/exodia) platform helps enterprises discover cryptographic assets exposed to Shor's algorithm and prepare for seamless post-quantum migration.
 
 *Explore additional articles on quantum technology and post-quantum migration in our [Insights Section](/research/insights).*

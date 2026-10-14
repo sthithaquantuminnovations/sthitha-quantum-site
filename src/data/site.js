@@ -1,5 +1,5 @@
 // One place for the facts the pages share. Sthitha Quantum Innovations is the parent brand;
-// AEGIS, Sthitha Academy and Research & Innovation sit underneath it.
+// Sthitha Exodia, Sthitha Academy and Research & Innovation sit underneath it.
 import crashCourseImage from '../assets/courses/quantum-computing-crash-course.jpg';
 import malayalamImage from '../assets/courses/quantum-computing-malayalam.jpg';
 
@@ -17,13 +17,13 @@ export const company = {
 
 export const areas = [
   {
-    key: 'aegis',
-    name: 'AEGIS',
+    key: 'exodia',
+    name: 'Sthitha Exodia',
     title: 'Post-Quantum Security',
-    href: '/aegis',
-    summary: 'AEGIS focuses on cryptographic discovery, quantum risk awareness and preparation for post-quantum migration.',
+    href: '/exodia',
+    summary: 'Sthitha Exodia focuses on cryptographic discovery, quantum risk awareness and preparation for post-quantum migration.',
     short: 'Explore cryptographic discovery, quantum risk awareness and post-quantum migration planning.',
-    link: 'Explore AEGIS',
+    link: 'Explore Sthitha Exodia',
   },
   {
     key: 'academy',
