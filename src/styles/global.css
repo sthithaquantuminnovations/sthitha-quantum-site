@@ -2076,9 +2076,8 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
   }
 }
 
-/* Larger H1s on phones and tablets (home hero, page heroes, course pages) */
+/* Larger H1s on phones and tablets (page heroes and course pages; home hero keeps its own size) */
 @media (max-width: 899px) {
-  .hero h1 { font-size: clamp(42px, 11.5vw, 60px); }
   .page-hero-body.is-course h1 { font-size: clamp(36px, 10vw, 48px); }
 }
 
@@ -2108,4 +2107,3 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
   -webkit-mask-image: linear-gradient(to bottom, transparent var(--a), #000 calc(var(--a) + 20%), #000 calc(var(--a) + 40%), transparent calc(var(--a) + 60%));
   mask-image: linear-gradient(to bottom, transparent var(--a), #000 calc(var(--a) + 20%), #000 calc(var(--a) + 40%), transparent calc(var(--a) + 60%));
 }
-@media (max-width: 809px) { .edge-fx { display: none; } }
