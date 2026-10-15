@@ -51,7 +51,7 @@ cp .env.example .env    # then fill in the real values
 
 - `.env` is git-ignored and is never committed. Restart `npm run dev` after changing it, because Astro reads it at startup.
 - The values are exposed to the browser by design (the `PUBLIC_` prefix). Never put a reCAPTCHA *secret* key or an EmailJS private key in `.env`.
-- Add the same four variables in your host's environment settings (Vercel, Netlify, etc.) and redeploy. The build bakes them into the site.
+- Add the same four variables in your host's environment settings and redeploy. The build bakes them into the site.
 
 ### Before the form works on a domain
 
