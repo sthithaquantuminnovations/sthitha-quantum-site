@@ -64,6 +64,14 @@ const teamMembers = [
     linkedIn: '',
   },
   {
+    name: 'Sreevishnu V',
+    photo: '/assets/team/sreevishnu-v.webp',
+    role: 'CIO',
+    bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
+    initials: 'S',
+    linkedIn: '',
+  },
+  {
     name: 'K Muhammed Farhaan',
     photo: '/assets/team/farhan.webp',
     role: 'CFO',
@@ -617,6 +625,11 @@ const teamMembers = [
     border-radius: 14px;
   }
 
+  /* Five cards per row on laptop screens and wider */
+  @media (min-width: 1200px) {
+    .team-card { flex-basis: calc((100% - 96px) / 5); }
+  }
+
   .member-portrait {
     aspect-ratio: 1 / 1;
   }
@@ -914,22 +927,23 @@ const teamMembers = [
     .member-more[open] .member-more-panel { animation: none; }
   }
 
-  /* Dropdown opens inside the card, below the toggle */
+  /* Dropdown opens below the toggle, floating over the cards underneath */
   .member-more[open] .member-more-panel {
-    position: static;
-    left: auto;
-    right: auto;
+    top: 100%;
     bottom: auto;
-    padding: 16px 0 0;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
+    left: -21px;
+    right: -21px;
+    padding: 16px 20px 8px;
+    border: 1px solid var(--line);
+    border-top: 0;
+    border-radius: 0 0 14px 14px;
+    background: var(--bg-2);
+    box-shadow: 0 18px 32px rgb(0 0 0 / 50%);
     backdrop-filter: none;
   }
 
   .team-card:has(.member-more[open]) {
-    z-index: auto;
+    border-radius: 14px 14px 0 0;
   }
 
   .member-more-panel .more-papers a {
