@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qubits, Superposition &amp; Entanglement Explained | Sthitha</title>
+    <meta name="description" content="A foundational guide to qubits: the Bloch sphere, state vectors, quantum superposition, entanglement, Bell states and circuit measurement.">
+    <meta name="keywords" content="qubits, superposition, entanglement, Bloch sphere, Bell states, quantum computing basics, Sthitha Quantum Innovations, Sthitha, quantum technology company, quantum computing company in India, deep tech company Bengaluru">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Sthitha Quantum Innovations">
+    <link rel="canonical" href="https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="application-name" content="Sthitha">
+    <meta name="apple-mobile-web-app-title" content="Sthitha">
+    <meta name="geo.region" content="IN-KA">
+    <meta name="geo.placename" content="Bengaluru">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Sthitha Quantum Innovations">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:url" content="https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/">
+    <meta property="og:title" content="Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement">
+    <meta property="og:description" content="A foundational guide to qubits: the Bloch sphere, state vectors, quantum superposition, entanglement, Bell states and circuit measurement.">
+    <meta property="og:image" content="https://sthithaquantum.com/assets/og/og-demystifying-qubits-superposition-and-entanglement.png">
+    <meta property="og:image:secure_url" content="https://sthithaquantum.com/assets/og/og-demystifying-qubits-superposition-and-entanglement.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement">
+    <meta property="article:published_time" content="2026-04-10">
+    <meta property="article:modified_time" content="2026-04-10">
+    <meta property="article:author" content="Sthitha Quantum Innovations">
+    <meta property="article:publisher" content="https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd">
+    <meta property="article:section" content="Quantum Computing">
+    <meta property="article:tag" content="qubits"><meta property="article:tag" content="superposition"><meta property="article:tag" content="entanglement"><meta property="article:tag" content="Bloch sphere"><meta property="article:tag" content="Bell states"><meta property="article:tag" content="quantum computing basics">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement">
+    <meta name="twitter:description" content="A foundational guide to qubits: the Bloch sphere, state vectors, quantum superposition, entanglement, Bell states and circuit measurement.">
+    <meta name="twitter:image" content="https://sthithaquantum.com/assets/og/og-demystifying-qubits-superposition-and-entanglement.png">
+    <meta name="twitter:image:alt" content="Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement">
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sthithaquantum.com/#organization","name":"Sthitha Quantum Innovations","legalName":"Sthitha Quantum Innovations Pvt Ltd","alternateName":["Sthitha","Sthitha Quantum"],"url":"https://sthithaquantum.com/","logo":{"@type":"ImageObject","@id":"https://sthithaquantum.com/#logo","url":"https://sthithaquantum.com/assets/images/sthitha-logo-icon.png","width":373,"height":389,"caption":"Sthitha Quantum Innovations"},"image":"https://sthithaquantum.com/assets/images/sthitha-logo.png","description":"Sthitha Quantum Innovations is a quantum technology company in Bengaluru, working across quantum computing, post-quantum security, education and research.","slogan":"Quantum, Made Practical","email":"sthithaquantuminnovations@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Landmark Towers, MG Road","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560001","addressCountry":"IN"},"founder":{"@type":"Person","@id":"https://sthithaquantum.com/our-team/#anil-achoora","name":"Anil Erinchikkadavathu Achoora","jobTitle":"Founder & Director"},"brand":[{"@type":"Brand","name":"Sthitha Exodia","url":"https://sthithaquantum.com/exodia/"},{"@type":"Brand","name":"Sthitha Academy","url":"https://sthithaquantum.com/academy/"}],"knowsAbout":["Quantum computing","Quantum technology","Post-quantum cryptography","Post-quantum security","Quantum-safe cybersecurity","Cryptographic discovery and inventory","Quantum risk assessment","NIST post-quantum standards (FIPS 203, FIPS 204, FIPS 205)","Quantum algorithms","Shor's algorithm","Grover's algorithm","Quantum machine learning","Quantum education"],"sameAs":["https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd","https://www.instagram.com/sthithaquantuminnovations/","https://www.youtube.com/channel/UCHVDDfnEUWhN9CKBxt1ICRw"]},{"@type":"WebSite","@id":"https://sthithaquantum.com/#website","url":"https://sthithaquantum.com/","name":"Sthitha Quantum Innovations","alternateName":"Sthitha","description":"Sthitha Quantum Innovations is a quantum technology company in Bengaluru, working across quantum computing, post-quantum security, education and research.","inLanguage":"en-IN","publisher":{"@id":"https://sthithaquantum.com/#organization"}},{"@type":"WebPage","@id":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/#webpage","url":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/","name":"Qubits, Superposition & Entanglement Explained | Sthitha","description":"A foundational guide to qubits: the Bloch sphere, state vectors, quantum superposition, entanglement, Bell states and circuit measurement.","inLanguage":"en-IN","isPartOf":{"@id":"https://sthithaquantum.com/#website"},"publisher":{"@id":"https://sthithaquantum.com/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://sthithaquantum.com/assets/og/og-demystifying-qubits-superposition-and-entanglement.png","width":1200,"height":630},"breadcrumb":{"@type":"BreadcrumbList","@id":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sthithaquantum.com/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://sthithaquantum.com/research/insights/"},{"@type":"ListItem","position":3,"name":"Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement","item":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/"}]}},{"@type":"TechArticle","@id":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/#article","headline":"Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement","alternativeHeadline":"Qubits, Superposition & Entanglement Explained","description":"A foundational guide to qubits: the Bloch sphere, state vectors, quantum superposition, entanglement, Bell states and circuit measurement.","abstract":"A clear, foundational breakdown of quantum information science—from the Bloch sphere and state vector mathematics to quantum superposition, Bell states, and circuit measurements.","url":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/","mainEntityOfPage":{"@id":"https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/#webpage"},"datePublished":"2026-04-10","dateModified":"2026-04-10","author":{"@id":"https://sthithaquantum.com/#organization"},"publisher":{"@id":"https://sthithaquantum.com/#organization"},"image":{"@type":"ImageObject","url":"https://sthithaquantum.com/assets/og/og-demystifying-qubits-superposition-and-entanglement.png","width":1200,"height":630},"articleSection":"Quantum Computing","keywords":["qubits","superposition","entanglement","Bloch sphere","Bell states","quantum computing basics"],"wordCount":1241,"timeRequired":"PT7M","inLanguage":"en","isPartOf":{"@id":"https://sthithaquantum.com/#website"}}]}</script><meta name="theme-color" content="#110f0d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Marks the page as scripted before first paint, so reveal states never flash. -->
+    <script>document.documentElement.classList.add('js');</script><!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1120941297253219');
+      fbq('track', 'PageView');
+    </script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1120941297253219&ev=PageView&noscript=1" alt=""></noscript>
+    <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/_astro/Base.CahKLBgi.css">
+<link rel="stylesheet" href="/_astro/_slug_.CHgEk1Iv.css"></head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol><symbol id="i-chev-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol><symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol><symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol><symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6L12 3Z"/></symbol><symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h5.5"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol><symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-6"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3M4 4v4h4M4 13a8 8 0 0 0 14.9 3M20 20v-4h-4"/></symbol><symbol id="i-checks" viewBox="0 0 24 24"><path d="m3 6 1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17M11 6h10M11 12h10M11 18h10"/></symbol><symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol><symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8ZM12 17v4"/></symbol><symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol><symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9Z"/></symbol><symbol id="i-tower" viewBox="0 0 24 24"><path d="M12 10v11M8 21l4-11 4 11M7.5 7.5a6 6 0 0 1 9 0M4.5 5a10 10 0 0 1 15 0"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M12 3l9 5H3l9-5Z"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-5 3 3 5-7"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/></symbol><symbol id="i-coins" viewBox="0 0 24 24"><circle cx="9" cy="9" r="6"/><path d="M15.5 9.5a6 6 0 1 1-6 6"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><path d="M4 13v6h16v-6M12 15V4M8 8l4-4 4 4"/></symbol><symbol id="i-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M19 19v2H6a2 2 0 0 1-2-2"/></symbol><symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5Z"/></symbol><symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol><symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 10.5a3.8 3.8 0 0 1-.5 7.5H7Z"/></symbol><symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M15 10h3M15 14h3"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-hash" viewBox="0 0 24 24"><path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol></defs></svg>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="frame">
+    <a class="brand" href="/" aria-label="Sthitha Quantum Innovations – Home">
+      <img class="brand-mark" src="/assets/images/sthitha-logo-header.webp" alt="Sthitha Quantum Innovations" width="99" height="40" decoding="async">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/#work" aria-haspopup="true" aria-expanded="false">Our Work<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></a>
+        <div class="nav-panel">
+          <div class="nav-cards">
+            <a class="nav-card" href="/exodia/">
+                <div class="nav-card-art"><svg viewBox="0 0 36 36"><path d="M18 2 4 7.5V17c0 8 5.6 14 14 17 8.4-3 14-9 14-17V7.5L18 2Z"></path><path d="M18 2v32"></path></svg></div>
+                <strong>Sthitha Exodia</strong><span>Post-Quantum Security</span>
+              </a><a class="nav-card" href="/academy/">
+                <div class="nav-card-art"><svg viewBox="0 0 36 36"><path d="M3 9.5 18 3l15 6.5-15 6.5L3 9.5Z"></path><path d="M9 13v9c2.5 2.7 5.5 4 9 4s6.5-1.3 9-4v-9M33 9.5V20"></path></svg></div>
+                <strong>Sthitha Academy</strong><span>Quantum Education</span>
+              </a><a class="nav-card" href="/research/">
+                <div class="nav-card-art"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="3"></circle><ellipse cx="18" cy="18" rx="16" ry="6.5"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(60 18 18)"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(120 18 18)"></ellipse></svg></div>
+                <strong>Research &amp; Innovation</strong><span>Quantum Research</span>
+              </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/academy/" aria-haspopup="true" aria-expanded="false">Academy<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></a>
+        <div class="nav-panel">
+          <div class="nav-split">
+            <div>
+              <span class="eyebrow">Sthitha Academy · Courses</span>
+              <a class="nav-row" href="/academy/quantum-computing-crash-course/"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg><div><strong>Quantum Computing Crash Course</strong><span>Qubits to Shor &amp; Grover · Available Now</span></div></a><a class="nav-row" href="/academy/quantum-computing-malayalam/"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg><div><strong>Quantum Computing in Malayalam</strong><span>For Beginners · Available Now</span></div></a>
+            </div>
+            <div class="nav-list">
+              <span class="eyebrow">Academy</span>
+              <a href="/academy/">Overview</a>
+              <a href="/academy/#courses">Current courses</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/about/" aria-haspopup="true" aria-expanded="false">Company<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></a>
+        <div class="nav-panel">
+          <div class="nav-split">
+            <div>
+              <span class="eyebrow">Sthitha Quantum Innovations</span>
+              <a class="nav-row" href="/about/"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg><div><strong>About Sthitha</strong><span>Who we are and what we work on.</span></div></a>
+              <a class="nav-row" href="/our-team/"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg><div><strong>Our Team</strong><span>Meet the people behind Sthitha.</span></div></a>
+              <a class="nav-row" href="/events/"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg><div><strong>Events</strong><span>Community and collaboration.</span></div></a>
+            </div>
+            <div class="nav-list">
+              <span class="eyebrow">Ecosystem</span>
+              <a href="/partnerships/">Partnerships</a>
+              <a href="/research/insights/">Insights</a>
+              <a href="/contact/">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="nav-link" href="/research/insights/" aria-current="page">Insights</a></div>
+    </nav>
+
+    <a class="btn btn-light btn-sm header-cta" href="/contact/">Talk to Sthitha</a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <details class="mm-group">
+    <summary>Our Work<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></summary>
+    <div class="mm-list">
+      <a href="/exodia/">Sthitha Exodia<small>Post-Quantum Security</small></a><a href="/academy/">Sthitha Academy<small>Quantum Education</small></a><a href="/research/">Research &amp; Innovation<small>Quantum Research</small></a>
+    </div>
+  </details>
+  <details class="mm-group">
+    <summary>Academy<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></summary>
+    <div class="mm-list">
+      <a href="/academy/">All courses</a>
+      <a href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course<small>Qubits to Shor &amp; Grover</small></a><a href="/academy/quantum-computing-malayalam/">Quantum Computing in Malayalam<small>For Beginners</small></a>
+    </div>
+  </details>
+  <details class="mm-group">
+    <summary>Company<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></summary>
+    <div class="mm-list">
+      <a href="/about/">About Sthitha</a>
+      <a href="/our-team/">Our Team</a>
+      <a href="/events/">Events</a>
+      <a href="/partnerships/">Partnerships</a>
+      <a href="/contact/">Contact</a>
+    </div>
+  </details>
+  <a class="mm-link" href="/research/insights/">Insights</a>
+  <a class="btn btn-light" href="/contact/">Talk to Sthitha</a>
+</div>
+    <main id="main">
+      
+  <div class="frame">
+    <article>
+      <header class="page-hero">
+        <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
+          <div>
+            <p class="crumbs" data-fade>
+              <a href="/">Home</a><i>/</i>
+              <a href="/research/insights/">Insights</a><i>/</i>
+              <span>Quantum Computing</span>
+            </p>
+
+            <div class="article-badges" data-fade style="--d:100ms">
+              <span class="article-badge is-category">Quantum Computing</span>
+              <span class="article-badge is-time">
+                <svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> 7 min read
+              </span>
+            </div>
+
+            <h1 data-reveal style="max-width:960px">Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement</h1>
+            <p class="page-hero-lede" data-fade style="--d:250ms">A clear, foundational breakdown of quantum information science—from the Bloch sphere and state vector mathematics to quantum superposition, Bell states, and circuit measurements.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="article">
+        <aside class="article-meta">
+          <a class="more" href="/research/insights/">All insights <span class="more-dot"><svg class="icon" aria-hidden="true"><use href="#i-chev-left"></use></svg></span></a>
+
+          <dl>
+            <div><dt>Published</dt><dd><time datetime="2026-04-10">April 10, 2026</time></dd></div>
+            
+            <div><dt>Estimated Read</dt><dd>7 min read</dd></div>
+            <div><dt>Author</dt><dd>Sthitha Quantum Innovations</dd></div>
+            <div><dt>Discipline</dt><dd>Quantum Computing</dd></div>
+          </dl>
+
+          <div class="article-toc">
+              <details class="article-toc-details">
+                <summary class="article-toc-summary">
+                  <span class="article-toc-title">Table of contents (8 sections)</span>
+                  <span class="toc-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></span>
+                </summary>
+                <ul class="article-toc-list">
+                  <li>
+                      <a href="#from-classical-bits-to-quantum-qubits">From Classical Bits to Quantum Qubits</a>
+                    </li><li>
+                      <a href="#superposition-state-vectors-and-probability-amplitudes">Superposition: State Vectors and Probability Amplitudes</a>
+                    </li><li>
+                      <a href="#visualizing-the-qubit-the-bloch-sphere">Visualizing the Qubit: The Bloch Sphere</a>
+                    </li><li>
+                      <a href="#the-power-of-multiple-qubits-exponential-state-space">The Power of Multiple Qubits: Exponential State Space</a>
+                    </li><li>
+                      <a href="#quantum-entanglement-non-local-correlation">Quantum Entanglement: Non-Local Correlation</a>
+                    </li><li>
+                      <a href="#constructing-entanglement-in-a-quantum-circuit">Constructing Entanglement in a Quantum Circuit</a>
+                    </li><li>
+                      <a href="#why-entanglement-powers-quantum-advantage">Why Entanglement Powers Quantum Advantage</a>
+                    </li><li>
+                      <a href="#learn-quantum-computing-with-sthitha-academy">Learn Quantum Computing with Sthitha Academy</a>
+                    </li>
+                </ul>
+              </details>
+            </div>
+
+          <div class="article-share">
+            <span class="article-share-title">Share this insight</span>
+            <div class="share-buttons">
+              <button class="share-btn js-copy-link" type="button" data-url="https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg> Copy link
+              </button>
+              <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsthithaquantum.com%2Fresearch%2Finsights%2Fdemystifying-qubits-superposition-and-entanglement%2F" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a class="share-btn" href="https://twitter.com/intent/tweet?text=Demystifying%20Qubits%3A%20The%20Physics%20and%20Mathematics%20of%20Superposition%20and%20Entanglement&amp;url=https%3A%2F%2Fsthithaquantum.com%2Fresearch%2Finsights%2Fdemystifying-qubits-superposition-and-entanglement%2F" target="_blank" rel="noopener noreferrer">
+                X (Twitter)
+              </a>
+            </div>
+            <span class="copy-feedback js-copy-feedback">Link copied to clipboard!</span>
+          </div>
+        </aside>
+
+        <div class="article-body">
+          <div class="key-takeaways">
+            <div class="key-takeaways-head">
+              <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Key Takeaway
+            </div>
+            <p>A clear, foundational breakdown of quantum information science—from the Bloch sphere and state vector mathematics to quantum superposition, Bell states, and circuit measurements.</p>
+          </div>
+
+          <p>At the heart of the quantum computing revolution lies a fundamental departure from the binary logic that has governed computing for over seven decades. While classical computers manipulate bits constrained to discrete values of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, quantum processors leverage the physical laws of quantum mechanics to process information in radically different ways.</p>
+<p>This explainer introduces the foundational building blocks of quantum information science: <strong>qubits</strong>, <strong>quantum superposition</strong>, and <strong>quantum entanglement</strong>—providing both the conceptual intuition and the linear algebra that underpins modern quantum circuits.</p>
+<h2 id="from-classical-bits-to-quantum-qubits">From Classical Bits to Quantum Qubits</h2>
+<p>In classical computation, a bit is a physical state in a two-state system: a transistor either conducts voltage (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>) or does not (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>).</p>
+<p>A <strong>quantum bit (qubit)</strong> is a two-level quantum mechanical system. Physical implementations vary widely across quantum hardware architectures:</p>
+<ul>
+<li>The spin orientation (spin-up <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mo>↑</mo><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\uparrow\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↑</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">⟩</span></span></span></span> or spin-down <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mo>↓</mo><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\downarrow\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↓</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">⟩</span></span></span></span>) of an electron or nucleus.</li>
+<li>The polarization state (horizontal <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>H</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|H\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">⟩</span></span></span></span> or vertical <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>V</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|V\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">⟩</span></span></span></span>) of a single photon.</li>
+<li>The ground and excited energy states of an artificial atom inside a superconducting Josephson junction circuit.</li>
+</ul>
+<p>In quantum mechanics, we describe the state of a qubit using Dirac’s “bra-ket” vector notation. The two computational basis states are denoted as:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mo separator="true">,</mo><mspace width="1em"></mspace><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">|0\rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad |1\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣1</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></p>
+<h2 id="superposition-state-vectors-and-probability-amplitudes">Superposition: State Vectors and Probability Amplitudes</h2>
+<p>Unlike a classical bit, a qubit can exist in any linear combination of its basis states until it is measured. This property is known as <strong>superposition</strong>:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>ψ</mi><mo stretchy="false">⟩</mo><mo>=</mo><mi>α</mi><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi>β</mi><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\psi\rangle = \alpha|0\rangle + \beta|1\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord">∣1</span><span class="mclose">⟩</span></span></span></span></p>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> are <strong>complex numbers</strong> called <strong>probability amplitudes</strong>.</p>
+<h3 id="the-normalization-condition">The Normalization Condition</h3>
+<p>Because the total probability of all mutually exclusive measurement outcomes must equal <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">100\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">100%</span></span></span></span>, the amplitudes must satisfy the normalization condition:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>α</mi><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">∣</mi><mi>β</mi><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\alpha|^2 + |\beta|^2 = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></p>
+<p>When an observer measures the qubit in the computational basis:</p>
+<ul>
+<li>The probability of measuring outcome <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∣</mi><mi>α</mi><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">P(0) = |\alpha|^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li>The probability of measuring outcome <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∣</mi><mi>β</mi><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">P(1) = |\beta|^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Classical Bit:</span></span>
+<span class="line"><span>State: [ 0 ] OR [ 1 ]  (Discrete binary state)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Quantum Qubit:</span></span>
+<span class="line"><span>State: |ψ⟩ = α|0⟩ + β|1⟩  (Continuous superposition on Bloch Sphere)</span></span>
+<span class="line"><span>              |</span></span>
+<span class="line"><span>              v (Measurement collapses wave function)</span></span>
+<span class="line"><span>       Result: 0 (prob |α|²) OR 1 (prob |β|²)</span></span></code></pre>
+<h3 id="superposition-is-not-simply-ignorance">Superposition is Not Simply “Ignorance”</h3>
+<p>A critical point of confusion for beginners is assuming that superposition merely represents classical probabilistic uncertainty (like an uninspected coin toss).</p>
+<p>In classical probability, a flipped coin is definitely heads or tails under the hand; the observer simply lacks information. In quantum mechanics, before measurement, the qubit genuinely exists in a continuous linear superposition of states. The probability amplitudes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> possess <strong>phases</strong> that can interfere constructively or destructively—the essential mechanism that powers quantum algorithms.</p>
+<h2 id="visualizing-the-qubit-the-bloch-sphere">Visualizing the Qubit: The Bloch Sphere</h2>
+<p>Because a qubit’s state is normalized and global phase is physically unobservable, any pure single-qubit state can be geometrically mapped onto the surface of a unit sphere known as the <strong>Bloch Sphere</strong>:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>ψ</mi><mo stretchy="false">⟩</mo><mo>=</mo><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mfrac><mi>θ</mi><mn>2</mn></mfrac><mo fence="true">)</mo></mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>+</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ϕ</mi></mrow></msup><mi>sin</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mfrac><mi>θ</mi><mn>2</mn></mfrac><mo fence="true">)</mo></mrow><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\psi\rangle = \cos\left(\frac{\theta}{2}\right)|0\rangle + e^{i\phi}\sin\left(\frac{\theta}{2}\right)|1\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2301em;vertical-align:-0.35em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2301em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">ϕ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣1</span><span class="mclose">⟩</span></span></span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>π</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\theta \in [0, \pi]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mclose">]</span></span></span></span> represents the polar angle.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>2</mn><mi>π</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\phi \in [0, 2\pi)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mclose">)</span></span></span></span> represents the azimuthal phase angle.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>                  |0⟩  (North Pole, θ = 0)</span></span>
+<span class="line"><span>                   ▲</span></span>
+<span class="line"><span>                   |   /</span></span>
+<span class="line"><span>                   |  /</span></span>
+<span class="line"><span>                   | / State Vector |ψ⟩</span></span>
+<span class="line"><span>                   |/  (θ, φ)</span></span>
+<span class="line"><span>       ------------+------------► Y</span></span>
+<span class="line"><span>                  /|</span></span>
+<span class="line"><span>                 / |</span></span>
+<span class="line"><span>                ▼  |</span></span>
+<span class="line"><span>               X   |</span></span>
+<span class="line"><span>                   ▼</span></span>
+<span class="line"><span>                  |1⟩  (South Pole, θ = π)</span></span></code></pre>
+<ul>
+<li>The <strong>North Pole</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>) corresponds to state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|0\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span></span></span></span>.</li>
+<li>The <strong>South Pole</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta = \pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>) corresponds to state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|1\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩</span></span></span></span>.</li>
+<li>Points on the <strong>Equator</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\theta = \pi/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord">/2</span></span></span></span>) represent equal superpositions of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|0\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|1\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩</span></span></span></span> with varying quantum relative phases <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span>.
+<ul>
+<li>The state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mo>+</mo><mo stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord">+</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3831em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.551em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9128em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">2</span></span></span><span style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1272em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩)</span></span></span></span> lies on the positive X-axis.</li>
+<li>The state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mo>−</mo><mo stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>−</mo><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord">−</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3831em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.551em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9128em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">2</span></span></span><span style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1272em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩)</span></span></span></span> lies on the negative X-axis.</li>
+</ul>
+</li>
+</ul>
+<p>Every single-qubit quantum gate (such as Pauli-X, Pauli-Z, or the Hadamard gate) corresponds geometrically to a <strong>rotation of the state vector</strong> around an axis of the Bloch Sphere.</p>
+<h2 id="the-power-of-multiple-qubits-exponential-state-space">The Power of Multiple Qubits: Exponential State Space</h2>
+<p>When scaling classical bits, adding <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> bits allows a computer to store <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> binary digits. However, a system of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> quantum qubits exists in a joint state space governed by the <strong>tensor product</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊗</mo></mrow><annotation encoding="application/x-tex">\otimes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">⊗</span></span></span></span>):</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false">⟩</mo><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow></msubsup><msub><mi>c</mi><mi>x</mi></msub><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle = \sum_{x=0}^{2^n - 1} c_x |x\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣Ψ</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3196em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0199em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">⟩</span></span></span></span></p>
+<p>A quantum processor with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> qubits requires <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> complex amplitudes</strong> to fully describe its joint state:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n = 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span> qubits <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><msup><mn>2</mn><mn>3</mn></msup><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\rightarrow 2^3 = 8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span> amplitudes.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n = 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> qubits <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><msup><mn>2</mn><mn>10</mn></msup><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>024</mn></mrow><annotation encoding="application/x-tex">\rightarrow 2^{10} = 1,024</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">024</span></span></span></span> amplitudes.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">n = 50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">50</span></span></span></span> qubits <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><msup><mn>2</mn><mn>50</mn></msup><mo>≈</mo><mn>1.125</mn><mo>×</mo><msup><mn>10</mn><mn>15</mn></msup></mrow><annotation encoding="application/x-tex">\rightarrow 2^{50} \approx 1.125 \times 10^{15}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">50</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.125</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">15</span></span></span></span></span></span></span></span></span></span></span></span> amplitudes (exceeding the memory capacity of conventional supercomputers).</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>300</mn></mrow><annotation encoding="application/x-tex">n = 300</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">300</span></span></span></span> qubits <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><msup><mn>2</mn><mn>300</mn></msup></mrow><annotation encoding="application/x-tex">\rightarrow 2^{300}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">300</span></span></span></span></span></span></span></span></span></span></span></span> amplitudes (exceeding the estimated number of atoms in the observable universe).</li>
+</ul>
+<p>This exponential expansion of Hilbert space provides the computational medium in which quantum algorithms operate simultaneously across vast solution spaces.</p>
+<h2 id="quantum-entanglement-non-local-correlation">Quantum Entanglement: Non-Local Correlation</h2>
+<p>Superposition alone is not sufficient to achieve quantum advantage. The second indispensable resource is <strong>quantum entanglement</strong>.</p>
+<p>Two or more qubits are considered entangled when their joint quantum state <strong>cannot be factored</strong> into the product of individual single-qubit states:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">Ψ</mi><mo stretchy="false">⟩</mo><mo mathvariant="normal">≠</mo><mi mathvariant="normal">∣</mi><msub><mi>ψ</mi><mn>1</mn></msub><mo stretchy="false">⟩</mo><mo>⊗</mo><mi mathvariant="normal">∣</mi><msub><mi>ψ</mi><mn>2</mn></msub><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\Psi\rangle \neq |\psi_1\rangle \otimes |\psi_2\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣Ψ</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">⟩</span></span></span></span></p>
+<h3 id="the-canonical-example-the-bell-state">The Canonical Example: The Bell State</h3>
+<p>Consider the two-qubit Bell state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msup><mi mathvariant="normal">Φ</mi><mo>+</mo></msup><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|\Phi^+\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0213em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span></span></span>:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msup><mi mathvariant="normal">Φ</mi><mo>+</mo></msup><mo stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo fence="true">(</mo><mi mathvariant="normal">∣</mi><mn>00</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>11</mn><mo stretchy="false">⟩</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">|\Phi^+\rangle = \frac{1}{\sqrt{2}}\left(|00\rangle + |11\rangle\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0213em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3831em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.551em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9128em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">2</span></span></span><span style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1272em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord">∣00</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">∣11</span><span class="mclose">⟩</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></p>
+<p>In this state:</p>
+<ul>
+<li>Neither qubit possesses a definite individual state on its own.</li>
+<li>If Qubit 1 is measured and found to be in state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, the joint state instantly collapses to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>00</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|00\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣00</span><span class="mclose">⟩</span></span></span></span>. A subsequent measurement of Qubit 2 will yield outcome <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> with <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">100\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">100%</span></span></span></span> certainty</strong>.</li>
+<li>If Qubit 1 is measured and found to be <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, Qubit 2 is guaranteed to yield <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</li>
+</ul>
+<p>This correlation holds regardless of the physical distance separating the two qubits. Albert Einstein famously questioned this phenomenon as “spooky action at a distance” (the Einstein-Podolsky-Rosen paradox). Subsequent experiments verifying <strong>Bell’s Inequalities</strong> proved conclusively that quantum mechanics is inherently non-local: the correlation is real and fundamental to nature.</p>
+<h2 id="constructing-entanglement-in-a-quantum-circuit">Constructing Entanglement in a Quantum Circuit</h2>
+<p>In practical quantum computing, entanglement is generated using elementary quantum logic gates:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>          +---+</span></span>
+<span class="line"><span>q_0: ─────| H |──────■───────  State: |Φ⁺⟩ = (|00⟩ + |11⟩)/√2</span></span>
+<span class="line"><span>          +---+      |</span></span>
+<span class="line"><span>                   +---+</span></span>
+<span class="line"><span>q_1: ──────────────| X |─────</span></span>
+<span class="line"><span>                   +---+</span></span></code></pre>
+<ol>
+<li><strong>Hadamard Gate (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span>):</strong> Applied to the first qubit initialized in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|0\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span></span></span></span>, creating an equal superposition:
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>1</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo><mo>⊗</mo><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>00</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>10</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}}(|0\rangle + |1\rangle) \otimes |0\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |10\rangle)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3831em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.551em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9128em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">2</span></span></span><span style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1272em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣1</span><span class="mclose">⟩)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3831em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.551em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9128em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">2</span></span></span><span style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1272em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">∣00</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣10</span><span class="mclose">⟩)</span></span></span></span></li>
+<li><strong>Controlled-NOT Gate (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>N</mi><mi>O</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">CNOT</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CNOT</span></span></span></span>):</strong> Flips the target qubit (Qubit 1) if and only if the control qubit (Qubit 0) is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.
+The state transforms directly into the entangled Bell state:
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mn>00</mn><mo stretchy="false">⟩</mo><mo>+</mo><mi mathvariant="normal">∣</mi><mn>11</mn><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3831em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.551em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9128em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight">2</span></span></span><span style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1272em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">∣00</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣11</span><span class="mclose">⟩)</span></span></span></span></li>
+</ol>
+<h2 id="why-entanglement-powers-quantum-advantage">Why Entanglement Powers Quantum Advantage</h2>
+<p>Entanglement enables quantum algorithms to link qubits into coordinated states where quantum interference can operate across all <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> possibilities simultaneously:</p>
+<ul>
+<li><strong>Quantum Parallelism:</strong> Operations applied to an entangled register manipulate all computational basis states simultaneously.</li>
+<li><strong>Interference:</strong> By engineering quantum gates so that wrong answers interfere destructively (canceling their amplitudes) while correct answers interfere constructively (amplifying their probability), quantum algorithms allow observers to extract the solution upon measurement with high probability.</li>
+</ul>
+<h2 id="learn-quantum-computing-with-sthitha-academy">Learn Quantum Computing with Sthitha Academy</h2>
+<p>Understanding the mathematics of qubits is the vital first step toward mastering quantum algorithms, quantum error correction, and post-quantum cryptography.</p>
+<p>At <strong>Sthitha Academy</strong>, our educational courses provide hands-on, accessible instruction for learners at all levels:</p>
+<ul>
+<li><strong><a href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course: Qubits to Shor &#x26; Grover</a>:</strong> Master the transition from linear algebra to quantum gates, superposition, entanglement, and algorithmic implementation.</li>
+<li><strong><a href="/academy/quantum-computing-malayalam/">Quantum Computing in Malayalam: For Beginners</a>:</strong> A foundational quantum computing course taught in Malayalam, making quantum education accessible to regional learners.</li>
+</ul>
+<p><em>Explore our full curriculum and course outlines on the <a href="/academy/">Sthitha Academy Overview</a>.</em></p>
+
+          
+
+          <div class="article-cta-box">
+              <div>
+                <h3>Master Quantum Computing With Sthitha Academy</h3>
+                <p>Learn qubits, circuits, and quantum algorithms through structured courses and interactive circuit simulations.</p>
+              </div>
+              <a class="btn btn-light" href="/academy/">Explore Courses</a>
+            </div>
+
+          
+
+          <div class="article-author-card">
+            <div class="author-avatar" aria-hidden="true">
+              <svg class="icon" aria-hidden="true"><use href="#i-atom"></use></svg>
+            </div>
+            <div class="author-info">
+              <strong>Sthitha Quantum Innovations</strong>
+              <span>Research, Engineering &amp; Quantum Security Division · Bengaluru, India</span>
+            </div>
+          </div>
+
+          <nav class="article-pager" aria-label="Adjacent Articles">
+            <a class="pager-item prev" href="/research/insights/transitioning-to-nist-pqc-standards/">
+                <span class="pager-label">← Previous Insight</span>
+                <span class="pager-title">Transitioning to NIST Post-Quantum Standards: An Enterprise Implementation Guide</span>
+              </a>
+
+            <a class="pager-item next" href="/research/insights/how-shors-and-grovers-algorithms-work/">
+                <span class="pager-label">Next Insight →</span>
+                <span class="pager-title">Inside Shor&#39;s and Grover&#39;s Algorithms: How Quantum Computing Solves Hard Problems</span>
+              </a>
+          </nav>
+        </div>
+      </div>
+    </article>
+
+    <section class="related-section">
+        <div class="section-head">
+          <span class="eyebrow">Continue Reading</span>
+          <h2>Related Insights &amp; Explainers</h2>
+          <p>Explore more technical analyses from Sthitha Quantum Innovations.</p>
+        </div>
+        <div class="related-grid">
+          <a class="related-card" href="/research/insights/introduction-to-quantum-machine-learning/">
+              <div class="related-card-top">
+                <time datetime="2026-06-12">June 12, 2026</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">Quantum Machine Learning</span>
+                <h3>An Introduction to Quantum Machine Learning: Where Quantum Circuits Meet AI</h3>
+                <p>How parameterized quantum circuits, quantum kernels, and variational algorithms are driving the intersection of artificial intelligence and quantum computing.</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </div>
+            </a><a class="related-card" href="/research/insights/how-shors-and-grovers-algorithms-work/">
+              <div class="related-card-top">
+                <time datetime="2026-05-04">May 4, 2026</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">Quantum Algorithms</span>
+                <h3>Inside Shor&#39;s and Grover&#39;s Algorithms: How Quantum Computing Solves Hard Problems</h3>
+                <p>A technical exploration of the two landmark quantum algorithms—Peter Shor&#39;s period-finding method for prime factorisation and Lov Grover&#39;s amplitude amplification search.</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </div>
+            </a><a class="related-card" href="/research/insights/transitioning-to-nist-pqc-standards/">
+              <div class="related-card-top">
+                <time datetime="2026-03-24">March 24, 2026</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">Post-Quantum Security</span>
+                <h3>Transitioning to NIST Post-Quantum Standards: An Enterprise Implementation Guide</h3>
+                <p>A practical guide to implementing the finalized NIST post-quantum standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA)—within enterprise architectures.</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </div>
+            </a>
+        </div>
+      </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sync TOC open state with desktop width
+      function syncArticleToc() {
+        const d = document.querySelector('.article-toc-details');
+        if (d && window.innerWidth >= 900) {
+          d.setAttribute('open', '');
+        }
+      }
+      syncArticleToc();
+      window.addEventListener('resize', syncArticleToc);
+
+      // Auto-close on mobile when clicking TOC jump links
+      document.querySelectorAll('.article-toc-list a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (window.innerWidth < 900) {
+            const d = a.closest('.article-toc-details');
+            if (d) d.removeAttribute('open');
+          }
+        });
+      });
+
+      const copyBtn = document.querySelector('.js-copy-link');
+      const feedback = document.querySelector('.js-copy-feedback');
+      if (copyBtn && feedback) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            feedback.style.display = 'block';
+            setTimeout(() => {
+              feedback.style.display = 'none';
+            }, 3000);
+          } catch (e) {
+            console.error('Failed to copy', e);
+          }
+        });
+      }
+    });
+  </script>
+    </main>
+    <footer class="site-footer">
+  <div class="frame">
+    <div class="footer-cols">
+      <div>
+          <h3>Our Work</h3>
+          <ul><li><a href="/exodia/">Sthitha Exodia</a></li><li><a href="/academy/">Sthitha Academy</a></li><li><a href="/research/">Research &amp; Innovation</a></li></ul>
+        </div><div>
+          <h3>Sthitha Academy</h3>
+          <ul><li><a href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course</a></li><li><a href="/academy/quantum-computing-malayalam/">Quantum Computing in Malayalam</a></li></ul>
+        </div><div>
+          <h3>Company</h3>
+          <ul><li><a href="/about/">About Sthitha</a></li><li><a href="/our-team/">Our Team</a></li><li><a href="/events/">Events</a></li><li><a href="/partnerships/">Partnerships</a></li><li><a href="/research/insights/">Insights</a></li><li><a href="/contact/">Contact</a></li></ul>
+        </div>
+      <div>
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:sthithaquantuminnovations@gmail.com">Email<svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a></li>
+          <li><a href="/contact/">Contact form</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-status"><span class="status">Bengaluru, India</span><span class="mono">Quantum · Security · Education · Research</span></div>
+      <ul class="footer-social" aria-label="Social media">
+        <li><a href="https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd" rel="noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg></a></li><li><a href="https://www.instagram.com/sthithaquantuminnovations/" rel="noopener" target="_blank" aria-label="Instagram" title="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg></a></li><li><a href="https://www.youtube.com/channel/UCHVDDfnEUWhN9CKBxt1ICRw" rel="noopener" target="_blank" aria-label="YouTube" title="YouTube"><svg class="icon" aria-hidden="true"><use href="#i-youtube"></use></svg></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-mark" aria-hidden="true"><img src="/assets/images/sthitha-logo-icon.png" alt=""><span>Sthitha</span></div>
+
+    <div class="footer-legal">
+      <span>© 2026 Sthitha Quantum Innovations Pvt Ltd. All rights reserved.</span>
+      <span><a href="/privacy-policy/">Privacy Policy</a><i>/</i><a href="/terms-and-conditions/">Terms &amp; Conditions</a><i>/</i><a href="/cookie-policy/">Cookie Policy</a></span>
+    </div>
+    <p class="footer-addr">Sthitha Exodia, Sthitha Academy and Research &amp; Innovation are initiatives of Sthitha Quantum Innovations Pvt Ltd, Bengaluru, India.</p>
+  </div>
+</footer>
+    <div class="edge-fx" aria-hidden="true">
+  <svg width="0" height="0" focusable="false">
+    <defs>
+      <filter id="edgefx-0" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00024" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.00015999999999999999" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00024" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00024" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-1" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00096" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.0006399999999999999" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00096" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00096" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-2" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00216" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.0014399999999999999" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00216" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00216" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-3" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00384" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.0025599999999999998" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00384" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00384" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-4" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.006" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.004" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.006" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.006" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter>
+    </defs>
+  </svg>
+  <div style="--f:url(#edgefx-0);--a:0%"></div><div style="--f:url(#edgefx-1);--a:20%"></div><div style="--f:url(#edgefx-2);--a:40%"></div><div style="--f:url(#edgefx-3);--a:60%"></div><div style="--f:url(#edgefx-4);--a:80%"></div>
+</div>
+    <script type="module" src="/_astro/Base.astro_astro_type_script_index_0_lang.TdEY6xi4.js"></script></body>
+</html>

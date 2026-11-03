@@ -1,0 +1,33 @@
+# Sthitha Quantum Innovations
+
+> Sthitha Quantum Innovations Pvt Ltd is a quantum technology company in Bengaluru, India, working across quantum computing, post-quantum security, education and research. Its initiatives are Sthitha Exodia (post-quantum security), Sthitha Academy (quantum education) and Research & Innovation.
+
+Full text of every article: https://sthithaquantum.com/llms-full.txt
+
+## Company
+- [About Sthitha](https://sthithaquantum.com/about/): Who we are, mission, vision and three areas of work
+- [Our Team](https://sthithaquantum.com/our-team/): Core team and their publications
+- [Events](https://sthithaquantum.com/events/): Community engagement, including sponsorship of AURORA '26 (2–3 October 2026)
+- [Partnerships](https://sthithaquantum.com/partnerships/): Collaboration in quantum education, research and post-quantum security
+- [Contact](https://sthithaquantum.com/contact/): Enquiries and head office details
+
+## Sthitha Exodia — post-quantum security
+- [Sthitha Exodia](https://sthithaquantum.com/exodia/): Helps organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum migration (Discover, Protect, Migrate)
+
+## Sthitha Academy — quantum education
+- [Academy overview](https://sthithaquantum.com/academy/): Quantum computing courses for beginners
+- [Quantum Computing Crash Course: Qubits to Shor & Grover](https://sthithaquantum.com/academy/quantum-computing-crash-course/): English, self-paced on Udemy, 1 hour 19 minutes, 5 lectures
+- [Quantum Computing in Malayalam: For Beginners](https://sthithaquantum.com/academy/quantum-computing-malayalam/): Beginner course taught in Malayalam, on Udemy
+
+## Research & Insights
+- [Research & Innovation](https://sthithaquantum.com/research/): Interests in quantum computing, quantum algorithms and quantum machine learning
+- [Understanding Harvest Now, Decrypt Later (HNDL) Attacks](https://sthithaquantum.com/research/insights/understanding-harvest-now-decrypt-later/)
+- [Understanding Post-Quantum Security](https://sthithaquantum.com/research/insights/understanding-post-quantum-security/)
+- [Transitioning to NIST Post-Quantum Standards](https://sthithaquantum.com/research/insights/transitioning-to-nist-pqc-standards/)
+- [Demystifying Qubits](https://sthithaquantum.com/research/insights/demystifying-qubits-superposition-and-entanglement/)
+- [Inside Shor's and Grover's Algorithms](https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/)
+- [An Introduction to Quantum Machine Learning](https://sthithaquantum.com/research/insights/introduction-to-quantum-machine-learning/)
+
+## Optional
+- [Privacy Policy](https://sthithaquantum.com/privacy-policy/)
+- [Terms & Conditions](https://sthithaquantum.com/terms-and-conditions/)

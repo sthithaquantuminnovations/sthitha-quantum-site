@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Shor&#39;s and Grover&#39;s Algorithms Work | Sthitha</title>
+    <meta name="description" content="A technical look at Peter Shor's period-finding method for prime factorisation and Lov Grover's amplitude amplification search algorithm.">
+    <meta name="keywords" content="Shor's algorithm, Grover's algorithm, quantum algorithms, quantum Fourier transform, amplitude amplification, RSA and quantum computing, Sthitha Quantum Innovations, Sthitha, quantum technology company, quantum computing company in India, deep tech company Bengaluru">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Sthitha Quantum Innovations">
+    <link rel="canonical" href="https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="application-name" content="Sthitha">
+    <meta name="apple-mobile-web-app-title" content="Sthitha">
+    <meta name="geo.region" content="IN-KA">
+    <meta name="geo.placename" content="Bengaluru">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Sthitha Quantum Innovations">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:url" content="https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/">
+    <meta property="og:title" content="Inside Shor's and Grover's Algorithms: How Quantum Computing Solves Hard Problems">
+    <meta property="og:description" content="A technical look at Peter Shor's period-finding method for prime factorisation and Lov Grover's amplitude amplification search algorithm.">
+    <meta property="og:image" content="https://sthithaquantum.com/assets/og/og-how-shors-and-grovers-algorithms-work.png">
+    <meta property="og:image:secure_url" content="https://sthithaquantum.com/assets/og/og-how-shors-and-grovers-algorithms-work.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Inside Shor's and Grover's Algorithms: How Quantum Computing Solves Hard Problems">
+    <meta property="article:published_time" content="2026-05-04">
+    <meta property="article:modified_time" content="2026-05-04">
+    <meta property="article:author" content="Sthitha Quantum Innovations">
+    <meta property="article:publisher" content="https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd">
+    <meta property="article:section" content="Quantum Algorithms">
+    <meta property="article:tag" content="Shor's algorithm"><meta property="article:tag" content="Grover's algorithm"><meta property="article:tag" content="quantum algorithms"><meta property="article:tag" content="quantum Fourier transform"><meta property="article:tag" content="amplitude amplification"><meta property="article:tag" content="RSA and quantum computing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inside Shor's and Grover's Algorithms: How Quantum Computing Solves Hard Problems">
+    <meta name="twitter:description" content="A technical look at Peter Shor's period-finding method for prime factorisation and Lov Grover's amplitude amplification search algorithm.">
+    <meta name="twitter:image" content="https://sthithaquantum.com/assets/og/og-how-shors-and-grovers-algorithms-work.png">
+    <meta name="twitter:image:alt" content="Inside Shor's and Grover's Algorithms: How Quantum Computing Solves Hard Problems">
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sthithaquantum.com/#organization","name":"Sthitha Quantum Innovations","legalName":"Sthitha Quantum Innovations Pvt Ltd","alternateName":["Sthitha","Sthitha Quantum"],"url":"https://sthithaquantum.com/","logo":{"@type":"ImageObject","@id":"https://sthithaquantum.com/#logo","url":"https://sthithaquantum.com/assets/images/sthitha-logo-icon.png","width":373,"height":389,"caption":"Sthitha Quantum Innovations"},"image":"https://sthithaquantum.com/assets/images/sthitha-logo.png","description":"Sthitha Quantum Innovations is a quantum technology company in Bengaluru, working across quantum computing, post-quantum security, education and research.","slogan":"Quantum, Made Practical","email":"sthithaquantuminnovations@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Landmark Towers, MG Road","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560001","addressCountry":"IN"},"founder":{"@type":"Person","@id":"https://sthithaquantum.com/our-team/#anil-achoora","name":"Anil Erinchikkadavathu Achoora","jobTitle":"Founder & Director"},"brand":[{"@type":"Brand","name":"Sthitha Exodia","url":"https://sthithaquantum.com/exodia/"},{"@type":"Brand","name":"Sthitha Academy","url":"https://sthithaquantum.com/academy/"}],"knowsAbout":["Quantum computing","Quantum technology","Post-quantum cryptography","Post-quantum security","Quantum-safe cybersecurity","Cryptographic discovery and inventory","Quantum risk assessment","NIST post-quantum standards (FIPS 203, FIPS 204, FIPS 205)","Quantum algorithms","Shor's algorithm","Grover's algorithm","Quantum machine learning","Quantum education"],"sameAs":["https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd","https://www.instagram.com/sthithaquantuminnovations/","https://www.youtube.com/channel/UCHVDDfnEUWhN9CKBxt1ICRw"]},{"@type":"WebSite","@id":"https://sthithaquantum.com/#website","url":"https://sthithaquantum.com/","name":"Sthitha Quantum Innovations","alternateName":"Sthitha","description":"Sthitha Quantum Innovations is a quantum technology company in Bengaluru, working across quantum computing, post-quantum security, education and research.","inLanguage":"en-IN","publisher":{"@id":"https://sthithaquantum.com/#organization"}},{"@type":"WebPage","@id":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/#webpage","url":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/","name":"How Shor's and Grover's Algorithms Work | Sthitha","description":"A technical look at Peter Shor's period-finding method for prime factorisation and Lov Grover's amplitude amplification search algorithm.","inLanguage":"en-IN","isPartOf":{"@id":"https://sthithaquantum.com/#website"},"publisher":{"@id":"https://sthithaquantum.com/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://sthithaquantum.com/assets/og/og-how-shors-and-grovers-algorithms-work.png","width":1200,"height":630},"breadcrumb":{"@type":"BreadcrumbList","@id":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sthithaquantum.com/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://sthithaquantum.com/research/insights/"},{"@type":"ListItem","position":3,"name":"Inside Shor's and Grover's Algorithms: How Quantum Computing Solves Hard Problems","item":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/"}]}},{"@type":"TechArticle","@id":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/#article","headline":"Inside Shor's and Grover's Algorithms: How Quantum Computing Solves Hard Problems","alternativeHeadline":"How Shor's and Grover's Algorithms Work","description":"A technical look at Peter Shor's period-finding method for prime factorisation and Lov Grover's amplitude amplification search algorithm.","abstract":"A technical exploration of the two landmark quantum algorithms—Peter Shor's period-finding method for prime factorisation and Lov Grover's amplitude amplification search.","url":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/","mainEntityOfPage":{"@id":"https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/#webpage"},"datePublished":"2026-05-04","dateModified":"2026-05-04","author":{"@id":"https://sthithaquantum.com/#organization"},"publisher":{"@id":"https://sthithaquantum.com/#organization"},"image":{"@type":"ImageObject","url":"https://sthithaquantum.com/assets/og/og-how-shors-and-grovers-algorithms-work.png","width":1200,"height":630},"articleSection":"Quantum Algorithms","keywords":["Shor's algorithm","Grover's algorithm","quantum algorithms","quantum Fourier transform","amplitude amplification","RSA and quantum computing"],"wordCount":1187,"timeRequired":"PT8M","inLanguage":"en","isPartOf":{"@id":"https://sthithaquantum.com/#website"}}]}</script><meta name="theme-color" content="#110f0d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Marks the page as scripted before first paint, so reveal states never flash. -->
+    <script>document.documentElement.classList.add('js');</script><!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1120941297253219');
+      fbq('track', 'PageView');
+    </script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1120941297253219&ev=PageView&noscript=1" alt=""></noscript>
+    <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/_astro/Base.CahKLBgi.css">
+<link rel="stylesheet" href="/_astro/_slug_.CHgEk1Iv.css"></head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol><symbol id="i-chev-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol><symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol><symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol><symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6L12 3Z"/></symbol><symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h5.5"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol><symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-6"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3M4 4v4h4M4 13a8 8 0 0 0 14.9 3M20 20v-4h-4"/></symbol><symbol id="i-checks" viewBox="0 0 24 24"><path d="m3 6 1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17M11 6h10M11 12h10M11 18h10"/></symbol><symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol><symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8ZM12 17v4"/></symbol><symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol><symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9Z"/></symbol><symbol id="i-tower" viewBox="0 0 24 24"><path d="M12 10v11M8 21l4-11 4 11M7.5 7.5a6 6 0 0 1 9 0M4.5 5a10 10 0 0 1 15 0"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M12 3l9 5H3l9-5Z"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-5 3 3 5-7"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/></symbol><symbol id="i-coins" viewBox="0 0 24 24"><circle cx="9" cy="9" r="6"/><path d="M15.5 9.5a6 6 0 1 1-6 6"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><path d="M4 13v6h16v-6M12 15V4M8 8l4-4 4 4"/></symbol><symbol id="i-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M19 19v2H6a2 2 0 0 1-2-2"/></symbol><symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5Z"/></symbol><symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol><symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 10.5a3.8 3.8 0 0 1-.5 7.5H7Z"/></symbol><symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M15 10h3M15 14h3"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-hash" viewBox="0 0 24 24"><path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol></defs></svg>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="frame">
+    <a class="brand" href="/" aria-label="Sthitha Quantum Innovations – Home">
+      <img class="brand-mark" src="/assets/images/sthitha-logo-header.webp" alt="Sthitha Quantum Innovations" width="99" height="40" decoding="async">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/#work" aria-haspopup="true" aria-expanded="false">Our Work<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></a>
+        <div class="nav-panel">
+          <div class="nav-cards">
+            <a class="nav-card" href="/exodia/">
+                <div class="nav-card-art"><svg viewBox="0 0 36 36"><path d="M18 2 4 7.5V17c0 8 5.6 14 14 17 8.4-3 14-9 14-17V7.5L18 2Z"></path><path d="M18 2v32"></path></svg></div>
+                <strong>Sthitha Exodia</strong><span>Post-Quantum Security</span>
+              </a><a class="nav-card" href="/academy/">
+                <div class="nav-card-art"><svg viewBox="0 0 36 36"><path d="M3 9.5 18 3l15 6.5-15 6.5L3 9.5Z"></path><path d="M9 13v9c2.5 2.7 5.5 4 9 4s6.5-1.3 9-4v-9M33 9.5V20"></path></svg></div>
+                <strong>Sthitha Academy</strong><span>Quantum Education</span>
+              </a><a class="nav-card" href="/research/">
+                <div class="nav-card-art"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="3"></circle><ellipse cx="18" cy="18" rx="16" ry="6.5"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(60 18 18)"></ellipse><ellipse cx="18" cy="18" rx="16" ry="6.5" transform="rotate(120 18 18)"></ellipse></svg></div>
+                <strong>Research &amp; Innovation</strong><span>Quantum Research</span>
+              </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/academy/" aria-haspopup="true" aria-expanded="false">Academy<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></a>
+        <div class="nav-panel">
+          <div class="nav-split">
+            <div>
+              <span class="eyebrow">Sthitha Academy · Courses</span>
+              <a class="nav-row" href="/academy/quantum-computing-crash-course/"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg><div><strong>Quantum Computing Crash Course</strong><span>Qubits to Shor &amp; Grover · Available Now</span></div></a><a class="nav-row" href="/academy/quantum-computing-malayalam/"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg><div><strong>Quantum Computing in Malayalam</strong><span>For Beginners · Available Now</span></div></a>
+            </div>
+            <div class="nav-list">
+              <span class="eyebrow">Academy</span>
+              <a href="/academy/">Overview</a>
+              <a href="/academy/#courses">Current courses</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-panel">
+        <a class="nav-link" href="/about/" aria-haspopup="true" aria-expanded="false">Company<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></a>
+        <div class="nav-panel">
+          <div class="nav-split">
+            <div>
+              <span class="eyebrow">Sthitha Quantum Innovations</span>
+              <a class="nav-row" href="/about/"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg><div><strong>About Sthitha</strong><span>Who we are and what we work on.</span></div></a>
+              <a class="nav-row" href="/our-team/"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg><div><strong>Our Team</strong><span>Meet the people behind Sthitha.</span></div></a>
+              <a class="nav-row" href="/events/"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg><div><strong>Events</strong><span>Community and collaboration.</span></div></a>
+            </div>
+            <div class="nav-list">
+              <span class="eyebrow">Ecosystem</span>
+              <a href="/partnerships/">Partnerships</a>
+              <a href="/research/insights/">Insights</a>
+              <a href="/contact/">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="nav-link" href="/research/insights/" aria-current="page">Insights</a></div>
+    </nav>
+
+    <a class="btn btn-light btn-sm header-cta" href="/contact/">Talk to Sthitha</a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <details class="mm-group">
+    <summary>Our Work<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></summary>
+    <div class="mm-list">
+      <a href="/exodia/">Sthitha Exodia<small>Post-Quantum Security</small></a><a href="/academy/">Sthitha Academy<small>Quantum Education</small></a><a href="/research/">Research &amp; Innovation<small>Quantum Research</small></a>
+    </div>
+  </details>
+  <details class="mm-group">
+    <summary>Academy<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></summary>
+    <div class="mm-list">
+      <a href="/academy/">All courses</a>
+      <a href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course<small>Qubits to Shor &amp; Grover</small></a><a href="/academy/quantum-computing-malayalam/">Quantum Computing in Malayalam<small>For Beginners</small></a>
+    </div>
+  </details>
+  <details class="mm-group">
+    <summary>Company<svg class="icon" aria-hidden="true"><use href="#i-chev-down"></use></svg></summary>
+    <div class="mm-list">
+      <a href="/about/">About Sthitha</a>
+      <a href="/our-team/">Our Team</a>
+      <a href="/events/">Events</a>
+      <a href="/partnerships/">Partnerships</a>
+      <a href="/contact/">Contact</a>
+    </div>
+  </details>
+  <a class="mm-link" href="/research/insights/">Insights</a>
+  <a class="btn btn-light" href="/contact/">Talk to Sthitha</a>
+</div>
+    <main id="main">
+      
+  <div class="frame">
+    <article>
+      <header class="page-hero">
+        <div class="page-hero-body" style="grid-template-columns:1fr;min-height:0">
+          <div>
+            <p class="crumbs" data-fade>
+              <a href="/">Home</a><i>/</i>
+              <a href="/research/insights/">Insights</a><i>/</i>
+              <span>Quantum Algorithms</span>
+            </p>
+
+            <div class="article-badges" data-fade style="--d:100ms">
+              <span class="article-badge is-category">Quantum Algorithms</span>
+              <span class="article-badge is-time">
+                <svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> 8 min read
+              </span>
+            </div>
+
+            <h1 data-reveal style="max-width:960px">Inside Shor&#39;s and Grover&#39;s Algorithms: How Quantum Computing Solves Hard Problems</h1>
+            <p class="page-hero-lede" data-fade style="--d:250ms">A technical exploration of the two landmark quantum algorithms—Peter Shor&#39;s period-finding method for prime factorisation and Lov Grover&#39;s amplitude amplification search.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="article">
+        <aside class="article-meta">
+          <a class="more" href="/research/insights/">All insights <span class="more-dot"><svg class="icon" aria-hidden="true"><use href="#i-chev-left"></use></svg></span></a>
+
+          <dl>
+            <div><dt>Published</dt><dd><time datetime="2026-05-04">May 4, 2026</time></dd></div>
+            
+            <div><dt>Estimated Read</dt><dd>8 min read</dd></div>
+            <div><dt>Author</dt><dd>Sthitha Quantum Innovations</dd></div>
+            <div><dt>Discipline</dt><dd>Quantum Algorithms</dd></div>
+          </dl>
+
+          <div class="article-toc">
+              <details class="article-toc-details">
+                <summary class="article-toc-summary">
+                  <span class="article-toc-title">Table of contents (4 sections)</span>
+                  <span class="toc-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></span>
+                </summary>
+                <ul class="article-toc-list">
+                  <li>
+                      <a href="#part-i-shors-algorithm--factoring-in-polynomial-time">Part I: Shor’s Algorithm — Factoring in Polynomial Time</a>
+                    </li><li>
+                      <a href="#part-ii-grovers-algorithm--the-quadratic-search-engine">Part II: Grover’s Algorithm — The Quadratic Search Engine</a>
+                    </li><li>
+                      <a href="#summary-of-algorithmic-impacts">Summary of Algorithmic Impacts</a>
+                    </li><li>
+                      <a href="#exploring-quantum-algorithms-at-sthitha">Exploring Quantum Algorithms at Sthitha</a>
+                    </li>
+                </ul>
+              </details>
+            </div>
+
+          <div class="article-share">
+            <span class="article-share-title">Share this insight</span>
+            <div class="share-buttons">
+              <button class="share-btn js-copy-link" type="button" data-url="https://sthithaquantum.com/research/insights/how-shors-and-grovers-algorithms-work/">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg> Copy link
+              </button>
+              <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsthithaquantum.com%2Fresearch%2Finsights%2Fhow-shors-and-grovers-algorithms-work%2F" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a class="share-btn" href="https://twitter.com/intent/tweet?text=Inside%20Shor's%20and%20Grover's%20Algorithms%3A%20How%20Quantum%20Computing%20Solves%20Hard%20Problems&amp;url=https%3A%2F%2Fsthithaquantum.com%2Fresearch%2Finsights%2Fhow-shors-and-grovers-algorithms-work%2F" target="_blank" rel="noopener noreferrer">
+                X (Twitter)
+              </a>
+            </div>
+            <span class="copy-feedback js-copy-feedback">Link copied to clipboard!</span>
+          </div>
+        </aside>
+
+        <div class="article-body">
+          <div class="key-takeaways">
+            <div class="key-takeaways-head">
+              <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Key Takeaway
+            </div>
+            <p>A technical exploration of the two landmark quantum algorithms—Peter Shor&#39;s period-finding method for prime factorisation and Lov Grover&#39;s amplitude amplification search.</p>
+          </div>
+
+          <p>When physicists and computer scientists discuss the transformative potential of quantum computers, two landmark algorithms invariably take center stage: <strong>Shor’s Algorithm</strong> (1994) and <strong>Grover’s Algorithm</strong> (1996).</p>
+<p>Together, they established the theoretical foundation of quantum advantage—proving that quantum computers can achieve exponential and polynomial speedups over the most efficient classical algorithms known to science.</p>
+<p>This article explores the internal mechanics of both algorithms: how they work, the mathematics behind their speedups, and their real-world consequences for cryptography and optimization.</p>
+<h2 id="part-i-shors-algorithm--factoring-in-polynomial-time">Part I: Shor’s Algorithm — Factoring in Polynomial Time</h2>
+<p>Modern public-key cryptography—specifically RSA—relies on the mathematical premise that <strong>multiplying two large prime numbers is easy, but factoring their composite product is computationally intractable</strong>.</p>
+<p>For an <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>-bit composite integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>p</mi><mo>⋅</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">N = p \cdot q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>:</p>
+<ul>
+<li><strong>Classical Factoring:</strong> The most advanced classical algorithm is the <strong>General Number Field Sieve (GNFS)</strong>, which runs in sub-exponential time:
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo fence="true">(</mo><mi>exp</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi>c</mi><mo>⋅</mo><mo stretchy="false">(</mo><mi>ln</mi><mo>⁡</mo><mi>N</mi><msup><mo stretchy="false">)</mo><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow></msup><mo stretchy="false">(</mo><mi>ln</mi><mo>⁡</mo><mi>ln</mi><mo>⁡</mo><mi>N</mi><msup><mo stretchy="false">)</mo><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow></msup><mo fence="true">)</mo></mrow><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O\left(\exp\left(c \cdot (\ln N)^{1/3} (\ln \ln N)^{2/3}\right)\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.238em;vertical-align:-0.35em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mop">exp</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mop">ln</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1/3</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mop">ln</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2/3</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span>
+Factoring a 2048-bit RSA modulus classically would require millions of core-years on modern supercomputing clusters.</li>
+<li><strong>Shor’s Quantum Factoring:</strong> Runs in <strong>polynomial time</strong>:
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo fence="true">(</mo><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O\left((\log N)^3\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span>
+On a fault-tolerant quantum computer, a 2048-bit key could be factored in a matter of hours.</li>
+</ul>
+<figure class="diagram"><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>+-------------------------------------------------------------------------------+</span></span>
+<span class="line"><span>|                       SHOR'S ALGORITHM WORKFLOW                               |</span></span>
+<span class="line"><span>+-------------------------------------------------------------------------------+</span></span>
+<span class="line"><span>|                                                                               |</span></span>
+<span class="line"><span>|  [Classical Step] Pick coprime integer 'a' &#x3C; N                                |</span></span>
+<span class="line"><span>|         |                                                                     |</span></span>
+<span class="line"><span>|         v                                                                     |</span></span>
+<span class="line"><span>|  [Quantum Step: Order Finding]                                                |</span></span>
+<span class="line"><span>|  - Initialize quantum registers in superposition                              |</span></span>
+<span class="line"><span>|  - Compute modular exponentiation: |x⟩|a^x mod N⟩                             |</span></span>
+<span class="line"><span>|  - Apply Quantum Fourier Transform (QFT) to extract period 'r'               |</span></span>
+<span class="line"><span>|  - Measure register -> yields period r where a^r ≡ 1 (mod N)                  |</span></span>
+<span class="line"><span>|         |                                                                     |</span></span>
+<span class="line"><span>|         v                                                                     |</span></span>
+<span class="line"><span>|  [Classical Step] If r is even and a^(r/2) ≢ -1 (mod N):                      |</span></span>
+<span class="line"><span>|  - Compute gcd(a^(r/2) ± 1, N) using Euclidean algorithm                      |</span></span>
+<span class="line"><span>|  - Result: Non-trivial prime factors p and q discovered!                      |</span></span>
+<span class="line"><span>|                                                                               |</span></span>
+<span class="line"><span>+-------------------------------------------------------------------------------+</span></span></code></pre><figcaption class="sr-only">Shor's algorithm workflow</figcaption></figure>
+<h3 id="the-core-insight-factoring-is-period-finding">The Core Insight: Factoring is Period Finding</h3>
+<p>Peter Shor made the brilliant realization that prime factorisation can be reduced to the problem of <strong>order-finding</strong> (finding the period of a modular exponential function).</p>
+<p>For a chosen random integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> coprime to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>, consider the function:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>a</mi><mi>x</mi></msup><mspace></mspace><mspace width="0.4444em"></mspace><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"></mspace><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x) = a^x \pmod{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></p>
+<p>Because modular arithmetic in a finite group is cyclic, this function is strictly periodic. There exists an integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> (the period or order) such that:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mi>r</mi></msup><mo>≡</mo><mn>1</mn><mspace></mspace><mspace width="0.4444em"></mspace><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"></mspace><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^r \equiv 1 \pmod{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></p>
+<p>Once the period <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> is known, if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> is even, we can rewrite the congruence as:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mi>r</mi></msup><mo>−</mo><mn>1</mn><mo>=</mo><mrow><mo fence="true">(</mo><msup><mi>a</mi><mrow><mi>r</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>−</mo><mn>1</mn><mo fence="true">)</mo></mrow><mrow><mo fence="true">(</mo><msup><mi>a</mi><mrow><mi>r</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>+</mo><mn>1</mn><mo fence="true">)</mo></mrow><mo>≡</mo><mn>0</mn><mspace></mspace><mspace width="0.4444em"></mspace><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"></mspace><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^r - 1 = \left(a^{r/2} - 1\right)\left(a^{r/2} + 1\right) \equiv 0 \pmod{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.238em;vertical-align:-0.35em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></p>
+<p>This implies that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> divides the product <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>a</mi><mrow><mi>r</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>a</mi><mrow><mi>r</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a^{r/2} - 1)(a^{r/2} + 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>. By computing the <strong>Greatest Common Divisor (GCD)</strong> between <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>a</mi><mrow><mi>r</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>±</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a^{r/2} \pm 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">±</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> using Euclid’s algorithm (which runs instantaneously on a classical computer), we extract the non-trivial prime factors <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>.</p>
+<h3 id="the-quantum-fourier-transform-qft">The Quantum Fourier Transform (QFT)</h3>
+<p>Finding the period <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> classically requires computing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mi>x</mi></msup><mspace></mspace><mspace width="0.4444em"></mspace><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"></mspace><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^x \pmod{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> for consecutive values of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> until repetition is found—an exponential task.</p>
+<p>Shor’s algorithm solves this on a quantum processor using the <strong>Quantum Fourier Transform (QFT)</strong>:</p>
+<ol>
+<li>Two quantum registers are prepared: an input register of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">n</span></span></span></span> qubits and an output register initialized to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mn>0</mn><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|0\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣0</span><span class="mclose">⟩</span></span></span></span>.</li>
+<li>Hadamard gates create a uniform superposition over all possible exponents <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> in the input register.</li>
+<li>A modular exponentiation quantum circuit computes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">⟩</mo><mi mathvariant="normal">∣</mi><msup><mi>a</mi><mi>x</mi></msup><mspace></mspace><mspace width="0.4444em"></mspace><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"></mspace><mi>N</mi><mo stretchy="false">)</mo><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|x\rangle |a^x \pmod{N}\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">⟩</span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)⟩</span></span></span></span> simultaneously for all <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>.</li>
+<li>Applying the QFT converts the periodic sequence of amplitudes in the state vector into sharp peaks in frequency space.</li>
+<li>Measurement of the register collapses the state, yielding a value with high probability from which the period <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> can be extracted using continued fraction expansion.</li>
+</ol>
+<h2 id="part-ii-grovers-algorithm--the-quadratic-search-engine">Part II: Grover’s Algorithm — The Quadratic Search Engine</h2>
+<p>While Shor’s algorithm solves a specific algebraic problem exponentially, <strong>Grover’s Algorithm</strong> addresses an extraordinarily broad class of problems: <strong>searching an unsorted database of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> items</strong>.</p>
+<p>Suppose you are looking for a unique item <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> in an unsorted list of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">N = 2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> elements:</p>
+<ul>
+<li><strong>Classical Search:</strong> Requires examining on average <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">N/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">/2</span></span></span></span> items, with worst-case complexity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.</li>
+<li><strong>Grover’s Search:</strong> Finds the target item with high probability using only:
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo fence="true">(</mo><msqrt><mi>N</mi></msqrt><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O\left(\sqrt{N}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.8em;vertical-align:-0.65em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span></span></span></span>
+oracle evaluations.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Classical Unsorted Search:</span></span>
+<span class="line"><span>N = 1,000,000 items  ---> ~500,000 checks required</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Grover's Quantum Search:</span></span>
+<span class="line"><span>N = 1,000,000 items  ---> ~1,000 checks required (√1,000,000)</span></span></code></pre>
+<h3 id="the-mechanism-amplitude-amplification">The Mechanism: Amplitude Amplification</h3>
+<p>A common misconception is that Grover’s algorithm simply inspects all elements simultaneously in superposition and picks the answer. If you measured an equal superposition across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> elements, the probability of measuring the target item <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> would be merely <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">1/N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>—identical to a random classical guess!</p>
+<p>Grover’s algorithm succeeds through <strong>Amplitude Amplification</strong>: repeatedly rotating the state vector so that the probability amplitude of the target state grows while all other amplitudes shrink.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Grover Iteration Cycle:</span></span>
+<span class="line"><span>1. Equal Superposition: |s⟩ = (1/√N) ∑ |x⟩</span></span>
+<span class="line"><span>2. Apply Oracle O: Flips the phase of the target item |w⟩ (amplitude becomes negative)</span></span>
+<span class="line"><span>3. Apply Diffusion Operator D: Inverts all amplitudes around their mean</span></span>
+<span class="line"><span>4. Repeat ~ (π/4)√N times</span></span>
+<span class="line"><span>5. Measure: Target item |w⟩ observed with probability near 100%!</span></span></code></pre>
+<h3 id="mathematical-steps-of-a-grover-iteration">Mathematical Steps of a Grover Iteration</h3>
+<p>Each Grover iteration consists of two unitary operations:</p>
+<h4 id="1-the-phase-oracle-uwu_wuw">1. The Phase Oracle (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">U_w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)</h4>
+<p>The oracle identifies the target state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>w</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|w\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">⟩</span></span></span></span> and flips its phase by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>180</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">180^\circ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord">18</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∘</span></span></span></span></span></span></span></span></span></span></span> (multiplying by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>):</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>w</mi></msub><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">⟩</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">⟩</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>if </mtext><mi>x</mi><mo>=</mo><mi>w</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mphantom><mo>−</mo></mphantom><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">⟩</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>if </mtext><mi>x</mi><mo mathvariant="normal">≠</mo><mi>w</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">U_w |x\rangle = \begin{cases} -|x\rangle &#x26; \text{if } x = w \\ \phantom{-}|x\rangle &#x26; \text{if } x \neq w \end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">−</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">⟩</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord" style="color:transparent;">−</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">⟩</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">if </span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">if </span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h4 id="2-the-diffusion-operator-usu_sus">2. The Diffusion Operator (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">U_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)</h4>
+<p>Also known as the <strong>inversion about the mean</strong>, the diffusion operator reflects all amplitudes about the average amplitude of the register:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>s</mi></msub><mo>=</mo><mn>2</mn><mi mathvariant="normal">∣</mi><mi>s</mi><mo stretchy="false">⟩</mo><mo stretchy="false">⟨</mo><mi>s</mi><mi mathvariant="normal">∣</mi><mo>−</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">U_s = 2|s\rangle\langle s| - I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2∣</span><span class="mord mathnormal">s</span><span class="mclose">⟩</span><span class="mopen">⟨</span><span class="mord mathnormal">s</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span></p>
+<p>Geometrically, flipping the target amplitude negative lowers the overall average amplitude of the register. Inverting all states around this new lower mean causes the target state’s amplitude to jump dramatically upward while suppressing non-target states.</p>
+<p>Repeating this pair of operations approximately:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≈</mo><mfrac><mi>π</mi><mn>4</mn></mfrac><msqrt><mi>N</mi></msqrt></mrow><annotation encoding="application/x-tex">R \approx \frac{\pi}{4}\sqrt{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2717em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span></span></span></span></p>
+<p>times rotates the state vector directly toward the target <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>w</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|w\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">⟩</span></span></span></span>. Measuring the qubits at this point outputs the target item with near certainty.</p>
+<h2 id="summary-of-algorithmic-impacts">Summary of Algorithmic Impacts</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Metric</th><th align="left">Shor’s Algorithm</th><th align="left">Grover’s Algorithm</th></tr></thead><tbody><tr><td align="left"><strong>Problem Type</strong></td><td align="left">Period finding / Factoring / Discrete Log</td><td align="left">Unstructured search / Inverting one-way functions</td></tr><tr><td align="left"><strong>Speedup Class</strong></td><td align="left">Exponential (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O((\log N)^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> vs sub-exponential)</td><td align="left">Polynomial / Quadratic (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msqrt><mi>N</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt{N})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1767em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span> vs <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)</td></tr><tr><td align="left"><strong>Target Cryptography</strong></td><td align="left">RSA, Diffie-Hellman, ECDH, ECDSA</td><td align="left">AES-128, AES-256, SHA-256, SHA-3</td></tr><tr><td align="left"><strong>Practical Impact</strong></td><td align="left">Completely breaks legacy public-key cryptography</td><td align="left">Halves effective key length of symmetric ciphers</td></tr><tr><td align="left"><strong>Enterprise Remedy</strong></td><td align="left">Migrate to Post-Quantum Cryptography (ML-KEM / ML-DSA)</td><td align="left">Upgrade AES to 256-bit keys</td></tr></tbody></table>
+<h2 id="exploring-quantum-algorithms-at-sthitha">Exploring Quantum Algorithms at Sthitha</h2>
+<p>Mastering Shor’s and Grover’s algorithms is an essential milestone for anyone pursuing quantum computing, quantum engineering, or post-quantum cybersecurity.</p>
+<ul>
+<li><strong>Learn Circuit Implementation:</strong> In our <a href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course</a>, learners construct quantum circuits, explore phase kickback, build the Quantum Fourier Transform, and simulate Grover search routines step-by-step.</li>
+<li><strong>Enterprise Preparedness:</strong> Explore how the <a href="/exodia/">Sthitha Exodia</a> platform helps enterprises discover cryptographic assets exposed to Shor’s algorithm and prepare for seamless post-quantum migration.</li>
+</ul>
+<p><em>Explore additional articles on quantum technology and post-quantum migration in our <a href="/research/insights/">Insights Section</a>.</em></p>
+
+          
+
+          <div class="article-cta-box">
+              <div>
+                <h3>Master Quantum Computing With Sthitha Academy</h3>
+                <p>Learn qubits, circuits, and quantum algorithms through structured courses and interactive circuit simulations.</p>
+              </div>
+              <a class="btn btn-light" href="/academy/">Explore Courses</a>
+            </div>
+
+          
+
+          <div class="article-author-card">
+            <div class="author-avatar" aria-hidden="true">
+              <svg class="icon" aria-hidden="true"><use href="#i-atom"></use></svg>
+            </div>
+            <div class="author-info">
+              <strong>Sthitha Quantum Innovations</strong>
+              <span>Research, Engineering &amp; Quantum Security Division · Bengaluru, India</span>
+            </div>
+          </div>
+
+          <nav class="article-pager" aria-label="Adjacent Articles">
+            <a class="pager-item prev" href="/research/insights/demystifying-qubits-superposition-and-entanglement/">
+                <span class="pager-label">← Previous Insight</span>
+                <span class="pager-title">Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement</span>
+              </a>
+
+            <a class="pager-item next" href="/research/insights/introduction-to-quantum-machine-learning/">
+                <span class="pager-label">Next Insight →</span>
+                <span class="pager-title">An Introduction to Quantum Machine Learning: Where Quantum Circuits Meet AI</span>
+              </a>
+          </nav>
+        </div>
+      </div>
+    </article>
+
+    <section class="related-section">
+        <div class="section-head">
+          <span class="eyebrow">Continue Reading</span>
+          <h2>Related Insights &amp; Explainers</h2>
+          <p>Explore more technical analyses from Sthitha Quantum Innovations.</p>
+        </div>
+        <div class="related-grid">
+          <a class="related-card" href="/research/insights/introduction-to-quantum-machine-learning/">
+              <div class="related-card-top">
+                <time datetime="2026-06-12">June 12, 2026</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">Quantum Machine Learning</span>
+                <h3>An Introduction to Quantum Machine Learning: Where Quantum Circuits Meet AI</h3>
+                <p>How parameterized quantum circuits, quantum kernels, and variational algorithms are driving the intersection of artificial intelligence and quantum computing.</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </div>
+            </a><a class="related-card" href="/research/insights/demystifying-qubits-superposition-and-entanglement/">
+              <div class="related-card-top">
+                <time datetime="2026-04-10">April 10, 2026</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">Quantum Computing</span>
+                <h3>Demystifying Qubits: The Physics and Mathematics of Superposition and Entanglement</h3>
+                <p>A clear, foundational breakdown of quantum information science—from the Bloch sphere and state vector mathematics to quantum superposition, Bell states, and circuit measurements.</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </div>
+            </a><a class="related-card" href="/research/insights/transitioning-to-nist-pqc-standards/">
+              <div class="related-card-top">
+                <time datetime="2026-03-24">March 24, 2026</time>
+                <span class="article-badge is-category" style="margin-bottom:8px">Post-Quantum Security</span>
+                <h3>Transitioning to NIST Post-Quantum Standards: An Enterprise Implementation Guide</h3>
+                <p>A practical guide to implementing the finalized NIST post-quantum standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA)—within enterprise architectures.</p>
+              </div>
+              <div class="related-card-more">
+                Read insight <svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </div>
+            </a>
+        </div>
+      </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sync TOC open state with desktop width
+      function syncArticleToc() {
+        const d = document.querySelector('.article-toc-details');
+        if (d && window.innerWidth >= 900) {
+          d.setAttribute('open', '');
+        }
+      }
+      syncArticleToc();
+      window.addEventListener('resize', syncArticleToc);
+
+      // Auto-close on mobile when clicking TOC jump links
+      document.querySelectorAll('.article-toc-list a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (window.innerWidth < 900) {
+            const d = a.closest('.article-toc-details');
+            if (d) d.removeAttribute('open');
+          }
+        });
+      });
+
+      const copyBtn = document.querySelector('.js-copy-link');
+      const feedback = document.querySelector('.js-copy-feedback');
+      if (copyBtn && feedback) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            feedback.style.display = 'block';
+            setTimeout(() => {
+              feedback.style.display = 'none';
+            }, 3000);
+          } catch (e) {
+            console.error('Failed to copy', e);
+          }
+        });
+      }
+    });
+  </script>
+    </main>
+    <footer class="site-footer">
+  <div class="frame">
+    <div class="footer-cols">
+      <div>
+          <h3>Our Work</h3>
+          <ul><li><a href="/exodia/">Sthitha Exodia</a></li><li><a href="/academy/">Sthitha Academy</a></li><li><a href="/research/">Research &amp; Innovation</a></li></ul>
+        </div><div>
+          <h3>Sthitha Academy</h3>
+          <ul><li><a href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course</a></li><li><a href="/academy/quantum-computing-malayalam/">Quantum Computing in Malayalam</a></li></ul>
+        </div><div>
+          <h3>Company</h3>
+          <ul><li><a href="/about/">About Sthitha</a></li><li><a href="/our-team/">Our Team</a></li><li><a href="/events/">Events</a></li><li><a href="/partnerships/">Partnerships</a></li><li><a href="/research/insights/">Insights</a></li><li><a href="/contact/">Contact</a></li></ul>
+        </div>
+      <div>
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:sthithaquantuminnovations@gmail.com">Email<svg class="icon" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a></li>
+          <li><a href="/contact/">Contact form</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-status"><span class="status">Bengaluru, India</span><span class="mono">Quantum · Security · Education · Research</span></div>
+      <ul class="footer-social" aria-label="Social media">
+        <li><a href="https://www.linkedin.com/company/sthitha-quantum-innovations-pvt-ltd" rel="noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg></a></li><li><a href="https://www.instagram.com/sthithaquantuminnovations/" rel="noopener" target="_blank" aria-label="Instagram" title="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg></a></li><li><a href="https://www.youtube.com/channel/UCHVDDfnEUWhN9CKBxt1ICRw" rel="noopener" target="_blank" aria-label="YouTube" title="YouTube"><svg class="icon" aria-hidden="true"><use href="#i-youtube"></use></svg></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-mark" aria-hidden="true"><img src="/assets/images/sthitha-logo-icon.png" alt=""><span>Sthitha</span></div>
+
+    <div class="footer-legal">
+      <span>© 2026 Sthitha Quantum Innovations Pvt Ltd. All rights reserved.</span>
+      <span><a href="/privacy-policy/">Privacy Policy</a><i>/</i><a href="/terms-and-conditions/">Terms &amp; Conditions</a><i>/</i><a href="/cookie-policy/">Cookie Policy</a></span>
+    </div>
+    <p class="footer-addr">Sthitha Exodia, Sthitha Academy and Research &amp; Innovation are initiatives of Sthitha Quantum Innovations Pvt Ltd, Bengaluru, India.</p>
+  </div>
+</footer>
+    <div class="edge-fx" aria-hidden="true">
+  <svg width="0" height="0" focusable="false">
+    <defs>
+      <filter id="edgefx-0" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00024" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.00015999999999999999" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00024" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00024" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-1" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00096" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.0006399999999999999" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00096" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00096" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-2" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00216" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.0014399999999999999" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00216" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00216" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-3" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.00384" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.0025599999999999998" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.00384" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.00384" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter><filter id="edgefx-4" x="0%" y="0%" width="100%" height="100%" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.006" result="blurred"></feGaussianBlur>
+          <feOffset in="blurred" dx="-0.004" dy="0" result="shifted"></feOffset>
+          <feColorMatrix in="shifted" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="r"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="g"></feColorMatrix>
+          <feColorMatrix in="shifted" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="b"></feColorMatrix>
+          <feOffset in="r" dx="-0.006" dy="0" result="rOff"></feOffset>
+          <feOffset in="g" dx="0" dy="0" result="gOff"></feOffset>
+          <feOffset in="b" dx="0.006" dy="0" result="bOff"></feOffset>
+          <feBlend in="rOff" in2="gOff" mode="screen" result="rg"></feBlend>
+          <feBlend in="rg" in2="bOff" mode="screen"></feBlend>
+        </filter>
+    </defs>
+  </svg>
+  <div style="--f:url(#edgefx-0);--a:0%"></div><div style="--f:url(#edgefx-1);--a:20%"></div><div style="--f:url(#edgefx-2);--a:40%"></div><div style="--f:url(#edgefx-3);--a:60%"></div><div style="--f:url(#edgefx-4);--a:80%"></div>
+</div>
+    <script type="module" src="/_astro/Base.astro_astro_type_script_index_0_lang.TdEY6xi4.js"></script></body>
+</html>

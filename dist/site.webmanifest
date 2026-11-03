@@ -1,0 +1,16 @@
+{
+  "name": "Sthitha Quantum Innovations",
+  "short_name": "Sthitha",
+  "description": "Sthitha Quantum Innovations is a quantum technology company in Bengaluru, working across quantum computing, post-quantum security, education and research.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "lang": "en-IN",
+  "background_color": "#110f0d",
+  "theme_color": "#110f0d",
+  "icons": [
+    { "src": "/assets/images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/images/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
