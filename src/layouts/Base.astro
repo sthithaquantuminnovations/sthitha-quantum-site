@@ -5,28 +5,74 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import EdgeFx from '../components/EdgeFx.astro';
 import { company } from '../data/site.js';
+import { brandKeywords, crumbNames, oneLiner, ogCards, orgId, websiteId } from '../data/seo.js';
+
+interface Crumb {
+  name: string;
+  path?: string;
+}
 
 interface Props {
   title: string;
   description: string;
   type?: 'website' | 'article';
+  // schema.org type of the page itself (WebPage, AboutPage, ContactPage, CollectionPage, ProfilePage…).
+  pageType?: string;
+  // Social title when it should differ from <title> (articles use their full headline).
+  socialTitle?: string;
   publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
+  keywords?: string[];
+  image?: string;
   imageAlt?: string;
-  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  // Last breadcrumb name; defaults to the section name for this path, then the title.
+  crumb?: string;
+  // Crumbs between Home and this page, when the path alone does not name them.
+  crumbs?: Crumb[];
+  jsonLd?: Record<string, unknown> | (Record<string, unknown> | null)[];
   noindex?: boolean;
 }
 
-const { title, description, type = 'website', publishedTime, imageAlt = 'Sthitha Quantum Innovations logo', jsonLd, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
-const ogImage = new URL('/assets/images/sthitha-logo.png', Astro.site);
+const {
+  title,
+  description,
+  type = 'website',
+  pageType = 'WebPage',
+  socialTitle = title,
+  publishedTime,
+  modifiedTime,
+  section,
+  tags = [],
+  keywords = [],
+  image = ogCards.home.image,
+  imageAlt = ogCards.home.alt,
+  crumb,
+  crumbs,
+  jsonLd,
+  noindex = false,
+} = Astro.props;
 
-const organization: Record<string, unknown> = {
+// Canonical is built from the path only (query strings dropped) and always ends in a slash.
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, Astro.site).href;
+const abs = (p: string) => new URL(p, Astro.site).href;
+const ogImage = abs(image);
+const metaKeywords = [...new Set([...keywords, ...brandKeywords])].join(', ');
+const robots = noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
+const organization = {
   '@type': 'Organization',
-  '@id': new URL('/#organization', Astro.site).href,
+  '@id': orgId,
   name: company.name,
   legalName: company.legalName,
-  url: Astro.site?.href,
-  logo: new URL('/assets/images/sthitha-logo-icon.png', Astro.site).href,
+  alternateName: ['Sthitha', 'Sthitha Quantum'],
+  url: abs('/'),
+  logo: { '@type': 'ImageObject', '@id': abs('/#logo'), url: abs('/assets/images/sthitha-logo-icon.png'), width: 373, height: 389, caption: company.name },
+  image: abs('/assets/images/sthitha-logo.png'),
+  description: oneLiner,
+  slogan: 'Quantum, Made Practical',
   email: company.email,
   address: {
     '@type': 'PostalAddress',
@@ -36,48 +82,121 @@ const organization: Record<string, unknown> = {
     postalCode: '560001',
     addressCountry: 'IN',
   },
+  founder: { '@type': 'Person', '@id': abs('/our-team/#anil-achoora'), name: 'Anil Erinchikkadavathu Achoora', jobTitle: 'Founder & Director' },
+  brand: [
+    { '@type': 'Brand', name: 'Sthitha Exodia', url: abs('/exodia/') },
+    { '@type': 'Brand', name: 'Sthitha Academy', url: abs('/academy/') },
+  ],
+  knowsAbout: [
+    'Quantum computing',
+    'Quantum technology',
+    'Post-quantum cryptography',
+    'Post-quantum security',
+    'Quantum-safe cybersecurity',
+    'Cryptographic discovery and inventory',
+    'Quantum risk assessment',
+    'NIST post-quantum standards (FIPS 203, FIPS 204, FIPS 205)',
+    'Quantum algorithms',
+    "Shor's algorithm",
+    "Grover's algorithm",
+    'Quantum machine learning',
+    'Quantum education',
+  ],
+  sameAs: company.social.filter((s) => s.href).map((s) => s.href),
 };
-const profiles = company.social.filter((s) => s.href).map((s) => s.href);
-if (profiles.length) organization.sameAs = profiles;
 const website = {
   '@type': 'WebSite',
-  '@id': new URL('/#website', Astro.site).href,
-  url: Astro.site?.href,
+  '@id': websiteId,
+  url: abs('/'),
   name: company.name,
-  publisher: { '@id': organization['@id'] },
+  alternateName: 'Sthitha',
+  description: oneLiner,
+  inLanguage: 'en-IN',
+  publisher: { '@id': orgId },
 };
-const graph = [organization, website, ...(jsonLd ? [jsonLd].flat() : [])];
-const structuredData = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+
+// Breadcrumbs: Home, then each parent section the path passes through, then this page.
+const trail: Crumb[] = [{ name: 'Home', path: '/' }];
+if (path !== '/') {
+  if (crumbs) trail.push(...crumbs);
+  else {
+    const parts = path.split('/').filter(Boolean);
+    parts.slice(0, -1).forEach((_, i) => {
+      const p = `/${parts.slice(0, i + 1).join('/')}/`;
+      const name = (crumbNames as Record<string, string>)[p];
+      if (name) trail.push({ name, path: p });
+    });
+  }
+  trail.push({ name: crumb ?? (crumbNames as Record<string, string>)[path] ?? title, path });
+}
+const webPage = {
+  '@type': pageType,
+  '@id': `${canonical}#webpage`,
+  url: canonical,
+  name: title,
+  description,
+  inLanguage: 'en-IN',
+  isPartOf: { '@id': websiteId },
+  publisher: { '@id': orgId },
+  ...(path === '/' || path === '/about/' ? { about: { '@id': orgId } } : {}),
+  primaryImageOfPage: { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 },
+  ...(trail.length > 1
+    ? {
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          '@id': `${canonical}#breadcrumb`,
+          itemListElement: trail.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.path ?? path) })),
+        },
+      }
+    : {}),
+};
+const graph = [organization, website, webPage, ...(jsonLd ? [jsonLd].flat().filter(Boolean) : [])];
+const structuredData = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="keywords" content={metaKeywords} />
+    <meta name="robots" content={robots} />
+    <meta name="author" content={company.name} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="application-name" content="Sthitha" />
+    <meta name="apple-mobile-web-app-title" content="Sthitha" />
+    <meta name="geo.region" content="IN-KA" />
+    <meta name="geo.placename" content="Bengaluru" />
     <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={socialTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
-    <meta property="og:locale" content="en_IN" />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
-    <meta property="og:site_name" content="Sthitha Quantum Innovations" />
+    {publishedTime && <meta property="article:modified_time" content={modifiedTime || publishedTime} />}
+    {type === 'article' && <meta property="article:author" content={company.name} />}
+    {type === 'article' && <meta property="article:publisher" content={company.social[0]?.href || abs('/')} />}
+    {section && <meta property="article:section" content={section} />}
+    {tags.map((tag) => <meta property="article:tag" content={tag} />)}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={socialTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={imageAlt} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <script type="application/ld+json" set:html={structuredData} is:inline />
     <meta name="theme-color" content="#110f0d" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

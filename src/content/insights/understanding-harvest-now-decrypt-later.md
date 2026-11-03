@@ -5,6 +5,9 @@ date: "2026-02-18"
 author: "Sthitha Quantum Innovations"
 category: "Post-Quantum Security"
 readingTime: "6 min read"
+seoTitle: "Harvest Now, Decrypt Later (HNDL) Attacks | Sthitha"
+description: "Why adversaries archiving encrypted enterprise traffic today pose a present-day threat, years before cryptanalytically relevant quantum computers exist."
+tags: ["harvest now decrypt later", "HNDL", "store now decrypt later", "Mosca's theorem", "post-quantum cryptography", "quantum cybersecurity"]
 ---
 
 Adversaries do not need access to a functioning, large-scale quantum computer today to compromise the confidentiality of your data tomorrow. Under a **Harvest Now, Decrypt Later (HNDL)** strategy—also termed *Store Now, Decrypt Later (SNDL)*—state-sponsored adversaries and sophisticated threat actors are passively intercepting, mirroring, and storing encrypted communications today. 
@@ -113,4 +116,4 @@ This operational imperative is precisely why **Sthitha Exodia** was built at Sth
 
 The Harvest Now, Decrypt Later doctrine proves that quantum computing is not a future risk—it is an **active adversary strategy happening today**. Every day an organization delays cryptographic inventory and post-quantum key exchange deployment is another day of archived data surrendered to future decryption.
 
-*To explore how Sthitha assists organizations in discovering cryptographic assets and engineering quantum-resilient pipelines, explore [Sthitha Exodia](/exodia) or read our primer on [Understanding Post-Quantum Security](/research/insights/understanding-post-quantum-security).*
+*To explore how Sthitha assists organizations in discovering cryptographic assets and engineering quantum-resilient pipelines, explore [Sthitha Exodia](/exodia/) or read our primer on [Understanding Post-Quantum Security](/research/insights/understanding-post-quantum-security/).*

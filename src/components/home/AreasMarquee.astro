@@ -13,7 +13,9 @@ const items = [
 <section class="marquee-row" aria-label={`What Sthitha works on: ${items.map((i) => i.label).join(', ')}`}>
   <div class="marquee">
     <ul data-loop>
-      {[...items, ...items].map((item) => <li><Icon name={item.icon} />{item.label}</li>)}
+      {[...items, ...items].map((item, i) => (i < items.length
+        ? <li><Icon name={item.icon} />{item.label}</li>
+        : <li aria-hidden="true" data-nosnippet><Icon name={item.icon} />{item.label}</li>))}
     </ul>
   </div>
 </section>

@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import More from '../components/More.astro';
 import { company } from '../data/site.js';
+import { keywords, orgId } from '../data/seo.js';
 
 const enquiryTypes = [
   'General Enquiry',
@@ -15,17 +16,34 @@ const enquiryTypes = [
 ];
 
 const work = [
-  { tag: 'Sthitha Exodia', title: 'Post-Quantum Security', text: 'Learn about our focus on post-quantum security and quantum-safe migration.', href: '/exodia', link: 'Explore Sthitha Exodia' },
-  { tag: 'Sthitha Academy', title: 'Quantum Education', text: 'Explore our quantum computing courses and learning resources.', href: '/academy', link: 'Explore Courses' },
-  { tag: 'Research & Innovation', title: 'Quantum Research', text: 'Discover our areas of interest in quantum computing, quantum algorithms and quantum machine learning.', href: '/research', link: 'Explore Research' },
+  { tag: 'Sthitha Exodia', title: 'Post-Quantum Security', text: 'Learn about our focus on post-quantum security and quantum-safe migration.', href: '/exodia/', link: 'Explore Sthitha Exodia' },
+  { tag: 'Sthitha Academy', title: 'Quantum Education', text: 'Explore our quantum computing courses and learning resources.', href: '/academy/', link: 'Explore Courses' },
+  { tag: 'Research & Innovation', title: 'Quantum Research', text: 'Discover our areas of interest in quantum computing, quantum algorithms and quantum machine learning.', href: '/research/', link: 'Explore Research' },
 ];
 
 const social = company.social.filter((s) => s.href);
+
+// The page's main subject is the organisation and how to reach it.
+const contactLd = {
+  '@type': 'Organization',
+  '@id': orgId,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: company.email,
+    areaServed: 'IN',
+    availableLanguage: ['English'],
+    url: new URL('/contact/', Astro.site).href,
+  },
+};
 ---
 
 <Base
-  title="Contact Sthitha Quantum Innovations | Quantum Technology"
+  title="Contact Sthitha Quantum Innovations | Bengaluru, India"
   description="Get in touch with Sthitha Quantum Innovations for enquiries about quantum computing courses, research, post-quantum security and collaboration."
+  pageType="ContactPage"
+  keywords={keywords.contact}
+  jsonLd={contactLd}
 >
   <div class="frame">
     <section class="page-hero">

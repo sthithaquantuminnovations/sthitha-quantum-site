@@ -6,5 +6,5 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-return Astro.redirect(`/research/insights/${slug}`, 301);
+return Astro.redirect(`/research/insights/${slug}/`, 301);
 ---

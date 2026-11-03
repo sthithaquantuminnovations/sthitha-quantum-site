@@ -5,6 +5,7 @@ import CourseCard from '../../components/CourseCard.astro';
 import Icon from '../../components/Icon.astro';
 import More from '../../components/More.astro';
 import { courses } from '../../data/site.js';
+import { faqPage, keywords, ogCards, orgId } from '../../data/seo.js';
 
 // Course copy lives here, keyed by slug. Keep the topics in step with each course's published curriculum.
 const courseCopy = {
@@ -62,14 +63,27 @@ const faqs = [
   { q: 'Can beginners learn quantum computing?', a: 'Yes. Beginners can start by learning the basic concepts, including qubits, superposition, quantum gates and circuits. Mathematics and programming become increasingly useful as learners progress.' },
   { q: 'Which quantum computing course should I choose?', a: "Choose the Quantum Computing Crash Course if you want an introduction covering foundational concepts and algorithms. Choose Quantum Computing in Malayalam if you prefer to begin learning in Malayalam. Review each course's published curriculum before enrolling." },
   { q: 'Can I learn quantum computing in Malayalam?', a: 'Sthitha Academy offers a course titled Quantum Computing in Malayalam: For Beginners, intended to introduce the subject through Malayalam-language learning.' },
-  { q: 'Do I need programming experience?', a: 'Requirements vary depending on the course and learning goals. Check the course description for its current prerequisites. You can begin understanding basic quantum computing concepts before progressing to programming.' },
+  { q: 'Do I need programming experience?', a: 'Requirements vary depending on the course and learning goals. Check the course description for its current prerequisites. You can begin understanding basic quantum computing concepts before progressing to programming.', pending: true },
   { q: 'What can I study after an introductory course?', a: 'You can continue into quantum programming, quantum circuits, quantum algorithms, quantum information and related areas of research, depending on your interests and technical background.' },
 ];
 ---
 
 <Base
-  title="Quantum Computing Courses | Sthitha Academy"
-  description="Explore quantum computing courses with Sthitha Academy. Learn foundational quantum computing concepts, qubits, quantum circuits and algorithms, including a beginner course in Malayalam."
+  title="Quantum Computing Courses Online | Sthitha Academy"
+  description="Quantum computing courses from Sthitha Academy: learn qubits, quantum circuits and algorithms, with beginner courses in English and Malayalam."
+  pageType="CollectionPage"
+  keywords={keywords.academy}
+  image={ogCards.academy.image}
+  imageAlt={ogCards.academy.alt}
+  jsonLd={[
+    {
+      '@type': 'ItemList',
+      '@id': new URL('/academy/#courses', Astro.site).href,
+      name: 'Sthitha Academy quantum computing courses',
+      itemListElement: courses.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: new URL(c.href, Astro.site).href, name: `${c.title}: ${c.subtitle}` })),
+    },
+    faqPage(new URL('/academy/', Astro.site).href, faqs),
+  ]}
 >
   <div class="frame">
     <section class="page-hero">
@@ -175,7 +189,7 @@ const faqs = [
         <p class="body" data-fade>Quantum computing is an active area of research, with potential applications in selected problems involving simulation, optimisation and other computational tasks. Practical capabilities remain dependent on hardware, algorithms and the problem being addressed.</p>
         <p class="body" data-fade style="--d:80ms">Learning the fundamentals can help students and professionals understand developments in the field, follow technical discussions and identify areas for further study.</p>
         <p class="body" data-fade style="--d:160ms">Sthitha Academy provides an entry point for learners interested in exploring this evolving technology.</p>
-        <More href="/research">Explore Research &amp; Innovation</More>
+        <More href="/research/">Explore Research &amp; Innovation</More>
       </div>
     </section>
 
@@ -184,8 +198,8 @@ const faqs = [
       <div class="faq-intro">
         <span class="eyebrow">Frequently Asked Questions</span>
         <h2 data-reveal>Quantum Computing Courses, Answered</h2>
-        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact?topic=Academy">get in touch</a>.</p>
-        <More href="/about">About Sthitha Quantum Innovations</More>
+        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact/?topic=Academy">get in touch</a>.</p>
+        <More href="/about/">About Sthitha Quantum Innovations</More>
       </div>
       <div class="faq-list">
         {faqs.map((f) => (
@@ -203,6 +217,6 @@ const faqs = [
     text="Build your understanding of quantum computing through introductory learning experiences designed to help you explore the fundamentals and discover what comes next. Choose a course and take your first step into quantum technology."
   >
     <a class="btn btn-light" href="#courses">Explore Our Courses</a>
-    <a class="btn btn-dark" href="/about">Learn About Sthitha</a>
+    <a class="btn btn-dark" href="/about/">Learn About Sthitha</a>
   </Cta>
 </Base>

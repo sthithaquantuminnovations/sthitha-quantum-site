@@ -5,6 +5,9 @@ date: "2026-06-12"
 author: "Sthitha Quantum Innovations"
 category: "Quantum Machine Learning"
 readingTime: "7 min read"
+seoTitle: "Introduction to Quantum Machine Learning (QML) | Sthitha"
+description: "How parameterized quantum circuits, quantum kernels and variational algorithms are driving the intersection of AI and quantum computing."
+tags: ["quantum machine learning", "QML", "parameterized quantum circuits", "quantum kernels", "variational quantum algorithms", "quantum AI"]
 ---
 
 The convergence of artificial intelligence and quantum computing represents one of the most exciting research frontiers in modern computer science. **Quantum Machine Learning (QML)** investigates how quantum information processing can enhance machine learning models—and conversely, how machine learning techniques can be applied to optimize quantum hardware and quantum control.
@@ -141,4 +144,4 @@ At Sthitha Quantum Innovations, our **Research & Innovation** initiative investi
 - We bridge the conceptual gap between quantum information science and enterprise data architectures.
 - We produce educational explainers to empower researchers and software engineers entering the quantum field.
 
-*Explore our ongoing research directions on the [Research & Innovation Page](/research) or review our full library of technical insights in the [Insights Section](/research/insights).*
+*Explore our ongoing research directions on the [Research & Innovation Page](/research/) or review our full library of technical insights in the [Insights Section](/research/insights/).*

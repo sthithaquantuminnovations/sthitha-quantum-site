@@ -7,6 +7,7 @@ import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
 import More from '../../components/More.astro';
 import { courses } from '../../data/site.js';
+import { faqPage, keywords, ogCards, orgId } from '../../data/seo.js';
 
 const course = courses[0];
 
@@ -41,7 +42,7 @@ const next = [
   { icon: 'code', title: 'Quantum Programming', text: 'Learn how quantum circuits can be represented and executed using quantum programming tools.' },
   { icon: 'layers', title: 'Quantum Algorithms', text: "Study how algorithms such as Shor's and Grover's approach particular computational problems." },
   { icon: 'flask', title: 'Quantum Machine Learning', text: 'Explore research at the intersection of quantum computing and machine learning.' },
-  { icon: 'shield', title: 'Post-Quantum Security', text: 'Understand why developments in quantum computing matter for cryptography and the transition towards post-quantum cryptographic standards.', href: '/exodia' },
+  { icon: 'shield', title: 'Post-Quantum Security', text: 'Understand why developments in quantum computing matter for cryptography and the transition towards post-quantum cryptographic standards.', href: '/exodia/' },
 ];
 
 const format = [
@@ -52,31 +53,52 @@ const format = [
 ];
 
 const faqs = [
-  { q: 'Do I need prior quantum computing knowledge?', a: 'The course is intended as an introduction. Review the published course description for any specific prerequisites.' },
-  { q: 'Do I need to know programming?', a: 'Programming requirements depend on the lessons and practical activities included. Check the current course curriculum to confirm whether coding experience is required.' },
+  { q: 'Do I need prior quantum computing knowledge?', a: 'The course is intended as an introduction. Review the published course description for any specific prerequisites.', pending: true },
+  { q: 'Do I need to know programming?', a: 'Programming requirements depend on the lessons and practical activities included. Check the current course curriculum to confirm whether coding experience is required.', pending: true },
   { q: 'What are qubits?', a: 'Qubits are the basic units of quantum information. Unlike classical bits, which are represented as 0 or 1, qubits can exist in quantum states that exhibit superposition.' },
   { q: "What are Shor's and Grover's algorithms?", a: "Shor's algorithm is known for its approach to integer factorisation, while Grover's algorithm provides a quantum approach to searching an unstructured search space." },
   { q: 'What should I learn after this course?', a: 'Depending on your interests, you can continue into quantum programming, quantum circuits, quantum algorithms, quantum information or quantum machine learning.' },
 ];
+const pageUrl = new URL(course.href, Astro.site).href;
+const udemyUrl = course.udemy.split('?')[0];
 const courseLd = {
   '@type': 'Course',
-  name: courses[0].title + ': ' + courses[0].subtitle,
-  description: "Explore quantum computing fundamentals, qubits, quantum gates, circuits and algorithms in Sthitha Academy's Quantum Computing Crash Course, from Qubits to Shor & Grover.",
-  url: new URL(courses[0].href, Astro.site).href,
-  provider: { '@id': new URL('/#organization', Astro.site).href },
+  '@id': `${pageUrl}#course`,
+  name: `${course.title}: ${course.subtitle}`,
+  description: 'Understand the fundamentals of quantum computing, from qubits and quantum gates to circuits and important quantum algorithms.',
+  url: pageUrl,
+  image: new URL(ogCards.crashCourse.image, Astro.site).href,
+  provider: { '@id': orgId },
+  publisher: { '@id': orgId },
+  inLanguage: 'en',
+  educationalLevel: 'Beginner',
+  teaches: topics.map((t) => t.title),
+  about: ['Quantum computing', 'Qubits', 'Quantum gates', 'Quantum circuits', "Shor's algorithm", "Grover's algorithm"],
+  audience: { '@type': 'EducationalAudience', audienceType: 'Beginners, students, developers and technology professionals' },
+  hasCourseInstance: {
+    '@type': 'CourseInstance',
+    courseMode: 'Online',
+    courseWorkload: 'PT1H19M',
+    inLanguage: 'en',
+    url: udemyUrl,
+  },
+  sameAs: udemyUrl,
 };
 ---
 
 <Base
   title="Quantum Computing Course for Beginners | Sthitha Academy"
-  description="Explore quantum computing fundamentals, qubits, quantum gates, circuits and algorithms in Sthitha Academy's Quantum Computing Crash Course, from Qubits to Shor & Grover."
-  jsonLd={courseLd}
+  description="Learn qubits, quantum gates, circuits and Shor's and Grover's algorithms in Sthitha Academy's self-paced Quantum Computing Crash Course."
+  keywords={keywords.crashCourse}
+  image={ogCards.crashCourse.image}
+  imageAlt={ogCards.crashCourse.alt}
+  jsonLd={[courseLd, faqPage(pageUrl, faqs)]}
 >
   <div class="frame">
     <section class="page-hero">
       <div class="page-hero-body is-course">
         <div>
-          <p class="crumbs" data-fade><a href="/academy">Sthitha Academy</a><i>/</i>Course</p>
+          <p class="crumbs" data-fade><a href="/academy/">Sthitha Academy</a><i>/</i>Course</p>
           <h1 data-reveal>Quantum Computing Course for Beginners</h1>
           <p class="course-kicker" data-fade style="--d:200ms">Qubits to Shor &amp; Grover</p>
           <p class="page-hero-lede" data-fade style="--d:250ms">Understand the fundamentals of quantum computing, from qubits and quantum gates to circuits and important quantum algorithms.</p>
@@ -160,7 +182,7 @@ const courseLd = {
           </div>
         ))}
       </div>
-      <div class="section-head" style="padding-block:0 72px"><More href="/academy">Explore Sthitha Academy</More></div>
+      <div class="section-head" style="padding-block:0 72px"><More href="/academy/">Explore Sthitha Academy</More></div>
     </section>
 
     <!-- Course format (from the Udemy listing) -->
@@ -186,8 +208,8 @@ const courseLd = {
       <div class="faq-intro">
         <span class="eyebrow">Frequently Asked Questions</span>
         <h2 data-reveal>Quantum Computing Course, Answered</h2>
-        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact?topic=Academy">get in touch</a>. Prefer to learn in Malayalam? See <a href="/academy/quantum-computing-malayalam">Quantum Computing in Malayalam</a>.</p>
-        <More href="/research">Research &amp; Innovation</More>
+        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact/?topic=Academy">get in touch</a>. Prefer to learn in Malayalam? See <a href="/academy/quantum-computing-malayalam/">Quantum Computing in Malayalam</a>.</p>
+        <More href="/research/">Research &amp; Innovation</More>
       </div>
       <div class="faq-list">
         {faqs.map((f) => (
@@ -205,6 +227,6 @@ const courseLd = {
     text="Start with the fundamentals, understand the concepts behind quantum circuits and algorithms, and build a foundation for further exploration of quantum technology."
   >
     <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">Enrol in the Quantum Computing Crash Course</a>
-    <a class="btn btn-dark" href="/academy">Explore All Courses</a>
+    <a class="btn btn-dark" href="/academy/">Explore All Courses</a>
   </Cta>
 </Base>

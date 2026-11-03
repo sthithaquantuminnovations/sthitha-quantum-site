@@ -11,15 +11,17 @@ interface Section {
 interface Props {
   title: string;
   summary: string;
+  // Meta description; the visible summary is used when none is given.
+  description?: string;
   updated: string;
   sections?: Section[];
 }
 
-const { title, summary, updated, sections = [] } = Astro.props;
+const { title, summary, description = summary, updated, sections = [] } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
-<Base title={`${title} | ${company.name} | Quantum Technology Company`} description={summary}>
+<Base title={`${title} | ${company.name}`} description={description} noindex>
   <div class="frame">
     <article>
       <header class="page-hero">
@@ -44,9 +46,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
           <div class="legal-menu">
             <span class="legal-menu-title">Legal Documents</span>
             <ul class="legal-nav">
-              <li><a href="/privacy-policy" class={currentPath === '/privacy-policy' ? 'is-active' : undefined}>Privacy Policy</a></li>
-              <li><a href="/terms-and-conditions" class={currentPath === '/terms-and-conditions' ? 'is-active' : undefined}>Terms &amp; Conditions</a></li>
-              <li><a href="/cookie-policy" class={currentPath === '/cookie-policy' ? 'is-active' : undefined}>Cookie Policy</a></li>
+              <li><a href="/privacy-policy/" class={currentPath === '/privacy-policy' ? 'is-active' : undefined}>Privacy Policy</a></li>
+              <li><a href="/terms-and-conditions/" class={currentPath === '/terms-and-conditions' ? 'is-active' : undefined}>Terms &amp; Conditions</a></li>
+              <li><a href="/cookie-policy/" class={currentPath === '/cookie-policy' ? 'is-active' : undefined}>Cookie Policy</a></li>
             </ul>
           </div>
 

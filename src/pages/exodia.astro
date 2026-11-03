@@ -2,20 +2,21 @@
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
+import { keywords, ogCards, orgId } from '../data/seo.js';
 
 const approach = [
   {
-    id: 'discover', n: '01', title: 'Discover', image: '/assets/images/module-1-inventory-audit-image.webp', alt: 'Illustration of a cryptographic inventory',
+    id: 'discover', n: '01', title: 'Discover', image: '/assets/images/module-1-inventory-audit-image.webp', alt: 'Discover stage: illustration of a cryptographic inventory',
     lead: 'Find cryptographic assets across your systems and understand where they are being used.',
     text: 'Most organisations do not have a complete picture of the cryptography they depend on. Discover is about building that picture: which algorithms, keys and certificates are in use, and which applications, networks and systems rely on them.',
   },
   {
-    id: 'protect', n: '02', title: 'Protect', image: '/assets/images/module-2-crypto-agility-image.webp', alt: 'Illustration of layered cryptographic protection',
+    id: 'protect', n: '02', title: 'Protect', image: '/assets/images/module-2-crypto-agility-image.webp', alt: 'Protect stage: illustration of layered cryptographic protection',
     lead: 'Assess quantum exposure and prepare appropriate post-quantum protection strategies.',
     text: 'Not every asset carries the same risk. Protect looks at how exposed each one is to future quantum attacks and how long the data it guards needs to stay confidential, so that protection can be planned where it matters most.',
   },
   {
-    id: 'migrate', n: '03', title: 'Migrate', image: '/assets/images/module-3-migration-image.webp', alt: 'Illustration of a migration network',
+    id: 'migrate', n: '03', title: 'Migrate', image: '/assets/images/module-3-migration-image.webp', alt: 'Migrate stage: illustration of a migration network',
     lead: 'Build a clear, phased roadmap for moving critical systems towards post-quantum cryptography.',
     text: 'Moving to post-quantum cryptography is a programme of work, not a single change. Migrate turns the inventory and the risk picture into an ordered plan, so the most critical systems move first and progress can be reported.',
   },
@@ -36,11 +37,28 @@ const sectors = [
   { icon: 'tower', title: 'Telecommunications' },
   { icon: 'zap', title: 'Critical Infrastructure' },
 ];
+
+const serviceLd = {
+  '@type': 'Service',
+  '@id': new URL('/exodia/#service', Astro.site).href,
+  name: 'Sthitha Exodia',
+  serviceType: 'Post-quantum security and post-quantum cryptography migration planning',
+  description: 'Sthitha Exodia helps organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum migration.',
+  url: new URL('/exodia/', Astro.site).href,
+  provider: { '@id': orgId },
+  brand: { '@type': 'Brand', name: 'Sthitha Exodia' },
+  category: ['Post-quantum cryptography', 'Quantum-safe cybersecurity', 'Cryptographic discovery', 'Quantum risk assessment', 'PQC migration planning'],
+  audience: { '@type': 'BusinessAudience', audienceType: 'Defence, banking, telecommunications and critical infrastructure organisations' },
+};
 ---
 
 <Base
-  title="Post-Quantum Security | Sthitha Exodia by Sthitha Quantum Innovations"
-  description="Post-quantum security with Sthitha Exodia: helping organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum migration. An initiative of Sthitha Quantum Innovations."
+  title="Post-Quantum Security & PQC Migration | Sthitha Exodia"
+  description="Sthitha Exodia helps organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum cryptography (PQC) migration."
+  keywords={keywords.exodia}
+  image={ogCards.exodia.image}
+  imageAlt={ogCards.exodia.alt}
+  jsonLd={serviceLd}
 >
   <div class="frame">
     <section class="page-hero">
@@ -49,7 +67,7 @@ const sectors = [
           <h1 data-reveal>Preparing Critical Systems for the Post-Quantum Era</h1>
           <p class="page-hero-lede" data-fade style="--d:250ms">Sthitha Exodia helps organisations discover cryptographic assets, assess quantum risk and prepare for post-quantum migration.</p>
           <div class="hero-actions" data-fade style="--d:350ms">
-            <a class="btn btn-light" href="/contact?topic=exodia">Talk to us about Sthitha Exodia</a>
+            <a class="btn btn-light" href="/contact/?topic=exodia">Talk to us about Sthitha Exodia</a>
             <a class="btn btn-dark" href="#approach">The Sthitha Exodia approach</a>
           </div>
         </div>
@@ -119,14 +137,14 @@ const sectors = [
         <h2 data-reveal>Organisations That Cannot Afford to Find Out Late</h2>
         <p data-fade style="--d:200ms">Sthitha Exodia is intended for sectors that run critical systems, and for any organisation holding information that must stay protected for a long time.</p>
       </div>
-      <div class="cells" style="--cols:4">
+      <ul class="cells" style="--cols:4">
         {sectors.map((sector, i) => (
-          <div class="cell" data-fade style={`--d:${i * 80}ms`}>
+          <li class="cell" data-fade style={`--d:${i * 80}ms`}>
             <Icon name={sector.icon} class="lead" />
-            <h3>{sector.title}</h3>
-          </div>
+            <strong class="cell-title">{sector.title}</strong>
+          </li>
         ))}
-      </div>
+      </ul>
       <p class="section-note" data-fade>Also relevant to other organisations holding long-term sensitive information.</p>
     </section>
   </div>
@@ -135,7 +153,7 @@ const sectors = [
     title="Talk to Us About Sthitha Exodia"
     text="Tell us about the systems you are responsible for and we will take the conversation from there."
   >
-    <a class="btn btn-light" href="/contact?topic=exodia">Talk to us about Sthitha Exodia</a>
-    <a class="btn btn-dark" href="/research/insights/understanding-post-quantum-security">Understand Post-Quantum Security</a>
+    <a class="btn btn-light" href="/contact/?topic=exodia">Talk to us about Sthitha Exodia</a>
+    <a class="btn btn-dark" href="/research/insights/understanding-post-quantum-security/">Understand Post-Quantum Security</a>
   </Cta>
 </Base>

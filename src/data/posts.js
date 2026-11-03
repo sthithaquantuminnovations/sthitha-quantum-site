@@ -17,8 +17,10 @@ export const posts = Object.entries(modules)
       readingTime,
       dateShort: format(post.frontmatter.date, 'short'),
       dateLong: format(post.frontmatter.date, 'long'),
+      updatedLong: post.frontmatter.updated ? format(post.frontmatter.updated, 'long') : '',
       Content: post.Content,
       getHeadings: typeof post.getHeadings === 'function' ? post.getHeadings : () => [],
+      rawContent: typeof post.rawContent === 'function' ? post.rawContent : () => '',
     };
   })
   .sort((a, b) => b.date.localeCompare(a.date));

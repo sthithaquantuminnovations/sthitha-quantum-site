@@ -10,8 +10,8 @@ export const company = {
   offices: [
     {
       label: 'Head Office',
-      address: 'Landmark Towers, MG Road, Bangalore, Karnataka – 560001, India',
-      mapQuery: 'Landmark Towers, MG Road, Bangalore, Karnataka 560001, India',
+      address: 'Landmark Towers, MG Road, Bengaluru, Karnataka – 560001, India',
+      mapQuery: 'Landmark Towers, MG Road, Bengaluru, Karnataka 560001, India',
     },
   ],
   email: 'sthithaquantuminnovations@gmail.com',
@@ -28,7 +28,7 @@ export const areas = [
     key: 'exodia',
     name: 'Sthitha Exodia',
     title: 'Post-Quantum Security',
-    href: '/exodia',
+    href: '/exodia/',
     summary: 'Sthitha Exodia focuses on cryptographic discovery, quantum risk awareness and preparation for post-quantum migration.',
     short: 'Explore cryptographic discovery, quantum risk awareness and post-quantum migration planning.',
     link: 'Explore Sthitha Exodia',
@@ -37,7 +37,7 @@ export const areas = [
     key: 'academy',
     name: 'Sthitha Academy',
     title: 'Quantum Education',
-    href: '/academy',
+    href: '/academy/',
     summary: 'Learn quantum computing through courses designed to introduce the fundamentals, circuits and algorithms.',
     short: 'Structured courses for learners starting out in quantum computing.',
     link: 'Explore Academy',
@@ -46,7 +46,7 @@ export const areas = [
     key: 'research',
     name: 'Research & Innovation',
     title: 'Quantum Research',
-    href: '/research',
+    href: '/research/',
     summary: 'Explore quantum computing, quantum machine learning and emerging ideas through technical study and experimentation.',
     short: 'Technical research, experimentation and applied learning.',
     link: 'Explore Research',
@@ -59,7 +59,7 @@ const UDEMY = 'https://www.udemy.com/course/quantum-computing-crash-course-qubit
 export const courses = [
   {
     slug: 'quantum-computing-crash-course',
-    href: '/academy/quantum-computing-crash-course',
+    href: '/academy/quantum-computing-crash-course/',
     title: 'Quantum Computing Crash Course',
     subtitle: 'Qubits to Shor & Grover',
     status: 'Available Now',
@@ -70,7 +70,7 @@ export const courses = [
   },
   {
     slug: 'quantum-computing-malayalam',
-    href: '/academy/quantum-computing-malayalam',
+    href: '/academy/quantum-computing-malayalam/',
     title: 'Quantum Computing in Malayalam',
     subtitle: 'For Beginners',
     status: 'Available Now',

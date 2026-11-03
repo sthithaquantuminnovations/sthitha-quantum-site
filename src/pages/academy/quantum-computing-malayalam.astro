@@ -5,6 +5,7 @@ import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
 import More from '../../components/More.astro';
 import { courses } from '../../data/site.js';
+import { faqPage, keywords, ogCards, orgId } from '../../data/seo.js';
 
 const course = courses[1];
 
@@ -33,31 +34,46 @@ const next = [
 
 const faqs = [
   { q: 'Can I learn quantum computing in Malayalam?', a: 'Yes. Sthitha Academy offers a course titled Quantum Computing in Malayalam: For Beginners, designed to introduce learners to the subject through Malayalam-language instruction.' },
-  { q: 'Is this course suitable for beginners?', a: 'The course is presented as a beginner-focused learning experience. Review the published course description to confirm its prerequisites and scope.' },
+  { q: 'Is this course suitable for beginners?', a: 'The course is presented as a beginner-focused learning experience. Review the published course description to confirm its prerequisites and scope.', pending: true },
   { q: 'Do I need a physics background?', a: 'A specialist physics background is not necessarily required to begin learning introductory concepts. However, mathematics and physics become useful as you progress into more advanced topics.' },
   { q: 'Is quantum computing different from classical computing?', a: 'Yes. Quantum computing uses qubits and quantum-mechanical principles, while classical computers use bits. Quantum computers may offer advantages for certain problems but are not better for every task.' },
   { q: 'What can I learn after an introductory course?', a: 'You can explore quantum programming, quantum algorithms, quantum circuits, quantum information and quantum machine learning, depending on your interests and preparation.' },
-  { q: 'Is the course completely in Malayalam?', a: 'Please refer to the published course details to confirm the language of instruction and the availability of Malayalam explanations or subtitles.' },
+  { q: 'Is the course completely in Malayalam?', a: 'Please refer to the published course details to confirm the language of instruction and the availability of Malayalam explanations or subtitles.', pending: true },
 ];
+const pageUrl = new URL(course.href, Astro.site).href;
+const udemyUrl = course.udemy.split('?')[0];
+// Instructors, duration and price wait for confirmed course facts (audit §6.3).
 const courseLd = {
   '@type': 'Course',
-  name: courses[1].title + ': ' + courses[1].subtitle,
-  description: "Learn quantum computing in Malayalam with Sthitha Academy. Explore introductory quantum computing concepts through a beginner-focused Malayalam learning experience.",
-  url: new URL(courses[1].href, Astro.site).href,
-  provider: { '@id': new URL('/#organization', Astro.site).href },
+  '@id': `${pageUrl}#course`,
+  name: `${course.title}: ${course.subtitle}`,
+  description: 'Learn quantum computing in Malayalam with Sthitha Academy. Explore introductory quantum computing concepts through a beginner-focused Malayalam learning experience.',
+  url: pageUrl,
+  image: new URL(ogCards.malayalam.image, Astro.site).href,
+  provider: { '@id': orgId },
+  publisher: { '@id': orgId },
+  inLanguage: 'ml',
+  educationalLevel: 'Beginner',
+  teaches: explore.map((t) => t.title),
+  about: ['Quantum computing', 'Qubits', 'Quantum states'],
+  audience: { '@type': 'EducationalAudience', audienceType: 'Malayalam-speaking beginners and students' },
+  sameAs: udemyUrl,
 };
 ---
 
 <Base
-  title="Quantum Computing in Malayalam | Sthitha Academy"
-  description="Learn quantum computing in Malayalam with Sthitha Academy. Explore introductory quantum computing concepts through a beginner-focused Malayalam learning experience."
-  jsonLd={courseLd}
+  title="Quantum Computing in Malayalam for Beginners | Sthitha"
+  description="Learn quantum computing in Malayalam (ക്വാണ്ടം കമ്പ്യൂട്ടിംഗ്) with Sthitha Academy: a beginner course on qubits, quantum states and core concepts."
+  keywords={keywords.malayalam}
+  image={ogCards.malayalam.image}
+  imageAlt={ogCards.malayalam.alt}
+  jsonLd={[courseLd, faqPage(pageUrl, faqs)]}
 >
   <div class="frame">
     <section class="page-hero">
       <div class="page-hero-body is-course">
         <div>
-          <p class="crumbs" data-fade><a href="/academy">Sthitha Academy</a><i>/</i>Course</p>
+          <p class="crumbs" data-fade><a href="/academy/">Sthitha Academy</a><i>/</i>Course</p>
           <h1 data-reveal>Learn Quantum Computing in Malayalam</h1>
           <p class="course-kicker" data-fade style="--d:200ms">For Beginners</p>
           <p class="page-hero-lede" data-fade style="--d:250ms">Quantum computing is changing how researchers approach certain computational problems. But understanding it starts with learning the fundamentals.</p>
@@ -162,7 +178,7 @@ const courseLd = {
           </div>
         ))}
       </div>
-      <div class="section-head" style="padding-block:0 72px"><More href="/research">Explore Research &amp; Innovation</More></div>
+      <div class="section-head" style="padding-block:0 72px"><More href="/research/">Explore Research &amp; Innovation</More></div>
     </section>
 
     <!-- FAQ -->
@@ -170,8 +186,8 @@ const courseLd = {
       <div class="faq-intro">
         <span class="eyebrow">Frequently Asked Questions</span>
         <h2 data-reveal>Quantum Computing in Malayalam, Answered</h2>
-        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact?topic=Academy">get in touch</a>.</p>
-        <More href="/academy">Explore Sthitha Academy</More>
+        <p data-fade style="--d:200ms">New to the subject? Start here, or <a href="/contact/?topic=Academy">get in touch</a>.</p>
+        <More href="/academy/">Explore Sthitha Academy</More>
       </div>
       <div class="faq-list">
         {faqs.map((f) => (
@@ -189,6 +205,6 @@ const courseLd = {
     text="Explore the fundamentals of quantum computing through a learning experience designed for Malayalam-speaking beginners. Start with the basics and discover where your interest in quantum technology can take you next."
   >
     <a class="btn btn-light" href={course.udemy} target="_blank" rel="noopener">View the Course</a>
-    <a class="btn btn-dark" href="/academy">Explore Sthitha Academy</a>
+    <a class="btn btn-dark" href="/academy/">Explore Sthitha Academy</a>
   </Cta>
 </Base>

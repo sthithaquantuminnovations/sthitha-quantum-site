@@ -729,7 +729,8 @@ main { padding-top: var(--nav-h); }
 .cells[style*='--cols:4'] > .cell:nth-child(4n), .cells[style*='--cols:2'] > .cell:nth-child(2n) { border-right: 0; }
 .cell-num { font-family: var(--mono); font-size: 12px; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .cell .icon.lead { width: 20px; height: 20px; color: var(--text); margin-bottom: 28px; }
-.cell h3 { margin-top: 18px; font-size: 20px; line-height: 1.2; font-weight: 600; letter-spacing: -.025em; }
+.cell h3, .cell-title { margin-top: 18px; font-size: 20px; line-height: 1.2; font-weight: 600; letter-spacing: -.025em; }
+.cell-title { display: block; }
 .cell .icon.lead + h3 { margin-top: 0; }
 .cell p { margin-top: 10px; font-size: 15px; line-height: 22px; color: var(--muted); }
 .cell ul.ticks { margin-top: 14px; }
@@ -2108,3 +2109,6 @@ h1, h2, h3, .post-row h2, .hero h1, .cta h2, .page-hero h1 {
   -webkit-mask-image: linear-gradient(to bottom, transparent var(--a), #000 calc(var(--a) + 20%), #000 calc(var(--a) + 40%), transparent calc(var(--a) + 60%));
   mask-image: linear-gradient(to bottom, transparent var(--a), #000 calc(var(--a) + 20%), #000 calc(var(--a) + 40%), transparent calc(var(--a) + 60%));
 }
+
+/* Build-time maths (KaTeX): wide equations scroll inside the article instead of widening the page. */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding-block: 4px; }

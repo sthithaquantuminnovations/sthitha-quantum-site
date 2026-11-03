@@ -38,7 +38,7 @@ const art: Record<string, string> = {
       </div>
 
       <div class="nav-item has-panel">
-        <a class="nav-link" href="/academy" aria-haspopup="true" aria-expanded="false" aria-current={within('/academy')}>Academy<Icon name="chev-down" /></a>
+        <a class="nav-link" href="/academy/" aria-haspopup="true" aria-expanded="false" aria-current={within('/academy')}>Academy<Icon name="chev-down" /></a>
         <div class="nav-panel">
           <div class="nav-split">
             <div>
@@ -49,37 +49,37 @@ const art: Record<string, string> = {
             </div>
             <div class="nav-list">
               <span class="eyebrow">Academy</span>
-              <a href="/academy">Overview</a>
-              <a href="/academy#courses">Current courses</a>
+              <a href="/academy/">Overview</a>
+              <a href="/academy/#courses">Current courses</a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="nav-item has-panel">
-        <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false" aria-current={within('/about', '/events', '/partnerships', '/contact')}>Company<Icon name="chev-down" /></a>
+        <a class="nav-link" href="/about/" aria-haspopup="true" aria-expanded="false" aria-current={within('/about', '/events', '/partnerships', '/contact')}>Company<Icon name="chev-down" /></a>
         <div class="nav-panel">
           <div class="nav-split">
             <div>
               <span class="eyebrow">Sthitha Quantum Innovations</span>
-              <a class="nav-row" href="/about"><Icon name="users" /><div><strong>About Sthitha</strong><span>Who we are and what we work on.</span></div></a>
-              <a class="nav-row" href="/our-team"><Icon name="users" /><div><strong>Our Team</strong><span>Meet the people behind Sthitha.</span></div></a>
-              <a class="nav-row" href="/events"><Icon name="calendar" /><div><strong>Events</strong><span>Community and collaboration.</span></div></a>
+              <a class="nav-row" href="/about/"><Icon name="users" /><div><strong>About Sthitha</strong><span>Who we are and what we work on.</span></div></a>
+              <a class="nav-row" href="/our-team/"><Icon name="users" /><div><strong>Our Team</strong><span>Meet the people behind Sthitha.</span></div></a>
+              <a class="nav-row" href="/events/"><Icon name="calendar" /><div><strong>Events</strong><span>Community and collaboration.</span></div></a>
             </div>
             <div class="nav-list">
               <span class="eyebrow">Ecosystem</span>
-              <a href="/partnerships">Partnerships</a>
-              <a href="/research/insights">Insights</a>
-              <a href="/contact">Contact</a>
+              <a href="/partnerships/">Partnerships</a>
+              <a href="/research/insights/">Insights</a>
+              <a href="/contact/">Contact</a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nav-item"><a class="nav-link" href="/research/insights" aria-current={within('/research/insights')}>Insights</a></div>
+      <div class="nav-item"><a class="nav-link" href="/research/insights/" aria-current={within('/research/insights')}>Insights</a></div>
     </nav>
 
-    <a class="btn btn-light btn-sm header-cta" href="/contact">Talk to Sthitha</a>
+    <a class="btn btn-light btn-sm header-cta" href="/contact/">Talk to Sthitha</a>
     <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -94,20 +94,20 @@ const art: Record<string, string> = {
   <details class="mm-group">
     <summary>Academy<Icon name="chev-down" /></summary>
     <div class="mm-list">
-      <a href="/academy">All courses</a>
+      <a href="/academy/">All courses</a>
       {courses.map((course) => <a href={course.href}>{course.title}<small>{course.subtitle}</small></a>)}
     </div>
   </details>
   <details class="mm-group">
     <summary>Company<Icon name="chev-down" /></summary>
     <div class="mm-list">
-      <a href="/about">About Sthitha</a>
-      <a href="/our-team">Our Team</a>
-      <a href="/events">Events</a>
-      <a href="/partnerships">Partnerships</a>
-      <a href="/contact">Contact</a>
+      <a href="/about/">About Sthitha</a>
+      <a href="/our-team/">Our Team</a>
+      <a href="/events/">Events</a>
+      <a href="/partnerships/">Partnerships</a>
+      <a href="/contact/">Contact</a>
     </div>
   </details>
-  <a class="mm-link" href="/research/insights">Insights</a>
-  <a class="btn btn-light" href="/contact">Talk to Sthitha</a>
+  <a class="mm-link" href="/research/insights/">Insights</a>
+  <a class="btn btn-light" href="/contact/">Talk to Sthitha</a>
 </div>

@@ -10,11 +10,13 @@ import Stack from '../components/home/Stack.astro';
 import Academy from '../components/home/Academy.astro';
 import Research from '../components/home/Research.astro';
 import Ecosystem from '../components/home/Ecosystem.astro';
+import { keywords } from '../data/seo.js';
 ---
 
 <Base
   title="Quantum Technology Company | Sthitha Quantum Innovations"
-  description="Sthitha Quantum Innovations is a quantum technology company working across quantum computing, post-quantum security, education and research to build practical pathways into the quantum era."
+  description="Sthitha Quantum Innovations is a quantum technology company in Bengaluru, working across quantum computing, post-quantum security, education and research."
+  keywords={keywords.home}
 >
   <div class="frame">
     <Hero />
@@ -35,6 +37,6 @@ import Ecosystem from '../components/home/Ecosystem.astro';
     text="Learn quantum computing, explore post-quantum security or connect with Sthitha about research and collaboration."
   >
     <a class="btn btn-light" href="/#work">Explore Our Services</a>
-    <a class="btn btn-dark" href="/contact">Talk to Sthitha</a>
+    <a class="btn btn-dark" href="/contact/">Talk to Sthitha</a>
   </Cta>
 </Base>

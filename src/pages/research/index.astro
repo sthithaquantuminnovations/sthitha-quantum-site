@@ -4,6 +4,7 @@ import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
 import More from '../../components/More.astro';
 import { posts } from '../../data/posts.js';
+import { faqPage, keywords, ogCards } from '../../data/seo.js';
 
 // These are research interests, not completed projects or validated results.
 const areas = [
@@ -48,13 +49,18 @@ const faqs = [
   { q: 'Are quantum computers better than classical computers?', a: 'Not for every task. Quantum computers may offer advantages for certain problems, but their performance depends on the problem, algorithm, hardware and implementation.' },
   { q: 'What are quantum algorithms?', a: "Quantum algorithms are procedures designed to run on quantum computing systems. Examples include Shor's algorithm for integer factorisation and Grover's algorithm for searching an unstructured search space." },
   { q: 'Can beginners explore quantum computing research?', a: 'Yes. Beginners can start by learning the fundamentals of qubits, quantum gates and circuits before progressing to algorithms, programming and specialised research topics.' },
-  { q: 'Does Sthitha publish research papers?', a: "Refer to Sthitha's official publications or research announcements for verified information about published work. Publication activity should not be inferred from the presence of this page." },
+  { q: 'Does Sthitha publish research papers?', a: "Refer to Sthitha's official publications or research announcements for verified information about published work. Publication activity should not be inferred from the presence of this page.", pending: true },
 ];
 ---
 
 <Base
   title="Quantum Computing Research | Sthitha Quantum Innovations"
-  description="Explore Sthitha Quantum Innovations' interests in quantum computing research, quantum algorithms and quantum machine learning through technical study and experimentation."
+  description="Sthitha Quantum Innovations' research interests in quantum computing, quantum algorithms and quantum machine learning, through study and experimentation."
+  pageType="CollectionPage"
+  keywords={keywords.research}
+  image={ogCards.research.image}
+  imageAlt={ogCards.research.alt}
+  jsonLd={faqPage(new URL('/research/', Astro.site).href, faqs)}
 >
   <div class="frame">
     <section class="page-hero">
@@ -65,7 +71,7 @@ const faqs = [
           <p class="page-hero-lede" data-fade style="--d:300ms">Our Research &amp; Innovation initiative focuses on understanding quantum computing concepts, examining quantum algorithms and exploring the relationship between quantum computing and machine learning.</p>
           <div class="hero-actions" data-fade style="--d:350ms">
             <a class="btn btn-light" href="#areas">Explore Our Research Areas</a>
-            <a class="btn btn-dark" href="/contact?topic=Research">Contact Sthitha</a>
+            <a class="btn btn-dark" href="/contact/?topic=Research">Contact Sthitha</a>
           </div>
         </div>
         <div class="page-hero-visual" aria-hidden="true"><canvas data-visual="flask"></canvas></div>
@@ -145,7 +151,7 @@ const faqs = [
         <h2 data-reveal>Let's Explore New Questions</h2>
         <p class="body" data-fade style="--d:200ms">Progress in quantum technology depends on continued learning, technical investigation and the exchange of ideas across disciplines.</p>
         <p class="body" data-fade style="--d:260ms">Sthitha Quantum Innovations welcomes enquiries about quantum computing, quantum machine learning, technical education and potential research collaboration.</p>
-        <More href="/contact?topic=Research">Discuss a Collaboration</More>
+        <More href="/contact/?topic=Research">Discuss a Collaboration</More>
       </div>
       <div>
         <p class="body" style="margin-top:0" data-fade>Our research interests may be relevant to:</p>
@@ -163,7 +169,7 @@ const faqs = [
       </div>
       <div class="posts">
         {posts.slice(0, 2).map((post, i) => (
-          <a class="post-row" href={`/research/insights/${post.slug}`} data-fade style={`--d:${i * 90}ms`}>
+          <a class="post-row" href={`/research/insights/${post.slug}/`} data-fade style={`--d:${i * 90}ms`}>
             <time datetime={post.date}>{post.dateShort}</time>
             <div><h2>{post.title}</h2><p>{post.excerpt}</p></div>
             <span class="more-dot" aria-hidden="true"><Icon name="chev-right" /></span>
@@ -177,8 +183,8 @@ const faqs = [
       <div class="faq-intro">
         <span class="eyebrow">Frequently Asked Questions</span>
         <h2 data-reveal>Quantum Computing Research, Answered</h2>
-        <p data-fade style="--d:200ms">Learn more <a href="/about">about Sthitha Quantum Innovations</a>, or see how we approach <a href="/exodia">post-quantum security with Sthitha Exodia</a>.</p>
-        <More href="/academy/quantum-computing-crash-course">Quantum Computing Crash Course</More>
+        <p data-fade style="--d:200ms">Learn more <a href="/about/">about Sthitha Quantum Innovations</a>, or see how we approach <a href="/exodia/">post-quantum security with Sthitha Exodia</a>.</p>
+        <More href="/academy/quantum-computing-crash-course/">Quantum Computing Crash Course</More>
       </div>
       <div class="faq-list">
         {faqs.map((f) => (
@@ -195,7 +201,7 @@ const faqs = [
     title="Explore the Next Questions in Quantum Technology"
     text="From quantum algorithms to quantum machine learning, emerging computational methods offer important questions to study and understand. Explore Sthitha's initiatives, develop your knowledge through Sthitha Academy or contact us to discuss research interests and potential collaboration."
   >
-    <a class="btn btn-light" href="/academy">Explore Sthitha Academy</a>
-    <a class="btn btn-dark" href="/contact?topic=Research">Contact Sthitha</a>
+    <a class="btn btn-light" href="/academy/">Explore Sthitha Academy</a>
+    <a class="btn btn-dark" href="/contact/?topic=Research">Contact Sthitha</a>
   </Cta>
 </Base>

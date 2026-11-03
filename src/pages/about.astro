@@ -3,10 +3,11 @@ import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
 import More from '../components/More.astro';
+import { keywords } from '../data/seo.js';
 
 const pillars = [
   {
-    num: '01', tag: 'Sthitha Exodia', title: 'Post-Quantum Security', href: '/exodia', link: 'Explore Sthitha Exodia',
+    num: '01', tag: 'Sthitha Exodia', title: 'Post-Quantum Security', href: '/exodia/', link: 'Explore Sthitha Exodia',
     paras: [
       'Quantum computing may eventually affect some cryptographic systems used to protect digital information. Preparing for this possibility starts with understanding where cryptography is used and how future changes could affect security.',
       'Sthitha Exodia focuses on cryptographic discovery, quantum risk awareness and preparation for post-quantum cryptography migration. It explores how organisations can better understand their cryptographic assets and plan for a transition towards quantum-resistant security.',
@@ -20,19 +21,19 @@ const pillars = [
     ],
   },
   {
-    num: '02', tag: 'Sthitha Academy', title: 'Quantum Education', href: '/academy', link: 'Explore Sthitha Academy',
+    num: '02', tag: 'Sthitha Academy', title: 'Quantum Education', href: '/academy/', link: 'Explore Sthitha Academy',
     paras: [
       'Quantum computing introduces concepts that can be challenging to approach without a clear foundation. Sthitha Academy provides learning resources designed to help learners understand the fundamentals and explore important quantum computing concepts.',
       'Our current course offerings include an introductory quantum computing crash course and a beginner-focused course in Malayalam.',
     ],
     label: 'Courses',
     items: [
-      { text: 'Quantum Computing Crash Course: Qubits to Shor & Grover', href: '/academy/quantum-computing-crash-course' },
-      { text: 'Quantum Computing in Malayalam: For Beginners', href: '/academy/quantum-computing-malayalam' },
+      { text: 'Quantum Computing Crash Course: Qubits to Shor & Grover', href: '/academy/quantum-computing-crash-course/' },
+      { text: 'Quantum Computing in Malayalam: For Beginners', href: '/academy/quantum-computing-malayalam/' },
     ],
   },
   {
-    num: '03', tag: 'Research & Innovation', title: 'Exploring Quantum Technologies', href: '/research', link: 'Explore Research & Innovation',
+    num: '03', tag: 'Research & Innovation', title: 'Exploring Quantum Technologies', href: '/research/', link: 'Explore Research & Innovation',
     paras: [
       'Research and technical exploration are important to understanding how quantum technologies work and where they may be useful.',
       'Sthitha explores areas including quantum computing, quantum algorithms and quantum machine learning. This area of work focuses on technical learning, experimentation and examining emerging approaches to computation.',
@@ -63,8 +64,10 @@ const audience = [
 ---
 
 <Base
-  title="About Sthitha Quantum Innovations | Quantum Technology Company in India"
+  title="About Sthitha | Quantum Technology Company in India"
   description="Discover Sthitha Quantum Innovations, a quantum technology company in India focused on quantum computing, post-quantum security, education and research."
+  pageType="AboutPage"
+  keywords={keywords.about}
 >
   <div class="frame">
     <section class="page-hero">
@@ -84,7 +87,7 @@ const audience = [
         <span class="eyebrow">Who We Are</span>
         <h2 data-reveal>A Company Focused on the Quantum Era</h2>
         <p class="body" data-fade style="--d:200ms">Quantum technologies are opening new areas of exploration in computing, cybersecurity and scientific research. Understanding these developments requires technical knowledge, continued learning and preparation for the changes they may bring.</p>
-        <p class="body" data-fade style="--d:280ms">Sthitha Quantum Innovations brings together three areas of work: <a href="/exodia"><b>Sthitha Exodia</b></a> for post-quantum security, <a href="/academy"><b>Sthitha Academy</b></a> for quantum education, and <a href="/research"><b>Research &amp; Innovation</b></a> for exploring quantum computing and related technologies.</p>
+        <p class="body" data-fade style="--d:280ms">Sthitha Quantum Innovations brings together three areas of work: <a href="/exodia/"><b>Sthitha Exodia</b></a> for post-quantum security, <a href="/academy/"><b>Sthitha Academy</b></a> for quantum education, and <a href="/research/"><b>Research &amp; Innovation</b></a> for exploring quantum computing and related technologies.</p>
         <p class="body" data-fade style="--d:360ms">Our focus is on learning, technical exploration and building a stronger understanding of the opportunities and challenges associated with the quantum era.</p>
       </div>
       <figure class="media" data-fade>
@@ -193,7 +196,7 @@ const audience = [
       <div>
         <p class="body" data-fade>Quantum technology spans computing, mathematics, physics, cybersecurity and engineering. Progress in these fields benefits from the exchange of knowledge and ideas.</p>
         <p class="body" data-fade style="--d:80ms">Sthitha welcomes conversations about quantum education, technical research, post-quantum security and potential collaboration with relevant individuals and organisations.</p>
-        <More href="/contact">Discuss a Collaboration</More>
+        <More href="/contact/">Discuss a Collaboration</More>
       </div>
     </section>
 
@@ -216,6 +219,6 @@ const audience = [
     text="Whether you want to learn quantum computing, understand post-quantum security or discuss a research and technology collaboration, explore how Sthitha's initiatives connect with your interests."
   >
     <a class="btn btn-light" href="#work">Explore Our Services</a>
-    <a class="btn btn-dark" href="/contact">Contact Sthitha</a>
+    <a class="btn btn-dark" href="/contact/">Contact Sthitha</a>
   </Cta>
 </Base>

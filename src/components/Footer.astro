@@ -8,11 +8,12 @@ const columns = [
   {
     title: 'Company',
     links: [
-      { label: 'About Sthitha', href: '/about' },
-      { label: 'Events', href: '/events' },
-      { label: 'Partnerships', href: '/partnerships' },
-      { label: 'Insights', href: '/research/insights' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'About Sthitha', href: '/about/' },
+      { label: 'Our Team', href: '/our-team/' },
+      { label: 'Events', href: '/events/' },
+      { label: 'Partnerships', href: '/partnerships/' },
+      { label: 'Insights', href: '/research/insights/' },
+      { label: 'Contact', href: '/contact/' },
     ],
   },
 ];
@@ -32,7 +33,7 @@ const social = company.social.filter((s) => s.href);
         <h3>Connect</h3>
         <ul>
           <li><a href={`mailto:${company.email}`}>Email<Icon name="arrow-ur" /></a></li>
-          <li><a href="/contact">Contact form</a></li>
+          <li><a href="/contact/">Contact form</a></li>
         </ul>
       </div>
     </div>
@@ -50,7 +51,7 @@ const social = company.social.filter((s) => s.href);
 
     <div class="footer-legal">
       <span>© 2026 {company.legalName}. All rights reserved.</span>
-      <span><a href="/privacy-policy">Privacy Policy</a><i>/</i><a href="/terms-and-conditions">Terms &amp; Conditions</a><i>/</i><a href="/cookie-policy">Cookie Policy</a></span>
+      <span><a href="/privacy-policy/">Privacy Policy</a><i>/</i><a href="/terms-and-conditions/">Terms &amp; Conditions</a><i>/</i><a href="/cookie-policy/">Cookie Policy</a></span>
     </div>
     <p class="footer-addr">Sthitha Exodia, Sthitha Academy and Research &amp; Innovation are initiatives of {company.legalName}, {company.location}.</p>
   </div>

@@ -5,6 +5,9 @@ date: "2026-04-10"
 author: "Sthitha Quantum Innovations"
 category: "Quantum Computing"
 readingTime: "7 min read"
+seoTitle: "Qubits, Superposition & Entanglement Explained | Sthitha"
+description: "A foundational guide to qubits: the Bloch sphere, state vectors, quantum superposition, entanglement, Bell states and circuit measurement."
+tags: ["qubits", "superposition", "entanglement", "Bloch sphere", "Bell states", "quantum computing basics"]
 ---
 
 At the heart of the quantum computing revolution lies a fundamental departure from the binary logic that has governed computing for over seven decades. While classical computers manipulate bits constrained to discrete values of $0$ or $1$, quantum processors leverage the physical laws of quantum mechanics to process information in radically different ways.
@@ -155,7 +158,7 @@ Entanglement enables quantum algorithms to link qubits into coordinated states w
 Understanding the mathematics of qubits is the vital first step toward mastering quantum algorithms, quantum error correction, and post-quantum cryptography.
 
 At **Sthitha Academy**, our educational courses provide hands-on, accessible instruction for learners at all levels:
-- **[Quantum Computing Crash Course: Qubits to Shor & Grover](/academy/quantum-computing-crash-course):** Master the transition from linear algebra to quantum gates, superposition, entanglement, and algorithmic implementation.
-- **[Quantum Computing in Malayalam: For Beginners](/academy/quantum-computing-malayalam):** A foundational quantum computing course taught in Malayalam, making quantum education accessible to regional learners.
+- **[Quantum Computing Crash Course: Qubits to Shor & Grover](/academy/quantum-computing-crash-course/):** Master the transition from linear algebra to quantum gates, superposition, entanglement, and algorithmic implementation.
+- **[Quantum Computing in Malayalam: For Beginners](/academy/quantum-computing-malayalam/):** A foundational quantum computing course taught in Malayalam, making quantum education accessible to regional learners.
 
-*Explore our full curriculum and course outlines on the [Sthitha Academy Overview](/academy).*
+*Explore our full curriculum and course outlines on the [Sthitha Academy Overview](/academy/).*

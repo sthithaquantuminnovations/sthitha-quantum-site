@@ -3,6 +3,8 @@ import Base from '../../../layouts/Base.astro';
 import More from '../../../components/More.astro';
 import Icon from '../../../components/Icon.astro';
 import { posts } from '../../../data/posts.js';
+import { orgId } from '../../../data/seo.js';
+import 'katex/dist/katex.min.css';
 
 export function getStaticPaths() {
   return posts.map((post, index) => {
@@ -23,20 +25,33 @@ const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content } = post;
 const headings = typeof post.getHeadings === 'function' ? post.getHeadings() : [];
 const tocHeadings = headings.filter((h: any) => h.depth === 2);
-const articleUrl = `https://sthithaquantum.com/research/insights/${post.slug}`;
+const articleUrl = new URL(`/research/insights/${post.slug}/`, Astro.site).href;
 const shareText = encodeURIComponent(post.title);
 const shareUrl = encodeURIComponent(articleUrl);
+const ogImage = `/assets/og/og-${post.slug}.png`;
+const modified = post.updated || post.date;
+const minutes = parseInt(post.readingTime, 10);
 
 const articleLd = {
-  '@type': 'Article',
+  '@type': 'TechArticle',
+  '@id': `${articleUrl}#article`,
   headline: post.title,
-  description: post.excerpt,
+  alternativeHeadline: post.seoTitle?.replace(/ \| .*$/, ''),
+  description: post.description || post.excerpt,
+  abstract: post.excerpt,
+  url: articleUrl,
+  mainEntityOfPage: { '@id': `${articleUrl}#webpage` },
   datePublished: post.date,
-  author: { '@type': 'Organization', name: post.author },
-  publisher: { '@id': new URL('/#organization', Astro.site).href },
-  mainEntityOfPage: articleUrl,
+  dateModified: modified,
+  author: { '@id': orgId },
+  publisher: { '@id': orgId },
+  image: { '@type': 'ImageObject', url: new URL(ogImage, Astro.site).href, width: 1200, height: 630 },
   articleSection: post.category,
+  keywords: post.tags,
   wordCount: post.wordCount,
+  ...(minutes ? { timeRequired: `PT${minutes}M` } : {}),
+  inLanguage: 'en',
+  isPartOf: { '@id': new URL('/#website', Astro.site).href },
 };
 
 // Contextual CTA mapping
@@ -45,10 +60,19 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
 ---
 
 <Base
-  title={`${post.title} | Sthitha Quantum Innovations`}
-  description={post.excerpt}
+  title={post.seoTitle || `${post.title} | Sthitha Quantum Innovations`}
+  socialTitle={post.title}
+  description={post.description || post.excerpt}
   type="article"
   publishedTime={post.date}
+  modifiedTime={modified}
+  section={post.category}
+  tags={post.tags}
+  keywords={post.tags}
+  image={ogImage}
+  imageAlt={post.title}
+  crumb={post.title}
+  crumbs={[{ name: 'Insights', path: '/research/insights/' }]}
   jsonLd={articleLd}
 >
   <div class="frame">
@@ -58,7 +82,7 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
           <div>
             <p class="crumbs" data-fade>
               <a href="/">Home</a><i>/</i>
-              <a href="/research/insights">Insights</a><i>/</i>
+              <a href="/research/insights/">Insights</a><i>/</i>
               <span>{post.category}</span>
             </p>
 
@@ -77,10 +101,11 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
 
       <div class="article">
         <aside class="article-meta">
-          <More href="/research/insights" back>All insights</More>
+          <More href="/research/insights/" back>All insights</More>
 
           <dl>
             <div><dt>Published</dt><dd><time datetime={post.date}>{post.dateLong}</time></dd></div>
+            {post.updated && post.updated !== post.date && <div><dt>Updated</dt><dd><time datetime={post.updated}>{post.updatedLong}</time></dd></div>}
             <div><dt>Estimated Read</dt><dd>{post.readingTime}</dd></div>
             <div><dt>Author</dt><dd>{post.author}</dd></div>
             <div><dt>Discipline</dt><dd>{post.category}</dd></div>
@@ -147,7 +172,7 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
                 <h3>Prepare Your Cryptographic Architecture for Post-Quantum Resilience</h3>
                 <p>Sthitha Exodia provides automated cryptographic discovery, quantum risk analysis, and migration planning for enterprise networks.</p>
               </div>
-              <a class="btn btn-light" href="/exodia">Explore Sthitha Exodia</a>
+              <a class="btn btn-light" href="/exodia/">Explore Sthitha Exodia</a>
             </div>
           )}
 
@@ -157,7 +182,7 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
                 <h3>Master Quantum Computing With Sthitha Academy</h3>
                 <p>Learn qubits, circuits, and quantum algorithms through structured courses and interactive circuit simulations.</p>
               </div>
-              <a class="btn btn-light" href="/academy">Explore Courses</a>
+              <a class="btn btn-light" href="/academy/">Explore Courses</a>
             </div>
           )}
 
@@ -167,7 +192,7 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
                 <h3>Collaborate on Quantum Research &amp; Innovation</h3>
                 <p>Explore our ongoing technical studies in quantum machine learning, algorithms, and computational modeling.</p>
               </div>
-              <a class="btn btn-light" href="/research">Explore Research</a>
+              <a class="btn btn-light" href="/research/">Explore Research</a>
             </div>
           )}
 
@@ -183,14 +208,14 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
 
           <nav class="article-pager" aria-label="Adjacent Articles">
             {prevPost ? (
-              <a class="pager-item prev" href={`/research/insights/${prevPost.slug}`}>
+              <a class="pager-item prev" href={`/research/insights/${prevPost.slug}/`}>
                 <span class="pager-label">← Previous Insight</span>
                 <span class="pager-title">{prevPost.title}</span>
               </a>
             ) : <div />}
 
             {nextPost ? (
-              <a class="pager-item next" href={`/research/insights/${nextPost.slug}`}>
+              <a class="pager-item next" href={`/research/insights/${nextPost.slug}/`}>
                 <span class="pager-label">Next Insight →</span>
                 <span class="pager-title">{nextPost.title}</span>
               </a>
@@ -209,7 +234,7 @@ const isAcademy = post.category === 'Quantum Computing' || post.category === 'Qu
         </div>
         <div class="related-grid">
           {relatedPosts.map((rel) => (
-            <a class="related-card" href={`/research/insights/${rel.slug}`}>
+            <a class="related-card" href={`/research/insights/${rel.slug}/`}>
               <div class="related-card-top">
                 <time datetime={rel.date}>{rel.dateLong}</time>
                 <span class="article-badge is-category" style="margin-bottom:8px">{rel.category}</span>
