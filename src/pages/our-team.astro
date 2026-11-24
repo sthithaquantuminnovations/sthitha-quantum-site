@@ -35,17 +35,75 @@ const teamMembers = [
     publications: [],
   },
   {
-    name: 'Sajid Mannan',
-    photo: '/assets/team/sajid-mannan.webp',
+    name: 'Dr. Sajid Mannan',
+    photo: '/assets/team/dr-sajid-mannan.webp',
     photoPosition: 'center top',
     role: 'Principal Scientific Advisor',
     bio: 'Add a short, approved introduction about this team member and their work at Sthitha.',
     initials: 'S',
-    linkedIn: '',
+    linkedIn: 'https://uk.linkedin.com/in/sajid-mannan-41072116b',
     scholar: 'https://scholar.google.com/citations?user=i8pU7ioAAAAJ&hl=en',
-    // Add approved highlights and publications here when available.
-    highlights: [],
-    publications: [],
+    highlights: [
+      'Postdoctoral Researcher at the University of Oxford',
+      '300+ citations, h-index 10 (Google Scholar)',
+    ],
+    publications: [
+      {
+        title: 'UniFFBench: evaluating universal machine learning force fields against experimental measurements',
+        publisher: 'Nature Computational Science · 2026',
+        href: 'https://doi.org/10.1038/s43588-026-01019-4',
+      },
+      {
+        title: 'AI scientists produce results without reasoning scientifically',
+        publisher: 'arXiv preprint · 2026',
+        href: 'https://arxiv.org/abs/2604.18805',
+      },
+      {
+        title: 'Natural Language Embeddings of Synthesis and Testing conditions Enhance Glass Dissolution Prediction',
+        publisher: 'arXiv preprint · 2026',
+        href: 'https://arxiv.org/abs/2604.14078',
+      },
+      {
+        title: 'Atomistic insights into scratch-induced structural evolution of silica glass',
+        publisher: 'Acta Materialia · 2025',
+        href: 'https://doi.org/10.1016/j.actamat.2024.120459',
+      },
+      {
+        title: 'Physics-informed machine learning for Na-Ion conductivity and activation energy',
+        publisher: 'Journal of Non-Crystalline Solids · 2025',
+        href: 'https://doi.org/10.1016/j.jnoncrysol.2025.123497',
+      },
+      {
+        title: 'EGraFFBench: evaluation of equivariant graph neural network force fields for atomistic simulations',
+        publisher: 'Royal Society of Chemistry · Digital Discovery · 2024',
+        href: 'https://doi.org/10.1039/d4dd00027g',
+      },
+      {
+        title: 'Navigating energy landscapes for materials discovery: Integrating modeling, simulation, and machine learning',
+        publisher: 'Materials Genome Engineering Advances · 2024',
+        href: 'https://doi.org/10.1002/mgea.25',
+      },
+      {
+        title: 'Glass hardness: Predicting composition and load effects via symbolic reasoning-informed machine learning',
+        publisher: 'Acta Materialia · 2023',
+        href: 'https://doi.org/10.1016/j.actamat.2023.119046',
+      },
+      {
+        title: 'Accelerated design of chalcogenide glasses through interpretable machine learning for composition-property relationships',
+        publisher: 'Journal of Physics: Materials · 2023',
+        href: 'https://doi.org/10.1088/2515-7639/acc6f2',
+      },
+      {
+        title: 'Machine learning-assisted design of Na-ion-conducting glasses',
+        publisher: 'The Journal of Physical Chemistry C · 2023',
+        href: 'https://doi.org/10.1021/acs.jpcc.3c01834',
+      },
+      {
+        title: 'Superlubricity and stress-shielding of graphene enables ultra scratch-resistant glasses',
+        publisher: 'ACS Applied Materials & Interfaces · 2023',
+        href: 'https://doi.org/10.1021/acsami.3c09653',
+      },
+    ],
   },
   {
     name: 'Rantish Valathe Rajan',
@@ -187,7 +245,7 @@ const teamMembers = [
                       {member.publications.map((pub) => (
                         <li>
                           <a href={pub.href} target="_blank" rel="noopener noreferrer">
-                            <span class="paper-title">{pub.title || 'Read the paper'}</span>
+                            <span class="paper-title">{('title' in pub && pub.title) || 'Read the paper'}</span>
                             <span class="paper-venue">{pub.publisher}</span>
                           </a>
                         </li>
@@ -932,6 +990,12 @@ const teamMembers = [
     background: var(--bg-2);
     box-shadow: 0 18px 32px rgb(0 0 0 / 50%);
     backdrop-filter: none;
+    /* Long lists scroll inside the panel instead of being clipped by the page */
+    max-height: min(360px, 55vh);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-2) transparent;
   }
 
   .team-card:has(.member-more[open]) {
